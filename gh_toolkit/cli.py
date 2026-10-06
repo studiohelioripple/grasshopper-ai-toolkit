@@ -1,0 +1,192 @@
+"""
+gh_toolkit.cli - Command-line interface for the Grasshopper AI Toolkit.
+"""
+
+import os
+import sys
+import argparse
+
+from .core import read_gh_binary, write_gh_binary, read_ghx, write_ghx, GHGraph
+from .heteroptera import (
+    load_heteroptera_catalog,
+    find_heteroptera_component,
+    list_heteroptera_components,
+    get_canonical_recipes,
+)
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        prog="gh-toolkit",
+        description="Grasshopper AI Toolkit - Inspect, convert, and synthesize Grasshopper definitions.",
+    )
+    subparsers = parser.add_subparsers(dest="cmd", help="Sub-command to execute")
+
+    p_info = subparsers.add_parser("info", help="Inspect file metadata, component list, and canvas parameters")
+    p_info.add_argument("file", help="Path to .gh or .ghx file")
+
+    p_to_ghx = subparsers.add_parser("to-ghx", help="Convert .gh binary to human-readable .ghx XML")
+    p_to_ghx.add_argument("input", help="Input .gh file")
+    p_to_ghx.add_argument("output", help="Output .ghx file")
+
+    p_to_gh = subparsers.add_parser("to-gh", help="Convert .ghx XML to compressed .gh binary")
+    p_to_gh.add_argument("input", help="Input .ghx file")
+    p_to_gh.add_argument("output", help="Output .gh file")
+
+    p_to_json = subparsers.add_parser("to-json", help="Convert .gh/.ghx to lightweight JSON Graph IR")
+    p_to_json.add_argument("input", help="Input file")
+    p_to_json.add_argument("output", help="Output .json file")
+
+    p_scripts = subparsers.add_parser("extract-scripts", help="Batch extract embedded Python and C# scripts")
+    p_scripts.add_argument("target", help="File or directory of .gh/.ghx files")
+    p_scripts.add_argument("--out", "-o", default="./extracted_scripts", help="Output directory")
+
+    p_het = subparsers.add_parser("heteroptera", help="Inspect and audit Heteroptera plugin components & pipelines")
+    p_het.add_argument("--list", nargs="?", const="all", help="List components (optional subcategory filter)")
+    p_het.add_argument("--info", help="Get detailed input/output schema for a component name or GUID")
+    p_het.add_argument("--audit", help="Audit a .gh/.ghx file for Heteroptera components and pipelines")
+    p_het.add_argument("--recipes", action="store_true", help="Display canonical Heteroptera wiring recipes")
+
+    args = parser.parse_args()
+
+    if not args.cmd:
+        parser.print_help()
+        sys.exit(1)
+
+    if args.cmd == "info":
+        ext = os.path.splitext(args.file)[1].lower()
+        archive = read_ghx(args.file) if ext == ".ghx" else read_gh_binary(args.file)
+        graph = GHGraph.from_archive(archive)
+        print(f"File:                  {args.file}")
+        print(f"Definition Name:       {graph.name}")
+        print(f"Total Components:      {len(graph.components)}")
+        print(f"Total Wires:           {len(graph.wires)}")
+        print("\nCanvas Components Sample:")
+        for c in graph.components[:15]:
+            print(f"  [{c.comp_id}] {c.name} ('{c.nickname}') - {len(c.inputs)} in, {len(c.outputs)} out")
+            if c.script_source:
+                print(f"      [Embedded Script: {len(c.script_source)} characters]")
+
+    elif args.cmd == "to-ghx":
+        archive = read_gh_binary(args.input)
+        write_ghx(archive, args.output)
+        print(f"Wrote XML Grasshopper definition to: {args.output}")
+
+    elif args.cmd == "to-gh":
+        archive = read_ghx(args.input)
+        write_gh_binary(archive, args.output, compress=True)
+        print(f"Wrote binary Grasshopper definition to: {args.output}")
+
+    elif args.cmd == "to-json":
+        ext = os.path.splitext(args.input)[1].lower()
+        archive = read_ghx(args.input) if ext == ".ghx" else read_gh_binary(args.input)
+        graph = GHGraph.from_archive(archive)
+        with open(args.output, "w", encoding="utf-8") as f:
+            f.write(graph.to_json())
+        print(f"Wrote JSON Graph IR to: {args.output}")
+
+    elif args.cmd == "extract-scripts":
+        os.makedirs(args.out, exist_ok=True)
+        files = []
+        if os.path.isdir(args.target):
+            for root, _, fnames in os.walk(args.target):
+                for fn in fnames:
+                    if fn.lower().endswith((".gh", ".ghx")):
+                        files.append(os.path.join(root, fn))
+        else:
+            files.append(args.target)
+
+        count = 0
+        for fpath in files:
+            try:
+                ext = os.path.splitext(fpath)[1].lower()
+                archive = read_ghx(fpath) if ext == ".ghx" else read_gh_binary(fpath)
+                graph = GHGraph.from_archive(archive)
+                base = os.path.splitext(os.path.basename(fpath))[0]
+                for idx, c in enumerate(graph.components):
+                    if c.script_source:
+                        script_ext = ".cs" if ("using " in c.script_source or "public class" in c.script_source) else ".py"
+                        out_name = f"{base}_{c.nickname or c.name}_{idx}{script_ext}"
+                        out_name = "".join(ch if ch.isalnum() or ch in "._- " else "_" for ch in out_name)
+                        out_path = os.path.join(args.out, out_name)
+                        with open(out_path, "w", encoding="utf-8") as sf:
+                            sf.write(c.script_source)
+                        count += 1
+                        print(f"Extracted: {out_name}")
+            except Exception as e:
+                print(f"Error reading {fpath}: {e}")
+        print(f"Done! Extracted {count} script(s) to {args.out}")
+
+    elif args.cmd == "heteroptera":
+        catalog = load_heteroptera_catalog()
+        if not catalog.get("by_name"):
+            print("Error: Heteroptera catalog not found. Please ensure heteroptera_catalog.json exists.")
+            sys.exit(1)
+
+        if args.recipes:
+            print("=== Canonical Heteroptera Wiring Recipes ===\n")
+            recipes = get_canonical_recipes()
+            for r in recipes:
+                print(f"[{r['name']}] ({r['domain']})")
+                print(f"Description: {r['description']}")
+                print("Pipeline:")
+                for step in r["pipeline"]:
+                    print(f"  * {step}")
+                print("Invariants:")
+                for inv in r["invariants"]:
+                    print(f"  ! {inv}")
+                print()
+
+        elif args.info:
+            comp = find_heteroptera_component(args.info)
+            if not comp:
+                print(f"Component '{args.info}' not found in Heteroptera catalog.")
+                sys.exit(1)
+            print(f"Component:    {comp['name']} [{comp.get('nickname', '')}]")
+            print(f"GUID:         {comp['guid']}")
+            print(f"Subcategory:  {comp.get('subcategory', 'General')}")
+            print(f"Type Name:    {comp.get('type_name', '')}")
+            print(f"Description:  {comp.get('description', '')}")
+            print("\nInputs:")
+            for inp in comp.get("inputs", []):
+                print(f"  - {inp['name']} ({inp.get('nickname', '')}): {inp.get('type', '')} [{inp.get('access', 'item')}] - {inp.get('description', '')}")
+            print("\nOutputs:")
+            for outp in comp.get("outputs", []):
+                print(f"  - {outp['name']} ({outp.get('nickname', '')}): {outp.get('type', '')} - {outp.get('description', '')}")
+
+        elif args.audit:
+            ext = os.path.splitext(args.audit)[1].lower()
+            archive = read_ghx(args.audit) if ext == ".ghx" else read_gh_binary(args.audit)
+            graph = GHGraph.from_archive(archive)
+            guids = {c['guid'].lower(): c for c in catalog.get("by_guid", {}).values()}
+            found_het = []
+            for c in graph.components:
+                cid = c.guid.lower()
+                if cid in guids:
+                    found_het.append((c, guids[cid]))
+            print(f"Audit Results for:          {args.audit}")
+            print(f"Total Definition Components: {len(graph.components)}")
+            print(f"Heteroptera Components:     {len(found_het)}")
+            if found_het:
+                by_sub = {}
+                for c, meta in found_het:
+                    by_sub.setdefault(meta.get('subcategory', 'General'), []).append(c.name)
+                for sub, names in sorted(by_sub.items()):
+                    print(f"  [{sub}] ({len(names)}): {', '.join(names[:6])}{'...' if len(names) > 6 else ''}")
+
+        elif args.list:
+            subcats = catalog.get("subcategories", {})
+            filt = args.list.lower()
+            print(f"Heteroptera Plugin Catalog ({catalog.get('total_components', 0)} components):\n")
+            for sub, names in sorted(subcats.items()):
+                if filt != "all" and filt != sub.lower():
+                    continue
+                print(f"=== {sub} ({len(names)} components) ===")
+                for n in sorted(names):
+                    meta = catalog.get("by_name", {}).get(n, {})
+                    print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
+                print()
+
+
+if __name__ == "__main__":
+    main()

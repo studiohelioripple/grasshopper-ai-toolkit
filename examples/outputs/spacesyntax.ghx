@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Archive name="Root">
+  <items count="1">
+    <item name="ArchiveVersion" type_name="gh_version" type_code="80">
+      <Major>0</Major>
+      <Minor>2</Minor>
+      <Revision>2</Revision>
+    </item>
+  </items>
+  <chunks count="2">
+    <chunk name="Definition">
+      <items count="1">
+        <item name="plugin_version" type_name="gh_version" type_code="80">
+          <Major>1</Major>
+          <Minor>0</Minor>
+          <Revision>7</Revision>
+        </item>
+      </items>
+      <chunks count="3">
+        <chunk name="DocumentHeader">
+          <items count="5">
+            <item name="DocumentID" type_name="gh_guid" type_code="9">94c5e2a5-4b26-495c-a768-a89f0b3fecdb</item>
+            <item name="Preview" type_name="gh_string" type_code="10">Shaded</item>
+            <item name="PreviewMeshType" type_name="gh_int32" type_code="3">1</item>
+            <item name="PreviewNormal" type_name="gh_drawing_color" type_code="36">
+              <ARGB>100;150;0;0</ARGB>
+            </item>
+            <item name="PreviewSelected" type_name="gh_drawing_color" type_code="36">
+              <ARGB>100;0;150;0</ARGB>
+            </item>
+          </items>
+        </chunk>
+        <chunk name="DefinitionProperties">
+          <items count="3">
+            <item name="Date" type_name="gh_date" type_code="8">638295068918890330</item>
+            <item name="Description" type_name="gh_string" type_code="10">Synthesized by Antigravity Grasshopper Toolkit</item>
+            <item name="Name" type_name="gh_string" type_code="10">SpaceSyntaxAnalysis</item>
+          </items>
+          <chunks count="3">
+            <chunk name="Revisions">
+              <items count="1">
+                <item name="RevisionCount" type_name="gh_int32" type_code="3">0</item>
+              </items>
+            </chunk>
+            <chunk name="Projection">
+              <items count="2">
+                <item name="Target" type_name="gh_drawing_point" type_code="30">
+                  <X>100</X>
+                  <Y>100</Y>
+                </item>
+                <item name="Zoom" type_name="gh_single" type_code="5">1.0</item>
+              </items>
+            </chunk>
+            <chunk name="Views">
+              <items count="1">
+                <item name="ViewCount" type_name="gh_int32" type_code="3">0</item>
+              </items>
+            </chunk>
+          </chunks>
+        </chunk>
+        <chunk name="DefinitionObjects">
+          <chunks count="7">
+            <chunk name="Object" index="0">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">3c5edcba-b7a5-4710-b076-4b19a7080a2b</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">08bdcae0-d034-48dd-a145-24a9fcf3d3ff</item>
+                <item name="Name" type_name="gh_string" type_code="10">Center</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">Returns the center of the geometry and the diagonal of its bounding box as the dimension. Right-click to choose options.
+[ForAll]: Calculates the center point for a group of geometries.
+Position options:
+[Spatial]: Spatial domain center.
+[Planar]: Center projected onto the XY plane.
+[Basement]: Center of the base plane</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">0cd549b6-1980-430f-b29b-5216f0e1597c</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Center</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">Center</item>
+                  </items>
+                  <chunks count="4">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>320</X>
+                          <Y>100</Y>
+                          <W>90.0</W>
+                          <H>68.0</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>365.0</X>
+                          <Y>134.0</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="0">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e37c555f-ba55-49a7-ac64-9d019f8fae17</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Geometry</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">G</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Geometry to get the space-domain center from</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="0">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">488d517a-7868-4508-a465-717542a6ac10</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Center</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">C</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Center</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="1">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b9576f4c-b4dc-4577-9ed0-6d4d4391362f</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Dimension</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">D</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Diagonal size of geometry's bounding box</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="1">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">980bd972-3623-40a9-85d9-89807ce118c9</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">08bdcae0-d034-48dd-a145-24a9fcf3d3ff</item>
+                <item name="Name" type_name="gh_string" type_code="10">Topology Of Adjacencies</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">Computes adjacency relationships among a list of polylines. Polylines do not need to share points to be matched as adjacent cells; edge alignment is the key criterion. This component offers three computation modes with different complexity levels and is most useful for very complex networks.</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">6f02cfec-c60b-4de7-91b3-0c53b7eb8db8</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Topology Of Adjacencies</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">Adjacency</item>
+                  </items>
+                  <chunks count="5">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>320</X>
+                          <Y>240</Y>
+                          <W>90.0</W>
+                          <H>92.0</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>365.0</X>
+                          <Y>286.0</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="0">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">cbb12d46-b222-4ea7-93f4-2f931b20ed0d</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Polylines</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">PL</item>
+                        <item name="Description" type_name="gh_string" type_code="10">The orthographic polylines on which this component will compute the topological adjacency</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="1">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">882d3e0a-dd9a-477a-862d-66f90476b3b0</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Method</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">M</item>
+                        <item name="Description" type_name="gh_string" type_code="10">The method of search:
+ 0: Rectangular Polylines
+ 1: Orthographic Polylines
+ 2: Free Polylines</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">0</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="2">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5a80c136-37ff-401f-b303-9e0e3676bdc2</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Tolerance</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">T</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Searching distance</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">0</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="0">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fa0d4ba2-5b4b-45a0-ae0d-30b3b025f16b</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Cell→Cell</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">C→C</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Cell→Cell Topology</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="2">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">683305c6-fd18-4102-b142-f5c799d7069c</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">08bdcae0-d034-48dd-a145-24a9fcf3d3ff</item>
+                <item name="Name" type_name="gh_string" type_code="10">Reconstruct Topology</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">Recreate Lines from topology or convert different types of network topology.</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">ea5314bb-4647-4d5b-be78-7539c62f7315</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Reconstruct Topology</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">ReConstNet</item>
+                  </items>
+                  <chunks count="9">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>560</X>
+                          <Y>170</Y>
+                          <W>90.0</W>
+                          <H>116.0</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>605.0</X>
+                          <Y>228.0</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="0">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">88edddab-6a7f-4086-a5e3-c2cec4fc67ef</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Node→Node</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">N→N</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Node→Node Topology. It indicates the all nodes connected to one another.</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">2</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="1">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0b8cc360-bd6f-409a-89f1-79e19d4858b3</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Edge→Node</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">E→N</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Edge→Node Topology. It indicates a pair of nodes defining one edge.</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">2</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="2">
+                      <items count="8">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0feee4c2-bdb1-4455-a665-562bbfce11d6</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Points (Optional)</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">P</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Optional connection nodes</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
+                        <item name="Source" type_name="gh_guid" type_code="9">488d517a-7868-4508-a465-717542a6ac10</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="3">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">43cc1a22-6dbb-490b-b5cd-cf701764f45a</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Curves (Optional)</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">C</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Optional network connections</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="0">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ead1ad03-f452-4f25-80c2-e3241843d745</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Node→Node</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">N→N</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Node→Node Topology. It indicates the all nodes connected to one another.</item>
+                        <item name="Source" type_name="gh_guid" type_code="9">fa0d4ba2-5b4b-45a0-ae0d-30b3b025f16b</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="1">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5119046c-dd5d-4bae-b744-19a31e34597b</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Edge→Node</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">E→N</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Edge→Node Topology. It indicates a pair of nodes defining one edge.</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="2">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e5b231fe-7518-45ab-a6e8-6e80331c4181</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Points</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">P</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Connection BackNodes</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="3">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b81a0ef3-bab3-4d79-b12e-f1d699bc234e</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Lines</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">L</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Network Lines</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="3">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">d45600cd-4e6d-4548-a006-880026e13470</item>
+                <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">A slider for numeric values</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">c32b3638-2860-47ed-8967-4ff3b7a51409</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">SourceNode</item>
+                  </items>
+                  <chunks count="3">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>560</X>
+                          <Y>310</Y>
+                          <W>150.0</W>
+                          <H>20.0</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>635.0</X>
+                          <Y>320.0</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="Slider">
+                      <items count="5">
+                        <item name="Digits" type_name="gh_int32" type_code="3">2</item>
+                        <item name="Interval" type_name="gh_int32" type_code="3">1</item>
+                        <item name="Max" type_name="gh_double" type_code="6">20.0</item>
+                        <item name="Min" type_name="gh_double" type_code="6">0.0</item>
+                        <item name="Value" type_name="gh_double" type_code="6">0.0</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="0">
+                      <items count="3">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">dfb2d507-0ad4-47bf-943c-dc21b3439654</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Output</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">SourceNode</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="4">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">d45600cd-4e6d-4548-a006-880026e13470</item>
+                <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">A slider for numeric values</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">9542992e-30d4-4f57-a863-1ff827805270</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">Depth</item>
+                  </items>
+                  <chunks count="3">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>560</X>
+                          <Y>370</Y>
+                          <W>150.0</W>
+                          <H>20.0</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>635.0</X>
+                          <Y>380.0</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="Slider">
+                      <items count="5">
+                        <item name="Digits" type_name="gh_int32" type_code="3">2</item>
+                        <item name="Interval" type_name="gh_int32" type_code="3">1</item>
+                        <item name="Max" type_name="gh_double" type_code="6">15.0</item>
+                        <item name="Min" type_name="gh_double" type_code="6">1.0</item>
+                        <item name="Value" type_name="gh_double" type_code="6">6.0</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="0">
+                      <items count="3">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9dde5a59-c2f4-4a2d-8c86-2a85159273b1</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Output</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">Depth</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="5">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">d4077291-8c30-4313-8bb3-45a86138c521</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">08bdcae0-d034-48dd-a145-24a9fcf3d3ff</item>
+                <item name="Name" type_name="gh_string" type_code="10">Space Syntax</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">Generate Space-Syntax out of a network</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">5d95d3d8-e10c-40b0-b1be-1ef825eb052c</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Space Syntax</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">SpaceSyntax</item>
+                  </items>
+                  <chunks count="6">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>800</X>
+                          <Y>200</Y>
+                          <W>90.0</W>
+                          <H>92.0</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>845.0</X>
+                          <Y>246.0</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="0">
+                      <items count="8">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0e162704-078a-4003-a7ea-a96d77786b87</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Node→Node</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">N→N</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Node→Node Topology. It indicates the all nodes connected to one another.</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">2</item>
+                        <item name="Source" type_name="gh_guid" type_code="9">ead1ad03-f452-4f25-80c2-e3241843d745</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="1">
+                      <items count="8">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2572178a-3acb-424e-b473-2ee8d7645e7b</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Source</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">I</item>
+                        <item name="Description" type_name="gh_string" type_code="10">The index of the source node</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">0</item>
+                        <item name="Source" type_name="gh_guid" type_code="9">dfb2d507-0ad4-47bf-943c-dc21b3439654</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="2">
+                      <items count="8">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ff867e3b-72e6-40ba-8345-27884863b9f9</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Depth</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">D</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Depth number in a topological space of the network</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">0</item>
+                        <item name="Source" type_name="gh_guid" type_code="9">9dde5a59-c2f4-4a2d-8c86-2a85159273b1</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="0">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6014b48d-e38f-43a8-86c9-910269f53b7c</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Node SpaceSyntax</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">NS</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Space Syntax by nodes indices</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="1">
+                      <items count="4">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">46048b9f-c511-454a-b2e5-f626790623f3</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Connection SpaceSyntax</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">CS</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Space Syntax by connection indices</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="6">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">4bd25213-fe16-44cb-a3f1-1a7814872363</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">08bdcae0-d034-48dd-a145-24a9fcf3d3ff</item>
+                <item name="Name" type_name="gh_string" type_code="10">Normalizer</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">Normalize a list of numbers</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">e121d7e4-8760-41bc-bbc4-55395fa5d7e9</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Normalizer</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">Edge</item>
+                  </items>
+                  <chunks count="3">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1040</X>
+                          <Y>200</Y>
+                          <W>90.0</W>
+                          <H>44.0</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>1085.0</X>
+                          <Y>222.0</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="0">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f6be9593-a14d-4a1f-a643-a2168f5c5c8e</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Numbers</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">N</item>
+                        <item name="Description" type_name="gh_string" type_code="10">List of numbers to normalize</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Access" type_name="gh_int32" type_code="3">2</item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_output" index="0">
+                      <items count="6">
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e87bdc54-27d7-499f-958f-017c0e83c47d</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Numbers</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">N</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Normalized Numbers</item>
+                        <item name="Source" type_name="gh_guid" type_code="9">6014b48d-e38f-43a8-86c9-910269f53b7c</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+          </chunks>
+        </chunk>
+      </chunks>
+    </chunk>
+    <chunk name="Thumbnail">
+      <items count="1">
+        <item name="Thumbnail" type_name="gh_drawing_bitmap" type_code="37" />
+      </items>
+    </chunk>
+  </chunks>
+</Archive>
