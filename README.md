@@ -39,14 +39,61 @@ flowchart LR
 
 ## 📦 Installation
 
+Choose the installation method that fits your workflow:
+
+### Option 1: Direct Install via `pip` (Recommended for Python users)
+Install directly from GitHub into your current Python environment:
 ```bash
-# Clone the repository
+pip install git+https://github.com/studiohelioripple/grasshopper-ai-toolkit.git
+```
+
+### Option 2: Clone & Development Install (Editable mode)
+Clone the repository to inspect the code, run examples, or contribute:
+```bash
 git clone https://github.com/studiohelioripple/grasshopper-ai-toolkit.git
 cd grasshopper-ai-toolkit
 
-# Install in development mode
+# Install in editable mode
 pip install -e .
 ```
+
+### Option 3: Zero-Install Standalone Usage (No `pip` or Virtualenv required)
+Because Grasshopper AI Toolkit relies **strictly on standard Python libraries** (`zlib`, `struct`, `xml.etree`, `json`, `argparse`), you can execute it immediately out-of-the-box without installing anything:
+```bash
+git clone https://github.com/studiohelioripple/grasshopper-ai-toolkit.git
+cd grasshopper-ai-toolkit
+
+# Run via module invocation:
+python3 -m gh_toolkit.cli --help
+
+# Or run the standalone script:
+python3 tools/gh_toolkit.py --help
+```
+
+### Option 4: Install as an Antigravity / Gemini Agent Skill
+Deploy the toolkit as a native skill for Google Antigravity or Gemini AI coding agents:
+```bash
+# Copy the packaged skill definition into your agent skills directory
+mkdir -p ~/.gemini/config/skills/grasshopper
+cp -r skill/* ~/.gemini/config/skills/grasshopper/
+```
+Once installed, your agent will automatically use the toolkit to decompress `.gh` files, validate Heteroptera topologies, and author Grasshopper graphs.
+
+---
+
+### ✅ Verify Installation
+Verify that the CLI is working properly:
+```bash
+gh-toolkit --help
+```
+You should see:
+```text
+usage: gh-toolkit [-h] {info,to-ghx,to-gh,to-json,extract-scripts,heteroptera} ...
+
+Grasshopper AI Toolkit - Zero-dependency CLI for inspecting, converting,
+and synthesizing Grasshopper (.gh / .ghx) definitions.
+```
+
 
 ---
 
