@@ -252,9 +252,13 @@ The toolkit was built from an analysis of **193 production Grasshopper definitio
 
 ## 🤖 Antigravity / AI Agent Skill
 
-This repository includes a pre-packaged Agent Skill in `skill/`:
-- **`SKILL.md`**: Instruction manual for AI coding agents.
-- **`resources/`**: Offline component catalogs (`heteroptera_catalog.json`, `component_catalog.json`).
+This repository includes a compact, token-compressed Agent Skill in `skill/`:
+- **`SKILL.md`**: Ultra-dense, token-optimized executive guide for AI coding assistants.
+- **`references/`**: Modular deep knowledge bases:
+  - `ARCHITECTURAL_RECIPES.md`: The 8 architectural pillars distilled from 193 definitions.
+  - `SCRIPT_LIBRARY.md`: Curated, production-ready GhPython & C# scripts.
+  - `COMPONENT_INDEX.md`: Compact GUID & port quick-reference.
+- **`resources/compact_index.json`**: Lightweight (46 KB) JSON lookup index for high-speed agent queries.
 - **`scripts/gh_toolkit.py`**: Portable execution engine.
 
 To install this skill into your Antigravity agent environment:
@@ -268,7 +272,7 @@ cp -r skill/ ~/.gemini/config/skills/grasshopper/
 
 ```
 grasshopper-ai-toolkit/
-├── README.md                      # Documentation & guides
+├── README.md                      # Documentation & quickstart
 ├── LICENSE                        # MIT License
 ├── pyproject.toml                 # Package configuration
 ├── gh_toolkit/                    # Python package source code
@@ -277,7 +281,10 @@ grasshopper-ai-toolkit/
 │   ├── builder.py                 # GHBuilder DAG synthesizer
 │   ├── heteroptera.py             # Heteroptera bindings & recipes
 │   └── cli.py                     # CLI entrypoint
-├── docs/                          # Detailed guides
+├── docs/                          # Detailed guides & references
+│   ├── ARCHITECTURAL_RECIPES.md   # Distilled recipes from 193 definitions
+│   ├── SCRIPT_LIBRARY.md          # 128 curated GhPython & C# scripts
+│   ├── COMPONENT_INDEX.md         # High-density GUID quick-reference
 │   ├── HETEROPTERA_REFERENCE.md   # Complete 152-component reference
 │   ├── ARCHITECTURAL_PILLARS.md   # 193-definition repository taxonomy
 │   └── SPACE_SYNTAX_GUIDE.md      # Space Syntax architectural guide
@@ -286,7 +293,10 @@ grasshopper-ai-toolkit/
 │   ├── 02_brick_allocation.py
 │   └── outputs/                   # Generated sample definitions
 ├── tests/                         # Automated test suite
-└── skill/                         # Portable Agent Skill bundle
+└── skill/                         # Compact, compressed Agent Skill bundle
+    ├── SKILL.md                   # Dense executive guide
+    ├── references/                # Modular knowledge base
+    └── resources/                 # Compact offline schema catalogs
 ```
 
 ---
