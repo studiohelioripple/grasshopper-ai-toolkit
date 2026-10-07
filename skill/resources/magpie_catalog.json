@@ -1,0 +1,1307 @@
+{
+  "plugin": "Magpie",
+  "version": "0.4.4",
+  "total_components": 14,
+  "subcategories": {
+    "Others": [
+      "Correlation Matrix",
+      "T-SNE"
+    ],
+    "Tools": [
+      "Computer",
+      "Tuner",
+      "Report"
+    ],
+    "Machines": [
+      "Boltzmann Machine",
+      "Classification Machine",
+      "KohMap Machine",
+      "Vanilla Machine",
+      "Clustering Machine",
+      "PCA Machine"
+    ],
+    "Exteras": [
+      "Dispatch DataSet",
+      "Mean Tensor",
+      "Winner Index"
+    ]
+  },
+  "by_guid": {
+    "06e60a13-0994-4d55-823d-f2ccc8bec38b": {
+      "name": "Correlation Matrix",
+      "nickname": "CorrelationMatrix",
+      "description": "Creates Correlation-Matrix for the given matrix of samples",
+      "guid": "06e60a13-0994-4d55-823d-f2ccc8bec38b",
+      "type_name": "Magpie.Components.Others.A_CorrelationMatrix",
+      "category": "Magpie",
+      "subcategory": "Others",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Data to analyze",
+          "type": "Number",
+          "access": "tree"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Matrix",
+          "nickname": "M",
+          "description": "Correlation Matrix",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "0073d98c-d0a2-49e4-a1ff-2b21670e1961": {
+      "name": "T-SNE",
+      "nickname": "T-SNE",
+      "description": "Solves a T-Distributed-Stochastic-Neighbor-Embedding model by given data",
+      "guid": "0073d98c-d0a2-49e4-a1ff-2b21670e1961",
+      "type_name": "Magpie.Components.Others.T_SNE_Component",
+      "category": "Magpie",
+      "subcategory": "Others",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "X",
+          "description": "number[][] To do analysis on",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Dimension",
+          "nickname": "D",
+          "description": "The length of output vectors",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Perplexity",
+          "nickname": "P",
+          "description": "[5-50] The balancing attention between local and global aspects of data",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Theta",
+          "nickname": "T",
+          "description": "[0-1] The Trade-Off between preserving small and large distances",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Seed",
+          "nickname": "S",
+          "description": "Generator Seed",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result Vectors",
+          "nickname": "R",
+          "description": "The result of the applying the transformation (Computing Process of the Kernel) to given data",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "c4c6d847-219d-4017-aae6-9081f01b1da7": {
+      "name": "Computer",
+      "nickname": "Computer",
+      "description": "Computes values with test-data",
+      "guid": "c4c6d847-219d-4017-aae6-9081f01b1da7",
+      "type_name": "Magpie.Components.Tools.Computer",
+      "category": "Magpie",
+      "subcategory": "Tools",
+      "inputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Input",
+          "nickname": "I",
+          "description": "Input Data to compute values from",
+          "type": "Number",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "nickname": "O",
+          "description": "Computed Data (For Boltzmann and NeuralNetwork machines)",
+          "type": "Number",
+          "access": "list"
+        }
+      ]
+    },
+    "77ce132d-9687-457e-9226-104d5907303f": {
+      "name": "Tuner",
+      "nickname": "Details for tuning the machine",
+      "description": "Refresh !!",
+      "guid": "77ce132d-9687-457e-9226-104d5907303f",
+      "type_name": "Magpie.Components.Tools.MachineTunerComponent",
+      "category": "Magpie",
+      "subcategory": "Tools",
+      "inputs": [
+        {
+          "name": "Iteration",
+          "nickname": "",
+          "description": "",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "LearningRate",
+          "nickname": "",
+          "description": "The value determines speed of learning.\nIt would be also equivalent the Levenberg\u0027s damping factor (lambda) ",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ]
+    },
+    "9bddd0a5-787d-4aaf-b8d6-1668b75d763a": {
+      "name": "Report",
+      "nickname": "Report",
+      "description": "Creates Report out of a machine",
+      "guid": "9bddd0a5-787d-4aaf-b8d6-1668b75d763a",
+      "type_name": "Magpie.Components.Tools.Report",
+      "category": "Magpie",
+      "subcategory": "Tools",
+      "inputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Report",
+          "nickname": "",
+          "description": "Details about the machine",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Loss",
+          "nickname": "",
+          "description": "Details about the machine",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Iteration",
+          "nickname": "",
+          "description": "Details about the machine",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    },
+    "26523c4e-4d7a-420c-8aca-d79cd8705370": {
+      "name": "Boltzmann Machine",
+      "nickname": "Boltzmann",
+      "description": "Creating a Bernouli-Restricted-Boltzmann Kernel for Dimension Reduction",
+      "guid": "26523c4e-4d7a-420c-8aca-d79cd8705370",
+      "type_name": "Magpie.Components.Machines.BoltzmanComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Dimension",
+          "nickname": "Dimension",
+          "description": "Output Dimensionality",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Input Dimensions",
+          "nickname": "D",
+          "description": "New  dimensions of initial given features",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "4772636d-0cd1-4081-bd33-5cecbc4514ee": {
+      "name": "Classification Machine",
+      "nickname": "Classifier",
+      "description": "Classification Machine",
+      "guid": "4772636d-0cd1-4081-bd33-5cecbc4514ee",
+      "type_name": "Magpie.Components.Machines.ClassificationComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Labels",
+          "nickname": "Labels",
+          "description": "The list of Labels.",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Hidden Neurons",
+          "nickname": "Hidden",
+          "description": "Number of Hidden Neurons.",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Table",
+          "nickname": "T",
+          "description": "Table of Labels",
+          "type": "Text",
+          "access": "list"
+        }
+      ]
+    },
+    "05fda739-a77d-4027-9ec5-03ffe6c402e5": {
+      "name": "KohMap Machine",
+      "nickname": "Koh-Map",
+      "description": "Creates a Distance-Network with Kohonen SelfOrganizing Map with SOM learning algorithm",
+      "guid": "05fda739-a77d-4027-9ec5-03ffe6c402e5",
+      "type_name": "Magpie.Components.Machines.KohonenComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Column Count",
+          "nickname": "Columns",
+          "description": "The number of neurons existing in a row",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Rows Count",
+          "nickname": "Rows",
+          "description": "The number of rows of neurons,\n set it 1 for 1D \u0027Kohonen Map\u0027, and set it 0 for 1D \u0027Elastic Trainer\u0027",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Neurons",
+          "nickname": "N",
+          "description": "Neurons Weights",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Winners",
+          "nickname": "W",
+          "description": "The GetWinner (Best Matched) neuron\u0027s index\u0027",
+          "type": "Integer",
+          "access": "list"
+        },
+        {
+          "name": "Nodes",
+          "nickname": "V",
+          "description": "Translation Vectors of the neurons",
+          "type": "Vector",
+          "access": "tree"
+        }
+      ]
+    },
+    "3cb560b3-aa1f-4d75-8c6f-bfbcb82e802e": {
+      "name": "Vanilla Machine",
+      "nickname": "Vanilla",
+      "description": "Creating a Vanilla Neural-Network machine",
+      "guid": "3cb560b3-aa1f-4d75-8c6f-bfbcb82e802e",
+      "type_name": "Magpie.Components.Machines.VanilaMachineComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Output",
+          "nickname": "Y",
+          "description": "Kernel Output Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "0",
+          "nickname": "7",
+          "description": "7",
+          "type": "Integer",
+          "access": "list"
+        },
+        {
+          "name": "ActivationFunction",
+          "nickname": "Activation",
+          "description": "",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "LearnerType",
+          "nickname": "Learner",
+          "description": "",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        }
+      ]
+    },
+    "4248a633-3952-4dc2-bb35-ccc42ffa033e": {
+      "name": "Clustering Machine",
+      "nickname": "Clustering",
+      "description": "Solver for Gaussian-Mixture and K-Means Clustering (Right-Click to choose)",
+      "guid": "4248a633-3952-4dc2-bb35-ccc42ffa033e",
+      "type_name": "Magpie.Components.Machines.MagpiesComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for clustering",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Clusters",
+          "nickname": "N",
+          "description": "Number of clusters",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Random Seed",
+          "nickname": "S",
+          "description": "Seed value for the Accord.",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "ClusterNumber",
+          "nickname": "I",
+          "description": "Resultant prediction",
+          "type": "Integer",
+          "access": "list"
+        },
+        {
+          "name": "Scores",
+          "nickname": "S",
+          "description": "Scores (Probabilities) is the probability of belonging to each cluster per each input item.",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Mean",
+          "nickname": "M",
+          "description": "The centroids of the clusters.",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "e3df43dd-dae5-40db-af17-31bab5aedace": {
+      "name": "PCA Machine",
+      "nickname": "PCA",
+      "description": "Create a Principal-Component-Analysis Machine",
+      "guid": "e3df43dd-dae5-40db-af17-31bab5aedace",
+      "type_name": "Magpie.Components.Machines.PrincipalComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "X",
+          "description": "number[][] To do analysis on",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Dimension",
+          "nickname": "D",
+          "description": "The length of output vectors",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Result Vectors",
+          "nickname": "R",
+          "description": "The result of the applying the transformation (Computing Process of the Kernel) to given vectors (InputData)",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Mean",
+          "nickname": "M",
+          "description": "The vectors of Start and End of the Axises",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "EigenVector",
+          "nickname": "A",
+          "description": "The vectors of Start and End of the Axises",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Proportions",
+          "nickname": "P",
+          "description": "The respective role each component plays in the data set.",
+          "type": "Number",
+          "access": "list"
+        }
+      ]
+    },
+    "d2a2c2b9-d13a-4c66-a57e-63ea7ac3639a": {
+      "name": "Dispatch DataSet",
+      "nickname": "Dispatch",
+      "description": "Dispatches a data-set to several data-sets. ",
+      "guid": "d2a2c2b9-d13a-4c66-a57e-63ea7ac3639a",
+      "type_name": "Magpie.Components.Exteras.DispatchDataSet",
+      "category": "Magpie",
+      "subcategory": "Exteras",
+      "inputs": [
+        {
+          "name": "DataSet",
+          "nickname": "D",
+          "description": "Initial Data-set to dispatch",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Indexes",
+          "nickname": "I",
+          "description": "Here is a list of indexes corresponding to each data point, indicating where it should be allocated in the related set.",
+          "type": "Integer",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "DataSets",
+          "nickname": "D",
+          "description": "A list of Dispatched Data-sets within a single DataTree",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "be27d9a7-460b-4e0f-81e8-4b4241867de2": {
+      "name": "Mean Tensor",
+      "nickname": "Mean",
+      "description": "Calculates the mean tensor of the given tensors.",
+      "guid": "be27d9a7-460b-4e0f-81e8-4b4241867de2",
+      "type_name": "Magpie.Components.Exteras.MeanTensor",
+      "category": "Magpie",
+      "subcategory": "Exteras",
+      "inputs": [
+        {
+          "name": "DataCluster",
+          "nickname": "X",
+          "description": "Given Tensors",
+          "type": "Number",
+          "access": "tree"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Mean",
+          "nickname": "M",
+          "description": "Mean Tensor",
+          "type": "Number",
+          "access": "list"
+        }
+      ]
+    },
+    "1306c992-3bea-45d5-ae33-4b786aefc3c7": {
+      "name": "Winner Index",
+      "nickname": "Winner",
+      "description": "Gets the index of the max value in a tensor.",
+      "guid": "1306c992-3bea-45d5-ae33-4b786aefc3c7",
+      "type_name": "Magpie.Components.Exteras.WinnerIndex",
+      "category": "Magpie",
+      "subcategory": "Exteras",
+      "inputs": [
+        {
+          "name": "Tensor",
+          "nickname": "T",
+          "description": "Given Tensor",
+          "type": "Number",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Index",
+          "nickname": "I",
+          "description": "Winner Feature\u0027s Index",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    }
+  },
+  "by_name": {
+    "Correlation Matrix": {
+      "name": "Correlation Matrix",
+      "nickname": "CorrelationMatrix",
+      "description": "Creates Correlation-Matrix for the given matrix of samples",
+      "guid": "06e60a13-0994-4d55-823d-f2ccc8bec38b",
+      "type_name": "Magpie.Components.Others.A_CorrelationMatrix",
+      "category": "Magpie",
+      "subcategory": "Others",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Data to analyze",
+          "type": "Number",
+          "access": "tree"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Matrix",
+          "nickname": "M",
+          "description": "Correlation Matrix",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "T-SNE": {
+      "name": "T-SNE",
+      "nickname": "T-SNE",
+      "description": "Solves a T-Distributed-Stochastic-Neighbor-Embedding model by given data",
+      "guid": "0073d98c-d0a2-49e4-a1ff-2b21670e1961",
+      "type_name": "Magpie.Components.Others.T_SNE_Component",
+      "category": "Magpie",
+      "subcategory": "Others",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "X",
+          "description": "number[][] To do analysis on",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Dimension",
+          "nickname": "D",
+          "description": "The length of output vectors",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Perplexity",
+          "nickname": "P",
+          "description": "[5-50] The balancing attention between local and global aspects of data",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Theta",
+          "nickname": "T",
+          "description": "[0-1] The Trade-Off between preserving small and large distances",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Seed",
+          "nickname": "S",
+          "description": "Generator Seed",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result Vectors",
+          "nickname": "R",
+          "description": "The result of the applying the transformation (Computing Process of the Kernel) to given data",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "Computer": {
+      "name": "Computer",
+      "nickname": "Computer",
+      "description": "Computes values with test-data",
+      "guid": "c4c6d847-219d-4017-aae6-9081f01b1da7",
+      "type_name": "Magpie.Components.Tools.Computer",
+      "category": "Magpie",
+      "subcategory": "Tools",
+      "inputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Input",
+          "nickname": "I",
+          "description": "Input Data to compute values from",
+          "type": "Number",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Output",
+          "nickname": "O",
+          "description": "Computed Data (For Boltzmann and NeuralNetwork machines)",
+          "type": "Number",
+          "access": "list"
+        }
+      ]
+    },
+    "Tuner": {
+      "name": "Tuner",
+      "nickname": "Details for tuning the machine",
+      "description": "Refresh !!",
+      "guid": "77ce132d-9687-457e-9226-104d5907303f",
+      "type_name": "Magpie.Components.Tools.MachineTunerComponent",
+      "category": "Magpie",
+      "subcategory": "Tools",
+      "inputs": [
+        {
+          "name": "Iteration",
+          "nickname": "",
+          "description": "",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "LearningRate",
+          "nickname": "",
+          "description": "The value determines speed of learning.\nIt would be also equivalent the Levenberg\u0027s damping factor (lambda) ",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ]
+    },
+    "Report": {
+      "name": "Report",
+      "nickname": "Report",
+      "description": "Creates Report out of a machine",
+      "guid": "9bddd0a5-787d-4aaf-b8d6-1668b75d763a",
+      "type_name": "Magpie.Components.Tools.Report",
+      "category": "Magpie",
+      "subcategory": "Tools",
+      "inputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Report",
+          "nickname": "",
+          "description": "Details about the machine",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Loss",
+          "nickname": "",
+          "description": "Details about the machine",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Iteration",
+          "nickname": "",
+          "description": "Details about the machine",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    },
+    "Boltzmann Machine": {
+      "name": "Boltzmann Machine",
+      "nickname": "Boltzmann",
+      "description": "Creating a Bernouli-Restricted-Boltzmann Kernel for Dimension Reduction",
+      "guid": "26523c4e-4d7a-420c-8aca-d79cd8705370",
+      "type_name": "Magpie.Components.Machines.BoltzmanComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Dimension",
+          "nickname": "Dimension",
+          "description": "Output Dimensionality",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Input Dimensions",
+          "nickname": "D",
+          "description": "New  dimensions of initial given features",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "Classification Machine": {
+      "name": "Classification Machine",
+      "nickname": "Classifier",
+      "description": "Classification Machine",
+      "guid": "4772636d-0cd1-4081-bd33-5cecbc4514ee",
+      "type_name": "Magpie.Components.Machines.ClassificationComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Labels",
+          "nickname": "Labels",
+          "description": "The list of Labels.",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Hidden Neurons",
+          "nickname": "Hidden",
+          "description": "Number of Hidden Neurons.",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Table",
+          "nickname": "T",
+          "description": "Table of Labels",
+          "type": "Text",
+          "access": "list"
+        }
+      ]
+    },
+    "KohMap Machine": {
+      "name": "KohMap Machine",
+      "nickname": "Koh-Map",
+      "description": "Creates a Distance-Network with Kohonen SelfOrganizing Map with SOM learning algorithm",
+      "guid": "05fda739-a77d-4027-9ec5-03ffe6c402e5",
+      "type_name": "Magpie.Components.Machines.KohonenComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Column Count",
+          "nickname": "Columns",
+          "description": "The number of neurons existing in a row",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Rows Count",
+          "nickname": "Rows",
+          "description": "The number of rows of neurons,\n set it 1 for 1D \u0027Kohonen Map\u0027, and set it 0 for 1D \u0027Elastic Trainer\u0027",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Neurons",
+          "nickname": "N",
+          "description": "Neurons Weights",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Winners",
+          "nickname": "W",
+          "description": "The GetWinner (Best Matched) neuron\u0027s index\u0027",
+          "type": "Integer",
+          "access": "list"
+        },
+        {
+          "name": "Nodes",
+          "nickname": "V",
+          "description": "Translation Vectors of the neurons",
+          "type": "Vector",
+          "access": "tree"
+        }
+      ]
+    },
+    "Vanilla Machine": {
+      "name": "Vanilla Machine",
+      "nickname": "Vanilla",
+      "description": "Creating a Vanilla Neural-Network machine",
+      "guid": "3cb560b3-aa1f-4d75-8c6f-bfbcb82e802e",
+      "type_name": "Magpie.Components.Machines.VanilaMachineComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Output",
+          "nickname": "Y",
+          "description": "Kernel Output Data for training",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "0",
+          "nickname": "7",
+          "description": "7",
+          "type": "Integer",
+          "access": "list"
+        },
+        {
+          "name": "ActivationFunction",
+          "nickname": "Activation",
+          "description": "",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "LearnerType",
+          "nickname": "Learner",
+          "description": "",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Tuner",
+          "nickname": "T",
+          "description": "Tuner",
+          "type": "Tuner",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        }
+      ]
+    },
+    "Clustering Machine": {
+      "name": "Clustering Machine",
+      "nickname": "Clustering",
+      "description": "Solver for Gaussian-Mixture and K-Means Clustering (Right-Click to choose)",
+      "guid": "4248a633-3952-4dc2-bb35-ccc42ffa033e",
+      "type_name": "Magpie.Components.Machines.MagpiesComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Inputs",
+          "nickname": "X",
+          "description": "Kernel Input Data for clustering",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Clusters",
+          "nickname": "N",
+          "description": "Number of clusters",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Random Seed",
+          "nickname": "S",
+          "description": "Seed value for the Accord.",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "ClusterNumber",
+          "nickname": "I",
+          "description": "Resultant prediction",
+          "type": "Integer",
+          "access": "list"
+        },
+        {
+          "name": "Scores",
+          "nickname": "S",
+          "description": "Scores (Probabilities) is the probability of belonging to each cluster per each input item.",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Mean",
+          "nickname": "M",
+          "description": "The centroids of the clusters.",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "PCA Machine": {
+      "name": "PCA Machine",
+      "nickname": "PCA",
+      "description": "Create a Principal-Component-Analysis Machine",
+      "guid": "e3df43dd-dae5-40db-af17-31bab5aedace",
+      "type_name": "Magpie.Components.Machines.PrincipalComponent",
+      "category": "Magpie",
+      "subcategory": "Machines",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "X",
+          "description": "number[][] To do analysis on",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Dimension",
+          "nickname": "D",
+          "description": "The length of output vectors",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Machine",
+          "nickname": "M",
+          "description": "Machine",
+          "type": "Machine",
+          "access": "item"
+        },
+        {
+          "name": "Result Vectors",
+          "nickname": "R",
+          "description": "The result of the applying the transformation (Computing Process of the Kernel) to given vectors (InputData)",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Mean",
+          "nickname": "M",
+          "description": "The vectors of Start and End of the Axises",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "EigenVector",
+          "nickname": "A",
+          "description": "The vectors of Start and End of the Axises",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Proportions",
+          "nickname": "P",
+          "description": "The respective role each component plays in the data set.",
+          "type": "Number",
+          "access": "list"
+        }
+      ]
+    },
+    "Dispatch DataSet": {
+      "name": "Dispatch DataSet",
+      "nickname": "Dispatch",
+      "description": "Dispatches a data-set to several data-sets. ",
+      "guid": "d2a2c2b9-d13a-4c66-a57e-63ea7ac3639a",
+      "type_name": "Magpie.Components.Exteras.DispatchDataSet",
+      "category": "Magpie",
+      "subcategory": "Exteras",
+      "inputs": [
+        {
+          "name": "DataSet",
+          "nickname": "D",
+          "description": "Initial Data-set to dispatch",
+          "type": "Number",
+          "access": "tree"
+        },
+        {
+          "name": "Indexes",
+          "nickname": "I",
+          "description": "Here is a list of indexes corresponding to each data point, indicating where it should be allocated in the related set.",
+          "type": "Integer",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "DataSets",
+          "nickname": "D",
+          "description": "A list of Dispatched Data-sets within a single DataTree",
+          "type": "Number",
+          "access": "tree"
+        }
+      ]
+    },
+    "Mean Tensor": {
+      "name": "Mean Tensor",
+      "nickname": "Mean",
+      "description": "Calculates the mean tensor of the given tensors.",
+      "guid": "be27d9a7-460b-4e0f-81e8-4b4241867de2",
+      "type_name": "Magpie.Components.Exteras.MeanTensor",
+      "category": "Magpie",
+      "subcategory": "Exteras",
+      "inputs": [
+        {
+          "name": "DataCluster",
+          "nickname": "X",
+          "description": "Given Tensors",
+          "type": "Number",
+          "access": "tree"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Mean",
+          "nickname": "M",
+          "description": "Mean Tensor",
+          "type": "Number",
+          "access": "list"
+        }
+      ]
+    },
+    "Winner Index": {
+      "name": "Winner Index",
+      "nickname": "Winner",
+      "description": "Gets the index of the max value in a tensor.",
+      "guid": "1306c992-3bea-45d5-ae33-4b786aefc3c7",
+      "type_name": "Magpie.Components.Exteras.WinnerIndex",
+      "category": "Magpie",
+      "subcategory": "Exteras",
+      "inputs": [
+        {
+          "name": "Tensor",
+          "nickname": "T",
+          "description": "Given Tensor",
+          "type": "Number",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Index",
+          "nickname": "I",
+          "description": "Winner Feature\u0027s Index",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    }
+  }
+}

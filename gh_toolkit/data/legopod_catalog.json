@@ -1,0 +1,3765 @@
+{
+  "plugin": "LegoPod",
+  "version": "0.4.2",
+  "total_components": 42,
+  "subcategories": {
+    "Files": [
+      "Build Attribute",
+      "Directory",
+      "File Info"
+    ],
+    "Blocks": [
+      "Define Block",
+      "X-Ref Block",
+      "File BlockStatistics",
+      "Block Explode",
+      "Block List",
+      "Instance List",
+      "Instance Decompose",
+      "Discover Nested Blocks",
+      "Rename Block",
+      "Nested Count",
+      "Insert Block by Box",
+      "Insert Block",
+      "Insert Block by Transform",
+      "Replace Block"
+    ],
+    "Odds": [
+      "Quick Baker",
+      "Replace Objects",
+      "Transform",
+      "Group",
+      "Ovulate",
+      "Create Table",
+      "Create Text"
+    ],
+    "Attributes": [
+      "Paint Attribute",
+      "Get Block Meta-Data",
+      "User Dictionary",
+      "Get User-Dictionary",
+      "Set Block Meta-Data",
+      "Explode Attribute"
+    ],
+    "Text": [
+      "Vertex Meta-Data",
+      "Hatch Create",
+      "Table TSV-Data",
+      "Table GapFiller",
+      "Text-Group by Pattern",
+      "Text-Group by Property",
+      "Explode Text",
+      "Edit Text",
+      "Style From Text",
+      "Create Text (Style)"
+    ],
+    "Hatch": [
+      "Hatch Modify",
+      "Hatch Explode"
+    ]
+  },
+  "by_guid": {
+    "3497e94a-b35d-4d20-aae3-9eb2f7d09542": {
+      "name": "Build Attribute",
+      "nickname": "AttBuild",
+      "description": "Construct an Obj.Attribute",
+      "guid": "3497e94a-b35d-4d20-aae3-9eb2f7d09542",
+      "type_name": "LegoPod.BlockAttBuild",
+      "category": "LegoPod",
+      "subcategory": "Files",
+      "inputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Layer",
+          "nickname": "L",
+          "description": "Layer",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Color",
+          "nickname": "C",
+          "description": "Color",
+          "type": "Colour",
+          "access": "item"
+        },
+        {
+          "name": "Material",
+          "nickname": "M",
+          "description": "Material",
+          "type": "Material",
+          "access": "item"
+        },
+        {
+          "name": "Thickness",
+          "nickname": "T",
+          "description": "Plot LineWeight\n 0:Default LineWeight\n-1:By Layer\n-2:By Parent\n-3:No Print",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "ArrowHead",
+          "nickname": "A",
+          "description": "Arrowhead type",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Dictionary",
+          "nickname": "D",
+          "description": "Dictionary",
+          "type": "Dictionary",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Base attribute to modify",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Lable",
+          "nickname": "L",
+          "description": "Grouping Lable implemented by QuickBake component",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Rhino geometry attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ]
+    },
+    "44578fdc-bd75-4477-b782-04b4fc1d6d67": {
+      "name": "Define Block",
+      "nickname": "DefBlock",
+      "description": "Define or modify an instance definition ",
+      "guid": "44578fdc-bd75-4477-b782-04b4fc1d6d67",
+      "type_name": "LegoPod.def_BlockInstanceDefine",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Geometries",
+          "nickname": "G",
+          "description": "Geometries",
+          "type": "Geometry",
+          "access": "list"
+        },
+        {
+          "name": "Attributes (Optional)",
+          "nickname": "A",
+          "description": "Optional attributes ",
+          "type": "Attribute",
+          "access": "list"
+        },
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "RefPlane",
+          "nickname": "P",
+          "description": "Reference Plane",
+          "type": "Plane",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definition",
+          "nickname": "D",
+          "description": "Instance reference definition",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ]
+    },
+    "418d8cc8-c46a-4bfa-8c4d-ca6c10f766bc": {
+      "name": "X-Ref Block",
+      "nickname": "XRef",
+      "description": "External Block from other .3dm files",
+      "guid": "418d8cc8-c46a-4bfa-8c4d-ca6c10f766bc",
+      "type_name": "LegoPod.DefBlockXref",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "F",
+          "description": "Reference File",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Name (Optional)",
+          "nickname": "N",
+          "description": "Optional Name for the definition ,if omitted the filename will be used",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Define",
+          "nickname": "D",
+          "description": "Define activation or updating toggle ",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "Instance Reference definitions",
+          "type": "Block_Definition",
+          "access": "list"
+        }
+      ]
+    },
+    "6bec70a6-9af2-4d17-b712-c9d41c02bb70": {
+      "name": "Quick Baker",
+      "nickname": "QB",
+      "description": "Bakes the given geometries with attribute and grouping features",
+      "guid": "6bec70a6-9af2-4d17-b712-c9d41c02bb70",
+      "type_name": "LegoPod.Tools_QuickBake",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Geometry",
+          "nickname": "G",
+          "description": "Geometry to bake",
+          "type": "Geometry",
+          "access": "list"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "RET_get_Description",
+          "type": "Attribute",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUID",
+          "nickname": "G",
+          "description": "ID of baked geometry",
+          "type": "Guid",
+          "access": "list"
+        }
+      ]
+    },
+    "6886ad52-7a40-442b-a34d-fa3ebd09b8cc": {
+      "name": "Replace Objects",
+      "nickname": "Replace",
+      "description": "Click on Replace Button to Replace a Rhino-object with another geometry",
+      "guid": "6886ad52-7a40-442b-a34d-fa3ebd09b8cc",
+      "type_name": "LegoPod.ToolsReplacer",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "R",
+          "description": "Reference Rhino-Object to replace",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Geometry",
+          "nickname": "G",
+          "description": "Basic geometry to replace with (Brep,Surface,Curve,Point)",
+          "type": "Geometry",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "44fd137c-cc6f-4baa-a6f0-d1a34939215b": {
+      "name": "Paint Attribute",
+      "nickname": "Paint",
+      "description": "Change the attribute of a Referenced Geometries in rhino. (Apply an attribute partly on an object)",
+      "guid": "44fd137c-cc6f-4baa-a6f0-d1a34939215b",
+      "type_name": "LegoPod.Att_Paint",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "G",
+          "description": "Referenced Geometries in rhino",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute data based on which the geometry would change",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message",
+          "nickname": "M",
+          "description": "Output messages",
+          "type": "Text",
+          "access": "item"
+        }
+      ]
+    },
+    "59df5675-db8e-4b22-95b8-21546f32aba7": {
+      "name": "Directory",
+      "nickname": "Directory",
+      "description": "Retrieves the list of existing files within a folder",
+      "guid": "59df5675-db8e-4b22-95b8-21546f32aba7",
+      "type_name": "LegoPod.Tools.PathDirectory",
+      "category": "LegoPod",
+      "subcategory": "Files",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "P",
+          "description": "Path to get directory from",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "S",
+          "description": "Searching wildcard Pattern ",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "All",
+          "nickname": "T",
+          "description": "If false it searches just top folder if true it searches all subfolders",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Files",
+          "nickname": "F",
+          "description": "Search result",
+          "type": "Text",
+          "access": "list"
+        }
+      ]
+    },
+    "e479cfd0-0f6b-49e8-8b12-4386d7d8c953": {
+      "name": "File BlockStatistics",
+      "nickname": "FileStatistics",
+      "description": "Get the Instance statistics from a .3dm file",
+      "guid": "e479cfd0-0f6b-49e8-8b12-4386d7d8c953",
+      "type_name": "LegoPod.Tools.Block_FileStatus",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "F",
+          "description": ".3dm Filepath to get statistics from",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "List of all Defined Blocks in the .3dm file",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "References",
+          "nickname": "R",
+          "description": "The names of used Blocks in the .3dm file ",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Numbers",
+          "nickname": "N",
+          "description": "Usage number of each block",
+          "type": "Integer",
+          "access": "list"
+        }
+      ]
+    },
+    "2b8ed0ba-82f9-423e-8c19-f6e3df1e2427": {
+      "name": "File Info",
+      "nickname": "FileInfo",
+      "description": "Decompose a file info",
+      "guid": "2b8ed0ba-82f9-423e-8c19-f6e3df1e2427",
+      "type_name": "LegoPod.Tools.FilePathDecompose",
+      "category": "LegoPod",
+      "subcategory": "Files",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "F",
+          "description": "Filepath to decompose",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Pure Name of the file",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Extension",
+          "nickname": "E",
+          "description": "extension of the file",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Filename",
+          "nickname": "F",
+          "description": "file full name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Path",
+          "nickname": "P",
+          "description": "folder address of the file",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Size",
+          "nickname": "S",
+          "description": "File Size",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    },
+    "9d88571d-f47e-4dbc-b641-62de283a38aa": {
+      "name": "Transform",
+      "nickname": "Xform",
+      "description": "Click on Xform Button to Transform a geometry in rhino by a transform information",
+      "guid": "9d88571d-f47e-4dbc-b641-62de283a38aa",
+      "type_name": "LegoPod.Tools.ToolsTransformation",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "G",
+          "description": "Geometry to transform",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Transform",
+          "nickname": "X",
+          "description": "Transformation Data",
+          "type": "Transform",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "b3083e4c-d7bc-4009-b6bd-6cc7e4c7d270": {
+      "name": "Group",
+      "nickname": "Group",
+      "description": "Group reference geometries in rhino scene\nEither click on component\u0027s group button to activate it for once, or set (A)Constant Activation True to group all geometries immediately when they\u0027re defined as (G) inputs",
+      "guid": "b3083e4c-d7bc-4009-b6bd-6cc7e4c7d270",
+      "type_name": "LegoPod.Tools.BindInGroup",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "G",
+          "description": "Reference Geometries in rhino to Group",
+          "type": "Guid",
+          "access": "list"
+        },
+        {
+          "name": "Group Name",
+          "nickname": "N",
+          "description": "Optional name for the group",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Active",
+          "nickname": "A",
+          "description": "Constant Activation",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "a4d56174-78c6-4157-8bd9-058f9e5e48ac": {
+      "name": "Ovulate",
+      "nickname": "Ovulate",
+      "description": "Bake multiple items by sequence, ordered in a grid.",
+      "guid": "a4d56174-78c6-4157-8bd9-058f9e5e48ac",
+      "type_name": "LegoPod.Tools.Tools_Ovulation",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Geometry",
+          "nickname": "G",
+          "description": "Geometry to bake",
+          "type": "Geometry",
+          "access": "tree"
+        },
+        {
+          "name": "Attribute (Optional)",
+          "nickname": "A",
+          "description": "RET_get_Description",
+          "type": "Attribute",
+          "access": "tree"
+        },
+        {
+          "name": "Boundary",
+          "nickname": "R",
+          "description": "Bounding rectangle bound for baking geometry",
+          "type": "Rectangle",
+          "access": "item"
+        },
+        {
+          "name": "Iteration (Optional)",
+          "nickname": "N",
+          "description": "Optional external forced iteration number, if omitted the internal incremental number would be used",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vector",
+          "nickname": "V",
+          "description": "Vector of current position",
+          "type": "Vector",
+          "access": "item"
+        },
+        {
+          "name": "Number",
+          "nickname": "N",
+          "description": "Number of iteration",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Rectangle",
+          "nickname": "R",
+          "description": "The latest baking frame",
+          "type": "Rectangle",
+          "access": "item"
+        }
+      ]
+    },
+    "f4087d2b-e9ea-4a91-8f35-2677e4dbf3dc": {
+      "name": "Get Block Meta-Data",
+      "nickname": "SetBlockMetaData",
+      "description": "Extract Meta-Data out of a Block-Definition",
+      "guid": "f4087d2b-e9ea-4a91-8f35-2677e4dbf3dc",
+      "type_name": "LegoPod.MetaData.Get_MetaData_From_Block",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Optional User Keys",
+          "type": "Text",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Block Mapping-Keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Block Mapping-Values",
+          "type": "Generic",
+          "access": "list"
+        }
+      ]
+    },
+    "d7093d8f-5492-4f72-824a-2a0a94a7163d": {
+      "name": "Vertex Meta-Data",
+      "nickname": "MMD",
+      "description": "Extract meta-data from or inject it into a mesh\u0027s vertices",
+      "guid": "d7093d8f-5492-4f72-824a-2a0a94a7163d",
+      "type_name": "LegoPod.MetaData.mesh_meta_data",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Mesh",
+          "nickname": "M",
+          "description": "Base mesh as the vertices set container",
+          "type": "Mesh",
+          "access": "item"
+        },
+        {
+          "name": "Key",
+          "nickname": "K",
+          "description": "Meta-data key",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": " a tree of Values. A list for each vertex is required",
+          "type": "Generic",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "values",
+          "nickname": "V",
+          "description": "List of values respectively related to each vertex",
+          "type": "Generic",
+          "access": "list"
+        }
+      ]
+    },
+    "5c99298a-bdc9-4e96-9d6e-4d423254578c": {
+      "name": "User Dictionary",
+      "nickname": "Dict",
+      "description": "Add user-dictionary to attribute",
+      "guid": "5c99298a-bdc9-4e96-9d6e-4d423254578c",
+      "type_name": "LegoPod.MetaData.UserDic_Build",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "List of keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "List of valus",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Merge",
+          "nickname": "M",
+          "description": "RET_ToString",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dictionary",
+          "nickname": "D",
+          "description": "Dictionary",
+          "type": "Dictionary",
+          "access": "item"
+        }
+      ]
+    },
+    "c1d173fd-7921-45bd-9842-31a6a6991590": {
+      "name": "Get User-Dictionary",
+      "nickname": "UserDict",
+      "description": "Gets the user dictionary from an attribute",
+      "guid": "c1d173fd-7921-45bd-9842-31a6a6991590",
+      "type_name": "LegoPod.MetaData.UserDict_Get",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Rhino geometry attribute",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Optional User Keys",
+          "type": "Text",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "User dictionary Keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "User dictionary Values",
+          "type": "Text",
+          "access": "list"
+        }
+      ]
+    },
+    "2f7a55c9-9dd4-475c-8bca-4e48be2f9ba5": {
+      "name": "Hatch Modify",
+      "nickname": "Hatch_Modify",
+      "description": "Modify Hatch",
+      "guid": "2f7a55c9-9dd4-475c-8bca-4e48be2f9ba5",
+      "type_name": "LegoPod.Hatch.Hatch_Edit",
+      "category": "LegoPod",
+      "subcategory": "Hatch",
+      "inputs": [
+        {
+          "name": "Hatch",
+          "nickname": "H",
+          "description": "Hatch",
+          "type": "Hatch",
+          "access": "item"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "RET_ToString",
+          "type": "Hatch_Pattern",
+          "access": "item"
+        },
+        {
+          "name": "Rotation",
+          "nickname": "R",
+          "description": "Pattern rotation",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Scale",
+          "nickname": "S",
+          "description": "Pattern scale",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "28a23713-5c1c-423a-9838-a8fa66b79ef3": {
+      "name": "Hatch Explode",
+      "nickname": "ExplodeHatch",
+      "description": "Explodes a hatch into components",
+      "guid": "28a23713-5c1c-423a-9838-a8fa66b79ef3",
+      "type_name": "LegoPod.Hatch.Hatch_Explode",
+      "category": "LegoPod",
+      "subcategory": "Hatch",
+      "inputs": [
+        {
+          "name": "Hatch",
+          "nickname": "H",
+          "description": "Hatch",
+          "type": "Hatch",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Boundaries",
+          "nickname": "C",
+          "description": "Hatch boundaries",
+          "type": "Curve",
+          "access": "list"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "Index of hatch pattern",
+          "type": "Hatch_Pattern",
+          "access": "item"
+        },
+        {
+          "name": "Scale",
+          "nickname": "S",
+          "description": "Hatch pattern Scale",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Rotation",
+          "nickname": "R",
+          "description": "Hatch pattern rotation",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Area",
+          "nickname": "A",
+          "description": "Hatch Area",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Lines",
+          "nickname": "L",
+          "description": "Pattern Lines",
+          "type": "Line",
+          "access": "list"
+        }
+      ]
+    },
+    "8c08bb14-7e00-4c56-95c6-bb9887122fdc": {
+      "name": "Hatch Create",
+      "nickname": "Hatch",
+      "description": "Creates Hatch within a boundary curve",
+      "guid": "8c08bb14-7e00-4c56-95c6-bb9887122fdc",
+      "type_name": "LegoPod.Hatch.CreateHatch",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Curve",
+          "nickname": "C",
+          "description": "Close Curves as boundaries",
+          "type": "Curve",
+          "access": "list"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "",
+          "type": "Hatch_Pattern",
+          "access": "item"
+        },
+        {
+          "name": "Rotation",
+          "nickname": "R",
+          "description": "Pattern rotation",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Scale",
+          "nickname": "S",
+          "description": "Pattern scale",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Origin",
+          "nickname": "O",
+          "description": "Pattern BasePoint",
+          "type": "Point",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Bake",
+          "nickname": "B",
+          "description": "Baking switch",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Hatch",
+          "nickname": "H",
+          "description": "Hatch objects",
+          "type": "Hatch",
+          "access": "list"
+        }
+      ]
+    },
+    "88d3c3d6-46e5-4415-b974-4bf9826f7463": {
+      "name": "Block Explode",
+      "nickname": "BlockExplode",
+      "description": "Decompose a Block-Definition to its components",
+      "guid": "88d3c3d6-46e5-4415-b974-4bf9826f7463",
+      "type_name": "LegoPod.Blocks.Block_DefinitionDecompose",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Definition",
+          "nickname": "D",
+          "description": "A Block-Definition to be decomposed",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Objects",
+          "nickname": "G",
+          "description": "Comprised referenced Objects (the objects within the block)",
+          "type": "Geometry",
+          "access": "list"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Objects attribute",
+          "type": "Attribute",
+          "access": "list"
+        },
+        {
+          "name": "Guid",
+          "nickname": "G",
+          "description": "Definition ID",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Boundingbox",
+          "nickname": "B",
+          "description": "Instance\u0027s boundingbox",
+          "type": "Box",
+          "access": "item"
+        },
+        {
+          "name": "References",
+          "nickname": "R",
+          "description": "The list of instance objects of this definition existing in the active rhino document",
+          "type": "Block_Instance",
+          "access": "list"
+        }
+      ]
+    },
+    "2afd1473-67e9-4a6f-93aa-05a78133a71b": {
+      "name": "Block List",
+      "nickname": "BlockList",
+      "description": "Retrieves the list of the instance definitions in the current document",
+      "guid": "2afd1473-67e9-4a6f-93aa-05a78133a71b",
+      "type_name": "LegoPod.Blocks.Block_DefinitionList",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Pattern (Optional)",
+          "nickname": "S",
+          "description": "Optional string pattern to filter instances not matching the pattern (Regex)",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "Block Definition List",
+          "type": "Block_Definition",
+          "access": "list"
+        }
+      ]
+    },
+    "57cfcfd9-29a7-4abc-91e8-30a44e5ce225": {
+      "name": "Instance List",
+      "nickname": "InstanceList",
+      "description": "Retrieves the list of the instance_definitions in the current document",
+      "guid": "57cfcfd9-29a7-4abc-91e8-30a44e5ce225",
+      "type_name": "LegoPod.Blocks.Block_Instance_List",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "Block Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Instances",
+          "nickname": "I",
+          "description": "Block Instance Lists",
+          "type": "Block_Instance",
+          "access": "list"
+        }
+      ]
+    },
+    "c5f68246-b41d-426f-b8aa-f08907190fee": {
+      "name": "Instance Decompose",
+      "nickname": "InstanceDecompose",
+      "description": "Decompose BlockInstance to its components",
+      "guid": "c5f68246-b41d-426f-b8aa-f08907190fee",
+      "type_name": "LegoPod.Blocks.Decompose_Instance",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Instance",
+          "nickname": "I",
+          "description": "BlockInstance to decompose",
+          "type": "Block_Instance",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definition",
+          "nickname": "D",
+          "description": "Reference Block",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Plane",
+          "nickname": "P",
+          "description": "Insertion Anchor-Plane",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Transform",
+          "nickname": "X",
+          "description": "Insertion Transform",
+          "type": "Transform",
+          "access": "item"
+        },
+        {
+          "name": "Box",
+          "nickname": "B",
+          "description": "Bounding Box",
+          "type": "Box",
+          "access": "item"
+        },
+        {
+          "name": "X-Scale",
+          "nickname": "XS",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Y-Scale",
+          "nickname": "YS",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Z-Scale",
+          "nickname": "ZS",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        }
+      ]
+    },
+    "84b062a8-44e7-4faf-b5f2-393e8d46f781": {
+      "name": "Discover Nested Blocks",
+      "nickname": "DiscoverNested",
+      "description": "Recursively finds the location of requested nested blocks within a given Instance",
+      "guid": "84b062a8-44e7-4faf-b5f2-393e8d46f781",
+      "type_name": "LegoPod.Blocks.Extract_Nested_Location",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Block_Instance",
+          "nickname": "B",
+          "description": "Block_Instance",
+          "type": "Block_Instance",
+          "access": "item"
+        },
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Plane",
+          "nickname": "P",
+          "description": "The location of found items",
+          "type": "Plane",
+          "access": "list"
+        }
+      ]
+    },
+    "986cb469-9852-4287-8cb6-3c95b5721f11": {
+      "name": "Rename Block",
+      "nickname": "RenameBlock",
+      "description": "Edit a Block\u0027s\u0027 name and description",
+      "guid": "986cb469-9852-4287-8cb6-3c95b5721f11",
+      "type_name": "LegoPod.Blocks.Block_Rename",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Optional Block new name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Description",
+          "nickname": "D",
+          "description": "Optional new Block Description",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "10e4b152-421e-4469-b946-219828c12bc7": {
+      "name": "Nested Count",
+      "nickname": "NestedCount",
+      "description": "Calculate recursively the number of all requested nested-block within a wrapper-block",
+      "guid": "10e4b152-421e-4469-b946-219828c12bc7",
+      "type_name": "LegoPod.Blocks.Block_Instance_NestedCount",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Wrapper",
+          "nickname": "W",
+          "description": "The wrapper-block to search within",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Nested",
+          "nickname": "N",
+          "description": "The nested-block to search for",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Number",
+          "nickname": "N",
+          "description": "The number of found nested blocks within the wrapper",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    },
+    "8af1e6a9-7ed9-4062-9082-430ca082f158": {
+      "name": "Insert Block by Box",
+      "nickname": "BlockBox",
+      "description": "Fit and place an instance object into a reference box",
+      "guid": "8af1e6a9-7ed9-4062-9082-430ca082f158",
+      "type_name": "LegoPod.Blocks.InsertBlockRefBox",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "TransformBox",
+          "nickname": "B",
+          "description": "Transform reference box",
+          "type": "Box",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "0ef76392-9302-47f3-bee7-ba3314b8e805": {
+      "name": "Insert Block",
+      "nickname": "BlockInsert",
+      "description": "Insert an Instance object",
+      "guid": "0ef76392-9302-47f3-bee7-ba3314b8e805",
+      "type_name": "LegoPod.Blocks.InsertBlockInsertInstance",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Plane",
+          "nickname": "PL",
+          "description": "Base of the reference object",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "X scale",
+          "nickname": "XS",
+          "description": "Scale factor on X axis of placing reference object ",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Y scale (Optional)",
+          "nickname": "YS",
+          "description": "Optional scale factor on Y axis of placing reference object (uniform scale if omitted)",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Z scale (Optional)",
+          "nickname": "ZS",
+          "description": "Optional scale factor on Z axis of placing reference object (uniform scale if omitted)",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "620fa209-80d7-418c-9328-119d8d901ccd": {
+      "name": "Insert Block by Transform",
+      "nickname": "BlockTransform",
+      "description": "Insert blocks by transform data",
+      "guid": "620fa209-80d7-418c-9328-119d8d901ccd",
+      "type_name": "LegoPod.Blocks.InsertBlockTransform",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Transform",
+          "nickname": "X",
+          "description": "Transform reference box",
+          "type": "Transform",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "fe88ce5b-6683-45ff-9c61-b4b518762ee1": {
+      "name": "Replace Block",
+      "nickname": "BlockReplace",
+      "description": "Replace a Block Instance with another definition and optional applying transform",
+      "guid": "fe88ce5b-6683-45ff-9c61-b4b518762ee1",
+      "type_name": "LegoPod.Blocks.Block_Replace",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Instance",
+          "nickname": "A",
+          "description": "The Instance to be replace with another",
+          "type": "Block_Instance",
+          "access": "item"
+        },
+        {
+          "name": "Block",
+          "nickname": "B",
+          "description": "Block definition with which the the object will be replaced ",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "632c8255-9f86-41a2-8bad-aa13fdfc6e47": {
+      "name": "Set Block Meta-Data",
+      "nickname": "SetBlockMetaData",
+      "description": "Put Meta-Data into a Block-Definition",
+      "guid": "632c8255-9f86-41a2-8bad-aa13fdfc6e47",
+      "type_name": "LegoPod.Blocks.Block_MetaData_Set",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Block Mapping-Keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Block Mapping-Values",
+          "type": "Generic",
+          "access": "list"
+        }
+      ],
+      "outputs": []
+    },
+    "2333767b-7851-4b9a-b08a-fa805af378cb": {
+      "name": "Explode Attribute",
+      "nickname": "AttExplode",
+      "description": "Deconstruct an Obj.Attribute",
+      "guid": "2333767b-7851-4b9a-b08a-fa805af378cb",
+      "type_name": "LegoPod.Attributes.Block_AttExplode",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Layer",
+          "nickname": "L",
+          "description": "Layer",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Color",
+          "nickname": "C",
+          "description": "Color",
+          "type": "Colour",
+          "access": "item"
+        },
+        {
+          "name": "Material",
+          "nickname": "M",
+          "description": "Material",
+          "type": "Material",
+          "access": "item"
+        },
+        {
+          "name": "Thickness",
+          "nickname": "T",
+          "description": "Plot Line weight",
+          "type": "Number",
+          "access": "item"
+        }
+      ]
+    },
+    "1fe49c7b-0aa8-469f-87aa-7ee7ff9a60a9": {
+      "name": "Table TSV-Data",
+      "nickname": "TSV",
+      "description": "Convert TSV (Tab Separated Data) to GH Data-Structure",
+      "guid": "1fe49c7b-0aa8-469f-87aa-7ee7ff9a60a9",
+      "type_name": "LegoPod.Text.Table_TSV",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "data in format of TSV or CSV",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Format",
+          "nickname": "F",
+          "description": "Input Data Format (Separator options)",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Flip",
+          "nickname": "S",
+          "description": "Flip Matrix",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Structured Data",
+          "type": "Text",
+          "access": "tree"
+        }
+      ]
+    },
+    "7c6371e0-18e4-441b-a36d-e09d53d514a5": {
+      "name": "Table GapFiller",
+      "nickname": "GapFiller",
+      "description": "fill relative data gaps with a default value",
+      "guid": "7c6371e0-18e4-441b-a36d-e09d53d514a5",
+      "type_name": "LegoPod.Text.Table_GapFiller",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Fields",
+          "nickname": "F",
+          "description": "Items to be matching key",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Values related to the keys",
+          "type": "Generic",
+          "access": "tree"
+        },
+        {
+          "name": "Gap-Filler",
+          "nickname": "G",
+          "description": "Optional item to replace with all Nulls",
+          "type": "Generic",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Fields",
+          "nickname": "F",
+          "description": "Fields",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Values",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Aggregated fields with values",
+          "type": "Text",
+          "access": "tree"
+        }
+      ]
+    },
+    "ade7fd21-8d0f-4caf-8722-b142ff73c134": {
+      "name": "Create Table",
+      "nickname": "Table",
+      "description": "Creates a table of data",
+      "guid": "ade7fd21-8d0f-4caf-8722-b142ff73c134",
+      "type_name": "LegoPod.Text.Table",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Plane",
+          "nickname": "P",
+          "description": "Table location",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Headings",
+          "nickname": "H",
+          "description": "Table Headings",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Datatree to put into a table",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Header-Style",
+          "nickname": "HS",
+          "description": "TextStyle for Headers",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Data-Style",
+          "nickname": "DS",
+          "description": "TextStyle for values",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "X-Margin",
+          "nickname": "X",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Y-Margin",
+          "nickname": "Y",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Texts",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Texts",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Bound",
+          "nickname": "R",
+          "description": "",
+          "type": "Rectangle",
+          "access": "item"
+        },
+        {
+          "name": "H",
+          "nickname": "",
+          "description": "",
+          "type": "Line",
+          "access": "list"
+        },
+        {
+          "name": "V",
+          "nickname": "",
+          "description": "",
+          "type": "Line",
+          "access": "list"
+        }
+      ]
+    },
+    "b09c19c8-d076-481a-a20a-922160ea4a58": {
+      "name": "Text-Group by Pattern",
+      "nickname": "TextG-RegX",
+      "description": "Groups text objects by their contents matched with RegEx patterns",
+      "guid": "b09c19c8-d076-481a-a20a-922160ea4a58",
+      "type_name": "LegoPod.Text.Text_Group_Pattern",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text objects\u0027 ids to group",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "RegEx Pattern for matching texts",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Ignore-Case",
+          "nickname": "C",
+          "description": "If true, letters\u0027 case would be ignored ",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Matched",
+          "nickname": "M",
+          "description": "Matched Texts",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Unmatched",
+          "nickname": "U",
+          "description": "Unmatched Texts",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Matched keys",
+          "type": "Text",
+          "access": "tree"
+        }
+      ]
+    },
+    "5706e11c-ef26-4e05-9816-19476140f122": {
+      "name": "Text-Group by Property",
+      "nickname": "TextG-Prop",
+      "description": "Groups text objects by their properties",
+      "guid": "5706e11c-ef26-4e05-9816-19476140f122",
+      "type_name": "LegoPod.Text.Text__Group",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text objects\u0027 ids to group",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Mode",
+          "nickname": "M",
+          "description": "Grouping Mode",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Texts in Groups",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Grouping keys",
+          "type": "Generic",
+          "access": "tree"
+        }
+      ]
+    },
+    "e0a71e36-0024-4d69-9f18-b8caac092f89": {
+      "name": "Explode Text",
+      "nickname": "TextBomb",
+      "description": "Extract the properties from  Text or TextDot objects",
+      "guid": "e0a71e36-0024-4d69-9f18-b8caac092f89",
+      "type_name": "LegoPod.Text.Tools_ExplodText",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Location",
+          "nickname": "P",
+          "description": "AnchorPoint of the text",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text String",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Size",
+          "nickname": "S",
+          "description": "Text Size",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Justification",
+          "nickname": "J",
+          "description": "Text Justification",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Style",
+          "nickname": "S",
+          "description": "Annotation Style",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ]
+    },
+    "f37ae308-eecb-4dec-99b0-e36f8bae899c": {
+      "name": "Edit Text",
+      "nickname": "TXTEdit",
+      "description": "Modify text objects",
+      "guid": "f37ae308-eecb-4dec-99b0-e36f8bae899c",
+      "type_name": "LegoPod.Text.Text_EditStyle",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Rhino Text (Or TextDot) to edit",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "C",
+          "description": "Text-Content String",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Height",
+          "nickname": "H",
+          "description": "Text Height",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Style",
+          "nickname": "S",
+          "description": "Text-Style",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "36a16613-68c4-4664-ab07-f523b6a49b4e": {
+      "name": "Style From Text",
+      "nickname": "StyleOfText",
+      "description": "Defines a new or modifies an existing annotation-style matching with the given text object",
+      "guid": "36a16613-68c4-4664-ab07-f523b6a49b4e",
+      "type_name": "LegoPod.Text.Text_To_Style",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "A Text object based on which Style will be redefined",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Style",
+          "nickname": "S",
+          "description": "Annotation-Style name to create or modify",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "cd4fc408-b955-46ea-ab76-8236e449a3e0": {
+      "name": "Create Text",
+      "nickname": "CreateText",
+      "description": "Creates Either TextDot or 3d-Text",
+      "guid": "cd4fc408-b955-46ea-ab76-8236e449a3e0",
+      "type_name": "LegoPod.Text.Text_Create",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Location",
+          "nickname": "L",
+          "description": "Location of the Text",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text to bake",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Size",
+          "nickname": "S",
+          "description": "Text Size",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Justification",
+          "nickname": "J",
+          "description": "Text Justification (Optional)",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text",
+          "type": "Text",
+          "access": "item"
+        }
+      ]
+    },
+    "62638394-0c01-4bdb-a093-e0da687e201c": {
+      "name": "Create Text (Style)",
+      "nickname": "Style Text",
+      "description": "Creates Text with a text-style",
+      "guid": "62638394-0c01-4bdb-a093-e0da687e201c",
+      "type_name": "LegoPod.Text.Text_Create_WithStyle",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Location",
+          "nickname": "L",
+          "description": "Location of the Text",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text to bake",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "StyleName",
+          "nickname": "S",
+          "description": "Text-StyleName Name. If the styleName with the name doesn\u0027t exist a new styleName styleName with such name will be created",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text",
+          "type": "Text",
+          "access": "item"
+        }
+      ]
+    }
+  },
+  "by_name": {
+    "Build Attribute": {
+      "name": "Build Attribute",
+      "nickname": "AttBuild",
+      "description": "Construct an Obj.Attribute",
+      "guid": "3497e94a-b35d-4d20-aae3-9eb2f7d09542",
+      "type_name": "LegoPod.BlockAttBuild",
+      "category": "LegoPod",
+      "subcategory": "Files",
+      "inputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Layer",
+          "nickname": "L",
+          "description": "Layer",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Color",
+          "nickname": "C",
+          "description": "Color",
+          "type": "Colour",
+          "access": "item"
+        },
+        {
+          "name": "Material",
+          "nickname": "M",
+          "description": "Material",
+          "type": "Material",
+          "access": "item"
+        },
+        {
+          "name": "Thickness",
+          "nickname": "T",
+          "description": "Plot LineWeight\n 0:Default LineWeight\n-1:By Layer\n-2:By Parent\n-3:No Print",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "ArrowHead",
+          "nickname": "A",
+          "description": "Arrowhead type",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Dictionary",
+          "nickname": "D",
+          "description": "Dictionary",
+          "type": "Dictionary",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Base attribute to modify",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Lable",
+          "nickname": "L",
+          "description": "Grouping Lable implemented by QuickBake component",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Rhino geometry attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ]
+    },
+    "Define Block": {
+      "name": "Define Block",
+      "nickname": "DefBlock",
+      "description": "Define or modify an instance definition ",
+      "guid": "44578fdc-bd75-4477-b782-04b4fc1d6d67",
+      "type_name": "LegoPod.def_BlockInstanceDefine",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Geometries",
+          "nickname": "G",
+          "description": "Geometries",
+          "type": "Geometry",
+          "access": "list"
+        },
+        {
+          "name": "Attributes (Optional)",
+          "nickname": "A",
+          "description": "Optional attributes ",
+          "type": "Attribute",
+          "access": "list"
+        },
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "RefPlane",
+          "nickname": "P",
+          "description": "Reference Plane",
+          "type": "Plane",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definition",
+          "nickname": "D",
+          "description": "Instance reference definition",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ]
+    },
+    "X-Ref Block": {
+      "name": "X-Ref Block",
+      "nickname": "XRef",
+      "description": "External Block from other .3dm files",
+      "guid": "418d8cc8-c46a-4bfa-8c4d-ca6c10f766bc",
+      "type_name": "LegoPod.DefBlockXref",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "F",
+          "description": "Reference File",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Name (Optional)",
+          "nickname": "N",
+          "description": "Optional Name for the definition ,if omitted the filename will be used",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Define",
+          "nickname": "D",
+          "description": "Define activation or updating toggle ",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "Instance Reference definitions",
+          "type": "Block_Definition",
+          "access": "list"
+        }
+      ]
+    },
+    "Quick Baker": {
+      "name": "Quick Baker",
+      "nickname": "QB",
+      "description": "Bakes the given geometries with attribute and grouping features",
+      "guid": "6bec70a6-9af2-4d17-b712-c9d41c02bb70",
+      "type_name": "LegoPod.Tools_QuickBake",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Geometry",
+          "nickname": "G",
+          "description": "Geometry to bake",
+          "type": "Geometry",
+          "access": "list"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "RET_get_Description",
+          "type": "Attribute",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUID",
+          "nickname": "G",
+          "description": "ID of baked geometry",
+          "type": "Guid",
+          "access": "list"
+        }
+      ]
+    },
+    "Replace Objects": {
+      "name": "Replace Objects",
+      "nickname": "Replace",
+      "description": "Click on Replace Button to Replace a Rhino-object with another geometry",
+      "guid": "6886ad52-7a40-442b-a34d-fa3ebd09b8cc",
+      "type_name": "LegoPod.ToolsReplacer",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "R",
+          "description": "Reference Rhino-Object to replace",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Geometry",
+          "nickname": "G",
+          "description": "Basic geometry to replace with (Brep,Surface,Curve,Point)",
+          "type": "Geometry",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Paint Attribute": {
+      "name": "Paint Attribute",
+      "nickname": "Paint",
+      "description": "Change the attribute of a Referenced Geometries in rhino. (Apply an attribute partly on an object)",
+      "guid": "44fd137c-cc6f-4baa-a6f0-d1a34939215b",
+      "type_name": "LegoPod.Att_Paint",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "G",
+          "description": "Referenced Geometries in rhino",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute data based on which the geometry would change",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message",
+          "nickname": "M",
+          "description": "Output messages",
+          "type": "Text",
+          "access": "item"
+        }
+      ]
+    },
+    "Directory": {
+      "name": "Directory",
+      "nickname": "Directory",
+      "description": "Retrieves the list of existing files within a folder",
+      "guid": "59df5675-db8e-4b22-95b8-21546f32aba7",
+      "type_name": "LegoPod.Tools.PathDirectory",
+      "category": "LegoPod",
+      "subcategory": "Files",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "P",
+          "description": "Path to get directory from",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "S",
+          "description": "Searching wildcard Pattern ",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "All",
+          "nickname": "T",
+          "description": "If false it searches just top folder if true it searches all subfolders",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Files",
+          "nickname": "F",
+          "description": "Search result",
+          "type": "Text",
+          "access": "list"
+        }
+      ]
+    },
+    "File BlockStatistics": {
+      "name": "File BlockStatistics",
+      "nickname": "FileStatistics",
+      "description": "Get the Instance statistics from a .3dm file",
+      "guid": "e479cfd0-0f6b-49e8-8b12-4386d7d8c953",
+      "type_name": "LegoPod.Tools.Block_FileStatus",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "F",
+          "description": ".3dm Filepath to get statistics from",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "List of all Defined Blocks in the .3dm file",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "References",
+          "nickname": "R",
+          "description": "The names of used Blocks in the .3dm file ",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Numbers",
+          "nickname": "N",
+          "description": "Usage number of each block",
+          "type": "Integer",
+          "access": "list"
+        }
+      ]
+    },
+    "File Info": {
+      "name": "File Info",
+      "nickname": "FileInfo",
+      "description": "Decompose a file info",
+      "guid": "2b8ed0ba-82f9-423e-8c19-f6e3df1e2427",
+      "type_name": "LegoPod.Tools.FilePathDecompose",
+      "category": "LegoPod",
+      "subcategory": "Files",
+      "inputs": [
+        {
+          "name": "FilePath",
+          "nickname": "F",
+          "description": "Filepath to decompose",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Pure Name of the file",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Extension",
+          "nickname": "E",
+          "description": "extension of the file",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Filename",
+          "nickname": "F",
+          "description": "file full name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Path",
+          "nickname": "P",
+          "description": "folder address of the file",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Size",
+          "nickname": "S",
+          "description": "File Size",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    },
+    "Transform": {
+      "name": "Transform",
+      "nickname": "Xform",
+      "description": "Click on Xform Button to Transform a geometry in rhino by a transform information",
+      "guid": "9d88571d-f47e-4dbc-b641-62de283a38aa",
+      "type_name": "LegoPod.Tools.ToolsTransformation",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "G",
+          "description": "Geometry to transform",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Transform",
+          "nickname": "X",
+          "description": "Transformation Data",
+          "type": "Transform",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Group": {
+      "name": "Group",
+      "nickname": "Group",
+      "description": "Group reference geometries in rhino scene\nEither click on component\u0027s group button to activate it for once, or set (A)Constant Activation True to group all geometries immediately when they\u0027re defined as (G) inputs",
+      "guid": "b3083e4c-d7bc-4009-b6bd-6cc7e4c7d270",
+      "type_name": "LegoPod.Tools.BindInGroup",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Rhino Geometry",
+          "nickname": "G",
+          "description": "Reference Geometries in rhino to Group",
+          "type": "Guid",
+          "access": "list"
+        },
+        {
+          "name": "Group Name",
+          "nickname": "N",
+          "description": "Optional name for the group",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Active",
+          "nickname": "A",
+          "description": "Constant Activation",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Ovulate": {
+      "name": "Ovulate",
+      "nickname": "Ovulate",
+      "description": "Bake multiple items by sequence, ordered in a grid.",
+      "guid": "a4d56174-78c6-4157-8bd9-058f9e5e48ac",
+      "type_name": "LegoPod.Tools.Tools_Ovulation",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Geometry",
+          "nickname": "G",
+          "description": "Geometry to bake",
+          "type": "Geometry",
+          "access": "tree"
+        },
+        {
+          "name": "Attribute (Optional)",
+          "nickname": "A",
+          "description": "RET_get_Description",
+          "type": "Attribute",
+          "access": "tree"
+        },
+        {
+          "name": "Boundary",
+          "nickname": "R",
+          "description": "Bounding rectangle bound for baking geometry",
+          "type": "Rectangle",
+          "access": "item"
+        },
+        {
+          "name": "Iteration (Optional)",
+          "nickname": "N",
+          "description": "Optional external forced iteration number, if omitted the internal incremental number would be used",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vector",
+          "nickname": "V",
+          "description": "Vector of current position",
+          "type": "Vector",
+          "access": "item"
+        },
+        {
+          "name": "Number",
+          "nickname": "N",
+          "description": "Number of iteration",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Rectangle",
+          "nickname": "R",
+          "description": "The latest baking frame",
+          "type": "Rectangle",
+          "access": "item"
+        }
+      ]
+    },
+    "Get Block Meta-Data": {
+      "name": "Get Block Meta-Data",
+      "nickname": "SetBlockMetaData",
+      "description": "Extract Meta-Data out of a Block-Definition",
+      "guid": "f4087d2b-e9ea-4a91-8f35-2677e4dbf3dc",
+      "type_name": "LegoPod.MetaData.Get_MetaData_From_Block",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Optional User Keys",
+          "type": "Text",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Block Mapping-Keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Block Mapping-Values",
+          "type": "Generic",
+          "access": "list"
+        }
+      ]
+    },
+    "Vertex Meta-Data": {
+      "name": "Vertex Meta-Data",
+      "nickname": "MMD",
+      "description": "Extract meta-data from or inject it into a mesh\u0027s vertices",
+      "guid": "d7093d8f-5492-4f72-824a-2a0a94a7163d",
+      "type_name": "LegoPod.MetaData.mesh_meta_data",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Mesh",
+          "nickname": "M",
+          "description": "Base mesh as the vertices set container",
+          "type": "Mesh",
+          "access": "item"
+        },
+        {
+          "name": "Key",
+          "nickname": "K",
+          "description": "Meta-data key",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": " a tree of Values. A list for each vertex is required",
+          "type": "Generic",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "values",
+          "nickname": "V",
+          "description": "List of values respectively related to each vertex",
+          "type": "Generic",
+          "access": "list"
+        }
+      ]
+    },
+    "User Dictionary": {
+      "name": "User Dictionary",
+      "nickname": "Dict",
+      "description": "Add user-dictionary to attribute",
+      "guid": "5c99298a-bdc9-4e96-9d6e-4d423254578c",
+      "type_name": "LegoPod.MetaData.UserDic_Build",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "List of keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "List of valus",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Merge",
+          "nickname": "M",
+          "description": "RET_ToString",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dictionary",
+          "nickname": "D",
+          "description": "Dictionary",
+          "type": "Dictionary",
+          "access": "item"
+        }
+      ]
+    },
+    "Get User-Dictionary": {
+      "name": "Get User-Dictionary",
+      "nickname": "UserDict",
+      "description": "Gets the user dictionary from an attribute",
+      "guid": "c1d173fd-7921-45bd-9842-31a6a6991590",
+      "type_name": "LegoPod.MetaData.UserDict_Get",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Rhino geometry attribute",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Optional User Keys",
+          "type": "Text",
+          "access": "list"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "User dictionary Keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "User dictionary Values",
+          "type": "Text",
+          "access": "list"
+        }
+      ]
+    },
+    "Hatch Modify": {
+      "name": "Hatch Modify",
+      "nickname": "Hatch_Modify",
+      "description": "Modify Hatch",
+      "guid": "2f7a55c9-9dd4-475c-8bca-4e48be2f9ba5",
+      "type_name": "LegoPod.Hatch.Hatch_Edit",
+      "category": "LegoPod",
+      "subcategory": "Hatch",
+      "inputs": [
+        {
+          "name": "Hatch",
+          "nickname": "H",
+          "description": "Hatch",
+          "type": "Hatch",
+          "access": "item"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "RET_ToString",
+          "type": "Hatch_Pattern",
+          "access": "item"
+        },
+        {
+          "name": "Rotation",
+          "nickname": "R",
+          "description": "Pattern rotation",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Scale",
+          "nickname": "S",
+          "description": "Pattern scale",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Hatch Explode": {
+      "name": "Hatch Explode",
+      "nickname": "ExplodeHatch",
+      "description": "Explodes a hatch into components",
+      "guid": "28a23713-5c1c-423a-9838-a8fa66b79ef3",
+      "type_name": "LegoPod.Hatch.Hatch_Explode",
+      "category": "LegoPod",
+      "subcategory": "Hatch",
+      "inputs": [
+        {
+          "name": "Hatch",
+          "nickname": "H",
+          "description": "Hatch",
+          "type": "Hatch",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Boundaries",
+          "nickname": "C",
+          "description": "Hatch boundaries",
+          "type": "Curve",
+          "access": "list"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "Index of hatch pattern",
+          "type": "Hatch_Pattern",
+          "access": "item"
+        },
+        {
+          "name": "Scale",
+          "nickname": "S",
+          "description": "Hatch pattern Scale",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Rotation",
+          "nickname": "R",
+          "description": "Hatch pattern rotation",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Area",
+          "nickname": "A",
+          "description": "Hatch Area",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Lines",
+          "nickname": "L",
+          "description": "Pattern Lines",
+          "type": "Line",
+          "access": "list"
+        }
+      ]
+    },
+    "Hatch Create": {
+      "name": "Hatch Create",
+      "nickname": "Hatch",
+      "description": "Creates Hatch within a boundary curve",
+      "guid": "8c08bb14-7e00-4c56-95c6-bb9887122fdc",
+      "type_name": "LegoPod.Hatch.CreateHatch",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Curve",
+          "nickname": "C",
+          "description": "Close Curves as boundaries",
+          "type": "Curve",
+          "access": "list"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "",
+          "type": "Hatch_Pattern",
+          "access": "item"
+        },
+        {
+          "name": "Rotation",
+          "nickname": "R",
+          "description": "Pattern rotation",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Scale",
+          "nickname": "S",
+          "description": "Pattern scale",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Origin",
+          "nickname": "O",
+          "description": "Pattern BasePoint",
+          "type": "Point",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Bake",
+          "nickname": "B",
+          "description": "Baking switch",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Hatch",
+          "nickname": "H",
+          "description": "Hatch objects",
+          "type": "Hatch",
+          "access": "list"
+        }
+      ]
+    },
+    "Block Explode": {
+      "name": "Block Explode",
+      "nickname": "BlockExplode",
+      "description": "Decompose a Block-Definition to its components",
+      "guid": "88d3c3d6-46e5-4415-b974-4bf9826f7463",
+      "type_name": "LegoPod.Blocks.Block_DefinitionDecompose",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Definition",
+          "nickname": "D",
+          "description": "A Block-Definition to be decomposed",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Objects",
+          "nickname": "G",
+          "description": "Comprised referenced Objects (the objects within the block)",
+          "type": "Geometry",
+          "access": "list"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Objects attribute",
+          "type": "Attribute",
+          "access": "list"
+        },
+        {
+          "name": "Guid",
+          "nickname": "G",
+          "description": "Definition ID",
+          "type": "Guid",
+          "access": "item"
+        },
+        {
+          "name": "Boundingbox",
+          "nickname": "B",
+          "description": "Instance\u0027s boundingbox",
+          "type": "Box",
+          "access": "item"
+        },
+        {
+          "name": "References",
+          "nickname": "R",
+          "description": "The list of instance objects of this definition existing in the active rhino document",
+          "type": "Block_Instance",
+          "access": "list"
+        }
+      ]
+    },
+    "Block List": {
+      "name": "Block List",
+      "nickname": "BlockList",
+      "description": "Retrieves the list of the instance definitions in the current document",
+      "guid": "2afd1473-67e9-4a6f-93aa-05a78133a71b",
+      "type_name": "LegoPod.Blocks.Block_DefinitionList",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Pattern (Optional)",
+          "nickname": "S",
+          "description": "Optional string pattern to filter instances not matching the pattern (Regex)",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "Block Definition List",
+          "type": "Block_Definition",
+          "access": "list"
+        }
+      ]
+    },
+    "Instance List": {
+      "name": "Instance List",
+      "nickname": "InstanceList",
+      "description": "Retrieves the list of the instance_definitions in the current document",
+      "guid": "57cfcfd9-29a7-4abc-91e8-30a44e5ce225",
+      "type_name": "LegoPod.Blocks.Block_Instance_List",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Definitions",
+          "nickname": "D",
+          "description": "Block Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Instances",
+          "nickname": "I",
+          "description": "Block Instance Lists",
+          "type": "Block_Instance",
+          "access": "list"
+        }
+      ]
+    },
+    "Instance Decompose": {
+      "name": "Instance Decompose",
+      "nickname": "InstanceDecompose",
+      "description": "Decompose BlockInstance to its components",
+      "guid": "c5f68246-b41d-426f-b8aa-f08907190fee",
+      "type_name": "LegoPod.Blocks.Decompose_Instance",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Instance",
+          "nickname": "I",
+          "description": "BlockInstance to decompose",
+          "type": "Block_Instance",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Definition",
+          "nickname": "D",
+          "description": "Reference Block",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Plane",
+          "nickname": "P",
+          "description": "Insertion Anchor-Plane",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Transform",
+          "nickname": "X",
+          "description": "Insertion Transform",
+          "type": "Transform",
+          "access": "item"
+        },
+        {
+          "name": "Box",
+          "nickname": "B",
+          "description": "Bounding Box",
+          "type": "Box",
+          "access": "item"
+        },
+        {
+          "name": "X-Scale",
+          "nickname": "XS",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Y-Scale",
+          "nickname": "YS",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Z-Scale",
+          "nickname": "ZS",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        }
+      ]
+    },
+    "Discover Nested Blocks": {
+      "name": "Discover Nested Blocks",
+      "nickname": "DiscoverNested",
+      "description": "Recursively finds the location of requested nested blocks within a given Instance",
+      "guid": "84b062a8-44e7-4faf-b5f2-393e8d46f781",
+      "type_name": "LegoPod.Blocks.Extract_Nested_Location",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Block_Instance",
+          "nickname": "B",
+          "description": "Block_Instance",
+          "type": "Block_Instance",
+          "access": "item"
+        },
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Plane",
+          "nickname": "P",
+          "description": "The location of found items",
+          "type": "Plane",
+          "access": "list"
+        }
+      ]
+    },
+    "Rename Block": {
+      "name": "Rename Block",
+      "nickname": "RenameBlock",
+      "description": "Edit a Block\u0027s\u0027 name and description",
+      "guid": "986cb469-9852-4287-8cb6-3c95b5721f11",
+      "type_name": "LegoPod.Blocks.Block_Rename",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Optional Block new name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Description",
+          "nickname": "D",
+          "description": "Optional new Block Description",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Nested Count": {
+      "name": "Nested Count",
+      "nickname": "NestedCount",
+      "description": "Calculate recursively the number of all requested nested-block within a wrapper-block",
+      "guid": "10e4b152-421e-4469-b946-219828c12bc7",
+      "type_name": "LegoPod.Blocks.Block_Instance_NestedCount",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Wrapper",
+          "nickname": "W",
+          "description": "The wrapper-block to search within",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Nested",
+          "nickname": "N",
+          "description": "The nested-block to search for",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Number",
+          "nickname": "N",
+          "description": "The number of found nested blocks within the wrapper",
+          "type": "Integer",
+          "access": "item"
+        }
+      ]
+    },
+    "Insert Block by Box": {
+      "name": "Insert Block by Box",
+      "nickname": "BlockBox",
+      "description": "Fit and place an instance object into a reference box",
+      "guid": "8af1e6a9-7ed9-4062-9082-430ca082f158",
+      "type_name": "LegoPod.Blocks.InsertBlockRefBox",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "TransformBox",
+          "nickname": "B",
+          "description": "Transform reference box",
+          "type": "Box",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Insert Block": {
+      "name": "Insert Block",
+      "nickname": "BlockInsert",
+      "description": "Insert an Instance object",
+      "guid": "0ef76392-9302-47f3-bee7-ba3314b8e805",
+      "type_name": "LegoPod.Blocks.InsertBlockInsertInstance",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Plane",
+          "nickname": "PL",
+          "description": "Base of the reference object",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "X scale",
+          "nickname": "XS",
+          "description": "Scale factor on X axis of placing reference object ",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Y scale (Optional)",
+          "nickname": "YS",
+          "description": "Optional scale factor on Y axis of placing reference object (uniform scale if omitted)",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Z scale (Optional)",
+          "nickname": "ZS",
+          "description": "Optional scale factor on Z axis of placing reference object (uniform scale if omitted)",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Insert Block by Transform": {
+      "name": "Insert Block by Transform",
+      "nickname": "BlockTransform",
+      "description": "Insert blocks by transform data",
+      "guid": "620fa209-80d7-418c-9328-119d8d901ccd",
+      "type_name": "LegoPod.Blocks.InsertBlockTransform",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Transform",
+          "nickname": "X",
+          "description": "Transform reference box",
+          "type": "Transform",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Replace Block": {
+      "name": "Replace Block",
+      "nickname": "BlockReplace",
+      "description": "Replace a Block Instance with another definition and optional applying transform",
+      "guid": "fe88ce5b-6683-45ff-9c61-b4b518762ee1",
+      "type_name": "LegoPod.Blocks.Block_Replace",
+      "category": "LegoPod",
+      "subcategory": "Blocks",
+      "inputs": [
+        {
+          "name": "Instance",
+          "nickname": "A",
+          "description": "The Instance to be replace with another",
+          "type": "Block_Instance",
+          "access": "item"
+        },
+        {
+          "name": "Block",
+          "nickname": "B",
+          "description": "Block definition with which the the object will be replaced ",
+          "type": "Block_Definition",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Set Block Meta-Data": {
+      "name": "Set Block Meta-Data",
+      "nickname": "SetBlockMetaData",
+      "description": "Put Meta-Data into a Block-Definition",
+      "guid": "632c8255-9f86-41a2-8bad-aa13fdfc6e47",
+      "type_name": "LegoPod.Blocks.Block_MetaData_Set",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Block_Definition",
+          "nickname": "B",
+          "description": "Block_Definition",
+          "type": "Block_Definition",
+          "access": "item"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Block Mapping-Keys",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Block Mapping-Values",
+          "type": "Generic",
+          "access": "list"
+        }
+      ],
+      "outputs": []
+    },
+    "Explode Attribute": {
+      "name": "Explode Attribute",
+      "nickname": "AttExplode",
+      "description": "Deconstruct an Obj.Attribute",
+      "guid": "2333767b-7851-4b9a-b08a-fa805af378cb",
+      "type_name": "LegoPod.Attributes.Block_AttExplode",
+      "category": "LegoPod",
+      "subcategory": "Attributes",
+      "inputs": [
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "description": "Name",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Layer",
+          "nickname": "L",
+          "description": "Layer",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Color",
+          "nickname": "C",
+          "description": "Color",
+          "type": "Colour",
+          "access": "item"
+        },
+        {
+          "name": "Material",
+          "nickname": "M",
+          "description": "Material",
+          "type": "Material",
+          "access": "item"
+        },
+        {
+          "name": "Thickness",
+          "nickname": "T",
+          "description": "Plot Line weight",
+          "type": "Number",
+          "access": "item"
+        }
+      ]
+    },
+    "Table TSV-Data": {
+      "name": "Table TSV-Data",
+      "nickname": "TSV",
+      "description": "Convert TSV (Tab Separated Data) to GH Data-Structure",
+      "guid": "1fe49c7b-0aa8-469f-87aa-7ee7ff9a60a9",
+      "type_name": "LegoPod.Text.Table_TSV",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "data in format of TSV or CSV",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Format",
+          "nickname": "F",
+          "description": "Input Data Format (Separator options)",
+          "type": "Integer",
+          "access": "item"
+        },
+        {
+          "name": "Flip",
+          "nickname": "S",
+          "description": "Flip Matrix",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Structured Data",
+          "type": "Text",
+          "access": "tree"
+        }
+      ]
+    },
+    "Table GapFiller": {
+      "name": "Table GapFiller",
+      "nickname": "GapFiller",
+      "description": "fill relative data gaps with a default value",
+      "guid": "7c6371e0-18e4-441b-a36d-e09d53d514a5",
+      "type_name": "LegoPod.Text.Table_GapFiller",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Fields",
+          "nickname": "F",
+          "description": "Items to be matching key",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Values related to the keys",
+          "type": "Generic",
+          "access": "tree"
+        },
+        {
+          "name": "Gap-Filler",
+          "nickname": "G",
+          "description": "Optional item to replace with all Nulls",
+          "type": "Generic",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Fields",
+          "nickname": "F",
+          "description": "Fields",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Values",
+          "nickname": "V",
+          "description": "Values",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Aggregated fields with values",
+          "type": "Text",
+          "access": "tree"
+        }
+      ]
+    },
+    "Create Table": {
+      "name": "Create Table",
+      "nickname": "Table",
+      "description": "Creates a table of data",
+      "guid": "ade7fd21-8d0f-4caf-8722-b142ff73c134",
+      "type_name": "LegoPod.Text.Table",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Plane",
+          "nickname": "P",
+          "description": "Table location",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Headings",
+          "nickname": "H",
+          "description": "Table Headings",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Data",
+          "nickname": "D",
+          "description": "Datatree to put into a table",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Header-Style",
+          "nickname": "HS",
+          "description": "TextStyle for Headers",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Data-Style",
+          "nickname": "DS",
+          "description": "TextStyle for values",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "X-Margin",
+          "nickname": "X",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Y-Margin",
+          "nickname": "Y",
+          "description": "",
+          "type": "Number",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Texts",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Texts",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Bound",
+          "nickname": "R",
+          "description": "",
+          "type": "Rectangle",
+          "access": "item"
+        },
+        {
+          "name": "H",
+          "nickname": "",
+          "description": "",
+          "type": "Line",
+          "access": "list"
+        },
+        {
+          "name": "V",
+          "nickname": "",
+          "description": "",
+          "type": "Line",
+          "access": "list"
+        }
+      ]
+    },
+    "Text-Group by Pattern": {
+      "name": "Text-Group by Pattern",
+      "nickname": "TextG-RegX",
+      "description": "Groups text objects by their contents matched with RegEx patterns",
+      "guid": "b09c19c8-d076-481a-a20a-922160ea4a58",
+      "type_name": "LegoPod.Text.Text_Group_Pattern",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text objects\u0027 ids to group",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Pattern",
+          "nickname": "P",
+          "description": "RegEx Pattern for matching texts",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Ignore-Case",
+          "nickname": "C",
+          "description": "If true, letters\u0027 case would be ignored ",
+          "type": "Boolean",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Matched",
+          "nickname": "M",
+          "description": "Matched Texts",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Unmatched",
+          "nickname": "U",
+          "description": "Unmatched Texts",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Matched keys",
+          "type": "Text",
+          "access": "tree"
+        }
+      ]
+    },
+    "Text-Group by Property": {
+      "name": "Text-Group by Property",
+      "nickname": "TextG-Prop",
+      "description": "Groups text objects by their properties",
+      "guid": "5706e11c-ef26-4e05-9816-19476140f122",
+      "type_name": "LegoPod.Text.Text__Group",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text objects\u0027 ids to group",
+          "type": "Text",
+          "access": "list"
+        },
+        {
+          "name": "Mode",
+          "nickname": "M",
+          "description": "Grouping Mode",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Texts in Groups",
+          "type": "Text",
+          "access": "tree"
+        },
+        {
+          "name": "Keys",
+          "nickname": "K",
+          "description": "Grouping keys",
+          "type": "Generic",
+          "access": "tree"
+        }
+      ]
+    },
+    "Explode Text": {
+      "name": "Explode Text",
+      "nickname": "TextBomb",
+      "description": "Extract the properties from  Text or TextDot objects",
+      "guid": "e0a71e36-0024-4d69-9f18-b8caac092f89",
+      "type_name": "LegoPod.Text.Tools_ExplodText",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Location",
+          "nickname": "P",
+          "description": "AnchorPoint of the text",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text String",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Size",
+          "nickname": "S",
+          "description": "Text Size",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Justification",
+          "nickname": "J",
+          "description": "Text Justification",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Style",
+          "nickname": "S",
+          "description": "Annotation Style",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ]
+    },
+    "Edit Text": {
+      "name": "Edit Text",
+      "nickname": "TXTEdit",
+      "description": "Modify text objects",
+      "guid": "f37ae308-eecb-4dec-99b0-e36f8bae899c",
+      "type_name": "LegoPod.Text.Text_EditStyle",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Rhino Text (Or TextDot) to edit",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "C",
+          "description": "Text-Content String",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Height",
+          "nickname": "H",
+          "description": "Text Height",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Style",
+          "nickname": "S",
+          "description": "Text-Style",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Style From Text": {
+      "name": "Style From Text",
+      "nickname": "StyleOfText",
+      "description": "Defines a new or modifies an existing annotation-style matching with the given text object",
+      "guid": "36a16613-68c4-4664-ab07-f523b6a49b4e",
+      "type_name": "LegoPod.Text.Text_To_Style",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "A Text object based on which Style will be redefined",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Style",
+          "nickname": "S",
+          "description": "Annotation-Style name to create or modify",
+          "type": "Text",
+          "access": "item"
+        }
+      ],
+      "outputs": []
+    },
+    "Create Text": {
+      "name": "Create Text",
+      "nickname": "CreateText",
+      "description": "Creates Either TextDot or 3d-Text",
+      "guid": "cd4fc408-b955-46ea-ab76-8236e449a3e0",
+      "type_name": "LegoPod.Text.Text_Create",
+      "category": "LegoPod",
+      "subcategory": "Odds",
+      "inputs": [
+        {
+          "name": "Location",
+          "nickname": "L",
+          "description": "Location of the Text",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text to bake",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Size",
+          "nickname": "S",
+          "description": "Text Size",
+          "type": "Number",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        },
+        {
+          "name": "Justification",
+          "nickname": "J",
+          "description": "Text Justification (Optional)",
+          "type": "Integer",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text",
+          "type": "Text",
+          "access": "item"
+        }
+      ]
+    },
+    "Create Text (Style)": {
+      "name": "Create Text (Style)",
+      "nickname": "Style Text",
+      "description": "Creates Text with a text-style",
+      "guid": "62638394-0c01-4bdb-a093-e0da687e201c",
+      "type_name": "LegoPod.Text.Text_Create_WithStyle",
+      "category": "LegoPod",
+      "subcategory": "Text",
+      "inputs": [
+        {
+          "name": "Location",
+          "nickname": "L",
+          "description": "Location of the Text",
+          "type": "Plane",
+          "access": "item"
+        },
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text to bake",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "StyleName",
+          "nickname": "S",
+          "description": "Text-StyleName Name. If the styleName with the name doesn\u0027t exist a new styleName styleName with such name will be created",
+          "type": "Text",
+          "access": "item"
+        },
+        {
+          "name": "Attribute",
+          "nickname": "A",
+          "description": "Attribute",
+          "type": "Attribute",
+          "access": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "nickname": "T",
+          "description": "Text",
+          "type": "Text",
+          "access": "item"
+        }
+      ]
+    }
+  }
+}
