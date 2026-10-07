@@ -20,6 +20,16 @@ from .native import (
     find_native_component,
     list_native_components,
 )
+from .legopod import (
+    load_legopod_catalog,
+    find_legopod_component,
+    list_legopod_components,
+)
+from .magpie import (
+    load_magpie_catalog,
+    find_magpie_component,
+    list_magpie_components,
+)
 
 
 def main():
@@ -60,6 +70,14 @@ def main():
     p_nat = subparsers.add_parser("native", help="Inspect verified native Grasshopper components (211 cataloged)")
     p_nat.add_argument("--list", nargs="?", const="all", help="List native components (optional category filter, e.g. Curve, Surface, Vector, Sets)")
     p_nat.add_argument("--info", help="Get input/output schema for a component name or GUID")
+
+    p_lego = subparsers.add_parser("legopod", help="Inspect verified LegoPod plugin components (42 cataloged)")
+    p_lego.add_argument("--list", nargs="?", const="all", help="List LegoPod components (optional subcategory filter)")
+    p_lego.add_argument("--info", help="Get input/output schema for a LegoPod component name or GUID")
+
+    p_mag = subparsers.add_parser("magpie", help="Inspect verified Magpie machine-learning components (14 cataloged)")
+    p_mag.add_argument("--list", nargs="?", const="all", help="List Magpie components (optional subcategory filter)")
+    p_mag.add_argument("--info", help="Get input/output schema for a Magpie component name or GUID")
 
     args = parser.parse_args()
 
@@ -253,6 +271,82 @@ def main():
                 if filt != "all" and filt != cat.lower():
                     continue
                 print(f"=== {cat} ({len(names)} components) ===")
+                for n in sorted(names):
+                    meta = catalog.get("by_name", {}).get(n, {})
+                    print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
+                print()
+
+    elif args.cmd == "legopod":
+        catalog = load_legopod_catalog()
+        if not catalog.get("by_name"):
+            print("Error: LegoPod catalog not found. Please ensure legopod_catalog.json exists.")
+            sys.exit(1)
+
+        if args.info:
+            comp = find_legopod_component(args.info)
+            if not comp:
+                print(f"Component '{args.info}' not found in LegoPod catalog.")
+                sys.exit(1)
+            print(f"Component:    {comp['name']} [{comp.get('nickname', '')}]")
+            print(f"GUID:         {comp['guid']}")
+            print(f"Category:     {comp.get('category', 'LegoPod')}")
+            print(f"Subcategory:  {comp.get('subcategory', 'General')}")
+            print(f"Description:  {comp.get('description', '')}")
+            print("\nInputs:")
+            for inp in comp.get("inputs", []):
+                pdesc = f" - {inp['description']}" if inp.get("description") else ""
+                print(f"  - {inp['name']} ({inp.get('nickname', '')}): {inp.get('type', 'Generic')} [{inp.get('access', 'item')}]{pdesc}")
+            print("\nOutputs:")
+            for outp in comp.get("outputs", []):
+                pdesc = f" - {outp['description']}" if outp.get("description") else ""
+                print(f"  - {outp['name']} ({outp.get('nickname', '')}): {outp.get('type', 'Generic')} [{outp.get('access', 'item')}]{pdesc}")
+
+        elif args.list:
+            subcats = catalog.get("subcategories", {})
+            filt = args.list.lower() if args.list else "all"
+            print(f"LegoPod Plugin Catalog ({catalog.get('total_components', 0)} components):\n")
+            for sub, names in sorted(subcats.items()):
+                if filt != "all" and filt != sub.lower():
+                    continue
+                print(f"=== {sub} ({len(names)} components) ===")
+                for n in sorted(names):
+                    meta = catalog.get("by_name", {}).get(n, {})
+                    print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
+                print()
+
+    elif args.cmd == "magpie":
+        catalog = load_magpie_catalog()
+        if not catalog.get("by_name"):
+            print("Error: Magpie catalog not found. Please ensure magpie_catalog.json exists.")
+            sys.exit(1)
+
+        if args.info:
+            comp = find_magpie_component(args.info)
+            if not comp:
+                print(f"Component '{args.info}' not found in Magpie catalog.")
+                sys.exit(1)
+            print(f"Component:    {comp['name']} [{comp.get('nickname', '')}]")
+            print(f"GUID:         {comp['guid']}")
+            print(f"Category:     {comp.get('category', 'Magpie')}")
+            print(f"Subcategory:  {comp.get('subcategory', 'General')}")
+            print(f"Description:  {comp.get('description', '')}")
+            print("\nInputs:")
+            for inp in comp.get("inputs", []):
+                pdesc = f" - {inp['description']}" if inp.get("description") else ""
+                print(f"  - {inp['name']} ({inp.get('nickname', '')}): {inp.get('type', 'Generic')} [{inp.get('access', 'item')}]{pdesc}")
+            print("\nOutputs:")
+            for outp in comp.get("outputs", []):
+                pdesc = f" - {outp['description']}" if outp.get("description") else ""
+                print(f"  - {outp['name']} ({outp.get('nickname', '')}): {outp.get('type', 'Generic')} [{outp.get('access', 'item')}]{pdesc}")
+
+        elif args.list:
+            subcats = catalog.get("subcategories", {})
+            filt = args.list.lower() if args.list else "all"
+            print(f"Magpie Plugin Catalog ({catalog.get('total_components', 0)} components):\n")
+            for sub, names in sorted(subcats.items()):
+                if filt != "all" and filt != sub.lower():
+                    continue
+                print(f"=== {sub} ({len(names)} components) ===")
                 for n in sorted(names):
                     meta = catalog.get("by_name", {}).get(n, {})
                     print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")

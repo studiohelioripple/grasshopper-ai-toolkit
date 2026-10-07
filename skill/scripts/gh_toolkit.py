@@ -922,6 +922,128 @@ def list_native_components(category: Optional[str] = None) -> List[Dict[str, Any
     return results
 
 
+_CACHED_LEGOPOD_CATALOG: Optional[Dict[str, Any]] = None
+
+
+def load_legopod_catalog() -> Dict[str, Any]:
+    """Load the verified LegoPod component catalog (42 components)."""
+    global _CACHED_LEGOPOD_CATALOG
+    if _CACHED_LEGOPOD_CATALOG is not None:
+        return _CACHED_LEGOPOD_CATALOG
+
+    candidates = [
+        os.path.join(os.path.dirname(__file__), "..", "resources", "legopod_catalog.json"),
+        os.path.join(os.path.dirname(__file__), "legopod_catalog.json"),
+        os.path.join(os.path.dirname(__file__), "..", "..", "gh_toolkit", "data", "legopod_catalog.json"),
+        os.path.join(os.getcwd(), "gh_toolkit", "data", "legopod_catalog.json"),
+        os.path.join(os.getcwd(), "skill", "resources", "legopod_catalog.json"),
+    ]
+
+    for p in candidates:
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    _CACHED_LEGOPOD_CATALOG = json.load(f)
+                    return _CACHED_LEGOPOD_CATALOG
+            except Exception:
+                pass
+
+    return {"by_guid": {}, "by_name": {}, "subcategories": {}, "total_components": 0}
+
+
+def find_legopod_component(name_or_guid: str) -> Optional[Dict[str, Any]]:
+    """Look up a LegoPod component by GUID, Name, or Nickname."""
+    catalog = load_legopod_catalog()
+    query = name_or_guid.lower().strip()
+
+    if query in catalog.get("by_guid", {}):
+        return catalog["by_guid"][query]
+    if name_or_guid in catalog.get("by_name", {}):
+        return catalog["by_name"][name_or_guid]
+    for k, v in catalog.get("by_name", {}).items():
+        if k.lower() == query:
+            return v
+        if v.get("nickname") and v["nickname"].lower() == query:
+            return v
+    return None
+
+
+def list_legopod_components(subcategory: Optional[str] = None) -> List[Dict[str, Any]]:
+    """List LegoPod components, optionally filtered by subcategory."""
+    catalog = load_legopod_catalog()
+    subcats = catalog.get("subcategories", {})
+    results = []
+    for sub, names in subcats.items():
+        if subcategory and subcategory.lower() not in (sub.lower(), "all"):
+            continue
+        for n in names:
+            comp = catalog.get("by_name", {}).get(n)
+            if comp:
+                results.append(comp)
+    return results
+
+
+_CACHED_MAGPIE_CATALOG: Optional[Dict[str, Any]] = None
+
+
+def load_magpie_catalog() -> Dict[str, Any]:
+    """Load the verified Magpie component catalog (14 components)."""
+    global _CACHED_MAGPIE_CATALOG
+    if _CACHED_MAGPIE_CATALOG is not None:
+        return _CACHED_MAGPIE_CATALOG
+
+    candidates = [
+        os.path.join(os.path.dirname(__file__), "..", "resources", "magpie_catalog.json"),
+        os.path.join(os.path.dirname(__file__), "magpie_catalog.json"),
+        os.path.join(os.path.dirname(__file__), "..", "..", "gh_toolkit", "data", "magpie_catalog.json"),
+        os.path.join(os.getcwd(), "gh_toolkit", "data", "magpie_catalog.json"),
+        os.path.join(os.getcwd(), "skill", "resources", "magpie_catalog.json"),
+    ]
+
+    for p in candidates:
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    _CACHED_MAGPIE_CATALOG = json.load(f)
+                    return _CACHED_MAGPIE_CATALOG
+            except Exception:
+                pass
+
+    return {"by_guid": {}, "by_name": {}, "subcategories": {}, "total_components": 0}
+
+
+def find_magpie_component(name_or_guid: str) -> Optional[Dict[str, Any]]:
+    """Look up a Magpie component by GUID, Name, or Nickname."""
+    catalog = load_magpie_catalog()
+    query = name_or_guid.lower().strip()
+
+    if query in catalog.get("by_guid", {}):
+        return catalog["by_guid"][query]
+    if name_or_guid in catalog.get("by_name", {}):
+        return catalog["by_name"][name_or_guid]
+    for k, v in catalog.get("by_name", {}).items():
+        if k.lower() == query:
+            return v
+        if v.get("nickname") and v["nickname"].lower() == query:
+            return v
+    return None
+
+
+def list_magpie_components(subcategory: Optional[str] = None) -> List[Dict[str, Any]]:
+    """List Magpie components, optionally filtered by subcategory."""
+    catalog = load_magpie_catalog()
+    subcats = catalog.get("subcategories", {})
+    results = []
+    for sub, names in subcats.items():
+        if subcategory and subcategory.lower() not in (sub.lower(), "all"):
+            continue
+        for n in names:
+            comp = catalog.get("by_name", {}).get(n)
+            if comp:
+                results.append(comp)
+    return results
+
+
 def find_yak() -> Optional[str]:
     """Locate McNeel Yak package manager executable."""
     import shutil
@@ -1344,6 +1466,146 @@ class GHBuilder:
 
         return inst_guid
 
+    def add_legopod_component(
+        self,
+        name_or_guid: str,
+        alias: str,
+        pivot: Tuple[float, float],
+        nickname: Optional[str] = None,
+    ) -> str:
+        """Instantiate any of the 42 LegoPod plugin components by name or GUID."""
+        comp_info = find_legopod_component(name_or_guid)
+        if not comp_info:
+            raise KeyError(f"LegoPod component '{name_or_guid}' not found in catalog.")
+
+        comp_guid = comp_info["guid"]
+        comp_name = comp_info["name"]
+        nick = nickname or comp_info.get("nickname") or comp_name
+        inst_guid = str(uuid.uuid4())
+
+        obj = self.objects_chunk.create_chunk("Object", self.object_count)
+        self.object_count += 1
+        obj.add_item("GUID", 9, comp_guid)
+        obj.add_item("Name", 10, comp_name)
+
+        cont = obj.create_chunk("Container")
+        cont.add_item("Description", 10, comp_info.get("description", ""))
+        cont.add_item("InstanceGuid", 9, inst_guid)
+        cont.add_item("Name", 10, comp_name)
+        cont.add_item("NickName", 10, nick)
+
+        inputs = comp_info.get("inputs", [])
+        outputs = comp_info.get("outputs", [])
+        h = max(40.0, max(len(inputs), len(outputs)) * 24.0 + 20.0)
+        w = 90.0
+
+        attr = cont.create_chunk("Attributes")
+        attr.add_item("Bounds", 35, [pivot[0], pivot[1], w, h])
+        attr.add_item("Pivot", 31, [pivot[0] + w / 2.0, pivot[1] + h / 2.0])
+
+        for idx, inp in enumerate(inputs):
+            p_in = cont.create_chunk("param_input", idx)
+            p_guid = str(uuid.uuid4())
+            p_in.add_item("InstanceGuid", 9, p_guid)
+            p_in.add_item("Name", 10, inp["name"])
+            p_in.add_item("NickName", 10, inp.get("nickname", inp["name"]))
+            p_in.add_item("Description", 10, inp.get("description", ""))
+            p_in.add_item("Optional", 1, True)
+            acc_str = inp.get("access", "item").lower()
+            acc_val = 2 if acc_str == "tree" else (1 if acc_str == "list" else 0)
+            p_in.add_item("Access", 3, acc_val)
+
+            self.param_lut[f"{alias}.{inp['name']}"] = p_guid
+            if inp.get("nickname"):
+                self.param_lut[f"{alias}.{inp['nickname']}"] = p_guid
+
+        for idx, outp in enumerate(outputs):
+            p_out = cont.create_chunk("param_output", idx)
+            p_guid = str(uuid.uuid4())
+            p_out.add_item("InstanceGuid", 9, p_guid)
+            p_out.add_item("Name", 10, outp["name"])
+            p_out.add_item("NickName", 10, outp.get("nickname", outp["name"]))
+            p_out.add_item("Description", 10, outp.get("description", ""))
+
+            self.param_lut[f"{alias}.{outp['name']}"] = p_guid
+            if outp.get("nickname"):
+                self.param_lut[f"{alias}.{outp['nickname']}"] = p_guid
+            if idx == 0:
+                self.param_lut[f"{alias}.out"] = p_guid
+                self.param_lut[f"{alias}"] = p_guid
+
+        return inst_guid
+
+    def add_magpie_component(
+        self,
+        name_or_guid: str,
+        alias: str,
+        pivot: Tuple[float, float],
+        nickname: Optional[str] = None,
+    ) -> str:
+        """Instantiate any of the 14 Magpie machine-learning components by name or GUID."""
+        comp_info = find_magpie_component(name_or_guid)
+        if not comp_info:
+            raise KeyError(f"Magpie component '{name_or_guid}' not found in catalog.")
+
+        comp_guid = comp_info["guid"]
+        comp_name = comp_info["name"]
+        nick = nickname or comp_info.get("nickname") or comp_name
+        inst_guid = str(uuid.uuid4())
+
+        obj = self.objects_chunk.create_chunk("Object", self.object_count)
+        self.object_count += 1
+        obj.add_item("GUID", 9, comp_guid)
+        obj.add_item("Name", 10, comp_name)
+
+        cont = obj.create_chunk("Container")
+        cont.add_item("Description", 10, comp_info.get("description", ""))
+        cont.add_item("InstanceGuid", 9, inst_guid)
+        cont.add_item("Name", 10, comp_name)
+        cont.add_item("NickName", 10, nick)
+
+        inputs = comp_info.get("inputs", [])
+        outputs = comp_info.get("outputs", [])
+        h = max(40.0, max(len(inputs), len(outputs)) * 24.0 + 20.0)
+        w = 90.0
+
+        attr = cont.create_chunk("Attributes")
+        attr.add_item("Bounds", 35, [pivot[0], pivot[1], w, h])
+        attr.add_item("Pivot", 31, [pivot[0] + w / 2.0, pivot[1] + h / 2.0])
+
+        for idx, inp in enumerate(inputs):
+            p_in = cont.create_chunk("param_input", idx)
+            p_guid = str(uuid.uuid4())
+            p_in.add_item("InstanceGuid", 9, p_guid)
+            p_in.add_item("Name", 10, inp["name"])
+            p_in.add_item("NickName", 10, inp.get("nickname", inp["name"]))
+            p_in.add_item("Description", 10, inp.get("description", ""))
+            p_in.add_item("Optional", 1, True)
+            acc_str = inp.get("access", "item").lower()
+            acc_val = 2 if acc_str == "tree" else (1 if acc_str == "list" else 0)
+            p_in.add_item("Access", 3, acc_val)
+
+            self.param_lut[f"{alias}.{inp['name']}"] = p_guid
+            if inp.get("nickname"):
+                self.param_lut[f"{alias}.{inp['nickname']}"] = p_guid
+
+        for idx, outp in enumerate(outputs):
+            p_out = cont.create_chunk("param_output", idx)
+            p_guid = str(uuid.uuid4())
+            p_out.add_item("InstanceGuid", 9, p_guid)
+            p_out.add_item("Name", 10, outp["name"])
+            p_out.add_item("NickName", 10, outp.get("nickname", outp["name"]))
+            p_out.add_item("Description", 10, outp.get("description", ""))
+
+            self.param_lut[f"{alias}.{outp['name']}"] = p_guid
+            if outp.get("nickname"):
+                self.param_lut[f"{alias}.{outp['nickname']}"] = p_guid
+            if idx == 0:
+                self.param_lut[f"{alias}.out"] = p_guid
+                self.param_lut[f"{alias}"] = p_guid
+
+        return inst_guid
+
     def add_component(
         self,
         name_or_guid: str,
@@ -1351,14 +1613,22 @@ class GHBuilder:
         pivot: Tuple[float, float],
         nickname: Optional[str] = None,
     ) -> str:
-        """Instantiate any component (checking Heteroptera first, then Native catalog)."""
-        comp_het = find_heteroptera_component(name_or_guid)
-        if comp_het:
-            return self.add_heteroptera_component(name_or_guid, alias, pivot, nickname)
+        """Instantiate any component (searching Native, Heteroptera, LegoPod, or Magpie)."""
         comp_nat = find_native_component(name_or_guid)
         if comp_nat:
             return self.add_native_component(name_or_guid, alias, pivot, nickname)
-        raise KeyError(f"Component '{name_or_guid}' not found in Heteroptera or Native catalogs.")
+        comp_het = find_heteroptera_component(name_or_guid)
+        if comp_het:
+            return self.add_heteroptera_component(name_or_guid, alias, pivot, nickname)
+        comp_lego = find_legopod_component(name_or_guid)
+        if comp_lego:
+            return self.add_legopod_component(name_or_guid, alias, pivot, nickname)
+        comp_mag = find_magpie_component(name_or_guid)
+        if comp_mag:
+            return self.add_magpie_component(name_or_guid, alias, pivot, nickname)
+        raise KeyError(
+            f"Component '{name_or_guid}' not found in Native, Heteroptera, LegoPod, or Magpie catalogs."
+        )
 
     def add_space_syntax_pipeline(self, start_pivot: Tuple[float, float] = (100, 100)) -> Dict[str, str]:
         """Synthesizes the standard Heteroptera Space Syntax analysis pipeline."""
@@ -1427,6 +1697,14 @@ def main():
     p_nat = subparsers.add_parser("native", help="Inspect verified native Grasshopper components (211 cataloged)")
     p_nat.add_argument("--list", nargs="?", const="all", help="List native components (optional category filter, e.g. Curve, Surface, Vector, Sets)")
     p_nat.add_argument("--info", help="Get input/output schema for a component name or GUID")
+
+    p_lego = subparsers.add_parser("legopod", help="Inspect verified LegoPod plugin components (42 cataloged)")
+    p_lego.add_argument("--list", nargs="?", const="all", help="List LegoPod components (optional subcategory filter)")
+    p_lego.add_argument("--info", help="Get input/output schema for a LegoPod component name or GUID")
+
+    p_mag = subparsers.add_parser("magpie", help="Inspect verified Magpie machine-learning components (14 cataloged)")
+    p_mag.add_argument("--list", nargs="?", const="all", help="List Magpie components (optional subcategory filter)")
+    p_mag.add_argument("--info", help="Get input/output schema for a Magpie component name or GUID")
 
     args = parser.parse_args()
 
@@ -1633,6 +1911,82 @@ def main():
                 if filt != "all" and filt != cat.lower():
                     continue
                 print(f"=== {cat} ({len(names)} components) ===")
+                for n in sorted(names):
+                    meta = catalog.get("by_name", {}).get(n, {})
+                    print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
+                print()
+
+    elif args.cmd == "legopod":
+        catalog = load_legopod_catalog()
+        if not catalog.get("by_name"):
+            print("Error: LegoPod catalog not found. Please ensure legopod_catalog.json exists.")
+            sys.exit(1)
+
+        if args.info:
+            comp = find_legopod_component(args.info)
+            if not comp:
+                print(f"Component '{args.info}' not found in LegoPod catalog.")
+                sys.exit(1)
+            print(f"Component:    {comp['name']} [{comp.get('nickname', '')}]")
+            print(f"GUID:         {comp['guid']}")
+            print(f"Category:     {comp.get('category', 'LegoPod')}")
+            print(f"Subcategory:  {comp.get('subcategory', 'General')}")
+            print(f"Description:  {comp.get('description', '')}")
+            print("\nInputs:")
+            for inp in comp.get("inputs", []):
+                pdesc = f" - {inp['description']}" if inp.get("description") else ""
+                print(f"  - {inp['name']} ({inp.get('nickname', '')}): {inp.get('type', 'Generic')} [{inp.get('access', 'item')}]{pdesc}")
+            print("\nOutputs:")
+            for outp in comp.get("outputs", []):
+                pdesc = f" - {outp['description']}" if outp.get("description") else ""
+                print(f"  - {outp['name']} ({outp.get('nickname', '')}): {outp.get('type', 'Generic')} [{outp.get('access', 'item')}]{pdesc}")
+
+        elif args.list:
+            subcats = catalog.get("subcategories", {})
+            filt = args.list.lower() if args.list else "all"
+            print(f"LegoPod Plugin Catalog ({catalog.get('total_components', 0)} components):\n")
+            for sub, names in sorted(subcats.items()):
+                if filt != "all" and filt != sub.lower():
+                    continue
+                print(f"=== {sub} ({len(names)} components) ===")
+                for n in sorted(names):
+                    meta = catalog.get("by_name", {}).get(n, {})
+                    print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
+                print()
+
+    elif args.cmd == "magpie":
+        catalog = load_magpie_catalog()
+        if not catalog.get("by_name"):
+            print("Error: Magpie catalog not found. Please ensure magpie_catalog.json exists.")
+            sys.exit(1)
+
+        if args.info:
+            comp = find_magpie_component(args.info)
+            if not comp:
+                print(f"Component '{args.info}' not found in Magpie catalog.")
+                sys.exit(1)
+            print(f"Component:    {comp['name']} [{comp.get('nickname', '')}]")
+            print(f"GUID:         {comp['guid']}")
+            print(f"Category:     {comp.get('category', 'Magpie')}")
+            print(f"Subcategory:  {comp.get('subcategory', 'General')}")
+            print(f"Description:  {comp.get('description', '')}")
+            print("\nInputs:")
+            for inp in comp.get("inputs", []):
+                pdesc = f" - {inp['description']}" if inp.get("description") else ""
+                print(f"  - {inp['name']} ({inp.get('nickname', '')}): {inp.get('type', 'Generic')} [{inp.get('access', 'item')}]{pdesc}")
+            print("\nOutputs:")
+            for outp in comp.get("outputs", []):
+                pdesc = f" - {outp['description']}" if outp.get("description") else ""
+                print(f"  - {outp['name']} ({outp.get('nickname', '')}): {outp.get('type', 'Generic')} [{outp.get('access', 'item')}]{pdesc}")
+
+        elif args.list:
+            subcats = catalog.get("subcategories", {})
+            filt = args.list.lower() if args.list else "all"
+            print(f"Magpie Plugin Catalog ({catalog.get('total_components', 0)} components):\n")
+            for sub, names in sorted(subcats.items()):
+                if filt != "all" and filt != sub.lower():
+                    continue
+                print(f"=== {sub} ({len(names)} components) ===")
                 for n in sorted(names):
                     meta = catalog.get("by_name", {}).get(n, {})
                     print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")

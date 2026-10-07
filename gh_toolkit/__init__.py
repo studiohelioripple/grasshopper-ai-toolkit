@@ -30,6 +30,16 @@ from .native import (
     find_native_component,
     list_native_components,
 )
+from .legopod import (
+    load_legopod_catalog,
+    find_legopod_component,
+    list_legopod_components,
+)
+from .magpie import (
+    load_magpie_catalog,
+    find_magpie_component,
+    list_magpie_components,
+)
 
 __version__ = "0.3.0"
 __all__ = [
@@ -53,6 +63,12 @@ __all__ = [
     "load_native_catalog",
     "find_native_component",
     "list_native_components",
+    "load_legopod_catalog",
+    "find_legopod_component",
+    "list_legopod_components",
+    "load_magpie_catalog",
+    "find_magpie_component",
+    "list_magpie_components",
     "TYPE_MAP",
     "NAME_TO_TYPE",
 ]
