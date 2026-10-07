@@ -21,6 +21,9 @@ from .heteroptera import (
     find_heteroptera_component,
     list_heteroptera_components,
     get_canonical_recipes,
+    find_yak,
+    get_heteroptera_status,
+    install_heteroptera,
 )
 
 __version__ = "0.2.0"
@@ -39,6 +42,9 @@ __all__ = [
     "find_heteroptera_component",
     "list_heteroptera_components",
     "get_canonical_recipes",
+    "find_yak",
+    "get_heteroptera_status",
+    "install_heteroptera",
     "TYPE_MAP",
     "NAME_TO_TYPE",
 ]

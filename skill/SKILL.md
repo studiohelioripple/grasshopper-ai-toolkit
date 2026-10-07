@@ -50,7 +50,9 @@ python3 <skill_dir>/scripts/gh_toolkit.py to-json input.gh graph.json
 # 3. Batch extract embedded GhPython & C# scripts
 python3 <skill_dir>/scripts/gh_toolkit.py extract-scripts ./definitions --out ./scripts
 
-# 4. Query Heteroptera component schemas
+# 4. Query Heteroptera schemas, status, or install latest release
+python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --status
+python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --install
 python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --info "Space Syntax"
 python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --list networks
 ```
@@ -85,7 +87,13 @@ builder.save_ghx("ParametricWorkflow.ghx")
 
 ## 5. Modular Knowledge Base
 
-* [Architectural Recipes](references/ARCHITECTURAL_RECIPES.md): The 8 architectural pillars learned from 193 definitions (Masonry, Space Syntax, Facades, Kangaroo, GIS, Tessellations, Product Catalogs).
-* [Curated Script Library](references/SCRIPT_LIBRARY.md): Idiomatic GhPython & C# scripts (DataTree helpers, hex genome codecs, curve slicing, viewport conduits).
+* [Data Tree Theory & Decision Logic](references/DATA_TREES.md): Complete data tree theory, list matching proofs, Split Tree grammar, and debugging decision table.
+* [197 Native Component Schemas](references/NATIVE_COMPONENTS.md): Exhaustive verified input/output port definitions for core Grasshopper components.
+* [Native Design Patterns](references/NATIVE_PATTERNS.md): 96 verified algorithmic recipes (Attractors, Paneling, Meshes, Kangaroo 2, Galapagos).
+* [Errata & Modernization](references/ERRATA_MODERNIZATION.md): Version notes, deprecations (Anemone, Partition List, Kangaroo 2), and book corrections.
+* [Computational Geometry Glossary](references/GEOMETRY_GLOSSARY.md): 127 architectural and geometric terms defined.
+* [Architectural Recipes](references/ARCHITECTURAL_RECIPES.md): The 8 architectural pillars learned from 193 definitions (Masonry, Space Syntax, Facades, GIS).
+* [Curated Script Library](references/SCRIPT_LIBRARY.md): Idiomatic GhPython & C# scripts.
 * [Component & GUID Index](references/COMPONENT_INDEX.md): Compact lookup table of core Grasshopper and Heteroptera components.
-* [Compact Schema Index](resources/compact_index.json): Lightweight 46 KB lookup index for programmatic queries.
+* [Heteroptera Component Catalog](resources/heteroptera_catalog.json): 152 components indexed with full port metadata.
+

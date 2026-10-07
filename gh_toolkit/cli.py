@@ -12,6 +12,8 @@ from .heteroptera import (
     find_heteroptera_component,
     list_heteroptera_components,
     get_canonical_recipes,
+    get_heteroptera_status,
+    install_heteroptera,
 )
 
 
@@ -46,6 +48,9 @@ def main():
     p_het.add_argument("--info", help="Get detailed input/output schema for a component name or GUID")
     p_het.add_argument("--audit", help="Audit a .gh/.ghx file for Heteroptera components and pipelines")
     p_het.add_argument("--recipes", action="store_true", help="Display canonical Heteroptera wiring recipes")
+    p_het.add_argument("--status", action="store_true", help="Check Heteroptera installation status & latest version")
+    p_het.add_argument("--install", action="store_true", help="Install or upgrade Heteroptera to latest release via Yak")
+    p_het.add_argument("--force", action="store_true", help="Force reinstall even if up to date")
 
     args = parser.parse_args()
 
@@ -118,6 +123,25 @@ def main():
         print(f"Done! Extracted {count} script(s) to {args.out}")
 
     elif args.cmd == "heteroptera":
+        if args.status:
+            stat = get_heteroptera_status()
+            print("=== Heteroptera Plugin Installation Status ===")
+            print(f"Yak Package Manager: {'Found (' + str(stat['yak_path']) + ')' if stat['yak_found'] else 'Not Found'}")
+            print(f"Installed in Rhino:  {'Yes (version ' + str(stat['installed_version']) + ')' if stat['installed'] else 'No'}")
+            print(f"Latest on Yak:       {stat['latest_version'] or 'Unknown / Network error'}")
+            print(f"Status:              {'Up to date' if stat['is_latest'] else ('Update Available' if stat['installed'] else 'Missing')}")
+            if stat.get("packages_dir"):
+                print(f"Package Directory:   {stat['packages_dir']}")
+            return
+
+        if args.install:
+            print("Checking and installing Heteroptera via McNeel Yak...")
+            ok, msg = install_heteroptera(force=args.force)
+            print(msg)
+            if not ok:
+                sys.exit(1)
+            return
+
         catalog = load_heteroptera_catalog()
         if not catalog.get("by_name"):
             print("Error: Heteroptera catalog not found. Please ensure heteroptera_catalog.json exists.")

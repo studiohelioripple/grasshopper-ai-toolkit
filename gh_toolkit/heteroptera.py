@@ -124,3 +124,110 @@ def get_canonical_recipes() -> List[Dict[str, Any]]:
             ],
         },
     ]
+
+
+def find_yak() -> Optional[str]:
+    """Locate the McNeel Yak package manager executable across standard paths."""
+    import shutil
+    candidates = [
+        shutil.which("yak"),
+        "/Applications/Rhino 8.app/Contents/Resources/bin/yak",
+        "/Applications/Rhino 7.app/Contents/Resources/bin/yak",
+        os.path.expanduser("~/Library/Application Support/McNeel/Rhinoceros/8.0/yak"),
+        r"C:\Program Files\Rhino 8\System\yak.exe",
+        r"C:\Program Files\Rhino 7\System\yak.exe",
+    ]
+    for c in candidates:
+        if c and os.path.exists(c):
+            return c
+    return None
+
+
+def get_heteroptera_status() -> Dict[str, Any]:
+    """Check whether Heteroptera is installed via Yak or in Grasshopper Libraries, and what version is available."""
+    import subprocess
+    import re
+
+    yak_bin = find_yak()
+    status: Dict[str, Any] = {
+        "yak_found": yak_bin is not None,
+        "yak_path": yak_bin,
+        "installed": False,
+        "installed_version": None,
+        "latest_version": None,
+        "is_latest": False,
+        "packages_dir": None,
+    }
+
+    mac_pkg_dir = os.path.expanduser("~/Library/Application Support/McNeel/Rhinoceros/packages/8.0/Heteroptera")
+    if os.path.exists(mac_pkg_dir):
+        status["packages_dir"] = mac_pkg_dir
+        try:
+            versions = [
+                d for d in os.listdir(mac_pkg_dir)
+                if os.path.isdir(os.path.join(mac_pkg_dir, d)) and not d.startswith(".")
+            ]
+            if versions:
+                def v_key(v_str):
+                    return [int(x) if x.isdigit() else 0 for x in re.findall(r"\d+", v_str)]
+                versions.sort(key=v_key, reverse=True)
+                status["installed"] = True
+                status["installed_version"] = versions[0]
+        except Exception:
+            pass
+
+    if not yak_bin:
+        return status
+
+    try:
+        res = subprocess.run([yak_bin, "list"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=10)
+        if res.returncode == 0:
+            m = re.search(r"Heteroptera\s+\(([\d\.]+)\)", res.stdout, re.IGNORECASE)
+            if m:
+                status["installed"] = True
+                status["installed_version"] = m.group(1)
+    except Exception:
+        pass
+
+    try:
+        res = subprocess.run([yak_bin, "search", "heteroptera"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=15)
+        if res.returncode == 0:
+            m = re.search(r"Heteroptera\s+\(([\d\.]+)\)", res.stdout, re.IGNORECASE)
+            if m:
+                status["latest_version"] = m.group(1)
+    except Exception:
+        pass
+
+    if status["installed_version"] and status["latest_version"]:
+        status["is_latest"] = (status["installed_version"] == status["latest_version"])
+    elif status["installed"] and not status["latest_version"]:
+        status["is_latest"] = True
+
+    return status
+
+
+def install_heteroptera(force: bool = False) -> Tuple[bool, str]:
+    """Install or upgrade the latest Heteroptera package via Yak."""
+    import subprocess
+
+    yak_bin = find_yak()
+    if not yak_bin:
+        return False, "McNeel Yak package manager not found. Please verify Rhino 7 or 8 is installed."
+
+    status = get_heteroptera_status()
+    if status["installed"] and status["is_latest"] and not force:
+        return True, f"Heteroptera is already up to date (version {status['installed_version']})."
+
+    try:
+        cmd = [yak_bin, "install", "Heteroptera"]
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+        if res.returncode == 0:
+            new_status = get_heteroptera_status()
+            ver = new_status.get("installed_version", "latest")
+            return True, f"Successfully installed Heteroptera ({ver}) via {yak_bin}."
+        else:
+            err = res.stderr.strip() or res.stdout.strip()
+            return False, f"Yak install failed: {err}"
+    except Exception as e:
+        return False, f"Exception during installation: {e}"
+

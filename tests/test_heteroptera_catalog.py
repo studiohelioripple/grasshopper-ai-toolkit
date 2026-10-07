@@ -13,6 +13,8 @@ from gh_toolkit.heteroptera import (
     find_heteroptera_component,
     list_heteroptera_components,
     get_canonical_recipes,
+    find_yak,
+    get_heteroptera_status,
 )
 
 
@@ -50,6 +52,14 @@ class TestHeteropteraCatalog(unittest.TestCase):
         self.assertIn("shortest_walk", recipe_ids)
         self.assertIn("stochastic_masonry", recipe_ids)
 
+    def test_heteroptera_status(self):
+        status = get_heteroptera_status()
+        self.assertIsInstance(status, dict)
+        self.assertIn("yak_found", status)
+        self.assertIn("installed", status)
+        self.assertIn("is_latest", status)
+
 
 if __name__ == "__main__":
     unittest.main()
+

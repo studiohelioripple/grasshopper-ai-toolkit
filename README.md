@@ -134,8 +134,14 @@ gh-toolkit to-json input.gh graph.json
 gh-toolkit extract-scripts ./definitions --out ./extracted_scripts
 ```
 
-### 4. Heteroptera Plugin CLI
+### 4. Heteroptera Plugin CLI & Auto-Installer
 ```bash
+# Check if Heteroptera is installed in Rhino and if updates are available on Yak
+gh-toolkit heteroptera --status
+
+# Automatically install or update to the latest Heteroptera package via McNeel Yak
+gh-toolkit heteroptera --install
+
 # Query any component schema and port specifications
 gh-toolkit heteroptera --info "Space Syntax"
 
