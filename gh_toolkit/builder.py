@@ -499,6 +499,91 @@ class GHBuilder:
         self.connect("ss.Node SpaceSyntax", "norm.Numbers")
         return ids
 
+    def add_spatial_ml_metadata_pipeline(
+        self,
+        start_pivot: Tuple[float, float] = (100, 100),
+        cluster_count: int = 4,
+        source_node: int = 0,
+        depth: int = 6,
+    ) -> Dict[str, str]:
+        """Synthesize a complete Tri-Plugin pipeline fusing:
+        1. Heteroptera: Spatial adjacency network + Space Syntax integration + Normalizer
+        2. Magpie: Clustering Machine (unsupervised spatial classification)
+        3. LegoPod: User-Dictionary packaging with cluster tags + Custom Attribute definition
+        """
+        x, y = start_pivot
+        ids = {}
+
+        # --- Phase 1: Heteroptera Topological Analysis ---
+        ids["center"] = self.add_heteroptera_component("Center", "center", (x + 220, y))
+        ids["adj"] = self.add_heteroptera_component("Topology Of Adjacencies", "adj", (x + 220, y + 140))
+        ids["recon"] = self.add_heteroptera_component("Reconstruct Topology", "recon", (x + 460, y + 70))
+        ids["s_src"] = self.add_slider("s_src", "SourceNode", 0, 20, source_node, (x + 460, y + 210))
+        ids["s_depth"] = self.add_slider("s_depth", "Depth", 1, 15, depth, (x + 460, y + 270))
+        ids["ss"] = self.add_heteroptera_component("Space Syntax", "ss", (x + 700, y + 100))
+        ids["norm"] = self.add_heteroptera_component("Normalizer", "norm", (x + 940, y + 100))
+
+        # --- Phase 2: Magpie Unsupervised Machine Learning ---
+        ids["s_clusters"] = self.add_slider("s_clusters", "ClusterCount", 2, 10, cluster_count, (x + 940, y + 210))
+        ids["cluster"] = self.add_magpie_component("Clustering Machine", "cluster", (x + 1180, y + 100))
+        ids["pca"] = self.add_magpie_component("PCA Machine", "pca", (x + 1180, y + 240))
+
+        # --- Phase 3: LegoPod BIM Metadata & Object Packaging ---
+        ids["dict"] = self.add_legopod_component("User Dictionary", "dict", (x + 1420, y + 100))
+        ids["att"] = self.add_legopod_component("Build Attribute", "att", (x + 1660, y + 100))
+
+        # --- Wire Topology ---
+        # Heteroptera wiring
+        self.connect("adj.Cell→Cell", "recon.Node→Node")
+        self.connect("center.Center", "recon.Points (Optional)")
+        self.connect("recon.Node→Node", "ss.Node→Node")
+        self.connect("s_src.out", "ss.Source")
+        self.connect("s_depth.out", "ss.Depth")
+        self.connect("ss.Node SpaceSyntax", "norm.Numbers")
+
+        # Heteroptera -> Magpie wiring
+        self.connect("norm.Numbers", "cluster.Inputs")
+        self.connect("s_clusters.out", "cluster.Clusters")
+        self.connect("norm.Numbers", "pca.Data")
+
+        # Magpie -> LegoPod wiring
+        self.connect("cluster.ClusterNumber", "dict.Values")
+        self.connect("dict.Dictionary", "att.Dictionary")
+
+        return ids
+
+    def add_generative_field_block_pipeline(
+        self,
+        start_pivot: Tuple[float, float] = (100, 100),
+    ) -> Dict[str, str]:
+        """Synthesize a Generative Morphogenesis Tri-Plugin pipeline:
+        1. Heteroptera: Field Booster + Curvature Field dynamics
+        2. Magpie: PCA Machine dimensionality reduction on field deformation
+        3. LegoPod: Define Block + Custom Attribute instantiation
+        """
+        x, y = start_pivot
+        ids = {}
+
+        # Heteroptera Vector Fields
+        ids["curv_field"] = self.add_heteroptera_component("Curvature Field", "curv_field", (x + 220, y))
+        ids["booster"] = self.add_heteroptera_component("Field Booster", "booster", (x + 460, y))
+        ids["s_boost"] = self.add_slider("s_boost", "BoostFactor", 0.1, 5.0, 1.5, (x + 220, y + 140))
+
+        # Magpie Analysis
+        ids["pca"] = self.add_magpie_component("PCA Machine", "pca", (x + 700, y))
+        ids["corr"] = self.add_magpie_component("Correlation Matrix", "corr", (x + 700, y + 140))
+
+        # LegoPod Modular Block Packaging
+        ids["att"] = self.add_legopod_component("Build Attribute", "att", (x + 940, y))
+        ids["def_block"] = self.add_legopod_component("Define Block", "def_block", (x + 1180, y))
+
+        # Wiring
+        self.connect("curv_field.Field", "booster.Field")
+        self.connect("s_boost.out", "booster.Boost")
+        self.connect("att.Attribute", "def_block.Attributes (Optional)")
+
+        return ids
+
     def connect(self, src_port: str, dest_port: str):
         """Topologically connect an output port to an input port."""
         src_guid = self.param_lut.get(src_port)

@@ -53,6 +53,21 @@ When explaining definitions, authoring workflows, or communicating graphs to the
 3. **Tree States are Load-Bearing**: Branch arithmetic must be explicitly annotated whenever data structure changes (e.g. `graft -> {N x 1}`, `cross-reference -> N*M`, `Divide Curve open -> N+1`).
 4. **Provenance Tags**: Preserve source tags when quoting (`[STATED, AAD p.X]`, `[VERIFIED]`, `[INFERRED]`).
 
+### Tri-Plugin Priority & Synthesis Invariants
+When solving computational design tasks, always prioritize the specialized tri-plugin ecosystem:
+1. **Heteroptera (Algorithmic Priority)**:
+   - Always prioritize Heteroptera for topological networks, Space Syntax, adjacency graphs, vector fields (`Field Booster`, `Curvature Field`), cycle detection, and stream multiplexing over clumsy native workarounds.
+   - Pipe spatial graphs through `Topology Of Adjacencies` -> `Reconstruct Topology` -> `Space Syntax` -> `Normalizer`.
+2. **LegoPod (Object, Meta-Data & Block Specialist)**:
+   - Always use LegoPod for attaching typed Rhino user-dictionaries (`UserDic_Build`), custom geometry attributes (`Build Attribute`), block definitions/instances (`Define Block`, `Insert Block by Transform`), and TSV schedule exports (`Table TSV-Data`).
+   - Never output anonymous un-attributed geometry when downstream BIM or assembly is intended.
+3. **Magpie (Machine Learning Specialist)**:
+   - Always use Magpie for unsupervised clustering (`Clustering Machine`), dimensionality reduction (`PCA Machine`), manifold learning (`T-SNE`), Kohonen Self-Organizing Maps (`KohMap Machine`), and covariance analysis (`Correlation Matrix`).
+4. **Native Grasshopper**:
+   - Reserve native GH for basic geometry primitives, math sliders, panels, and standard data tree structuring.
+
+Consult `references/TRI_PLUGIN_ARCHITECTURE.md` for complete cross-plugin workflows and recipes.
+
 ---
 
 ## 3. The 4 Cognitive Agent Workflows
