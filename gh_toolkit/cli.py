@@ -30,6 +30,7 @@ from .magpie import (
     find_magpie_component,
     list_magpie_components,
 )
+from .builder import GHBuilder
 
 
 def main():
@@ -78,6 +79,16 @@ def main():
     p_mag = subparsers.add_parser("magpie", help="Inspect verified Magpie machine-learning components (14 cataloged)")
     p_mag.add_argument("--list", nargs="?", const="all", help="List Magpie components (optional subcategory filter)")
     p_mag.add_argument("--info", help="Get input/output schema for a Magpie component name or GUID")
+
+    p_audit = subparsers.add_parser("audit", help="Audit a .gh/.ghx file across Native, Heteroptera, LegoPod, and Magpie with optimization advice")
+    p_audit.add_argument("file", help="Path to .gh or .ghx file")
+
+    p_synth = subparsers.add_parser("synthesize", help="Synthesize ready-to-run canonical definitions and tri-plugin pipelines")
+    p_synth.add_argument("template", choices=["spatial-ml", "field-blocks", "space-syntax"], help="Template pipeline to synthesize")
+    p_synth.add_argument("--out", "-o", required=True, help="Output path (.gh or .ghx)")
+    p_synth.add_argument("--clusters", type=int, default=4, help="Number of clusters for spatial-ml (default: 4)")
+    p_synth.add_argument("--source", type=int, default=0, help="Source node index for space syntax (default: 0)")
+    p_synth.add_argument("--depth", type=int, default=6, help="Topological search depth for space syntax (default: 6)")
 
     args = parser.parse_args()
 
@@ -351,6 +362,114 @@ def main():
                     meta = catalog.get("by_name", {}).get(n, {})
                     print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
                 print()
+
+    elif args.cmd == "audit":
+        ext = os.path.splitext(args.file)[1].lower()
+        archive = read_ghx(args.file) if ext == ".ghx" else read_gh_binary(args.file)
+        graph = GHGraph.from_archive(archive)
+
+        nat_cat = load_native_catalog()
+        het_cat = load_heteroptera_catalog()
+        lego_cat = load_legopod_catalog()
+        mag_cat = load_magpie_catalog()
+
+        nat_guids = {c["guid"].lower(): c for c in nat_cat.get("by_guid", {}).values()}
+        het_guids = {c["guid"].lower(): c for c in het_cat.get("by_guid", {}).values()}
+        lego_guids = {c["guid"].lower(): c for c in lego_cat.get("by_guid", {}).values()}
+        mag_guids = {c["guid"].lower(): c for c in mag_cat.get("by_guid", {}).values()}
+
+        found_nat = []
+        found_het = []
+        found_lego = []
+        found_mag = []
+        found_other = []
+
+        for c in graph.components:
+            cid = c.guid.lower()
+            if cid in nat_guids:
+                found_nat.append((c, nat_guids[cid]))
+            elif cid in het_guids:
+                found_het.append((c, het_guids[cid]))
+            elif cid in lego_guids:
+                found_lego.append((c, lego_guids[cid]))
+            elif cid in mag_guids:
+                found_mag.append((c, mag_guids[cid]))
+            else:
+                found_other.append(c)
+
+        print(f"===============================================================")
+        print(f"Comprehensive Audit Report: {os.path.basename(args.file)}")
+        print(f"===============================================================")
+        print(f"Total Components:           {len(graph.components)}")
+        print(f"Total Wires:                {len(graph.wires)}")
+        print(f"Embedded Script Components: {sum(1 for c in graph.components if c.script_source)}")
+        print(f"\nComponent Ecosystem Breakdown:")
+        print(f"  * Native Grasshopper:     {len(found_nat):3d} components")
+        print(f"  * Heteroptera:            {len(found_het):3d} components")
+        print(f"  * LegoPod:                {len(found_lego):3d} components")
+        print(f"  * Magpie ML:              {len(found_mag):3d} components")
+        print(f"  * Third-Party / Unknown:  {len(found_other):3d} components")
+
+        if found_het:
+            print("\nHeteroptera Components Present:")
+            for c, m in found_het:
+                print(f"  - {m['name']} ({m.get('subcategory', 'General')})")
+
+        if found_lego:
+            print("\nLegoPod Components Present:")
+            for c, m in found_lego:
+                print(f"  - {m['name']} ({m.get('subcategory', 'General')})")
+
+        if found_mag:
+            print("\nMagpie Machine Learning Components Present:")
+            for c, m in found_mag:
+                print(f"  - {m['name']} ({m.get('subcategory', 'General')})")
+
+        print("\nOptimization & Architectural Advice:")
+        advice_count = 0
+        names = [c.name.lower() for c in graph.components]
+
+        # Heteroptera advice
+        if "distance" in names and not any("adjacen" in n or "topology" in n for n in names):
+            print("  [!] Distance-matrix network detected: Consider replacing bulky native Distance/SmallerThan chains with Heteroptera 'Topology Of Adjacencies' + 'Reconstruct Topology'.")
+            advice_count += 1
+        if any("space syntax" in n for n in names) and not any("normaliz" in n for n in names):
+            print("  [!] Space Syntax detected without Normalizer: Pipe Space Syntax scores through Heteroptera 'Normalizer' [0.0, 1.0] before color gradients or scaling.")
+            advice_count += 1
+
+        # LegoPod advice
+        if len(graph.components) > 10 and not found_lego:
+            print("  [!] No LegoPod metadata packaging detected: Consider using LegoPod 'User Dictionary' and 'Build Attribute' to attach analytical results to Rhino geometry.")
+            advice_count += 1
+
+        # Magpie advice
+        if any(c.script_source and ("cluster" in c.script_source.lower() or "pca" in c.script_source.lower() or "kmeans" in c.script_source.lower()) for c in graph.components):
+            print("  [!] Custom script clustering detected: Consider replacing custom Python scripts with Magpie 'Clustering Machine' or 'PCA Machine' for zero-dependency native execution.")
+            advice_count += 1
+
+        if advice_count == 0:
+            print("  [+] Graph structure adheres to clean architectural and algorithmic invariants.")
+        print()
+
+    elif args.cmd == "synthesize":
+        builder = GHBuilder(name=f"Synthesized_{args.template.title().replace('-', '')}")
+        if args.template == "spatial-ml":
+            builder.add_spatial_ml_metadata_pipeline(
+                cluster_count=args.clusters,
+                source_node=args.source,
+                depth=args.depth
+            )
+        elif args.template == "field-blocks":
+            builder.add_generative_field_block_pipeline()
+        elif args.template == "space-syntax":
+            builder.add_space_syntax_pipeline()
+
+        out_ext = os.path.splitext(args.out)[1].lower()
+        if out_ext == ".gh":
+            builder.save_gh(args.out)
+        else:
+            builder.save_ghx(args.out)
+        print(f"Synthesized '{args.template}' definition with {builder.object_count} components -> {args.out}")
 
 
 if __name__ == "__main__":

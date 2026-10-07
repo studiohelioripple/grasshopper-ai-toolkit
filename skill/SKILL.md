@@ -29,6 +29,9 @@ A unified, high-performance suite combining:
 | **Check / Install Heteroptera Plugin** | `python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --install` | Section 4 |
 | **Debug Data-Tree Mismatches** | Apply diagnostic decision tree & matching proofs | `references/DATA_TREES.md` |
 | **Lookup Parametric Recipes** | Grep canonical pattern collection (96 recipes) | `references/NATIVE_PATTERNS.md` |
+| **Lookup Tri-Plugin Patterns** | Grep tri-plugin production cookbook (6 patterns) | `references/TRI_PLUGIN_PATTERNS.md` |
+| **Audit & Optimize Definition** | `python3 <skill_dir>/scripts/gh_toolkit.py audit <file>` | Section 4 |
+| **Synthesize Tri-Plugin Pipeline** | `python3 <skill_dir>/scripts/gh_toolkit.py synthesize <tpl> -o <out>` | Section 4 & 5 |
 | **Check Version Errata / Replacements** | Check modern replacements (Kangaroo 2, Anemone) | `references/ERRATA_MODERNIZATION.md` |
 | **Batch extract GhPython / C# scripts**| `python3 <skill_dir>/scripts/gh_toolkit.py extract-scripts <dir>` | `references/SCRIPT_LIBRARY.md` |
 | **Synthesize New Definition (.gh/.ghx)**| Programmatic Python `GHBuilder` API | Section 5 |
@@ -181,6 +184,8 @@ builder.save_ghx("CircleGrid.ghx")
 
 ## 6. Comprehensive Knowledge Base Directory
 
+* **[Tri-Plugin Computational Architecture](references/TRI_PLUGIN_ARCHITECTURE.md)**: Heteroptera (topology) + Magpie (ML) + LegoPod (BIM assets & metadata).
+* **[Tri-Plugin Production Patterns](references/TRI_PLUGIN_PATTERNS.md)**: 6 verified cookbooks fusing topology, machine learning, and block metadata.
 * **[Data Tree Theory & Decision Logic](references/DATA_TREES.md)**: Complete branch-matching mathematics, Split Tree grammar, and Path Mapper expressions.
 * **[211 Native Component Schemas](references/NATIVE_COMPONENTS.md)**: Exhaustive port specifications, behaviors, and GUIDs.
 * **[152 Heteroptera Component Schemas](references/HETEROPTERA_COMPONENTS.md)**: Vectors, Networks, Space Syntax, Uncertainty, Streaming.
