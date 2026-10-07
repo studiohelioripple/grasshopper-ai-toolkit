@@ -155,6 +155,15 @@ gh-toolkit heteroptera --audit topology-spacesyntax.gh
 gh-toolkit heteroptera --recipes
 ```
 
+### 5. Native Grasshopper Component CLI (211 Components Cataloged)
+```bash
+# Query exact input/output pins, types, and behavior of native components
+gh-toolkit native --info "Divide Curve"
+
+# List native components by ribbon category (e.g. Curve, Surface, Vector, Sets, Maths)
+gh-toolkit native --list Curve
+```
+
 ---
 
 ## 🐍 Python API Examples

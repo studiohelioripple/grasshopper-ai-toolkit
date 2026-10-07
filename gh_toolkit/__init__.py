@@ -25,8 +25,13 @@ from .heteroptera import (
     get_heteroptera_status,
     install_heteroptera,
 )
+from .native import (
+    load_native_catalog,
+    find_native_component,
+    list_native_components,
+)
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 __all__ = [
     "GHArchive",
     "GHChunk",
@@ -45,6 +50,9 @@ __all__ = [
     "find_yak",
     "get_heteroptera_status",
     "install_heteroptera",
+    "load_native_catalog",
+    "find_native_component",
+    "list_native_components",
     "TYPE_MAP",
     "NAME_TO_TYPE",
 ]

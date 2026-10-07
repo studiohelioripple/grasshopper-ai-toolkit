@@ -7,6 +7,7 @@ from typing import Tuple, Optional, Dict, Any, List
 
 from .core import GHArchive, write_gh_binary, write_ghx
 from .heteroptera import find_heteroptera_component
+from .native import find_native_component
 
 
 class GHBuilder:
@@ -243,6 +244,90 @@ class GHBuilder:
                 self.param_lut[f"{alias}"] = p_guid
 
         return inst_guid
+
+    def add_native_component(
+        self,
+        name_or_guid: str,
+        alias: str,
+        pivot: Tuple[float, float],
+        nickname: Optional[str] = None,
+    ) -> str:
+        """Instantiate any of the 211 verified native Grasshopper components by name or GUID."""
+        comp_info = find_native_component(name_or_guid)
+        if not comp_info:
+            raise KeyError(f"Native component '{name_or_guid}' not found in catalog.")
+
+        comp_guid = comp_info["guid"]
+        comp_name = comp_info["name"]
+        nick = nickname or comp_info.get("nickname") or comp_name
+        inst_guid = str(uuid.uuid4())
+
+        obj = self.objects_chunk.create_chunk("Object", self.object_count)
+        self.object_count += 1
+        obj.add_item("GUID", 9, comp_guid)
+        obj.add_item("Lib", 9, "d45600cd-4e6d-4548-a006-880026e13470")
+        obj.add_item("Name", 10, comp_name)
+
+        cont = obj.create_chunk("Container")
+        cont.add_item("Description", 10, comp_info.get("behavior", ""))
+        cont.add_item("InstanceGuid", 9, inst_guid)
+        cont.add_item("Name", 10, comp_name)
+        cont.add_item("NickName", 10, nick)
+
+        inputs = comp_info.get("inputs", [])
+        outputs = comp_info.get("outputs", [])
+        h = max(40.0, max(len(inputs), len(outputs)) * 24.0 + 20.0)
+        w = 90.0
+
+        attr = cont.create_chunk("Attributes")
+        attr.add_item("Bounds", 35, [pivot[0], pivot[1], w, h])
+        attr.add_item("Pivot", 31, [pivot[0] + w / 2.0, pivot[1] + h / 2.0])
+
+        for idx, inp in enumerate(inputs):
+            p_in = cont.create_chunk("param_input", idx)
+            p_guid = str(uuid.uuid4())
+            p_in.add_item("InstanceGuid", 9, p_guid)
+            p_in.add_item("Name", 10, inp["name"])
+            p_in.add_item("NickName", 10, inp.get("nickname", inp["name"]))
+            p_in.add_item("Optional", 1, True)
+            self.param_lut[f"{alias}.{inp['name']}"] = p_guid
+            for al in inp.get("aliases", []):
+                self.param_lut[f"{alias}.{al}"] = p_guid
+            if inp.get("nickname"):
+                self.param_lut[f"{alias}.{inp['nickname']}"] = p_guid
+
+        for idx, outp in enumerate(outputs):
+            p_out = cont.create_chunk("param_output", idx)
+            p_guid = str(uuid.uuid4())
+            p_out.add_item("InstanceGuid", 9, p_guid)
+            p_out.add_item("Name", 10, outp["name"])
+            p_out.add_item("NickName", 10, outp.get("nickname", outp["name"]))
+            self.param_lut[f"{alias}.{outp['name']}"] = p_guid
+            for al in outp.get("aliases", []):
+                self.param_lut[f"{alias}.{al}"] = p_guid
+            if outp.get("nickname"):
+                self.param_lut[f"{alias}.{outp['nickname']}"] = p_guid
+            if idx == 0:
+                self.param_lut[f"{alias}.out"] = p_guid
+                self.param_lut[f"{alias}"] = p_guid
+
+        return inst_guid
+
+    def add_component(
+        self,
+        name_or_guid: str,
+        alias: str,
+        pivot: Tuple[float, float],
+        nickname: Optional[str] = None,
+    ) -> str:
+        """Instantiate any component (checking Heteroptera first, then Native catalog)."""
+        comp_het = find_heteroptera_component(name_or_guid)
+        if comp_het:
+            return self.add_heteroptera_component(name_or_guid, alias, pivot, nickname)
+        comp_nat = find_native_component(name_or_guid)
+        if comp_nat:
+            return self.add_native_component(name_or_guid, alias, pivot, nickname)
+        raise KeyError(f"Component '{name_or_guid}' not found in Heteroptera or Native catalogs.")
 
     def add_space_syntax_pipeline(self, start_pivot: Tuple[float, float] = (100, 100)) -> Dict[str, str]:
         """Synthesize the canonical Heteroptera Space Syntax analysis pipeline."""

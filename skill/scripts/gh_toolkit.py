@@ -857,6 +857,8 @@ def load_heteroptera_catalog() -> Dict[str, Any]:
     candidates = [
         os.path.join(os.path.dirname(__file__), "..", "resources", "heteroptera_catalog.json"),
         os.path.join(os.path.dirname(__file__), "heteroptera_catalog.json"),
+        os.path.join(os.path.dirname(__file__), "..", "..", "gh_toolkit", "data", "heteroptera_catalog.json"),
+        os.path.join(os.getcwd(), "gh_toolkit", "data", "heteroptera_catalog.json"),
         os.path.join(os.getcwd(), "tools", "heteroptera_catalog.json"),
         os.path.join(os.getcwd(), "heteroptera_catalog.json"),
     ]
@@ -868,6 +870,145 @@ def load_heteroptera_catalog() -> Dict[str, Any]:
             except Exception:
                 pass
     return {"by_guid": {}, "by_name": {}, "subcategories": {}}
+
+
+def load_native_catalog() -> Dict[str, Any]:
+    """Load the verified native Grasshopper component catalog (211 components)."""
+    candidates = [
+        os.path.join(os.path.dirname(__file__), "..", "resources", "native_catalog.json"),
+        os.path.join(os.path.dirname(__file__), "native_catalog.json"),
+        os.path.join(os.path.dirname(__file__), "..", "..", "gh_toolkit", "data", "native_catalog.json"),
+        os.path.join(os.getcwd(), "gh_toolkit", "data", "native_catalog.json"),
+        os.path.join(os.getcwd(), "skill", "resources", "native_catalog.json"),
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+    return {"by_guid": {}, "by_name": {}, "categories": {}}
+
+
+def find_native_component(name_or_guid: str) -> Optional[Dict[str, Any]]:
+    """Look up a native Grasshopper component by GUID, Name, or Nickname."""
+    catalog = load_native_catalog()
+    query = name_or_guid.lower().strip()
+    if query in catalog.get("by_guid", {}):
+        return catalog["by_guid"][query]
+    if name_or_guid in catalog.get("by_name", {}):
+        return catalog["by_name"][name_or_guid]
+    for k, v in catalog.get("by_name", {}).items():
+        if k.lower() == query:
+            return v
+        if v.get("nickname") and v["nickname"].lower() == query:
+            return v
+    return None
+
+
+def list_native_components(category: Optional[str] = None) -> List[Dict[str, Any]]:
+    """List native components, optionally filtered by category."""
+    catalog = load_native_catalog()
+    cats = catalog.get("categories", {})
+    results = []
+    for cat, names in cats.items():
+        if category and category.lower() not in (cat.lower(), "all"):
+            continue
+        for n in names:
+            comp = catalog.get("by_name", {}).get(n)
+            if comp:
+                results.append(comp)
+    return results
+
+
+def find_yak() -> Optional[str]:
+    """Locate McNeel Yak package manager executable."""
+    import shutil
+    candidates = [
+        shutil.which("yak"),
+        "/Applications/Rhino 8.app/Contents/Resources/bin/yak",
+        "/Applications/Rhino 7.app/Contents/Resources/bin/yak",
+        os.path.expanduser("~/Library/Application Support/McNeel/Rhinoceros/8.0/yak"),
+        r"C:\Program Files\Rhino 8\System\yak.exe",
+        r"C:\Program Files\Rhino 7\System\yak.exe",
+    ]
+    for c in candidates:
+        if c and os.path.exists(c):
+            return c
+    return None
+
+
+def get_heteroptera_status() -> Dict[str, Any]:
+    """Check Heteroptera installation status in Rhino."""
+    import subprocess
+    import re
+    yak_bin = find_yak()
+    status = {
+        "yak_found": yak_bin is not None,
+        "yak_path": yak_bin,
+        "installed": False,
+        "installed_version": None,
+        "latest_version": None,
+        "is_latest": False,
+        "packages_dir": None,
+    }
+    mac_pkg = os.path.expanduser("~/Library/Application Support/McNeel/Rhinoceros/packages/8.0/Heteroptera")
+    if os.path.exists(mac_pkg):
+        status["packages_dir"] = mac_pkg
+        try:
+            vers = [d for d in os.listdir(mac_pkg) if os.path.isdir(os.path.join(mac_pkg, d)) and not d.startswith(".")]
+            if vers:
+                def v_key(v): return [int(x) if x.isdigit() else 0 for x in re.findall(r"\d+", v)]
+                vers.sort(key=v_key, reverse=True)
+                status["installed"] = True
+                status["installed_version"] = vers[0]
+        except Exception:
+            pass
+    if not yak_bin:
+        return status
+    try:
+        res = subprocess.run([yak_bin, "list"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=10)
+        if res.returncode == 0:
+            m = re.search(r"Heteroptera\s+\(([\d\.]+)\)", res.stdout, re.IGNORECASE)
+            if m:
+                status["installed"] = True
+                status["installed_version"] = m.group(1)
+    except Exception:
+        pass
+    try:
+        res = subprocess.run([yak_bin, "search", "heteroptera"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=15)
+        if res.returncode == 0:
+            m = re.search(r"Heteroptera\s+\(([\d\.]+)\)", res.stdout, re.IGNORECASE)
+            if m:
+                status["latest_version"] = m.group(1)
+    except Exception:
+        pass
+    if status["installed_version"] and status["latest_version"]:
+        status["is_latest"] = (status["installed_version"] == status["latest_version"])
+    elif status["installed"] and not status["latest_version"]:
+        status["is_latest"] = True
+    return status
+
+
+def install_heteroptera(force: bool = False) -> Tuple[bool, str]:
+    """Install or upgrade Heteroptera via Yak."""
+    import subprocess
+    yak_bin = find_yak()
+    if not yak_bin:
+        return False, "Yak package manager not found."
+    status = get_heteroptera_status()
+    if status["installed"] and status["is_latest"] and not force:
+        return True, f"Heteroptera is already up to date ({status['installed_version']})."
+    try:
+        res = subprocess.run([yak_bin, "install", "Heteroptera"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
+        if res.returncode == 0:
+            new_stat = get_heteroptera_status()
+            return True, f"Successfully installed Heteroptera ({new_stat.get('installed_version', 'latest')})."
+        return False, f"Yak install failed: {res.stderr.strip() or res.stdout.strip()}"
+    except Exception as e:
+        return False, f"Error: {e}"
+
 
 
 class GHBuilder:
@@ -1135,6 +1276,90 @@ class GHBuilder:
 
         return inst_guid
 
+    def add_native_component(
+        self,
+        name_or_guid: str,
+        alias: str,
+        pivot: Tuple[float, float],
+        nickname: Optional[str] = None,
+    ) -> str:
+        """Instantiate any native Grasshopper component by name or GUID."""
+        comp_info = find_native_component(name_or_guid)
+        if not comp_info:
+            raise KeyError(f"Native component '{name_or_guid}' not found in catalog.")
+
+        comp_guid = comp_info["guid"]
+        comp_name = comp_info["name"]
+        nick = nickname or comp_info.get("nickname") or comp_name
+        inst_guid = str(uuid.uuid4())
+
+        obj = self.objects_chunk.create_chunk("Object", self.object_count)
+        self.object_count += 1
+        obj.add_item("GUID", 9, comp_guid)
+        obj.add_item("Lib", 9, "d45600cd-4e6d-4548-a006-880026e13470")
+        obj.add_item("Name", 10, comp_name)
+
+        cont = obj.create_chunk("Container")
+        cont.add_item("Description", 10, comp_info.get("behavior", ""))
+        cont.add_item("InstanceGuid", 9, inst_guid)
+        cont.add_item("Name", 10, comp_name)
+        cont.add_item("NickName", 10, nick)
+
+        inputs = comp_info.get("inputs", [])
+        outputs = comp_info.get("outputs", [])
+        h = max(40.0, max(len(inputs), len(outputs)) * 24.0 + 20.0)
+        w = 90.0
+
+        attr = cont.create_chunk("Attributes")
+        attr.add_item("Bounds", 35, [pivot[0], pivot[1], w, h])
+        attr.add_item("Pivot", 31, [pivot[0] + w / 2.0, pivot[1] + h / 2.0])
+
+        for idx, inp in enumerate(inputs):
+            p_in = cont.create_chunk("param_input", idx)
+            p_guid = str(uuid.uuid4())
+            p_in.add_item("InstanceGuid", 9, p_guid)
+            p_in.add_item("Name", 10, inp["name"])
+            p_in.add_item("NickName", 10, inp.get("nickname", inp["name"]))
+            p_in.add_item("Optional", 1, True)
+            self.param_lut[f"{alias}.{inp['name']}"] = p_guid
+            for al in inp.get("aliases", []):
+                self.param_lut[f"{alias}.{al}"] = p_guid
+            if inp.get("nickname"):
+                self.param_lut[f"{alias}.{inp['nickname']}"] = p_guid
+
+        for idx, outp in enumerate(outputs):
+            p_out = cont.create_chunk("param_output", idx)
+            p_guid = str(uuid.uuid4())
+            p_out.add_item("InstanceGuid", 9, p_guid)
+            p_out.add_item("Name", 10, outp["name"])
+            p_out.add_item("NickName", 10, outp.get("nickname", outp["name"]))
+            self.param_lut[f"{alias}.{outp['name']}"] = p_guid
+            for al in outp.get("aliases", []):
+                self.param_lut[f"{alias}.{al}"] = p_guid
+            if outp.get("nickname"):
+                self.param_lut[f"{alias}.{outp['nickname']}"] = p_guid
+            if idx == 0:
+                self.param_lut[f"{alias}.out"] = p_guid
+                self.param_lut[f"{alias}"] = p_guid
+
+        return inst_guid
+
+    def add_component(
+        self,
+        name_or_guid: str,
+        alias: str,
+        pivot: Tuple[float, float],
+        nickname: Optional[str] = None,
+    ) -> str:
+        """Instantiate any component (checking Heteroptera first, then Native catalog)."""
+        comp_het = find_heteroptera_component(name_or_guid)
+        if comp_het:
+            return self.add_heteroptera_component(name_or_guid, alias, pivot, nickname)
+        comp_nat = find_native_component(name_or_guid)
+        if comp_nat:
+            return self.add_native_component(name_or_guid, alias, pivot, nickname)
+        raise KeyError(f"Component '{name_or_guid}' not found in Heteroptera or Native catalogs.")
+
     def add_space_syntax_pipeline(self, start_pivot: Tuple[float, float] = (100, 100)) -> Dict[str, str]:
         """Synthesizes the standard Heteroptera Space Syntax analysis pipeline."""
         x, y = start_pivot
@@ -1195,6 +1420,13 @@ def main():
     p_het.add_argument("--info", help="Get detailed input/output schema for a component name or GUID")
     p_het.add_argument("--audit", help="Audit a .gh/.ghx file for Heteroptera components and pipelines")
     p_het.add_argument("--recipes", action="store_true", help="Display canonical Heteroptera wiring recipes")
+    p_het.add_argument("--status", action="store_true", help="Check Heteroptera installation status & latest version")
+    p_het.add_argument("--install", action="store_true", help="Install or upgrade Heteroptera to latest release via Yak")
+    p_het.add_argument("--force", action="store_true", help="Force reinstall even if up to date")
+
+    p_nat = subparsers.add_parser("native", help="Inspect verified native Grasshopper components (211 cataloged)")
+    p_nat.add_argument("--list", nargs="?", const="all", help="List native components (optional category filter, e.g. Curve, Surface, Vector, Sets)")
+    p_nat.add_argument("--info", help="Get input/output schema for a component name or GUID")
 
     args = parser.parse_args()
 
@@ -1269,6 +1501,25 @@ def main():
 
 
     elif args.cmd == "heteroptera":
+        if args.status:
+            stat = get_heteroptera_status()
+            print("=== Heteroptera Plugin Installation Status ===")
+            print(f"Yak Package Manager: {'Found (' + str(stat['yak_path']) + ')' if stat['yak_found'] else 'Not Found'}")
+            print(f"Installed in Rhino:  {'Yes (version ' + str(stat['installed_version']) + ')' if stat['installed'] else 'No'}")
+            print(f"Latest on Yak:       {stat['latest_version'] or 'Unknown / Network error'}")
+            print(f"Status:              {'Up to date' if stat['is_latest'] else ('Update Available' if stat['installed'] else 'Missing')}")
+            if stat.get("packages_dir"):
+                print(f"Package Directory:   {stat['packages_dir']}")
+            return
+
+        if args.install:
+            print("Checking and installing Heteroptera via McNeel Yak...")
+            ok, msg = install_heteroptera(force=args.force)
+            print(msg)
+            if not ok:
+                sys.exit(1)
+            return
+
         catalog = load_heteroptera_catalog()
         if not catalog.get("by_name"):
             print("Error: Heteroptera catalog not found. Please ensure heteroptera_catalog.json exists.")
@@ -1344,6 +1595,44 @@ def main():
                 if filt != "all" and filt != sub.lower():
                     continue
                 print(f"=== {sub} ({len(names)} components) ===")
+                for n in sorted(names):
+                    meta = catalog.get("by_name", {}).get(n, {})
+                    print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
+                print()
+
+    elif args.cmd == "native":
+        catalog = load_native_catalog()
+        if not catalog.get("by_name"):
+            print("Error: Native catalog not found. Please ensure native_catalog.json exists.")
+            sys.exit(1)
+
+        if args.info:
+            comp = find_native_component(args.info)
+            if not comp:
+                print(f"Component '{args.info}' not found in native catalog.")
+                sys.exit(1)
+            print(f"Component:    {comp['name']} [{comp.get('nickname', '')}]")
+            print(f"GUID:         {comp['guid']}")
+            print(f"Tab:          {comp.get('tab', 'Core')}")
+            print(f"Category:     {comp.get('category', 'General')}")
+            print(f"Behavior:     {comp.get('behavior', '')}")
+            if comp.get("provenance"):
+                print(f"Provenance:   {comp['provenance']}")
+            print("\nInputs:")
+            for inp in comp.get("inputs", []):
+                print(f"  - {inp['name']}")
+            print("\nOutputs:")
+            for outp in comp.get("outputs", []):
+                print(f"  - {outp['name']}")
+
+        elif args.list:
+            cats = catalog.get("categories", {})
+            filt = args.list.lower() if args.list else "all"
+            print(f"Native Grasshopper Catalog ({len(catalog.get('by_name', {}))} components):\n")
+            for cat, names in sorted(cats.items()):
+                if filt != "all" and filt != cat.lower():
+                    continue
+                print(f"=== {cat} ({len(names)} components) ===")
                 for n in sorted(names):
                     meta = catalog.get("by_name", {}).get(n, {})
                     print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")

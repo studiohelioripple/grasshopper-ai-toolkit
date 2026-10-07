@@ -36,6 +36,27 @@ class TestGHBuilder(unittest.TestCase):
             if os.path.exists(out_path):
                 os.remove(out_path)
 
+    def test_native_component_synthesis(self):
+        builder = GHBuilder(name="NativeTest")
+        builder.add_slider("s_rad", "Radius", 1.0, 10.0, 5.0, (100, 100))
+        builder.add_component("Circle (plane + radius)", "c1", (300, 100))
+        builder.add_component("Divide Curve", "div", (500, 100))
+        builder.connect("s_rad.out", "c1.R")
+        builder.connect("c1.C", "div.C")
+
+        out_path = os.path.join(os.path.dirname(__file__), "test_native.gh")
+        try:
+            builder.save_gh(out_path)
+            self.assertTrue(os.path.exists(out_path))
+
+            arch = read_gh_binary(out_path)
+            graph = GHGraph.from_archive(arch)
+            self.assertEqual(len(graph.components), 3)
+            self.assertEqual(len(graph.wires), 2)
+        finally:
+            if os.path.exists(out_path):
+                os.remove(out_path)
+
 
 if __name__ == "__main__":
     unittest.main()

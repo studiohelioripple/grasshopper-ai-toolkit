@@ -15,6 +15,11 @@ from .heteroptera import (
     get_heteroptera_status,
     install_heteroptera,
 )
+from .native import (
+    load_native_catalog,
+    find_native_component,
+    list_native_components,
+)
 
 
 def main():
@@ -51,6 +56,10 @@ def main():
     p_het.add_argument("--status", action="store_true", help="Check Heteroptera installation status & latest version")
     p_het.add_argument("--install", action="store_true", help="Install or upgrade Heteroptera to latest release via Yak")
     p_het.add_argument("--force", action="store_true", help="Force reinstall even if up to date")
+
+    p_nat = subparsers.add_parser("native", help="Inspect verified native Grasshopper components (211 cataloged)")
+    p_nat.add_argument("--list", nargs="?", const="all", help="List native components (optional category filter, e.g. Curve, Surface, Vector, Sets)")
+    p_nat.add_argument("--info", help="Get input/output schema for a component name or GUID")
 
     args = parser.parse_args()
 
@@ -206,6 +215,44 @@ def main():
                 if filt != "all" and filt != sub.lower():
                     continue
                 print(f"=== {sub} ({len(names)} components) ===")
+                for n in sorted(names):
+                    meta = catalog.get("by_name", {}).get(n, {})
+                    print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")
+                print()
+
+    elif args.cmd == "native":
+        catalog = load_native_catalog()
+        if not catalog.get("by_name"):
+            print("Error: Native catalog not found. Please ensure native_catalog.json exists.")
+            sys.exit(1)
+
+        if args.info:
+            comp = find_native_component(args.info)
+            if not comp:
+                print(f"Component '{args.info}' not found in native catalog.")
+                sys.exit(1)
+            print(f"Component:    {comp['name']} [{comp.get('nickname', '')}]")
+            print(f"GUID:         {comp['guid']}")
+            print(f"Tab:          {comp.get('tab', 'Core')}")
+            print(f"Category:     {comp.get('category', 'General')}")
+            print(f"Behavior:     {comp.get('behavior', '')}")
+            if comp.get("provenance"):
+                print(f"Provenance:   {comp['provenance']}")
+            print("\nInputs:")
+            for inp in comp.get("inputs", []):
+                print(f"  - {inp['name']}")
+            print("\nOutputs:")
+            for outp in comp.get("outputs", []):
+                print(f"  - {outp['name']}")
+
+        elif args.list:
+            cats = catalog.get("categories", {})
+            filt = args.list.lower() if args.list else "all"
+            print(f"Native Grasshopper Catalog ({catalog.get('total_components', 0)} components):\n")
+            for cat, names in sorted(cats.items()):
+                if filt != "all" and filt != cat.lower():
+                    continue
+                print(f"=== {cat} ({len(names)} components) ===")
                 for n in sorted(names):
                     meta = catalog.get("by_name", {}).get(n, {})
                     print(f"  * {n} [{meta.get('nickname', '')}] - GUID: {meta.get('guid', '')}")

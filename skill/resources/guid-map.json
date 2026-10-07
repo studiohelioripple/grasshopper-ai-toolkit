@@ -1,0 +1,847 @@
+{
+  "008e9a6f-478a-4813-8c8a-546273bc3a6b": {
+    "name": "Cull Pattern",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "03b801eb-87cd-476a-a591-257fe5d5bf0f": {
+    "name": "Pick'n'Choose",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "040f195d-0b4e-4fe0-901f-fedb2fd3db15": {
+    "name": "Gate And",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "071c3940-a12d-4b77-bb23-42b5d3314a0d": {
+    "name": "Clean Tree",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "11bbd48b-bb0a-4f1b-8167-fa297590390d": {
+    "name": "End Points",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "1222394f-0d33-4f31-9101-7281bde89fe5": {
+    "name": "Region Union",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "1303da7b-e339-4e65-a051-82c4dce8224d": {
+    "name": "Simplify Tree",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "15b7afe5-d0d0-43e1-b894-34fcfe3be384": {
+    "name": "Domain",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "16ef3e75-e315-4899-b531-d3166b42dac9": {
+    "name": "Vector",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "17b7152b-d30d-4d50-b9ef-c9fe25576fc2": {
+    "name": "XY Plane",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "1817fd29-20ae-4503-b542-f0fb651e67d7": {
+    "name": "List Length",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "190d042c-2270-4bc1-81c0-4f90c170c9c9": {
+    "name": "Delete Consecutive",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "1a25aae0-0b56-497a-85b2-cc5bf7e4b96b": {
+    "name": "Rectangular",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "1a38d325-98de-455c-93f1-bca431bc1243": {
+    "name": "Offset Curve",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "2013e425-8713-42e2-a661-b57e78840337": {
+    "name": "Concatenate",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "203a91c3-287a-43b6-a9c5-ebb96240a650": {
+    "name": "Colour",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "2162e72e-72fc-4bf8-9459-d4d82fa8aa14": {
+    "name": "Divide Curve",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "2653b135-4df1-4a6b-820c-55e2ad3bc1e0": {
+    "name": "Relative Items",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "2844fec5-142d-4381-bd5d-4cbcef6d6fed": {
+    "name": "Sketch",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "28f40e48-e739-4211-91bd-f4aefa5965f8": {
+    "name": "Transform",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "2ab17f9a-d852-4405-80e1-938c5e57e78d": {
+    "name": "Random",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "2b2a4145-3dff-41d4-a8de-1ea9d29eef33": {
+    "name": "Interpolate",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "2b69bf71-4e69-43aa-b7be-4f6ce7e45bef": {
+    "name": "Quick Graph",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "2e3ab970-8545-46bb-836c-1c11e5610bce": {
+    "name": "Integer",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "2e78987b-9dfb-42a2-8b76-3923ac8bd91a": {
+    "name": "Boolean Toggle",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "2fcc2743-8339-4cdf-a046-a1f17439191d": {
+    "name": "Remap Numbers",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "30d58600-1aab-42db-80a3-f1ea6c4269a0": {
+    "name": "Larger Than",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "3581f42a-9592-4549-bd6b-1c0fc39d067b": {
+    "name": "Construct Point",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "36947590-f0cb-4807-a8f9-9c90c9b20621": {
+    "name": "Cross Reference",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "3a710c1e-1809-4e19-8c15-82adce31cd62": {
+    "name": "Tree Branch",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "3cadddef-1e2b-4c09-9390-0e8f78f7609f": {
+    "name": "Merge",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "3cd2949b-4ea8-4ffb-a70c-5c380f9f46ea": {
+    "name": "Deconstruct Plane",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "3e8ca6be-fda8-4aaf-b5c0-3c54c8bb7312": {
+    "name": "Number",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "3ede854e-c753-40eb-84cb-b48008f14fd4": {
+    "name": "Text",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "41aa4112-9c9b-42f4-847e-503b9d90e4c7": {
+    "name": "Flip Matrix",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "431bc610-8ae1-4090-b217-1a9d9c519fe2": {
+    "name": "Modulus",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "476c0cf8-bc3c-4f1c-a61a-6e91e1f8b91e": {
+    "name": "Complex",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "47886835-e3ff-4516-a3ed-1b419f055464": {
+    "name": "Circle 3Pt",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "4c4e56eb-2f04-43f9-95a3-cc46a14f495a": {
+    "name": "Line",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "4c619bc9-39fd-4717-82a6-1e07ea237bbe": {
+    "name": "Line SDL",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "4d2a06bd-4b0f-4c65-9ee0-4220e4c01703": {
+    "name": "Scale",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "4f8984c4-7c7a-4d69-b0a2-183cbb330d20": {
+    "name": "Plane",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "4fdfe351-6c07-47ce-9fb9-be027fb62186": {
+    "name": "Shift List",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "50faccbd-9c92-4175-a5fa-d65e36013db6": {
+    "name": "Weave",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "5106bafc-d5d4-4983-83e7-7be3ed07f502": {
+    "name": "Divide Surface",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "537b0419-bbc2-4ff4-bf08-afe526367b2c": {
+    "name": "Custom Preview",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "575660b1-8c79-4b8d-9222-7ab4a6ddb359": {
+    "name": "Rectangle 2Pt",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "57b2184c-8931-4e70-9220-612ec5b3809a": {
+    "name": "Patch",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "57da07bd-ecab-415d-9d86-af36d7073abc": {
+    "name": "Number Slider",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "59daf374-bc21-4a5e-8282-5504fb7ae9ae": {
+    "name": "List Item",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "59e0b89a-e487-49f8-bab8-b5bab16be14c": {
+    "name": "Panel",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "5a13ec19-e4e9-43da-bf65-f93025fa87ca": {
+    "name": "Shortest List",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "5b850221-b527-4bd6-8c62-e94168cd6efa": {
+    "name": "Mass Addition",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "5db0fb89-4f22-4f09-a777-fa5e55aed7ec": {
+    "name": "Equality",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "62d5ead4-53c4-4d0b-b5ce-6bd6e0850ab8": {
+    "name": "Symbol Display",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "6b021f56-b194-4210-b9a1-6cef3b7d0848": {
+    "name": "Evaluate Length",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "6ec39468-dae7-4ffa-a766-f2ab22a2c62e": {
+    "name": "Amplitude",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "6ec97ea8-c559-47a2-8d0f-ce80c794d1f4": {
+    "name": "Reverse List",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "6f93d366-919f-4dda-a35e-ba03dd62799b": {
+    "name": "Sort List",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "717a1e25-a075-4530-bc80-d43ecc2500d9": {
+    "name": "Square",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "71b5b089-500a-4ea6-81c5-2f960441a0e8": {
+    "name": "PolyLine",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "72a29b54-2e48-474b-a400-d2124c4edf79": {
+    "name": "Param Viewer",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "75eec078-a905-47a1-b0d2-0934182b1e3d": {
+    "name": "Plane Origin",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "7663efbb-d9b8-4c6a-a0da-c3750a7bbe77": {
+    "name": "Sine",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "79747717-1874-4c34-b790-faef53b50569": {
+    "name": "Symbol (Simple)",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "7986486c-621a-48fb-8f27-a28a22c91cc9": {
+    "name": "Average",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd": {
+    "name": "Unit X",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "7f5c6c55-f846-4a08-9c9a-cfdc285cc6fe": {
+    "name": "Scribble",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "807b86e3-be8d-4970-92b5-f8cdcb45b06b": {
+    "name": "Circle",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "81dfff08-0c83-4f1b-a358-14791d642d9e": {
+    "name": "Time",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "825ea536-aebb-41e9-af32-8baeb2ecb590": {
+    "name": "Deconstruct Domain",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "8440fd1b-b6e0-4bdb-aa93-4ec295c213e9": {
+    "name": "Longest List",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "8529dbdf-9b6f-42e9-8e1f-c7a2bde56a70": {
+    "name": "Line",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "87e1d9ef-088b-4d30-9dda-8a7448a17329": {
+    "name": "Graft Tree",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "9103c240-a6a9-4223-9b42-dbd19bf38e2b": {
+    "name": "Unit Z",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "919e146f-30ae-4aae-be34-4d72f555e7da": {
+    "name": "Brep",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "93c24899-f456-4785-84f2-314958b9347b": {
+    "name": "Transform Matrix",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "9445ca40-cc73-4861-a455-146308676855": {
+    "name": "Range",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "99bee19d-588c-41a0-b9b9-1d00fb03ea1a": {
+    "name": "Tree Statistics",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "9ab93e1a-ebdf-4090-9296-b000cff7b202": {
+    "name": "Split List",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "9abae6b7-fa1d-448c-9209-4a8155345841": {
+    "name": "Deconstruct",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "9c53bac0-ba66-40bd-8154-ce9829b9db1a": {
+    "name": "Colour Swatch",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "9c85271f-89fa-4e9f-9f4a-d75802120ccc": {
+    "name": "Division",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "9df5e896-552d-4c8c-b9ca-4fc147ffa022": {
+    "name": "Expression",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "a0a38131-c5fc-4984-b05d-34cf57f0c018": {
+    "name": "Factorial",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "a0d62394-a118-422d-abb3-6af115c75b25": {
+    "name": "Addition",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "a4cd2751-414d-42ec-8916-476ebf62d7fe": {
+    "name": "Radians",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850": {
+    "name": "Loft",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "abf9c670-5462-4cd8-acb3-f1ab0256dbf3": {
+    "name": "Rectangle",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "ac2bc2cb-70fb-4dd5-9c78-7e1ea97fe278": {
+    "name": "Geometry",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "ae840986-cade-4e5a-96b0-570f007d4fc0": {
+    "name": "Smaller Than",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "afb96615-c59a-45c9-9cac-e27acb1c7ca0": {
+    "name": "Explode",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "b6236720-8d88-4289-93c3-ac4c99f9b97b": {
+    "name": "Relay",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "b6aedcac-bf43-42d4-899e-d763612f834d": {
+    "name": "Gate Xnor",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "b7798b74-037e-4f0c-8ac7-dc1043d093e0": {
+    "name": "Rotate",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "bc984576-7aa6-491f-a91d-e444c33675a7": {
+    "name": "Graph Mapper",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "c1ec65a3-bda4-4fad-87d0-edf86ed9d81c": {
+    "name": "Tree Item",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "c277f778-6fdf-4890-8f78-347efb23c406": {
+    "name": "Pipe",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "c40dc145-9e36-4a69-ac1a-6d825c654993": {
+    "name": "Repeat Data",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "c552a431-af5b-46a9-a8a4-0fcbc27ef596": {
+    "name": "Group",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "c75b62fa-0a33-4da7-a5bd-03fd0068fd93": {
+    "name": "Length",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "c9785b8e-2f30-4f90-8ee3-cca710f82402": {
+    "name": "Entwine",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "cb2c7d3c-41b4-4c6d-a6bd-9235bd2851bb": {
+    "name": "Gate Not",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "cb95db89-6165-43b6-9c41-5702bc5bf137": {
+    "name": "Boolean",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "cc14daa5-911a-4fcc-8b3b-1149bf7f2eeb": {
+    "name": "Point List",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "ce46b74e-00c9-43c4-805a-193b69ea4a11": {
+    "name": "Multiplication",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "d1028c72-ff86-4057-9eb0-36c687a4d98c": {
+    "name": "Circle",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "d114323a-e6ee-4164-946b-e4ca0ce15efa": {
+    "name": "Circle CNR",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "d3d195ea-2d59-4ffa-90b1-8b7ff3369f69": {
+    "name": "Unit Y",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "d51e9b65-aa4e-4fd6-976c-cef35d421d05": {
+    "name": "Boundary Surfaces",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "d5967b9f-e8ee-436b-a8ad-29fdcecf32d5": {
+    "name": "Curve",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "d69a3494-785b-4beb-969b-d2373f65abfd": {
+    "name": "Image Sampler",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "d8332545-21b2-4716-96e3-8559a9876e17": {
+    "name": "Dispatch",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "d8b1e7ac-cd31-4748-b262-e07e53068afc": {
+    "name": "Split Tree",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "dabc854d-f50e-408a-b001-d043c7de151d": {
+    "name": "Sphere",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "dd8134c0-109b-4012-92be-51d843edfff7": {
+    "name": "Duplicate Data",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "deaf8653-5528-4286-807c-3de8b8dad781": {
+    "name": "Surface",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "e64c5fb1-845c-4ab1-8911-5f338516ba67": {
+    "name": "Series",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "e7c80ff6-0299-4303-be36-3080977c14a1": {
+    "name": "Combine Data",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b": {
+    "name": "Move",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "f02a20f6-bb49-4e3d-b155-8ed5d3c6b000": {
+    "name": "Jitter",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "f44b92b0-3b5b-493a-86f4-fd7408c3daf3": {
+    "name": "Bounds",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "f80cfe18-9510-4b89-8301-8e58faf423bb": {
+    "name": "Flatten Tree",
+    "seen_in": [
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "f9b89a46-bc5d-4f7a-9a6f-134f93ac3af9": {
+    "name": "Path Mapper",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "fac0d5be-e3ff-4bbb-9742-ec9a54900d41": {
+    "name": "Relative Item",
+    "seen_in": [
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "fbac3e32-f100-4292-8692-77240a42fd1a": {
+    "name": "Point",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx",
+      "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "fc6979e4-7e91-4508-8e05-37c680779751": {
+    "name": "Evaluate Curve",
+    "seen_in": [
+      "Chapter1_AlgorithmsAndData.ghx",
+      "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  }
+}
