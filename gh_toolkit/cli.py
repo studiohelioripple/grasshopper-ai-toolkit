@@ -30,7 +30,22 @@ from .magpie import (
     find_magpie_component,
     list_magpie_components,
 )
+from .live import (
+    is_rhino_running,
+    get_rhino_instances,
+    live_status,
+    live_list_objects,
+    live_add_component,
+    live_remove_object,
+    live_wire,
+    live_unwire,
+    live_set_value,
+    live_solve,
+    live_save,
+    live_open,
+)
 from .builder import GHBuilder
+
 
 
 def main():
@@ -90,7 +105,49 @@ def main():
     p_synth.add_argument("--source", type=int, default=0, help="Source node index for space syntax (default: 0)")
     p_synth.add_argument("--depth", type=int, default=6, help="Topological search depth for space syntax (default: 6)")
 
+    # Live Rhino / Grasshopper Canvas Integration
+    p_live = subparsers.add_parser("live", help="Interact directly with running Rhino 8 and active Grasshopper canvas")
+    live_subs = p_live.add_subparsers(dest="live_cmd", help="Live action to execute")
+
+    p_ls = live_subs.add_parser("status", help="Inspect connection to Rhino 8 and active Grasshopper document")
+
+    p_ll = live_subs.add_parser("list", help="List all components, pins, and coordinates on active canvas")
+    p_ll.add_argument("--json", action="store_true", help="Output full JSON DAG")
+
+    p_la = live_subs.add_parser("add", help="Add component to active canvas")
+    p_la.add_argument("name", help="Component Name or GUID")
+    p_la.add_argument("--x", type=float, default=100.0, help="Canvas X coordinate (default: 100)")
+    p_la.add_argument("--y", type=float, default=100.0, help="Canvas Y coordinate (default: 100)")
+    p_la.add_argument("--name", "-n", dest="nickname", help="Custom NickName")
+
+    p_lr = live_subs.add_parser("remove", help="Remove component from active canvas")
+    p_lr.add_argument("target", help="Component Instance GUID, NickName, or Name")
+
+    p_lw = live_subs.add_parser("wire", help="Connect source component output to target component input")
+    p_lw.add_argument("source", help="Source component (GUID, NickName, or Name)")
+    p_lw.add_argument("target", help="Target component (GUID, NickName, or Name)")
+    p_lw.add_argument("--source-pin", "-s", default=0, help="Source output pin (index or name, default: 0)")
+    p_lw.add_argument("--target-pin", "-t", default=0, help="Target input pin (index or name, default: 0)")
+
+    p_lu = live_subs.add_parser("unwire", help="Disconnect input wires from target component")
+    p_lu.add_argument("target", help="Target component (GUID, NickName, or Name)")
+    p_lu.add_argument("--target-pin", "-t", default=0, help="Target input pin (index or name, default: 0)")
+    p_lu.add_argument("--source", "-s", help="Optional specific source to disconnect")
+
+    p_lset = live_subs.add_parser("set", help="Set value of Number Slider, Panel, or Boolean Toggle")
+    p_lset.add_argument("target", help="Component (GUID, NickName, or Name)")
+    p_lset.add_argument("value", help="Value to set")
+
+    p_lsol = live_subs.add_parser("solve", help="Force recomputation of active Grasshopper document and refresh canvas")
+
+    p_lsave = live_subs.add_parser("save", help="Save active Grasshopper document quietly")
+    p_lsave.add_argument("path", nargs="?", help="Destination file path (.gh or .ghx)")
+
+    p_lopen = live_subs.add_parser("open", help="Open definition into active Grasshopper canvas")
+    p_lopen.add_argument("file", help="Path to .gh or .ghx file")
+
     args = parser.parse_args()
+
 
     if not args.cmd:
         parser.print_help()
@@ -471,6 +528,115 @@ def main():
             builder.save_ghx(args.out)
         print(f"Synthesized '{args.template}' definition with {builder.object_count} components -> {args.out}")
 
+    elif args.cmd == "live":
+        if not args.live_cmd:
+            print("Usage: gh-toolkit live {status,list,add,remove,wire,unwire,set,solve,save,open} ...")
+            sys.exit(1)
+
+        if args.live_cmd == "status":
+            st = live_status()
+            if not st.get("rhino_running"):
+                print("❌ Rhino 8 is NOT connected.")
+                print(f"   Reason: {st.get('error', 'Unknown error')}")
+                print("   Tip: In Rhino 8 command line, run 'StartScriptServer' to enable external scripting.")
+                sys.exit(1)
+            print("⚡ Rhino 8 Live Connection Active:")
+            print(f"   Rhino Version:     {st.get('rhino_version')}")
+            print(f"   Rhino Active Doc:  {st.get('rhino_doc')}")
+            act = st.get("active_document")
+            if act:
+                print(f"   Grasshopper Doc:   {act.get('name')} ({'Modified' if act.get('modified') else 'Clean'})")
+                print(f"   Object Count:      {act.get('object_count')} canvas objects")
+                if act.get('file_path'):
+                    print(f"   Saved Path:        {act.get('file_path')}")
+            else:
+                print("   Grasshopper Doc:   No document open on canvas.")
+
+        elif args.live_cmd == "list":
+            res = live_list_objects()
+            if "error" in res:
+                print(f"❌ Error: {res['error']}")
+                sys.exit(1)
+            if getattr(args, "json", False):
+                import json
+                print(json.dumps(res, indent=2))
+            else:
+                print(f"📋 Live Canvas: {res.get('doc_name')} ({res.get('total_objects')} objects)\n")
+                print(f"{'GUID (Prefix)':<16} {'Name':<24} {'NickName':<14} {'Pivot (X, Y)':<18} {'Inputs':<8} {'Outputs':<8}")
+                print("-" * 90)
+                for o in res.get("objects", []):
+                    short_id = o['instance_guid'][:8]
+                    inputs_count = len(o.get('inputs', []))
+                    outputs_count = len(o.get('outputs', []))
+                    pivot_str = f"({o['pivot'][0]}, {o['pivot'][1]})"
+                    print(f"{short_id:<16} {o['name'][:23]:<24} {o['nickname'][:13]:<14} {pivot_str:<18} {inputs_count:<8} {outputs_count:<8}")
+                    if "value" in o:
+                        print(f"    ↳ Value: {o['value']}")
+
+        elif args.live_cmd == "add":
+            res = live_add_component(args.name, x=args.x, y=args.y, nickname=args.nickname)
+            if not res.get("success"):
+                print(f"❌ Failed to add component: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Added '{res.get('name')}' to canvas at ({args.x}, {args.y})")
+            print(f"   Instance GUID: {res.get('instance_guid')}")
+
+        elif args.live_cmd == "remove":
+            res = live_remove_object(args.target)
+            if not res.get("success"):
+                print(f"❌ Failed to remove component: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Removed {res.get('removed_count')} component(s) from canvas.")
+
+        elif args.live_cmd == "wire":
+            # Allow integer pin or string pin
+            s_pin = int(args.source_pin) if str(args.source_pin).isdigit() else args.source_pin
+            t_pin = int(args.target_pin) if str(args.target_pin).isdigit() else args.target_pin
+            res = live_wire(args.source, args.target, source_pin=s_pin, target_pin=t_pin)
+            if not res.get("success"):
+                print(f"❌ Failed to connect wire: {res.get('error')}")
+                sys.exit(1)
+            src = res.get("source", {})
+            dst = res.get("target", {})
+            print(f"✅ Connected: {src.get('name')}[{src.get('output')}] ──▶ {dst.get('name')}[{dst.get('input')}]")
+
+        elif args.live_cmd == "unwire":
+            t_pin = int(args.target_pin) if str(args.target_pin).isdigit() else args.target_pin
+            res = live_unwire(args.target, target_pin=t_pin, source_id_or_name=args.source)
+            if not res.get("success"):
+                print(f"❌ Failed to disconnect wire: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Disconnected {res.get('disconnected_count')} wire(s) from {res.get('target')}[{res.get('input')}].")
+
+        elif args.live_cmd == "set":
+            res = live_set_value(args.target, args.value)
+            if not res.get("success"):
+                print(f"❌ Failed to set value: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Updated {res.get('type')} '{res.get('object')}' value to: {res.get('new_value')}")
+
+        elif args.live_cmd == "solve":
+            res = live_solve()
+            if not res.get("success"):
+                print(f"❌ Failed to solve canvas: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Solved document '{res.get('doc_name')}' ({res.get('objects_count')} objects) and refreshed canvas.")
+
+        elif args.live_cmd == "save":
+            res = live_save(filepath=args.path)
+            if not res.get("success"):
+                print(f"❌ Failed to save document: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Saved live Grasshopper definition to: {res.get('file_path')}")
+
+        elif args.live_cmd == "open":
+            res = live_open(args.file)
+            if not res.get("success"):
+                print(f"❌ Failed to open document: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Opened '{res.get('doc_name')}' ({res.get('objects_count')} objects) on live canvas.")
+
 
 if __name__ == "__main__":
     main()
+

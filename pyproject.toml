@@ -4,8 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "grasshopper-toolkit"
-version = "0.2.0"
-description = "Zero-dependency Python library, CLI, and Agent Skill for inspecting, converting, and synthesizing Rhino Grasshopper (.gh / .ghx) definitions with deep Heteroptera plugin integration."
+version = "0.4.0"
+description = "Zero-dependency Python library, CLI, and Agent Skill for inspecting, converting, and synthesizing Rhino Grasshopper (.gh / .ghx) definitions with live canvas editing and deep Heteroptera plugin integration."
+
 readme = "README.md"
 authors = [
     { name = "Amen", email = "amen@example.com" }

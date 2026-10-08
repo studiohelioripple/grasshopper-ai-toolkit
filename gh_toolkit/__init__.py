@@ -40,8 +40,22 @@ from .magpie import (
     find_magpie_component,
     list_magpie_components,
 )
+from .live import (
+    is_rhino_running,
+    get_rhino_instances,
+    live_status,
+    live_list_objects,
+    live_add_component,
+    live_remove_object,
+    live_wire,
+    live_unwire,
+    live_set_value,
+    live_solve,
+    live_save,
+    live_open,
+)
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 __all__ = [
     "GHArchive",
     "GHChunk",
@@ -69,6 +83,19 @@ __all__ = [
     "load_magpie_catalog",
     "find_magpie_component",
     "list_magpie_components",
+    "is_rhino_running",
+    "get_rhino_instances",
+    "live_status",
+    "live_list_objects",
+    "live_add_component",
+    "live_remove_object",
+    "live_wire",
+    "live_unwire",
+    "live_set_value",
+    "live_solve",
+    "live_save",
+    "live_open",
     "TYPE_MAP",
     "NAME_TO_TYPE",
 ]
+

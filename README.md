@@ -15,11 +15,13 @@ It comes with **deep integration for the Heteroptera plugin** (152 components ac
 ## 🚀 Key Capabilities
 
 * ⚡ **Zero External Dependencies**: Decompresses binary `.gh` files directly via raw DEFLATE streams (`zlib.decompress(data, -15)`). No Rhino license or COM/.NET runtime required for file operations.
+* ⚡ **Live Canvas Bridge & Interactive Document Editing**: Directly connect to running Rhino 8 sessions to inspect, mutate slider values, add/remove components, wire pins, and recompute the active Grasshopper document live.
 * 🔄 **Lossless Bidirectional Conversion**: Roundtrip seamlessly between `.gh` (binary), `.ghx` (human-readable XML), and clean JSON Graph IR.
 * 🧠 **Heteroptera Plugin Mastery**: 152 indexed components with complete input/output port types, data tree access modes (`item`, `list`, `tree`), and canonical topological recipes.
 * 🛠️ **Programmatic Graph Synthesis (`GHBuilder`)**: Build valid, ready-to-open Grasshopper definitions in Python with automatic canvas spacing and topological wiring.
 * 📦 **Agent Skill Ready**: Includes a drop-in Antigravity / Gemini Agent Skill (`skill/`) to empower AI coding assistants with Grasshopper definition authoring.
 * 📜 **Automated Script Extractor**: Batch-extract embedded GhPython (`.py`) and C# (`.cs`) script components from hundreds of definitions into standalone source files.
+
 
 ---
 
@@ -128,7 +130,37 @@ gh-toolkit to-gh input.ghx output.gh
 gh-toolkit to-json input.gh graph.json
 ```
 
-### 3. Extract Embedded Python and C# Scripts
+### 3. Live Canvas Operations (Rhino 8 Bridge)
+Connect directly to the active Grasshopper document in running Rhino 8:
+```bash
+# Check connection to Rhino 8 and active document status
+gh-toolkit live status
+
+# List all components, parameters, coordinates, and values on active canvas
+gh-toolkit live list
+gh-toolkit live list --json
+
+# Add components live (Native, Heteroptera, LegoPod, Magpie)
+gh-toolkit live add "Number Slider" --x 100 --y 100
+gh-toolkit live add "Divide Curve" --x 400 --y 100
+gh-toolkit live add "Space Syntax" --x 700 --y 100
+
+# Connect wires between components
+gh-toolkit live wire "Number Slider" "Divide Curve" -s 0 -t "N"
+
+# Mutate slider value or panel text live
+gh-toolkit live set "Number Slider" 48.0
+gh-toolkit live set "Panel" "Automated Agent Prompt"
+
+# Recompute live solution & refresh viewport preview
+gh-toolkit live solve
+
+# Quietly save active canvas to disk without prompts
+gh-toolkit live save ./MyCanvasSnapshot.ghx
+```
+
+### 4. Extract Embedded Python and C# Scripts
+
 ```bash
 # Batch extract all embedded GhPython and C# scripts from a directory
 gh-toolkit extract-scripts ./definitions --out ./extracted_scripts

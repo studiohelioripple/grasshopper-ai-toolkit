@@ -22,6 +22,14 @@ A unified, high-performance suite combining:
 |---|---|---|
 | **Inspect `.gh` / `.ghx` definition** | `python3 <skill_dir>/scripts/gh_toolkit.py info <file.gh>` | Section 4 |
 | **Convert `.gh` <-> `.ghx` <-> JSON** | `python3 <skill_dir>/scripts/gh_toolkit.py to-ghx <in> <out>` | Section 4 |
+| **Check Live Rhino 8 Connection** | `python3 <skill_dir>/scripts/gh_toolkit.py live status` | Section 4 & Workflow 5 |
+| **List / Inspect Live Canvas Objects** | `python3 <skill_dir>/scripts/gh_toolkit.py live list` | Section 4 & Workflow 5 |
+| **Add Component to Live Canvas** | `python3 <skill_dir>/scripts/gh_toolkit.py live add "<Name>" --x 100 --y 100` | Section 4 & Workflow 5 |
+| **Wire Live Canvas Components** | `python3 <skill_dir>/scripts/gh_toolkit.py live wire <src> <dst>` | Section 4 & Workflow 5 |
+| **Mutate Live Slider / Panel Value** | `python3 <skill_dir>/scripts/gh_toolkit.py live set <target> <value>` | Section 4 & Workflow 5 |
+| **Recompute Live Canvas Solution** | `python3 <skill_dir>/scripts/gh_toolkit.py live solve` | Section 4 & Workflow 5 |
+| **Save Live Canvas Quietly** | `python3 <skill_dir>/scripts/gh_toolkit.py live save [path.ghx]` | Section 4 & Workflow 5 |
+| **Open Definition on Live Canvas** | `python3 <skill_dir>/scripts/gh_toolkit.py live open <path.ghx>` | Section 4 & Workflow 5 |
 | **Lookup Native Component Pins** | `python3 <skill_dir>/scripts/gh_toolkit.py native --info "<Name>"` | `references/NATIVE_COMPONENTS.md` |
 | **Lookup Heteroptera Component** | `python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --info "<Name>"` | `references/HETEROPTERA_COMPONENTS.md` |
 | **Lookup LegoPod Component** | `python3 <skill_dir>/scripts/gh_toolkit.py legopod --info "<Name>"` | `references/LEGOPOD_COMPONENTS.md` |
@@ -35,6 +43,7 @@ A unified, high-performance suite combining:
 | **Check Version Errata / Replacements** | Check modern replacements (Kangaroo 2, Anemone) | `references/ERRATA_MODERNIZATION.md` |
 | **Batch extract GhPython / C# scripts**| `python3 <skill_dir>/scripts/gh_toolkit.py extract-scripts <dir>` | `references/SCRIPT_LIBRARY.md` |
 | **Synthesize New Definition (.gh/.ghx)**| Programmatic Python `GHBuilder` API | Section 5 |
+
 
 ---
 
@@ -108,6 +117,25 @@ Consult `references/TRI_PLUGIN_ARCHITECTURE.md` for complete cross-plugin workfl
    - Path Mapper: check lexical mapping expressions (`{A;B}(i) -> {A}(B)`).
    - Prescribe minimal tree operations with before/after tree states shown.
 
+### Workflow 5 — Live Canvas Inspection & Interactive Editing (Rhino 8)
+When the user is running Rhino 8 and asks to inspect, debug, modify, or add components to their **current/active Grasshopper document**:
+1. **Verify Connection**:
+   - Run `gh-toolkit live status` (or `python3 <skill_dir>/scripts/gh_toolkit.py live status`).
+   - If not connected, instruct the user to run `StartScriptServer` in the Rhino 8 command line.
+2. **Inspect Active Canvas**:
+   - Run `gh-toolkit live list` to see all objects, instance GUIDs, pins, and current slider/panel values.
+   - Use `gh-toolkit live list --json` to get the complete live DAG topology.
+3. **Perform Live Mutations**:
+   - **Add Component**: `gh-toolkit live add "<Name>" --x 250 --y 150` (supports Native, Heteroptera, LegoPod, Magpie).
+   - **Wire Pins**: `gh-toolkit live wire <src_id_or_name> <dst_id_or_name> -s 0 -t 0`
+   - **Update Values**: `gh-toolkit live set <slider_or_panel> <new_val>`
+   - **Unwire Pins**: `gh-toolkit live unwire <dst_id_or_name> -t 0`
+   - **Remove**: `gh-toolkit live remove <id_or_name>`
+4. **Trigger Recompute**:
+   - Run `gh-toolkit live solve` to expire the solution, recalculate geometry, and refresh viewport preview.
+5. **Quiet Persistence**:
+   - Run `gh-toolkit live save [path]` to persist the active canvas to `.ghx` or `.gh` without UI prompts.
+
 ---
 
 ## 4. Toolkit CLI Cheatsheet
@@ -121,28 +149,42 @@ python3 <skill_dir>/scripts/gh_toolkit.py to-ghx input.gh output.ghx
 python3 <skill_dir>/scripts/gh_toolkit.py to-gh input.ghx output.gh
 python3 <skill_dir>/scripts/gh_toolkit.py to-json input.gh graph.json
 
-# 3. Batch extract embedded GhPython & C# scripts
+# 3. Live Rhino 8 & Grasshopper Canvas Operations
+python3 <skill_dir>/scripts/gh_toolkit.py live status
+python3 <skill_dir>/scripts/gh_toolkit.py live list
+python3 <skill_dir>/scripts/gh_toolkit.py live add "Number Slider" --x 100 --y 100
+python3 <skill_dir>/scripts/gh_toolkit.py live add "Panel" --x 300 --y 100
+python3 <skill_dir>/scripts/gh_toolkit.py live add "Divide Curve" --x 500 --y 100
+python3 <skill_dir>/scripts/gh_toolkit.py live wire "Number Slider" "Divide Curve" -s 0 -t "N"
+python3 <skill_dir>/scripts/gh_toolkit.py live set "Number Slider" 24.0
+python3 <skill_dir>/scripts/gh_toolkit.py live set "Panel" "Automated Agent Parameter"
+python3 <skill_dir>/scripts/gh_toolkit.py live solve
+python3 <skill_dir>/scripts/gh_toolkit.py live save ./LiveCanvasSnapshot.ghx
+python3 <skill_dir>/scripts/gh_toolkit.py live open ./SynthesizedWorkflow.ghx
+
+# 4. Batch extract embedded GhPython & C# scripts
 python3 <skill_dir>/scripts/gh_toolkit.py extract-scripts ./definitions --out ./scripts
 
-# 4. Native Grasshopper Component Inspection (211 cataloged components)
+# 5. Native Grasshopper Component Inspection (211 cataloged components)
 python3 <skill_dir>/scripts/gh_toolkit.py native --info "Divide Curve"
 python3 <skill_dir>/scripts/gh_toolkit.py native --list Curve
 
-# 5. Heteroptera Plugin Inspection & Automated Installer
+# 6. Heteroptera Plugin Inspection & Automated Installer
 python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --status
 python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --install
 python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --info "Space Syntax"
 python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --list networks
 python3 <skill_dir>/scripts/gh_toolkit.py heteroptera --recipes
 
-# 6. LegoPod Plugin Inspection (42 cataloged components)
+# 7. LegoPod Plugin Inspection (42 cataloged components)
 python3 <skill_dir>/scripts/gh_toolkit.py legopod --info "Build Attribute"
 python3 <skill_dir>/scripts/gh_toolkit.py legopod --list Blocks
 
-# 7. Magpie ML Plugin Inspection (14 cataloged components)
+# 8. Magpie ML Plugin Inspection (14 cataloged components)
 python3 <skill_dir>/scripts/gh_toolkit.py magpie --info "Correlation Matrix"
 python3 <skill_dir>/scripts/gh_toolkit.py magpie --list Machines
 ```
+
 
 ---
 

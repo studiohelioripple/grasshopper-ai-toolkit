@@ -19,8 +19,11 @@ import uuid
 import base64
 import json
 import argparse
+import subprocess
+import shutil
 import xml.etree.ElementTree as ET
 from typing import List, Dict, Any, Optional, Tuple, Union
+
 
 # ==============================================================================
 # 1. GH_IO Type System Constants
@@ -1743,8 +1746,747 @@ class GHBuilder:
 
 
 # ==============================================================================
+# 6.5 Live Rhino 8 & Grasshopper Bridge
+# ==============================================================================
+
+def find_rhinocode() -> Optional[str]:
+    """Locate the rhinocode CLI on macOS or in PATH."""
+    standard_mac_path = "/Applications/Rhino 8.app/Contents/Resources/bin/rhinocode"
+    if os.path.isfile(standard_mac_path) and os.access(standard_mac_path, os.X_OK):
+        return standard_mac_path
+    which_path = shutil.which("rhinocode")
+    if which_path:
+        return which_path
+    return None
+
+
+def get_rhino_env() -> Dict[str, str]:
+    """Prepare environment variables with .NET roll forward enabled for Rhino 8."""
+    env = os.environ.copy()
+    env["DOTNET_ROLL_FORWARD"] = "LatestMajor"
+    return env
+
+
+def get_bridge_tmp_dir() -> str:
+    """Get a persistent user-level directory for script exchange."""
+    bridge_dir = os.path.expanduser("~/.gh_toolkit/bridge")
+    os.makedirs(bridge_dir, exist_ok=True)
+    return bridge_dir
+
+
+def is_rhino_running() -> bool:
+    """Check if any Rhino 8 instance is running with an active script server."""
+    instances = get_rhino_instances()
+    return len(instances) > 0
+
+
+def get_rhino_instances() -> List[Dict[str, Any]]:
+    """List running Rhino instances via rhinocode list."""
+    rhinocode_bin = find_rhinocode()
+    if not rhinocode_bin:
+        return []
+
+    try:
+        res = subprocess.run(
+            [rhinocode_bin, "list"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            env=get_rhino_env(),
+            timeout=5,
+        )
+        if res.returncode != 0:
+            return []
+
+        lines = res.stdout.strip().splitlines()
+        instances = []
+        for line in lines[1:]:
+            parts = line.strip().split()
+            if len(parts) >= 2 and parts[0].isdigit():
+                instances.append({
+                    "pid": int(parts[0]),
+                    "pipe_id": parts[1],
+                    "doc": parts[2] if len(parts) > 2 else None,
+                    "path": parts[3] if len(parts) > 3 else None,
+                })
+        return instances
+    except Exception:
+        return []
+
+
+def run_in_rhino(python_code: str, instance_id: Optional[str] = None, timeout: int = 15) -> Dict[str, Any]:
+    """Execute a Python snippet inside running Rhino 8 instance via rhinocode."""
+    rhinocode_bin = find_rhinocode()
+    if not rhinocode_bin:
+        return {
+            "success": False,
+            "error": "RhinoCode CLI not found. Expected at '/Applications/Rhino 8.app/Contents/Resources/bin/rhinocode'."
+        }
+
+    instances = get_rhino_instances()
+    target_pipe = instance_id
+    if not target_pipe and instances:
+        target_pipe = instances[0]["pipe_id"]
+
+    bridge_dir = get_bridge_tmp_dir()
+    temp_id = uuid.uuid4().hex[:8]
+    script_path = os.path.join(bridge_dir, f"cmd_{temp_id}.py")
+    result_path = os.path.join(bridge_dir, f"res_{temp_id}.json")
+
+    wrapper = f"""# -*- coding: utf-8 -*-
+import sys
+import os
+import json
+import traceback
+
+__RESULT_PATH__ = {repr(result_path)}
+
+def __execute():
+{chr(10).join('    ' + line for line in python_code.strip().splitlines())}
+
+try:
+    __res = __execute()
+    with open(__RESULT_PATH__, 'w', encoding='utf-8') as __f:
+        json.dump({{'success': True, 'result': __res}}, __f, indent=2)
+except Exception as __e:
+    with open(__RESULT_PATH__, 'w', encoding='utf-8') as __f:
+        json.dump({{'success': False, 'error': str(__e), 'traceback': traceback.format_exc()}}, __f, indent=2)
+"""
+
+    with open(script_path, "w", encoding="utf-8") as f:
+        f.write(wrapper)
+
+    cmd = [rhinocode_bin]
+    if target_pipe:
+        cmd.extend(["-r", target_pipe])
+    cmd.extend(["script", script_path])
+
+    try:
+        proc = subprocess.run(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            env=get_rhino_env(),
+            timeout=timeout,
+        )
+
+        if not os.path.exists(result_path):
+            hint = "Ensure 'StartScriptServer' is running in Rhino 8."
+            err_msg = proc.stderr.strip() or proc.stdout.strip()
+            return {
+                "success": False,
+                "error": f"Rhino script produced no result payload. {err_msg} ({hint})",
+                "stderr": proc.stderr,
+                "stdout": proc.stdout,
+            }
+
+        with open(result_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data
+
+    except subprocess.TimeoutExpired:
+        return {"success": False, "error": f"Execution timed out after {timeout} seconds"}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+    finally:
+        if os.path.exists(script_path):
+            try:
+                os.remove(script_path)
+            except Exception:
+                pass
+        if os.path.exists(result_path):
+            try:
+                os.remove(result_path)
+            except Exception:
+                pass
+
+
+def live_status() -> Dict[str, Any]:
+    """Get status of running Rhino, Grasshopper canvas, and active document."""
+    instances = get_rhino_instances()
+    if not instances:
+        return {
+            "rhino_running": False,
+            "error": "Rhino 8 is not running or script server is not active. Run 'StartScriptServer' in Rhino 8 command line."
+        }
+
+    script = """
+import Rhino
+import Grasshopper
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc_server = Grasshopper.Instances.DocumentServer
+active_doc = canvas.Document if canvas else None
+
+docs = []
+if doc_server:
+    for d in doc_server:
+        docs.append({
+            'name': str(d.DisplayName),
+            'file_path': str(d.FilePath) if d.FilePath else None,
+            'object_count': d.ObjectCount,
+            'modified': d.Modified
+        })
+
+active_info = None
+if active_doc:
+    active_info = {
+        'name': str(active_doc.DisplayName),
+        'file_path': str(active_doc.FilePath) if active_doc.FilePath else None,
+        'object_count': active_doc.ObjectCount,
+        'modified': active_doc.Modified
+    }
+
+return {
+    'rhino_version': str(Rhino.RhinoApp.Version),
+    'rhino_doc': Rhino.RhinoDoc.ActiveDoc.Name if Rhino.RhinoDoc.ActiveDoc else None,
+    'canvas_available': canvas is not None,
+    'documents_count': len(docs),
+    'documents': docs,
+    'active_document': active_info
+}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        res_data = res.get("result", {})
+        res_data["rhino_running"] = True
+        res_data["instances"] = instances
+        return res_data
+    return {"rhino_running": True, "instances": instances, "error": res.get("error")}
+
+
+def live_list_objects() -> Dict[str, Any]:
+    """List all components and parameters on the active Grasshopper canvas with their pins and wires."""
+    script = """
+import Rhino
+import Grasshopper
+import Grasshopper.Kernel as gh_kernel
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    return {'error': 'No active Grasshopper document found on canvas'}
+
+objects = []
+for obj in doc.Objects:
+    pivot = obj.Attributes.Pivot
+    info = {
+        'instance_guid': str(obj.InstanceGuid),
+        'component_guid': str(obj.ComponentGuid),
+        'name': str(obj.Name),
+        'nickname': str(obj.NickName),
+        'category': str(obj.Category),
+        'subcategory': str(obj.SubCategory),
+        'type': type(obj).__name__,
+        'pivot': [round(pivot.X, 1), round(pivot.Y, 1)],
+        'locked': obj.Locked,
+        'hidden': getattr(obj, 'Hidden', False)
+    }
+
+    if isinstance(obj, gh_kernel.IGH_Component):
+        inputs = []
+        for p in obj.Params.Input:
+            sources = [str(s.InstanceGuid) for s in p.Sources]
+            inputs.append({
+                'name': str(p.Name),
+                'nickname': str(p.NickName),
+                'instance_guid': str(p.InstanceGuid),
+                'sources': sources,
+                'type_name': str(p.TypeName)
+            })
+        outputs = []
+        for p in obj.Params.Output:
+            recipients = [str(r.InstanceGuid) for r in p.Recipients]
+            outputs.append({
+                'name': str(p.Name),
+                'nickname': str(p.NickName),
+                'instance_guid': str(p.InstanceGuid),
+                'recipients': recipients,
+                'type_name': str(p.TypeName)
+            })
+        info['inputs'] = inputs
+        info['outputs'] = outputs
+    elif isinstance(obj, gh_kernel.IGH_Param):
+        sources = [str(s.InstanceGuid) for s in obj.Sources]
+        recipients = [str(r.InstanceGuid) for r in obj.Recipients]
+        info['sources'] = sources
+        info['recipients'] = recipients
+        info['type_name'] = str(obj.TypeName)
+
+    tname = type(obj).__name__
+    if 'Slider' in tname or hasattr(obj, 'Slider'):
+        try:
+            info['value'] = float(obj.Slider.Value)
+            info['min'] = float(obj.Slider.Minimum)
+            info['max'] = float(obj.Slider.Maximum)
+        except Exception:
+            pass
+    elif 'Panel' in tname or hasattr(obj, 'UserText'):
+        try:
+            info['value'] = str(obj.UserText)
+        except Exception:
+            pass
+    elif 'BooleanToggle' in tname or hasattr(obj, 'Value'):
+        try:
+            info['value'] = bool(obj.Value)
+        except Exception:
+            pass
+
+    objects.append(info)
+
+return {
+    'doc_name': str(doc.DisplayName),
+    'total_objects': len(objects),
+    'objects': objects
+}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"error": res.get("error")}
+
+
+def live_add_component(name_or_guid: str, x: float = 100.0, y: float = 100.0, nickname: Optional[str] = None) -> Dict[str, Any]:
+    """Add a component or parameter to active Grasshopper document."""
+    script = f"""
+import System
+from System.Drawing import PointF
+import Rhino
+import Grasshopper
+import Grasshopper.Kernel as gh_kernel
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    doc = gh_kernel.GH_Document()
+    Grasshopper.Instances.DocumentServer.AddDocument(doc)
+    if canvas:
+        canvas.Document = doc
+
+target_str = {repr(name_or_guid)}
+comp_server = Grasshopper.Instances.ComponentServer
+
+proxy = None
+try:
+    guid = System.Guid(target_str)
+    proxy = comp_server.EmitObjectProxy(guid)
+except Exception:
+    pass
+
+if not proxy:
+    proxy = comp_server.FindObjectByName(target_str, True, True)
+
+if not proxy:
+    return {{'success': False, 'error': f"Component '{{target_str}}' not found in ComponentServer."}}
+
+instance = proxy.CreateInstance()
+if not instance:
+    return {{'success': False, 'error': f"Failed to instantiate component '{{target_str}}'."}}
+
+instance.CreateAttributes()
+instance.Attributes.Pivot = PointF(float({x}), float({y}))
+
+custom_nick = {repr(nickname)}
+if custom_nick:
+    instance.NickName = custom_nick
+
+doc.AddObject(instance, False)
+doc.NewSolution(False)
+if canvas:
+    canvas.Refresh()
+
+return {{
+    'success': True,
+    'instance_guid': str(instance.InstanceGuid),
+    'component_guid': str(instance.ComponentGuid),
+    'name': str(instance.Name),
+    'nickname': str(instance.NickName),
+    'category': str(instance.Category),
+    'pivot': [float({x}), float({y})]
+}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_remove_object(target_id_or_name: str) -> Dict[str, Any]:
+    """Remove a component from active canvas by instance GUID, name, or nickname."""
+    script = f"""
+import Grasshopper
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    return {{'success': False, 'error': 'No active Grasshopper document'}}
+
+target = {repr(str(target_id_or_name).lower())}
+to_remove = []
+
+for obj in doc.Objects:
+    iguid = str(obj.InstanceGuid).lower()
+    cguid = str(obj.ComponentGuid).lower()
+    name = str(obj.Name).lower()
+    nick = str(obj.NickName).lower()
+    if target in (iguid, cguid, name, nick):
+        to_remove.append(obj)
+
+if not to_remove:
+    return {{'success': False, 'error': f"No object matching '{{target}}' found on canvas"}}
+
+removed = []
+for obj in to_remove:
+    doc.RemoveObject(obj, False)
+    removed.append(str(obj.InstanceGuid))
+
+doc.NewSolution(False)
+if canvas:
+    canvas.Refresh()
+
+return {{'success': True, 'removed_count': len(removed), 'removed_guids': removed}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_wire(source_id_or_name: str, target_id_or_name: str, source_pin: Union[int, str] = 0, target_pin: Union[int, str] = 0) -> Dict[str, Any]:
+    """Connect an output pin of source component to an input pin of target component."""
+    script = f"""
+import Grasshopper
+import Grasshopper.Kernel as gh_kernel
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    return {{'success': False, 'error': 'No active Grasshopper document'}}
+
+src_target = {repr(str(source_id_or_name).lower())}
+dst_target = {repr(str(target_id_or_name).lower())}
+
+src_obj = None
+dst_obj = None
+
+for obj in doc.Objects:
+    iguid = str(obj.InstanceGuid).lower()
+    name = str(obj.Name).lower()
+    nick = str(obj.NickName).lower()
+    if not src_obj and src_target in (iguid, name, nick):
+        src_obj = obj
+    if not dst_obj and dst_target in (iguid, name, nick):
+        dst_obj = obj
+
+if not src_obj:
+    return {{'success': False, 'error': f"Source object '{{src_target}}' not found"}}
+if not dst_obj:
+    return {{'success': False, 'error': f"Target object '{{dst_target}}' not found"}}
+
+src_param = None
+if isinstance(src_obj, gh_kernel.IGH_Component):
+    outputs = src_obj.Params.Output
+    s_pin = {repr(source_pin)}
+    if isinstance(s_pin, int) and 0 <= s_pin < outputs.Count:
+        src_param = outputs[s_pin]
+    else:
+        s_pin_str = str(s_pin).lower()
+        for p in outputs:
+            if p.Name.lower() == s_pin_str or p.NickName.lower() == s_pin_str:
+                src_param = p
+                break
+elif isinstance(src_obj, gh_kernel.IGH_Param):
+    src_param = src_obj
+
+if not src_param:
+    return {{'success': False, 'error': f"Could not resolve output pin '{{{repr(source_pin)}}}' on source object"}}
+
+dst_param = None
+if isinstance(dst_obj, gh_kernel.IGH_Component):
+    inputs = dst_obj.Params.Input
+    d_pin = {repr(target_pin)}
+    if isinstance(d_pin, int) and 0 <= d_pin < inputs.Count:
+        dst_param = inputs[d_pin]
+    else:
+        d_pin_str = str(d_pin).lower()
+        for p in inputs:
+            if p.Name.lower() == d_pin_str or p.NickName.lower() == d_pin_str:
+                dst_param = p
+                break
+elif isinstance(dst_obj, gh_kernel.IGH_Param):
+    dst_param = dst_obj
+
+if not dst_param:
+    return {{'success': False, 'error': f"Could not resolve input pin '{{{repr(target_pin)}}}' on target object"}}
+
+dst_param.AddSource(src_param)
+doc.NewSolution(False)
+if canvas:
+    canvas.Refresh()
+
+return {{
+    'success': True,
+    'source': {{'name': str(src_obj.Name), 'instance_guid': str(src_obj.InstanceGuid), 'output': str(src_param.Name)}},
+    'target': {{'name': str(dst_obj.Name), 'instance_guid': str(dst_obj.InstanceGuid), 'input': str(dst_param.Name)}}
+}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_unwire(target_id_or_name: str, target_pin: Union[int, str] = 0, source_id_or_name: Optional[str] = None) -> Dict[str, Any]:
+    """Disconnect wire(s) leading into target input pin."""
+    script = f"""
+import Grasshopper
+import Grasshopper.Kernel as gh_kernel
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    return {{'success': False, 'error': 'No active Grasshopper document'}}
+
+dst_target = {repr(str(target_id_or_name).lower())}
+dst_obj = None
+
+for obj in doc.Objects:
+    iguid = str(obj.InstanceGuid).lower()
+    name = str(obj.Name).lower()
+    nick = str(obj.NickName).lower()
+    if dst_target in (iguid, name, nick):
+        dst_obj = obj
+        break
+
+if not dst_obj:
+    return {{'success': False, 'error': f"Target object '{{dst_target}}' not found"}}
+
+dst_param = None
+if isinstance(dst_obj, gh_kernel.IGH_Component):
+    inputs = dst_obj.Params.Input
+    d_pin = {repr(target_pin)}
+    if isinstance(d_pin, int) and 0 <= d_pin < inputs.Count:
+        dst_param = inputs[d_pin]
+    else:
+        d_pin_str = str(d_pin).lower()
+        for p in inputs:
+            if p.Name.lower() == d_pin_str or p.NickName.lower() == d_pin_str:
+                dst_param = p
+                break
+elif isinstance(dst_obj, gh_kernel.IGH_Param):
+    dst_param = dst_obj
+
+if not dst_param:
+    return {{'success': False, 'error': f"Could not resolve input pin '{{{repr(target_pin)}}}' on target object"}}
+
+src_target = {repr(str(source_id_or_name).lower() if source_id_or_name else None)}
+disconnected = 0
+
+if src_target:
+    to_remove = []
+    for s in dst_param.Sources:
+        parent_obj = s.Attributes.GetTopLevel.DocObject
+        if src_target in (str(s.InstanceGuid).lower(), str(parent_obj.Name).lower(), str(parent_obj.NickName).lower()):
+            to_remove.append(s)
+    for s in to_remove:
+        dst_param.RemoveSource(s)
+        disconnected += 1
+else:
+    disconnected = dst_param.Sources.Count
+    dst_param.Sources.Clear()
+
+doc.NewSolution(False)
+if canvas:
+    canvas.Refresh()
+
+return {{
+    'success': True,
+    'disconnected_count': disconnected,
+    'target': str(dst_obj.Name),
+    'input': str(dst_param.Name)
+}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_set_value(target_id_or_name: str, value: Any) -> Dict[str, Any]:
+    """Set the value of a Number Slider, Panel text, or Boolean Toggle on canvas."""
+    script = f"""
+import sys
+import System
+import Grasshopper
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    return {{'success': False, 'error': 'No active Grasshopper document'}}
+
+target = {repr(str(target_id_or_name).lower())}
+target_obj = None
+
+for obj in doc.Objects:
+    iguid = str(obj.InstanceGuid).lower()
+    name = str(obj.Name).lower()
+    nick = str(obj.NickName).lower()
+    if target in (iguid, name, nick):
+        target_obj = obj
+        break
+
+if not target_obj:
+    return {{'success': False, 'error': f"Object '{{target}}' not found on canvas"}}
+
+val = {repr(value)}
+tname = type(target_obj).__name__
+updated_type = None
+
+if 'Slider' in tname or hasattr(target_obj, 'Slider'):
+    try:
+        target_obj.Slider.Value = System.Decimal(float(val))
+    except Exception:
+        target_obj.Slider.Value = float(val)
+    target_obj.ExpireSolution(False)
+    updated_type = 'Slider'
+elif 'Panel' in tname or hasattr(target_obj, 'UserText'):
+    target_obj.UserText = str(val)
+    target_obj.ExpireSolution(False)
+    updated_type = 'Panel'
+elif 'BooleanToggle' in tname or hasattr(target_obj, 'Value'):
+    target_obj.Value = bool(val if isinstance(val, bool) else (str(val).lower() in ('true', '1', 'yes')))
+    target_obj.ExpireSolution(False)
+    updated_type = 'BooleanToggle'
+else:
+    return {{'success': False, 'error': f"Object type '{{tname}}' does not support live value mutation"}}
+
+doc.NewSolution(False)
+if canvas:
+    canvas.Refresh()
+
+return {{
+    'success': True,
+    'object': str(target_obj.Name),
+    'instance_guid': str(target_obj.InstanceGuid),
+    'type': updated_type,
+    'new_value': val
+}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_solve() -> Dict[str, Any]:
+    """Force recomputation of the active Grasshopper document and refresh canvas."""
+    script = """
+import Grasshopper
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    return {'success': False, 'error': 'No active Grasshopper document'}
+
+doc.NewSolution(False)
+if canvas:
+    canvas.Refresh()
+
+return {
+    'success': True,
+    'doc_name': str(doc.DisplayName),
+    'objects_count': doc.ObjectCount
+}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_save(filepath: Optional[str] = None) -> Dict[str, Any]:
+    """Save the active Grasshopper document quietly without prompting."""
+    script = f"""
+import Grasshopper
+import Grasshopper.Kernel as gh_kernel
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+
+if not doc:
+    return {{'success': False, 'error': 'No active Grasshopper document'}}
+
+path = {repr(filepath)} or doc.FilePath
+if not path:
+    return {{'success': False, 'error': 'No target file path specified and document has no existing FilePath'}}
+
+doc_io = gh_kernel.GH_DocumentIO(doc)
+saved = doc_io.SaveQuiet(path)
+
+return {{
+    'success': bool(saved),
+    'file_path': str(path),
+    'objects_count': doc.ObjectCount
+}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_open(filepath: str) -> Dict[str, Any]:
+    """Open a .gh or .ghx file directly into the active Grasshopper canvas."""
+    abs_path = os.path.abspath(filepath)
+    if not os.path.exists(abs_path):
+        return {"success": False, "error": f"File does not exist: {abs_path}"}
+
+    script = f"""
+import Grasshopper
+import Grasshopper.Kernel as gh_kernel
+
+target = {repr(abs_path)}
+canvas = Grasshopper.Instances.ActiveCanvas
+doc_server = Grasshopper.Instances.DocumentServer
+
+doc_io = gh_kernel.GH_DocumentIO()
+opened = doc_io.Open(target)
+
+if not opened or not doc_io.Document:
+    return {{'success': False, 'error': f"Failed to open definition from {{target}}"}}
+
+new_doc = doc_io.Document
+if doc_server:
+    doc_server.AddDocument(new_doc)
+if canvas:
+    canvas.Document = new_doc
+    canvas.Refresh()
+
+return {{
+    'success': True,
+    'file_path': str(target),
+    'doc_name': str(new_doc.DisplayName),
+    'objects_count': new_doc.ObjectCount
+}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+# ==============================================================================
 # 7. CLI Utilities
 # ==============================================================================
+
 
 def main():
     parser = argparse.ArgumentParser(description="Grasshopper Definition Toolkit CLI")
@@ -1801,7 +2543,49 @@ def main():
     p_synth.add_argument("--source", type=int, default=0, help="Source node index for space syntax (default: 0)")
     p_synth.add_argument("--depth", type=int, default=6, help="Topological search depth for space syntax (default: 6)")
 
+    # Live Rhino / Grasshopper Canvas Integration
+    p_live = subparsers.add_parser("live", help="Interact directly with running Rhino 8 and active Grasshopper canvas")
+    live_subs = p_live.add_subparsers(dest="live_cmd", help="Live action to execute")
+
+    p_ls = live_subs.add_parser("status", help="Inspect connection to Rhino 8 and active Grasshopper document")
+
+    p_ll = live_subs.add_parser("list", help="List all components, pins, and coordinates on active canvas")
+    p_ll.add_argument("--json", action="store_true", help="Output full JSON DAG")
+
+    p_la = live_subs.add_parser("add", help="Add component to active canvas")
+    p_la.add_argument("name", help="Component Name or GUID")
+    p_la.add_argument("--x", type=float, default=100.0, help="Canvas X coordinate (default: 100)")
+    p_la.add_argument("--y", type=float, default=100.0, help="Canvas Y coordinate (default: 100)")
+    p_la.add_argument("--name", "-n", dest="nickname", help="Custom NickName")
+
+    p_lr = live_subs.add_parser("remove", help="Remove component from active canvas")
+    p_lr.add_argument("target", help="Component Instance GUID, NickName, or Name")
+
+    p_lw = live_subs.add_parser("wire", help="Connect source component output to target component input")
+    p_lw.add_argument("source", help="Source component (GUID, NickName, or Name)")
+    p_lw.add_argument("target", help="Target component (GUID, NickName, or Name)")
+    p_lw.add_argument("--source-pin", "-s", default=0, help="Source output pin (index or name, default: 0)")
+    p_lw.add_argument("--target-pin", "-t", default=0, help="Target input pin (index or name, default: 0)")
+
+    p_lu = live_subs.add_parser("unwire", help="Disconnect input wires from target component")
+    p_lu.add_argument("target", help="Target component (GUID, NickName, or Name)")
+    p_lu.add_argument("--target-pin", "-t", default=0, help="Target input pin (index or name, default: 0)")
+    p_lu.add_argument("--source", "-s", help="Optional specific source to disconnect")
+
+    p_lset = live_subs.add_parser("set", help="Set value of Number Slider, Panel, or Boolean Toggle")
+    p_lset.add_argument("target", help="Component (GUID, NickName, or Name)")
+    p_lset.add_argument("value", help="Value to set")
+
+    p_lsol = live_subs.add_parser("solve", help="Force recomputation of active Grasshopper document and refresh canvas")
+
+    p_lsave = live_subs.add_parser("save", help="Save active Grasshopper document quietly")
+    p_lsave.add_argument("path", nargs="?", help="Destination file path (.gh or .ghx)")
+
+    p_lopen = live_subs.add_parser("open", help="Open definition into active Grasshopper canvas")
+    p_lopen.add_argument("file", help="Path to .gh or .ghx file")
+
     args = parser.parse_args()
+
 
     if not args.cmd:
         parser.print_help()
@@ -2195,6 +2979,114 @@ def main():
             builder.save_ghx(args.out)
         print(f"Synthesized '{args.template}' definition with {builder.object_count} components -> {args.out}")
 
+    elif args.cmd == "live":
+        if not args.live_cmd:
+            print("Usage: gh-toolkit live {status,list,add,remove,wire,unwire,set,solve,save,open} ...")
+            sys.exit(1)
+
+        if args.live_cmd == "status":
+            st = live_status()
+            if not st.get("rhino_running"):
+                print("❌ Rhino 8 is NOT connected.")
+                print(f"   Reason: {st.get('error', 'Unknown error')}")
+                print("   Tip: In Rhino 8 command line, run 'StartScriptServer' to enable external scripting.")
+                sys.exit(1)
+            print("⚡ Rhino 8 Live Connection Active:")
+            print(f"   Rhino Version:     {st.get('rhino_version')}")
+            print(f"   Rhino Active Doc:  {st.get('rhino_doc')}")
+            act = st.get("active_document")
+            if act:
+                print(f"   Grasshopper Doc:   {act.get('name')} ({'Modified' if act.get('modified') else 'Clean'})")
+                print(f"   Object Count:      {act.get('object_count')} canvas objects")
+                if act.get('file_path'):
+                    print(f"   Saved Path:        {act.get('file_path')}")
+            else:
+                print("   Grasshopper Doc:   No document open on canvas.")
+
+        elif args.live_cmd == "list":
+            res = live_list_objects()
+            if "error" in res:
+                print(f"❌ Error: {res['error']}")
+                sys.exit(1)
+            if getattr(args, "json", False):
+                import json
+                print(json.dumps(res, indent=2))
+            else:
+                print(f"📋 Live Canvas: {res.get('doc_name')} ({res.get('total_objects')} objects)\n")
+                print(f"{'GUID (Prefix)':<16} {'Name':<24} {'NickName':<14} {'Pivot (X, Y)':<18} {'Inputs':<8} {'Outputs':<8}")
+                print("-" * 90)
+                for o in res.get("objects", []):
+                    short_id = o['instance_guid'][:8]
+                    inputs_count = len(o.get('inputs', []))
+                    outputs_count = len(o.get('outputs', []))
+                    pivot_str = f"({o['pivot'][0]}, {o['pivot'][1]})"
+                    print(f"{short_id:<16} {o['name'][:23]:<24} {o['nickname'][:13]:<14} {pivot_str:<18} {inputs_count:<8} {outputs_count:<8}")
+                    if "value" in o:
+                        print(f"    ↳ Value: {o['value']}")
+
+        elif args.live_cmd == "add":
+            res = live_add_component(args.name, x=args.x, y=args.y, nickname=args.nickname)
+            if not res.get("success"):
+                print(f"❌ Failed to add component: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Added '{res.get('name')}' to canvas at ({args.x}, {args.y})")
+            print(f"   Instance GUID: {res.get('instance_guid')}")
+
+        elif args.live_cmd == "remove":
+            res = live_remove_object(args.target)
+            if not res.get("success"):
+                print(f"❌ Failed to remove component: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Removed {res.get('removed_count')} component(s) from canvas.")
+
+        elif args.live_cmd == "wire":
+            s_pin = int(args.source_pin) if str(args.source_pin).isdigit() else args.source_pin
+            t_pin = int(args.target_pin) if str(args.target_pin).isdigit() else args.target_pin
+            res = live_wire(args.source, args.target, source_pin=s_pin, target_pin=t_pin)
+            if not res.get("success"):
+                print(f"❌ Failed to connect wire: {res.get('error')}")
+                sys.exit(1)
+            src = res.get("source", {})
+            dst = res.get("target", {})
+            print(f"✅ Connected: {src.get('name')}[{src.get('output')}] ──▶ {dst.get('name')}[{dst.get('input')}]")
+
+        elif args.live_cmd == "unwire":
+            t_pin = int(args.target_pin) if str(args.target_pin).isdigit() else args.target_pin
+            res = live_unwire(args.target, target_pin=t_pin, source_id_or_name=args.source)
+            if not res.get("success"):
+                print(f"❌ Failed to disconnect wire: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Disconnected {res.get('disconnected_count')} wire(s) from {res.get('target')}[{res.get('input')}].")
+
+        elif args.live_cmd == "set":
+            res = live_set_value(args.target, args.value)
+            if not res.get("success"):
+                print(f"❌ Failed to set value: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Updated {res.get('type')} '{res.get('object')}' value to: {res.get('new_value')}")
+
+        elif args.live_cmd == "solve":
+            res = live_solve()
+            if not res.get("success"):
+                print(f"❌ Failed to solve canvas: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Solved document '{res.get('doc_name')}' ({res.get('objects_count')} objects) and refreshed canvas.")
+
+        elif args.live_cmd == "save":
+            res = live_save(filepath=args.path)
+            if not res.get("success"):
+                print(f"❌ Failed to save document: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Saved live Grasshopper definition to: {res.get('file_path')}")
+
+        elif args.live_cmd == "open":
+            res = live_open(args.file)
+            if not res.get("success"):
+                print(f"❌ Failed to open document: {res.get('error')}")
+                sys.exit(1)
+            print(f"✅ Opened '{res.get('doc_name')}' ({res.get('objects_count')} objects) on live canvas.")
+
 
 if __name__ == "__main__":
     main()
+
