@@ -16,6 +16,15 @@ class TestPluginCatalogs(unittest.TestCase):
         self.assertEqual(divide["guid"].lower(), "2162e72e-72fc-4bf8-9459-d4d82fa8aa14")
         crv_comps = list_native_components("Curve")
         self.assertGreater(len(crv_comps), 10)
+        # Rectangle component tests
+        rect = find_native_component("Rectangle")
+        self.assertIsNotNone(rect)
+        self.assertEqual(rect["guid"].lower(), "d93100b6-d50b-40b2-831a-814659dc38e3")
+        self.assertEqual(len(rect["inputs"]), 4)
+        self.assertEqual(len(rect["outputs"]), 2)
+        rect_by_guid = find_native_component("d93100b6-d50b-40b2-831a-814659dc38e3")
+        self.assertIsNotNone(rect_by_guid)
+        self.assertEqual(rect_by_guid["name"], "Rectangle")
 
     def test_heteroptera_catalog(self):
         cat = load_heteroptera_catalog()

@@ -845,6 +845,14 @@ Provenance tags: `[STATED, AAD p.X]` / `[STATED, Essential p.X]` = explicitly st
 - Behavior: Builds a line from a start point + direction + length — distinct from the two-point Line component (A/B inputs); used e.g. to offset an "apex" point above a sub-surface center along its normal.
 - Provenance: [STATED, AAD p.160, 190, 324]
 
+### Rectangle
+- Tab: Curve > Primitive | Type GUID: d93100b6-d50b-40b2-831a-814659dc38e3
+- Alias: Rec / Rectangle
+- Inputs: P (Plane), X (Dimensions of rectangle in plane X direction, domain or number), Y (Dimensions of rectangle in plane Y direction, domain or number), R (Rectangle corner fillet radius)
+- Outputs: R (Rectangle — Rectangle3d / GH_Rectangle), L (Length — perimeter of rectangle curve)
+- Behavior: Creates a rectangle on a plane with optional corner fillets. Outputs Rectangle3d on R, directly feeding components requiring Param_Rectangle (e.g. Heteroptera GridInRectangle) or Param_Curve, and perimeter Length on L. Disambiguation: d93100b6-d50b-40b2-831a-814659dc38e3 is the active Grasshopper component; 0ca0a214-396c-44ea-b22f-d3a1757c32d6 is the obsolete version (which only output Curve); abf9c670-5462-4cd8-acb3-f1ab0256dbf3 is the Param_Rectangle parameter container.
+- Provenance: [VERIFIED Rhino 8 Live ComponentServer]
+
 ### Rectangle 2Pt
 - Tab: Curve > Primitive | Type GUID: 575660b1-8c79-4b8d-9222-7ab4a6ddb359
 - Alias: Rec 2Pt

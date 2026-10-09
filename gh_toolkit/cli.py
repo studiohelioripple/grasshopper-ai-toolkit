@@ -83,7 +83,7 @@ def main():
     p_het.add_argument("--install", action="store_true", help="Install or upgrade Heteroptera to latest release via Yak")
     p_het.add_argument("--force", action="store_true", help="Force reinstall even if up to date")
 
-    p_nat = subparsers.add_parser("native", help="Inspect verified native Grasshopper components (211 cataloged)")
+    p_nat = subparsers.add_parser("native", help="Inspect verified native Grasshopper components (212 cataloged)")
     p_nat.add_argument("--list", nargs="?", const="all", help="List native components (optional category filter, e.g. Curve, Surface, Vector, Sets)")
     p_nat.add_argument("--info", help="Get input/output schema for a component name or GUID")
 

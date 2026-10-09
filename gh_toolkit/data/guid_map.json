@@ -25,6 +25,12 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "0ca0a214-396c-44ea-b22f-d3a1757c32d6": {
+    "name": "Rectangle (Obsolete)",
+    "seen_in": [
+      "Grasshopper 1.0 Legacy ComponentServer"
+    ]
+  },
   "11bbd48b-bb0a-4f1b-8167-fa297590390d": {
     "name": "End Points",
     "seen_in": [
@@ -581,7 +587,7 @@
     ]
   },
   "abf9c670-5462-4cd8-acb3-f1ab0256dbf3": {
-    "name": "Rectangle",
+    "name": "Rectangle (Parameter)",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
     ]
@@ -752,6 +758,12 @@
     "name": "Split Tree",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "d93100b6-d50b-40b2-831a-814659dc38e3": {
+    "name": "Rectangle",
+    "seen_in": [
+      "Grasshopper 1.0 / Rhino 8 Active ComponentServer"
     ]
   },
   "dabc854d-f50e-408a-b001-d043c7de151d": {

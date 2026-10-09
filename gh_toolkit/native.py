@@ -1,7 +1,7 @@
 """
 gh_toolkit.native - Native Grasshopper component catalog and lookup.
 
-Covers 211 verified native Grasshopper components across standard categories:
+Covers 212 verified native Grasshopper components across standard categories:
 Params, Maths, Sets, Vector, Curve, Surface, Mesh, Intersect, Transform, Display.
 """
 

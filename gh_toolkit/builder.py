@@ -254,7 +254,7 @@ class GHBuilder:
         pivot: Tuple[float, float],
         nickname: Optional[str] = None,
     ) -> str:
-        """Instantiate any of the 211 verified native Grasshopper components by name or GUID."""
+        """Instantiate any of the 212 verified native Grasshopper components by name or GUID."""
         comp_info = find_native_component(name_or_guid)
         if not comp_info:
             raise KeyError(f"Native component '{name_or_guid}' not found in catalog.")

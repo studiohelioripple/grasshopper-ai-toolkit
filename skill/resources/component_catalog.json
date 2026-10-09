@@ -1380,7 +1380,8 @@
     "Slingshot Allocator": "3febb59d-224c-4f37-b753-b236e9ab3214",
     "Boundary Surfaces": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
     "Custom Preview": "537b0419-bbc2-4ff4-bf08-afe526367b2c",
-    "Rectangle": "abf9c670-5462-4cd8-acb3-f1ab0256dbf3",
+    "Rectangle": "d93100b6-d50b-40b2-831a-814659dc38e3",
+    "Rectangle Parameter": "abf9c670-5462-4cd8-acb3-f1ab0256dbf3",
     "Bounding Box": "0bb3d234-9097-45db-9998-621639c87d3b",
     "Pick Selection": "54143992-a5df-4fa8-9d1f-0ac0a9db7c86",
     "Point In Curve": "a72b0bd3-c7a7-458e-875d-09ae1624638c",
@@ -2244,7 +2245,6 @@
     },
     "Rectangle": {
       "inputs": [
-        "in",
         "Plane",
         "X Size",
         "Y Size",

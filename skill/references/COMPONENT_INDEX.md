@@ -8,24 +8,24 @@
 | **Panel** | `Panel` | `ca916113-d820-437b-9994-6ab08216173b` | Params | `in` | `out` |
 | **GhPython Script** | `Python` | `410755b1-224a-4c1e-a407-bf32fb45ea7e` | Maths | `x, y, ...` | `out, a, ...` |
 | **C# Script** | `C#` | `04d46c59-f81d-407b-871d-f8fa79244093` | Maths | `x, y, ...` | `out, A, ...` |
-| **Construct Point** | `Pt` | `35520be3-db72-4638-b7eb-ee7fbbeec2c0` | Vector | `X, Y, Z` | `Pt` |
-| **Vector XYZ** | `Vec` | `91e84aa9-94b1-419b-ab09-9069d31d45dc` | Vector | `X, Y, Z` | `V` |
-| **Unit Z** | `Z` | `620e231d-b8eb-4e67-9bf4-e758a01f5647` | Vector | `Factor` | `V` |
-| **Divide Curve** | `Div` | `26d11e4f-6f9a-412e-a55e-f00e932b53f6` | Curve | `C, N, K` | `P, T, t` |
-| **Circle** | `Cir` | `8b6e680a-9d6e-4bb5-a36c-9c748c08197c` | Curve | `P, R` | `C` |
-| **Rectangle** | `Rec` | `6c459846-95ff-4be5-a4b5-4b08709ca587` | Curve | `P, X, Y, R` | `R, L` |
-| **Move** | `Move` | `8ec0a1cf-b8d4-49a6-bd27-4bf69147514a` | Transform | `G, T` | `G` |
-| **Rotate** | `Rot` | `2e4dc27f-9721-4fce-bc0c-ee43e6206dbe` | Transform | `G, A, P` | `G` |
-| **Series** | `Series` | `26c518b2-570a-4a25-a13a-a1b7e6184a44` | Sets | `S, N, C` | `S` |
-| **Range** | `Range` | `fbdb108a-cf8e-4735-86ef-d7ee76569ec1` | Sets | `D, N` | `R` |
-| **Remap Numbers** | `Remap` | `42c1143c-ae74-4b53-9a3b-2ee0fbb1a98e` | Maths | `V, S, T` | `M` |
-| **Distance** | `Dist` | `7d100085-f5da-485a-8b83-a41e974e64f0` | Vector | `A, B` | `D` |
-| **List Item** | `Item` | `2e1f6e2b-2e9a-4a69-a1c2-6f29a071597d` | Sets | `L, i, W` | `i` |
-| **List Length** | `Lng` | `b5883ef8-2b8e-4a66-be99-231362e67df1` | Sets | `L` | `L` |
-| **Merge** | `Merge` | `46eac1d6-4444-42ea-9e79-bc91ae79b882` | Sets | `D1, D2, ...` | `R` |
-| **Entwine** | `Entwine` | `300405fc-a86e-44d4-9d51-40ff42cbb9a3` | Sets | `D0, D1, ...` | `R` |
-| **Trim Tree** | `Trim` | `441b8981-d147-4929-873b-eb6368d90472` | Sets | `T, D` | `T` |
-| **Custom Preview** | `Preview` | `2e3c0b56-3c5e-4efb-91c6-29177e7d6cfb` | Display | `G, M, S` | `-` |
+| **Construct Point** | `Pt` | `3581f42a-9592-4549-bd6b-1c0fc39d067b` | Vector | `X, Y, Z` | `Pt` |
+| **Vector XYZ** | `Vec` | `56b92eab-d121-43f7-94d3-6cd8f0ddead8` | Vector | `X, Y, Z` | `V` |
+| **Unit Z** | `Z` | `9103c240-a6a9-4223-9b42-dbd19bf38e2b` | Vector | `Factor` | `V` |
+| **Divide Curve** | `Div` | `2162e72e-72fc-4bf8-9459-d4d82fa8aa14` | Curve | `C, N, K` | `P, T, t` |
+| **Circle** | `Cir` | `807b86e3-be8d-4970-92b5-f8cdcb45b06b` | Curve | `P, R` | `C` |
+| **Rectangle** | `Rec` | `d93100b6-d50b-40b2-831a-814659dc38e3` | Curve | `P, X, Y, R` | `R, L` |
+| **Move** | `Move` | `b40f28a2-ba30-4ac2-afe5-a6ece7f985fc` | Transform | `G, T` | `G` |
+| **Rotate** | `Rot` | `b661519d-43fd-4e5a-b244-d54d9fae2bde` | Transform | `G, A, P` | `G` |
+| **Series** | `Series` | `e64c5fb1-845c-4ab1-8911-5f338516ba67` | Sets | `S, N, C` | `S` |
+| **Range** | `Range` | `9445ca40-cc73-4861-a455-146308676855` | Sets | `D, N` | `R` |
+| **Remap Numbers** | `Remap` | `2fcc2743-8339-4cdf-a046-a1f17439191d` | Maths | `V, S, T` | `M` |
+| **Distance** | `Dist` | `93b8e93d-f932-402c-b435-84be04d87666` | Vector | `A, B` | `D` |
+| **List Item** | `Item` | `285ddd8a-5398-4a3e-b3c2-361025711a51` | Sets | `L, i, W` | `i` |
+| **List Length** | `Lng` | `1817fd29-20ae-4503-b542-f0fb651e67d7` | Sets | `L` | `L` |
+| **Merge** | `Merge` | `3cadddef-1e2b-4c09-9390-0e8f78f7609f` | Sets | `D1, D2, ...` | `R` |
+| **Entwine** | `Entwine` | `c9785b8e-2f30-4f90-8ee3-cca710f82402` | Sets | `D0, D1, ...` | `R` |
+| **Trim Tree** | `Trim` | `1177d6ee-3993-4226-9558-52b7fd63e1e3` | Sets | `T, D` | `T` |
+| **Custom Preview** | `Preview` | `537b0419-bbc2-4ff4-bf08-afe526367b2c` | Display | `G, M, S` | `-` |
 
 ## 2. Heteroptera Plugin Components (Top Selected)
 | Component | Nick | Type GUID | Category | Key Inputs | Key Outputs |

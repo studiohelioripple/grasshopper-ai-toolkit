@@ -1,7 +1,7 @@
 ---
 name: grasshopper
 description: >-
-  Premier computational design engine and specialist for Rhino and Grasshopper. Backed by zero-dependency binary .gh/.ghx decompiler/builder, 211 verified native components, 152 Heteroptera components, 42 LegoPod components, 14 Magpie machine learning components, complete Rajaa Issa & Tedeschi data-tree theory, 96 design pattern recipes, and automated Yak package installer.
+  Premier computational design engine and specialist for Rhino and Grasshopper. Backed by zero-dependency binary .gh/.ghx decompiler/builder, 212 verified native components, 152 Heteroptera components, 42 LegoPod components, 14 Magpie machine learning components, complete Rajaa Issa & Tedeschi data-tree theory, 96 design pattern recipes, and automated Yak package installer.
   Use for ANY of: Grasshopper or Rhino parametric modeling questions, algorithmic design, "build me a definition", facade paneling, attractor patterns, generative massing, diagrid/gridshell, waffle sectioning;
   component queries (exact port names, types, defaults, GUIDs); data-tree debugging (graft, flatten, simplify, flip matrix, Split Tree masks, Path Mapper, matching mismatches);
   inspecting, decompiling, converting, or modifying .gh binary or .ghx XML files; programmatic graph synthesis via Python GHBuilder; Space Syntax and topological network analysis; Kangaroo 2 form-finding or Galapagos optimization.
@@ -11,7 +11,7 @@ description: >-
 
 A unified, high-performance suite combining:
 1. **Zero-Dependency Engine**: Decompile binary `.gh` via raw DEFLATE streams, convert lossless between `.gh` <-> `.ghx` <-> JSON, and programmatically synthesize definitions via Python `GHBuilder`.
-2. **Verified Knowledge Base**: 211 native components, 152 Heteroptera components, 42 LegoPod components, 14 Magpie machine learning components, 96 workflow patterns, 127 architectural glossary terms, and complete data-tree mathematics.
+2. **Verified Knowledge Base**: 212 native components, 152 Heteroptera components, 42 LegoPod components, 14 Magpie machine learning components, 96 workflow patterns, 127 architectural glossary terms, and complete data-tree mathematics.
 3. **Automated Package Management**: Automated Yak package manager detection and 1-click install/upgrade of Heteroptera.
 
 ---
@@ -165,7 +165,7 @@ python3 <skill_dir>/scripts/gh_toolkit.py live open ./SynthesizedWorkflow.ghx
 # 4. Batch extract embedded GhPython & C# scripts
 python3 <skill_dir>/scripts/gh_toolkit.py extract-scripts ./definitions --out ./scripts
 
-# 5. Native Grasshopper Component Inspection (211 cataloged components)
+# 5. Native Grasshopper Component Inspection (212 cataloged components)
 python3 <skill_dir>/scripts/gh_toolkit.py native --info "Divide Curve"
 python3 <skill_dir>/scripts/gh_toolkit.py native --list Curve
 
@@ -229,7 +229,7 @@ builder.save_ghx("CircleGrid.ghx")
 * **[Tri-Plugin Computational Architecture](references/TRI_PLUGIN_ARCHITECTURE.md)**: Heteroptera (topology) + Magpie (ML) + LegoPod (BIM assets & metadata).
 * **[Tri-Plugin Production Patterns](references/TRI_PLUGIN_PATTERNS.md)**: 6 verified cookbooks fusing topology, machine learning, and block metadata.
 * **[Data Tree Theory & Decision Logic](references/DATA_TREES.md)**: Complete branch-matching mathematics, Split Tree grammar, and Path Mapper expressions.
-* **[211 Native Component Schemas](references/NATIVE_COMPONENTS.md)**: Exhaustive port specifications, behaviors, and GUIDs.
+* **[212 Native Component Schemas](references/NATIVE_COMPONENTS.md)**: Exhaustive port specifications, behaviors, and GUIDs.
 * **[152 Heteroptera Component Schemas](references/HETEROPTERA_COMPONENTS.md)**: Vectors, Networks, Space Syntax, Uncertainty, Streaming.
 * **[42 LegoPod Component Schemas](references/LEGOPOD_COMPONENTS.md)**: Blocks, Attributes, User Dictionaries, QuickBake, Hatches.
 * **[14 Magpie Machine Learning Schemas](references/MAGPIE_COMPONENTS.md)**: PCA, T-SNE, Boltzmann, Kohonen Maps, Neural Networks.
@@ -239,7 +239,7 @@ builder.save_ghx("CircleGrid.ghx")
 * **[Architectural Pillars & Recipes](references/ARCHITECTURAL_RECIPES.md)**: Production workflows (Masonry, Space Syntax, GIS, Section Slicing).
 * **[Curated Script Library](references/SCRIPT_LIBRARY.md)**: Idiomatic GhPython & C# scripts.
 * **[GUID Map](resources/guid-map.json)**: 127 component GUIDs extracted from McNeel production definitions.
-* **[Native Catalog](resources/native_catalog.json)**: 211 components structured JSON index.
+* **[Native Catalog](resources/native_catalog.json)**: 212 components structured JSON index.
 * **[Heteroptera Catalog](resources/heteroptera_catalog.json)**: 152 components indexed with full port metadata.
 * **[LegoPod Catalog](resources/legopod_catalog.json)**: 42 components indexed with full port metadata.
 * **[Magpie Catalog](resources/magpie_catalog.json)**: 14 machine-learning components indexed with full port metadata.
