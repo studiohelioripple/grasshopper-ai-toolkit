@@ -931,15 +931,16 @@ if found is not None:
     if 'Python' in obj_type or 'Script' in obj_type:
         try:
             if lang == 'python':
-                # GH_PythonScriptComponent: Script property or set via InternalData
-                if hasattr(found, 'Script'):
+                if hasattr(found, 'Code'):
+                    found.Code = new_code
+                elif hasattr(found, 'Script'):
                     found.Script = new_code
                 elif hasattr(found, 'InternalData'):
                     found.InternalData = new_code
-                else:
-                    found.Params.Input[0].PersistentData.Clear()
             else:
-                if hasattr(found, 'Script'):
+                if hasattr(found, 'Code'):
+                    found.Code = new_code
+                elif hasattr(found, 'Script'):
                     found.Script = new_code
             doc.NewSolution(True)
             if canvas:
@@ -961,7 +962,9 @@ if not add_if_missing:
     return {{'success': False, 'error': 'No script component named ' + repr(target_str) + ' found on canvas'}}
 
 comp_server = Grasshopper.Instances.ComponentServer
-proxy = comp_server.FindObjectByID(comp_guid)
+proxy = comp_server.EmitObjectProxy(comp_guid)
+if not proxy:
+    proxy = comp_server.FindObjectByName("Python", True, True) if lang == "python" else comp_server.FindObjectByName("C#", True, True)
 if not proxy:
     return {{'success': False, 'error': 'Script component GUID not found in component server: ' + str(comp_guid)}}
 
@@ -977,7 +980,9 @@ if target_str and target_str != 'new':
 doc.AddObject(new_obj, False)
 
 try:
-    if hasattr(new_obj, 'Script'):
+    if hasattr(new_obj, 'Code'):
+        new_obj.Code = new_code
+    elif hasattr(new_obj, 'Script'):
         new_obj.Script = new_code
 except Exception:
     pass

@@ -2592,6 +2592,216 @@ return {{
     return {"success": False, "error": res.get("error")}
 
 
+def live_inject_script(
+    target: str,
+    code: str,
+    lang: str = "auto",
+    add_if_missing: bool = True,
+    pivot: tuple = (400, 300),
+) -> Dict[str, Any]:
+    """Inject code into a GhPython or C# Script component on the active canvas."""
+    if lang == "auto":
+        if "using System" in code or "public class" in code or "#r " in code:
+            lang = "csharp"
+        else:
+            lang = "python"
+
+    if lang == "csharp":
+        comp_guid_str = "b6ba1144-02d6-4a2d-b53c-ec62e290eeb7"
+    else:
+        comp_guid_str = "410755b1-224a-4c1e-a407-bf32fb45ea7e"
+
+    escaped_code = json.dumps(code)
+    target_repr = repr(target)
+    pivot_x, pivot_y = float(pivot[0]), float(pivot[1])
+
+    script = f"""
+import Grasshopper
+import Grasshopper.Kernel as gh_kernel
+from System.Drawing import PointF
+import System
+
+canvas = Grasshopper.Instances.ActiveCanvas
+doc = canvas.Document if canvas else None
+if not doc:
+    return {{'success': False, 'error': 'No active Grasshopper document'}}
+
+target_str = {target_repr}
+new_code = {escaped_code}
+comp_guid = System.Guid({repr(comp_guid_str)})
+lang = {repr(lang)}
+add_if_missing = {repr(add_if_missing)}
+pivot_x, pivot_y = {pivot_x}, {pivot_y}
+
+found = None
+if target_str and target_str != 'new':
+    try:
+        inst_guid = System.Guid(target_str)
+        found = doc.FindObject(inst_guid, False)
+    except Exception:
+        pass
+    if not found:
+        for obj in doc.Objects:
+            nn = str(getattr(obj, 'NickName', '') or '')
+            nm = str(getattr(obj, 'Name', '') or '')
+            if nn.lower() == target_str.lower() or nm.lower() == target_str.lower():
+                found = obj
+                break
+
+if found is not None:
+    obj_type = type(found).__name__
+    if 'Python' in obj_type or 'Script' in obj_type:
+        try:
+            if lang == 'python':
+                if hasattr(found, 'Code'):
+                    found.Code = new_code
+                elif hasattr(found, 'Script'):
+                    found.Script = new_code
+                elif hasattr(found, 'InternalData'):
+                    found.InternalData = new_code
+            else:
+                if hasattr(found, 'Code'):
+                    found.Code = new_code
+                elif hasattr(found, 'Script'):
+                    found.Script = new_code
+            doc.NewSolution(True)
+            if canvas:
+                canvas.Refresh()
+            return {{
+                'success': True,
+                'action': 'updated',
+                'instance_guid': str(found.InstanceGuid),
+                'type': obj_type,
+                'lang': lang
+            }}
+        except Exception as e:
+            return {{'success': False, 'error': 'Inject failed: ' + str(e)}}
+    else:
+        return {{'success': False, 'error': 'Matched object is not a script component: ' + obj_type}}
+
+if not add_if_missing:
+    return {{'success': False, 'error': 'No script component named ' + repr(target_str) + ' found on canvas'}}
+
+comp_server = Grasshopper.Instances.ComponentServer
+proxy = comp_server.EmitObjectProxy(comp_guid)
+if not proxy:
+    proxy = comp_server.FindObjectByName("Python", True, True) if lang == "python" else comp_server.FindObjectByName("C#", True, True)
+if not proxy:
+    return {{'success': False, 'error': 'Script component GUID not found in component server: ' + str(comp_guid)}}
+
+new_obj = proxy.CreateInstance()
+if not new_obj:
+    return {{'success': False, 'error': 'Could not instantiate script component'}}
+
+new_obj.CreateAttributes()
+new_obj.Attributes.Pivot = PointF(float(pivot_x), float(pivot_y))
+if target_str and target_str != 'new':
+    new_obj.NickName = target_str
+
+doc.AddObject(new_obj, False)
+
+try:
+    if hasattr(new_obj, 'Code'):
+        new_obj.Code = new_code
+    elif hasattr(new_obj, 'Script'):
+        new_obj.Script = new_code
+except Exception:
+    pass
+
+doc.NewSolution(True)
+if canvas:
+    canvas.Refresh()
+
+return {{
+    'success': True,
+    'action': 'created',
+    'instance_guid': str(new_obj.InstanceGuid),
+    'lang': lang,
+    'pivot': [pivot_x, pivot_y]
+}}
+"""
+    res = run_in_rhino(script)
+    if res.get("success"):
+        return res.get("result", {})
+    return {"success": False, "error": res.get("error")}
+
+
+def live_watch_script(
+    target: str,
+    filepath: str,
+    lang: str = "auto",
+    add_if_missing: bool = True,
+    pivot: tuple = (400, 300),
+    interval: float = 0.5,
+    on_reload: Optional[Any] = None,
+) -> None:
+    """Watch a local Python/C# source file and hot-reload it into Grasshopper."""
+    abs_path = os.path.abspath(filepath)
+    if not os.path.exists(abs_path):
+        raise FileNotFoundError(f"Script file not found: {abs_path}")
+
+    if lang == "auto":
+        if abs_path.endswith(".cs"):
+            lang = "csharp"
+        elif abs_path.endswith(".py"):
+            lang = "python"
+        else:
+            lang = "python"
+
+    print(f"[gh-toolkit live watch] Watching: {abs_path}")
+    print(f"[gh-toolkit live watch] Target: '{target}' | Lang: {lang} | Interval: {interval}s")
+    print(f"[gh-toolkit live watch] Press Ctrl-C to stop.\n")
+
+    last_mtime = None
+    reload_count = 0
+
+    try:
+        while True:
+            try:
+                mtime = os.path.getmtime(abs_path)
+            except OSError:
+                time.sleep(interval)
+                continue
+
+            if mtime != last_mtime:
+                last_mtime = mtime
+                try:
+                    with open(abs_path, "r", encoding="utf-8") as f:
+                        code = f.read()
+                except OSError as e:
+                    print(f"  [!] Read error: {e}")
+                    time.sleep(interval)
+                    continue
+
+                result = live_inject_script(
+                    target=target,
+                    code=code,
+                    lang=lang,
+                    add_if_missing=add_if_missing,
+                    pivot=pivot,
+                )
+
+                reload_count += 1
+                timestamp = time.strftime("%H:%M:%S")
+                if result.get("success"):
+                    action = result.get("action", "updated")
+                    guid = result.get("instance_guid", "?")
+                    print(f"  [{timestamp}] #{reload_count} ✓ {action} → {guid}")
+                else:
+                    err = result.get("error", "Unknown error")
+                    print(f"  [{timestamp}] #{reload_count} ✗ Error: {err}")
+
+                if on_reload:
+                    try:
+                        on_reload(result)
+                    except Exception:
+                        pass
+
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        print("\n[gh-toolkit live watch] Stopped.")
+
+
 # ==============================================================================
 # 7. CLI Utilities
 # ==============================================================================
@@ -2692,6 +2902,21 @@ def main():
 
     p_lopen = live_subs.add_parser("open", help="Open definition into active Grasshopper canvas")
     p_lopen.add_argument("file", help="Path to .gh or .ghx file")
+
+    p_linj = live_subs.add_parser("inject", help="Inject a Python or C# script file into a script component on the active canvas")
+    p_linj.add_argument("target", help="Nickname, name, or GUID of component, or 'new'")
+    p_linj.add_argument("file", help="Path to .py or .cs script file")
+    p_linj.add_argument("--lang", choices=["auto", "python", "csharp"], default="auto", help="Script language")
+    p_linj.add_argument("--x", type=float, default=400.0, help="Canvas X if creating new (default: 400)")
+    p_linj.add_argument("--y", type=float, default=300.0, help="Canvas Y if creating new (default: 300)")
+
+    p_lwat = live_subs.add_parser("watch", help="Watch a script file and hot-reload it into Grasshopper on save")
+    p_lwat.add_argument("target", help="Nickname, name, or GUID of component, or 'new'")
+    p_lwat.add_argument("file", help="Path to .py or .cs script file")
+    p_lwat.add_argument("--lang", choices=["auto", "python", "csharp"], default="auto", help="Script language")
+    p_lwat.add_argument("--interval", type=float, default=0.5, help="Poll interval in seconds (default: 0.5)")
+    p_lwat.add_argument("--x", type=float, default=400.0, help="Canvas X if creating new")
+    p_lwat.add_argument("--y", type=float, default=300.0, help="Canvas Y if creating new")
 
     args = parser.parse_args()
 
@@ -3211,6 +3436,42 @@ def main():
                 print(f"❌ Failed to open document: {res.get('error')}")
                 sys.exit(1)
             print(f"✅ Opened '{res.get('doc_name')}' ({res.get('objects_count')} objects) on live canvas.")
+
+        elif args.live_cmd == "inject":
+            if not os.path.isfile(args.file):
+                print(f"❌ Script file not found: {args.file}")
+                sys.exit(1)
+            with open(args.file, "r", encoding="utf-8") as f:
+                code_content = f.read()
+            res = live_inject_script(
+                target=args.target,
+                code=code_content,
+                lang=args.lang,
+                add_if_missing=True,
+                pivot=(args.x, args.y),
+            )
+            if not res.get("success"):
+                print(f"❌ Inject failed: {res.get('error')}")
+                sys.exit(1)
+            action = res.get("action", "updated")
+            guid = res.get("instance_guid", "")
+            lang_used = res.get("lang", args.lang)
+            print(f"✅ Script {action} on canvas  [{lang_used}]  GUID: {guid}")
+            print(f"   Source: {os.path.abspath(args.file)}")
+
+        elif args.live_cmd == "watch":
+            try:
+                live_watch_script(
+                    target=args.target,
+                    filepath=args.file,
+                    lang=args.lang,
+                    add_if_missing=True,
+                    pivot=(args.x, args.y),
+                    interval=args.interval,
+                )
+            except Exception as e:
+                print(f"❌ Watch error: {e}")
+                sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -199,7 +199,7 @@ else:
             target_view = doc.Views.ActiveView
 
         if not target_view:
-            status = f"Error: Viewport '{_view_name}' not found and no active view exists."
+            status = "Error: Viewport '{0}' not found and no active view exists.".format(_view_name)
         else:
             vp = target_view.ActiveViewport
 
@@ -240,11 +240,13 @@ else:
                 target_view.Redraw()
 
             status = (
-                f"Active View: '{target_view.MainViewport.Name}' | "
-                f"Camera: ({_final_cam.X:.1f}, {_final_cam.Y:.1f}, {_final_cam.Z:.1f}) | "
-                f"Target: ({_target.X:.1f}, {_target.Y:.1f}, {_target.Z:.1f}) | "
-                f"Lens: {_lens:.0f}mm | Dist: {_final_dist:.1f}"
+                "Active View: '{0}' | Camera: ({1:.1f}, {2:.1f}, {3:.1f}) | Target: ({4:.1f}, {5:.1f}, {6:.1f}) | Lens: {7:.0f}mm | Dist: {8:.1f}"
+            ).format(
+                target_view.MainViewport.Name,
+                _final_cam.X, _final_cam.Y, _final_cam.Z,
+                _target.X, _target.Y, _target.Z,
+                _lens, _final_dist
             )
 
     except Exception as e:
-        status = f"Viewport update exception: {str(e)}"
+        status = "Viewport update exception: {0}".format(str(e))
