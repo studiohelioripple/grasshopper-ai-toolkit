@@ -43,6 +43,8 @@ from .live import (
     live_solve,
     live_save,
     live_open,
+    live_inject_script,
+    live_watch_script,
 )
 from .builder import GHBuilder
 
@@ -145,6 +147,23 @@ def main():
 
     p_lopen = live_subs.add_parser("open", help="Open definition into active Grasshopper canvas")
     p_lopen.add_argument("file", help="Path to .gh or .ghx file")
+
+    p_linj = live_subs.add_parser("inject", help="Inject a Python or C# script file into a script component on the active canvas")
+    p_linj.add_argument("target", help="Nickname, name, or instance GUID of script component. Use 'new' to always create.")
+    p_linj.add_argument("file", help="Path to the .py or .cs source file to inject")
+    p_linj.add_argument("--lang", default="auto", choices=["auto", "python", "csharp"], help="Script language (default: auto-detect)")
+    p_linj.add_argument("--x", type=float, default=400.0, help="Canvas X pivot if creating new component")
+    p_linj.add_argument("--y", type=float, default=300.0, help="Canvas Y pivot if creating new component")
+    p_linj.add_argument("--no-create", action="store_true", help="Error instead of creating if component not found")
+
+    p_lwatch = live_subs.add_parser("watch", help="Watch a script file and hot-reload it into a Grasshopper script component on every save")
+    p_lwatch.add_argument("target", help="Nickname, name, or instance GUID of script component. Use 'new' to always create.")
+    p_lwatch.add_argument("file", help="Path to the .py or .cs source file to watch")
+    p_lwatch.add_argument("--lang", default="auto", choices=["auto", "python", "csharp"], help="Script language (default: auto-detect)")
+    p_lwatch.add_argument("--interval", type=float, default=0.5, help="Polling interval in seconds (default: 0.5)")
+    p_lwatch.add_argument("--x", type=float, default=400.0, help="Canvas X pivot if creating new component")
+    p_lwatch.add_argument("--y", type=float, default=300.0, help="Canvas Y pivot if creating new component")
+    p_lwatch.add_argument("--no-create", action="store_true", help="Error instead of creating if component not found")
 
     args = parser.parse_args()
 
@@ -547,7 +566,7 @@ def main():
 
     elif args.cmd == "live":
         if not args.live_cmd:
-            print("Usage: gh-toolkit live {status,list,add,remove,wire,unwire,set,solve,save,open} ...")
+            print("Usage: gh-toolkit live {status,list,add,remove,wire,unwire,set,solve,save,open,inject,watch} ...")
             sys.exit(1)
 
         if args.live_cmd == "status":
@@ -652,6 +671,38 @@ def main():
                 print(f"❌ Failed to open document: {res.get('error')}")
                 sys.exit(1)
             print(f"✅ Opened '{res.get('doc_name')}' ({res.get('objects_count')} objects) on live canvas.")
+
+        elif args.live_cmd == "inject":
+            if not os.path.exists(args.file):
+                print(f"❌ Script file not found: {args.file}")
+                sys.exit(1)
+            with open(args.file, "r", encoding="utf-8") as f:
+                code = f.read()
+            res = live_inject_script(
+                target=args.target,
+                code=code,
+                lang=args.lang,
+                add_if_missing=not args.no_create,
+                pivot=(args.x, args.y),
+            )
+            if not res.get("success"):
+                print(f"❌ Inject failed: {res.get('error')}")
+                sys.exit(1)
+            action = res.get("action", "updated")
+            guid = res.get("instance_guid", "?")
+            lang_used = res.get("lang", args.lang)
+            print(f"✅ Script {action} on canvas  [{lang_used}]  GUID: {guid}")
+            print(f"   Source: {os.path.abspath(args.file)}")
+
+        elif args.live_cmd == "watch":
+            live_watch_script(
+                target=args.target,
+                filepath=args.file,
+                lang=args.lang,
+                add_if_missing=not args.no_create,
+                pivot=(args.x, args.y),
+                interval=args.interval,
+            )
 
 
 if __name__ == "__main__":
