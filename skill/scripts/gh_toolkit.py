@@ -1275,10 +1275,16 @@ class GHBuilder:
         attr.add_item("Bounds", 35, [pivot[0], pivot[1], 160.0, 60.0])
         attr.add_item("Pivot", 31, [pivot[0], pivot[1]])
 
+        in_param_guid = str(uuid.uuid4())
+        p_in = cont.create_chunk("param_input", 0)
+        p_in.add_item("InstanceGuid", 9, in_param_guid)
+        p_in.add_item("Name", 10, "in")
+
         p_out = cont.create_chunk("param_output", 0)
         p_out.add_item("InstanceGuid", 9, out_param_guid)
         p_out.add_item("Name", 10, "out")
 
+        self.param_lut[f"{alias}.in"] = in_param_guid
         self.param_lut[f"{alias}.out"] = out_param_guid
         self.param_lut[f"{alias}"] = out_param_guid
         return inst_guid

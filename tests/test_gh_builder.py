@@ -57,6 +57,33 @@ class TestGHBuilder(unittest.TestCase):
             if os.path.exists(out_path):
                 os.remove(out_path)
 
+    def test_python_script_and_panel_wiring(self):
+        builder = GHBuilder(name="ScriptPanelTest")
+        builder.add_slider("s_val", "Val", 0.0, 100.0, 50.0, (100, 100))
+        builder.add_python_script(
+            alias="py_comp",
+            code="a = x * 2",
+            inputs=["x"],
+            outputs=["a"],
+            pivot=(300, 100),
+        )
+        builder.add_panel("p_out", "Output", (500, 100))
+        builder.connect("s_val.out", "py_comp.x")
+        builder.connect("py_comp.a", "p_out.in")
+
+        out_path = os.path.join(os.path.dirname(__file__), "test_script_panel.ghx")
+        try:
+            builder.save_ghx(out_path)
+            self.assertTrue(os.path.exists(out_path))
+
+            arch = read_ghx(out_path)
+            graph = GHGraph.from_archive(arch)
+            self.assertEqual(len(graph.components), 3)
+            self.assertEqual(len(graph.wires), 2)
+        finally:
+            if os.path.exists(out_path):
+                os.remove(out_path)
+
 
 if __name__ == "__main__":
     unittest.main()
