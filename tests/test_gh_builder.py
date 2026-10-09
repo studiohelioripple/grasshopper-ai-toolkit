@@ -114,6 +114,38 @@ class TestGHBuilder(unittest.TestCase):
             if os.path.exists(out_path):
                 os.remove(out_path)
 
+    def test_viewport_pip_synthesis(self):
+        builder = GHBuilder(name="ViewportPiPTest")
+        builder.add_slider("s_fps", "FPS", 1.0, 60.0, 15.0, (150, 540))
+        builder.add_panel("p_view", "Perspective", (150, 380))
+        builder.add_csharp_script(
+            alias="cs_pip",
+            code="// Viewport PiP Test",
+            inputs=["run", "view_name", "width", "height", "fps", "display_mode"],
+            outputs=["is_open", "active_view", "resolution", "status"],
+            pivot=(420, 480),
+        )
+        builder.add_panel("p_status", "PiP Telemetry", (720, 480))
+        builder.connect("p_view.out", "cs_pip.view_name")
+        builder.connect("s_fps.out", "cs_pip.fps")
+        builder.connect("cs_pip.status", "p_status.in")
+
+        out_path = os.path.join(os.path.dirname(__file__), "test_viewport_pip.gh")
+        try:
+            builder.save_gh(out_path)
+            self.assertTrue(os.path.exists(out_path))
+
+            arch = read_gh_binary(out_path)
+            graph = GHGraph.from_archive(arch)
+            self.assertEqual(len(graph.components), 4)
+            self.assertEqual(len(graph.wires), 3)
+            csharp_comp = [c for c in graph.components if c.guid == "a9a8ebd2-fff5-4c44-a8f5-739736d129ba"]
+            self.assertEqual(len(csharp_comp), 1)
+        finally:
+            if os.path.exists(out_path):
+                os.remove(out_path)
+
 
 if __name__ == "__main__":
     unittest.main()
+
