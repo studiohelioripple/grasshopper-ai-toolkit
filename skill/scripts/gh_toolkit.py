@@ -2607,9 +2607,9 @@ def live_inject_script(
             lang = "python"
 
     if lang == "csharp":
-        comp_guid_str = "b6ba1144-02d6-4a2d-b53c-ec62e290eeb7"
+        comp_guid_str = "a9a8ebd2-fff5-4c44-a8f5-739736d129ba"  # Native Grasshopper C# Script component
     else:
-        comp_guid_str = "410755b1-224a-4c1e-a407-bf32fb45ea7e"
+        comp_guid_str = "410755b1-224a-4c1e-a407-bf32fb45ea7e"  # GhPython Script
 
     escaped_code = json.dumps(code)
     target_repr = repr(target)
@@ -2633,6 +2633,7 @@ lang = {repr(lang)}
 add_if_missing = {repr(add_if_missing)}
 pivot_x, pivot_y = {pivot_x}, {pivot_y}
 
+# --- Find existing component ---
 found = None
 if target_str and target_str != 'new':
     try:
@@ -2648,76 +2649,137 @@ if target_str and target_str != 'new':
                 found = obj
                 break
 
+action = 'updated'
+
+# --- Check language match and swap component if mismatched ---
 if found is not None:
     obj_type = type(found).__name__
-    if 'Python' in obj_type or 'Script' in obj_type:
-        try:
-            if lang == 'python':
-                if hasattr(found, 'Code'):
-                    found.Code = new_code
-                elif hasattr(found, 'Script'):
-                    found.Script = new_code
-                elif hasattr(found, 'InternalData'):
-                    found.InternalData = new_code
-            else:
-                if hasattr(found, 'Code'):
-                    found.Code = new_code
-                elif hasattr(found, 'Script'):
-                    found.Script = new_code
-            doc.NewSolution(True)
-            if canvas:
-                canvas.Refresh()
-            return {{
-                'success': True,
-                'action': 'updated',
-                'instance_guid': str(found.InstanceGuid),
-                'type': obj_type,
-                'lang': lang
-            }}
-        except Exception as e:
-            return {{'success': False, 'error': 'Inject failed: ' + str(e)}}
-    else:
-        return {{'success': False, 'error': 'Matched object is not a script component: ' + obj_type}}
+    is_cs = ('CS' in obj_type or 'CSharp' in obj_type)
+    is_py = ('Python' in obj_type)
 
-if not add_if_missing:
-    return {{'success': False, 'error': 'No script component named ' + repr(target_str) + ' found on canvas'}}
+    if (lang == 'csharp' and not is_cs) or (lang == 'python' and not is_py):
+        old_pivot = found.Attributes.Pivot
+        old_nick = found.NickName
+        
+        saved_wires = []
+        for p in found.Params.Input:
+            for s in p.Sources:
+                saved_wires.append((p.Name, s))
+                
+        doc.RemoveObject(found, False)
+        
+        comp_server = Grasshopper.Instances.ComponentServer
+        proxy = comp_server.EmitObjectProxy(comp_guid)
+        if not proxy:
+            proxy = comp_server.FindObjectByName("C#" if lang == "csharp" else "Python", True, True)
+        if not proxy:
+            return {{'success': False, 'error': 'Component for ' + lang + ' not found in ComponentServer'}}
+            
+        found = proxy.CreateInstance()
+        found.CreateAttributes()
+        found.Attributes.Pivot = old_pivot
+        found.NickName = old_nick
+        doc.AddObject(found, False)
+        action = 'swapped_and_updated'
 
-comp_server = Grasshopper.Instances.ComponentServer
-proxy = comp_server.EmitObjectProxy(comp_guid)
-if not proxy:
-    proxy = comp_server.FindObjectByName("Python", True, True) if lang == "python" else comp_server.FindObjectByName("C#", True, True)
-if not proxy:
-    return {{'success': False, 'error': 'Script component GUID not found in component server: ' + str(comp_guid)}}
+# --- Create new script component if not found ---
+if found is None:
+    if not add_if_missing:
+        return {{'success': False, 'error': 'No script component named ' + repr(target_str) + ' found on canvas'}}
 
-new_obj = proxy.CreateInstance()
-if not new_obj:
-    return {{'success': False, 'error': 'Could not instantiate script component'}}
+    comp_server = Grasshopper.Instances.ComponentServer
+    proxy = comp_server.EmitObjectProxy(comp_guid)
+    if not proxy:
+        proxy = comp_server.FindObjectByName("C#" if lang == "csharp" else "Python", True, True)
+    if not proxy:
+        return {{'success': False, 'error': 'Script component GUID not found in component server: ' + str(comp_guid)}}
 
-new_obj.CreateAttributes()
-new_obj.Attributes.Pivot = PointF(float(pivot_x), float(pivot_y))
-if target_str and target_str != 'new':
-    new_obj.NickName = target_str
+    new_obj = proxy.CreateInstance()
+    if not new_obj:
+        return {{'success': False, 'error': 'Could not instantiate script component'}}
 
-doc.AddObject(new_obj, False)
+    new_obj.CreateAttributes()
+    new_obj.Attributes.Pivot = PointF(float(pivot_x), float(pivot_y))
+    if target_str and target_str != 'new':
+        new_obj.NickName = target_str
 
+    doc.AddObject(new_obj, False)
+    found = new_obj
+    action = 'created'
+
+# --- Inject code according to language ---
 try:
-    if hasattr(new_obj, 'Code'):
-        new_obj.Code = new_code
-    elif hasattr(new_obj, 'Script'):
-        new_obj.Script = new_code
-except Exception:
-    pass
+    if lang == 'csharp':
+        if hasattr(found, 'ScriptSource'):
+            try:
+                from System.Reflection import BindingFlags
+                t_base = found.GetType().BaseType
+                flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance
+                f_asm = t_base.GetField('<ScriptAssembly>k__BackingField', flags) if t_base else None
+                if f_asm:
+                    f_asm.SetValue(found, None)
+            except Exception:
+                pass
+            code_str = str(new_code)
+            if 'RunScript' in code_str:
+                rs_start = code_str.find('{{', code_str.find('RunScript')) + 1
+                add_idx = -1
+                for kw in ['private static', 'public static', 'private void', 'public void', 'private class', 'public class', 'private ']:
+                    pos = code_str.find(kw, rs_start)
+                    if pos != -1 and (add_idx == -1 or pos < add_idx):
+                        add_idx = pos
+                if add_idx != -1:
+                    body_end = code_str.rfind('}}', rs_start, add_idx)
+                    found.ScriptSource.ScriptCode = code_str[rs_start:body_end if body_end != -1 else add_idx].strip()
+                    found.ScriptSource.AdditionalCode = code_str[add_idx:code_str.rfind('}}')].strip()
+                else:
+                    found.ScriptSource.ScriptCode = code_str[rs_start:code_str.rfind('}}')].strip()
+            else:
+                found.ScriptSource.ScriptCode = code_str
+        elif hasattr(found, 'Code'):
+            found.Code = new_code
+        elif hasattr(found, 'Script'):
+            found.Script = new_code
+    else:
+        # Python
+        if hasattr(found, 'Code'):
+            found.Code = new_code
+        elif hasattr(found, 'Script'):
+            found.Script = new_code
+        elif hasattr(found, 'InternalData'):
+            found.InternalData = new_code
+except Exception as e:
+    return {{'success': False, 'error': 'Inject failed: ' + str(e)}}
 
+# --- Compile, execute, and verify that the script is working ---
+found.ExpireSolution(True)
 doc.NewSolution(True)
 if canvas:
     canvas.Refresh()
 
+errs = [str(x) for x in found.RuntimeMessages(gh_kernel.GH_RuntimeMessageLevel.Error)]
+warns = [str(x) for x in found.RuntimeMessages(gh_kernel.GH_RuntimeMessageLevel.Warning)]
+
+if len(errs) > 0:
+    return {{
+        'success': False,
+        'action': 'error',
+        'error': 'Script has ' + str(len(errs)) + ' error(s): ' + '; '.join(errs),
+        'errors': errs,
+        'warnings': warns,
+        'instance_guid': str(found.InstanceGuid),
+        'type': type(found).__name__,
+        'lang': lang
+    }}
+
 return {{
     'success': True,
-    'action': 'created',
-    'instance_guid': str(new_obj.InstanceGuid),
+    'action': action,
+    'instance_guid': str(found.InstanceGuid),
+    'type': type(found).__name__,
     'lang': lang,
-    'pivot': [pivot_x, pivot_y]
+    'errors': [],
+    'warnings': warns
 }}
 """
     res = run_in_rhino(script)
