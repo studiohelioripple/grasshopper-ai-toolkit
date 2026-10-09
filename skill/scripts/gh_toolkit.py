@@ -911,6 +911,49 @@ def find_native_component(name_or_guid: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+def resolve_native_for_generation(name_or_guid: str) -> Optional[Dict[str, Any]]:
+    """
+    Resolve a native Grasshopper component strictly for new definition generation.
+    Always returns active/modern components, automatically upgrading obsolete GUIDs or names.
+    """
+    comp = find_native_component(name_or_guid)
+    if not comp:
+        return None
+    if comp.get("obsolete"):
+        if comp.get("superseded_by"):
+            active = find_native_component(comp["superseded_by"])
+            if active:
+                return active
+            clean_name = comp.get("name", "").replace(" (Obsolete)", "").replace(" [OBSOLETE]", "")
+            return {
+                "name": clean_name,
+                "nickname": comp.get("nickname", ""),
+                "guid": comp["superseded_by"],
+                "tab": comp.get("tab", "Core"),
+                "category": comp.get("category", "General"),
+                "inputs": comp.get("inputs", []),
+                "outputs": comp.get("outputs", []),
+                "behavior": f"Active modern component for {clean_name}.",
+                "obsolete": False,
+            }
+        return None
+    return comp
+
+
+def is_obsolete_native_component(name_or_guid: str) -> bool:
+    """Check if a native component is obsolete."""
+    comp = find_native_component(name_or_guid)
+    return bool(comp and comp.get("obsolete", False))
+
+
+def get_active_replacement_guid(guid: str) -> Optional[str]:
+    """Get the active modern replacement GUID for an obsolete component GUID."""
+    comp = find_native_component(guid)
+    if comp and comp.get("obsolete"):
+        return comp.get("superseded_by")
+    return None
+
+
 def list_native_components(category: Optional[str] = None) -> List[Dict[str, Any]]:
     """List native components, optionally filtered by category."""
     catalog = load_native_catalog()
@@ -1410,7 +1453,7 @@ class GHBuilder:
         nickname: Optional[str] = None,
     ) -> str:
         """Instantiate any native Grasshopper component by name or GUID."""
-        comp_info = find_native_component(name_or_guid)
+        comp_info = resolve_native_for_generation(name_or_guid) or find_native_component(name_or_guid)
         if not comp_info:
             raise KeyError(f"Native component '{name_or_guid}' not found in catalog.")
 
@@ -1618,7 +1661,7 @@ class GHBuilder:
         nickname: Optional[str] = None,
     ) -> str:
         """Instantiate any component (searching Native, Heteroptera, LegoPod, or Magpie)."""
-        comp_nat = find_native_component(name_or_guid)
+        comp_nat = resolve_native_for_generation(name_or_guid) or find_native_component(name_or_guid)
         if comp_nat:
             return self.add_native_component(name_or_guid, alias, pivot, nickname)
         comp_het = find_heteroptera_component(name_or_guid)
@@ -2833,6 +2876,12 @@ def main():
             print(f"Tab:          {comp.get('tab', 'Core')}")
             print(f"Category:     {comp.get('category', 'General')}")
             print(f"Behavior:     {comp.get('behavior', '')}")
+            if comp.get("obsolete"):
+                print(f"Status:       [OBSOLETE] (Preserved for legacy definitions)")
+                if comp.get("superseded_by"):
+                    print(f"Replaced By:  {comp['superseded_by']}")
+            else:
+                print(f"Status:       [ACTIVE] (Generation ready)")
             if comp.get("provenance"):
                 print(f"Provenance:   {comp['provenance']}")
             print("\nInputs:")
@@ -2993,9 +3042,20 @@ def main():
             for c, m in found_mag:
                 print(f"  - {m['name']} ({m.get('subcategory', 'General')})")
 
+        found_obsolete = [pair for pair in found_nat if pair[1].get("obsolete")]
+        if found_obsolete:
+            print(f"\nLegacy / Obsolete Components Detected ({len(found_obsolete)}):")
+            for c, m in found_obsolete:
+                rep = m.get("superseded_by", "N/A")
+                print(f"  [OBSOLETE] {m['name']} (GUID: {m['guid']}) -> Active Replacement: {rep}")
+
         print("\nOptimization & Architectural Advice:")
         advice_count = 0
         names = [c.name.lower() for c in graph.components]
+
+        if found_obsolete:
+            print(f"  [!] Obsolete components detected: Upgrade {len(found_obsolete)} legacy component(s) to modern Grasshopper 8 active GUIDs for future-proof definitions.")
+            advice_count += 1
 
         # Heteroptera advice
         if "distance" in names and not any("adjacen" in n or "topology" in n for n in names):

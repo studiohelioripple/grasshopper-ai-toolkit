@@ -1,10 +1,34 @@
 {
+  "002b2feb-5d1b-41ea-913f-9f203c615792": {
+    "name": "Tangent (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0f31784f-7177-4104-8500-1f4f4a306df4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "008e9a6f-478a-4813-8c8a-546273bc3a6b": {
     "name": "Cull Pattern",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "01cbd6e3-ccbe-4c24-baeb-46e10553e18b": {
+    "name": "Concatenate (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2013e425-8713-42e2-a661-b57e78840337",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "035bf8a7-b9e0-4e37-b031-4567bc60d047": {
+    "name": "Multiplication (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "03b801eb-87cd-476a-a591-257fe5d5bf0f": {
@@ -19,16 +43,90 @@
       "Chapter1_AlgorithmsAndData.ghx"
     ]
   },
+  "06b3086c-1e9d-41c2-bcfc-bb843156196e": {
+    "name": "Simplify Tree (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "1303da7b-e339-4e65-a051-82c4dce8224d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "071c3940-a12d-4b77-bb23-42b5d3314a0d": {
     "name": "Clean Tree",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "082976f0-c741-4df8-a1d4-89891bf8619f": {
+    "name": "Divide Surface [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5106bafc-d5d4-4983-83e7-7be3ed07f502",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "08d45f16-c708-4ede-8fd3-b70a0a7abd8f": {
+    "name": "Face Boundaries (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0b4ac802-fc4a-4201-9c66-0078b837c1eb",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "0a80e903-e15b-4992-9675-19b2c488e853": {
+    "name": "Circle Fit [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "be52336f-a2e1-43b1-b5f5-178ba489508a",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "0b0f1203-2ea8-4250-a45a-cca7ad2e5b76": {
+    "name": "Square (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "717a1e25-a075-4530-bc80-d43ecc2500d9",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "0bc93049-e1a7-44b5-8068-c7ddc85a9f46": {
+    "name": "Tangent (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0f31784f-7177-4104-8500-1f4f4a306df4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "0c68b153-3c88-4e62-9827-f3793c013f88": {
+    "name": "SoapFilm (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "76ab889c-8593-4892-861d-a80b5311a981",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "0c80d9c0-d8b3-4817-b8e1-6214d443704b": {
+    "name": "Subtraction (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "0ca0a214-396c-44ea-b22f-d3a1757c32d6": {
     "name": "Rectangle (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "d93100b6-d50b-40b2-831a-814659dc38e3",
     "seen_in": [
-      "Grasshopper 1.0 Legacy ComponentServer"
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "10a8674b-f4bb-4fdf-a56e-94dc606ecf33": {
+    "name": "Graft Tree (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "87e1d9ef-088b-4d30-9dda-8a7448a17329",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "11bbd48b-bb0a-4f1b-8167-fa297590390d": {
@@ -44,16 +142,64 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "12278a4b-c131-4735-a3ee-bcb783083856": {
+    "name": "Cosine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "d2d2a900-780c-4d58-9a35-1f9d8d35df6f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "1303da7b-e339-4e65-a051-82c4dce8224d": {
     "name": "Simplify Tree",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "152a264e-fc74-40e5-88cc-d1a681cd09c3": {
+    "name": "Angle (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "f5f95b51-7431-4e80-a32f-d33e5dee53a5",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "15ab0db0-5093-4a37-854a-cee70457a847": {
+    "name": "CyclicQuad (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5d81faae-befc-4c12-b558-beaf2ebee8f1",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "15ac45a8-b190-420a-bd66-e78ed6bcfaa4": {
+    "name": "Curve Domain (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ccfd6ba8-ecb1-44df-a47e-08126a653c51",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "15b7afe5-d0d0-43e1-b894-34fcfe3be384": {
     "name": "Domain",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "160c1df2-e2e8-48e5-b538-f2d6981007e3": {
+    "name": "Weave (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "50faccbd-9c92-4175-a5fa-d65e36013db6",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "164d0429-e5f5-4292-aa80-3f88d43cdac2": {
+    "name": "Evaluate Curve (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "fc6979e4-7e91-4508-8e05-37c680779751",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "16ef3e75-e315-4899-b531-d3166b42dac9": {
@@ -75,6 +221,14 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "18564c36-5652-4c63-bb6f-f0e1273666dd": {
+    "name": "Text Tag 3D (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5a41528b-12b9-40dc-a3f2-842034d267c4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "190d042c-2270-4bc1-81c0-4f90c170c9c9": {
     "name": "Delete Consecutive",
     "seen_in": [
@@ -91,6 +245,30 @@
     "name": "Offset Curve",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "1e9e08fc-c31e-49eb-a36c-90de5e62e5f5": {
+    "name": "VB Script (Legacy) (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "079bd9bd-54a0-41d4-98af-db999015f63d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "1f18e802-4ab9-444f-bf3c-3e7e421a2acf": {
+    "name": "Point List (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "cc14daa5-911a-4fcc-8b3b-1149bf7f2eeb",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "1ff80a00-1b1d-4fb3-926a-0c246261fc55": {
+    "name": "Sort Text (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "cec16c67-7b8b-41f7-a5a5-f675177e524b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "2013e425-8713-42e2-a661-b57e78840337": {
@@ -113,6 +291,46 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "21ca41ee-bc18-4ac8-ba20-713e7edf541e": {
+    "name": "Iso Curve (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "d1d57181-d594-41e8-8efb-041e29f8a5ca",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "224f7648-5956-4b26-80d9-8d771f3dfd5d": {
+    "name": "Volume (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "7c0523e8-79c9-45a2-8777-cf0d46bc5432",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "22bba82d-32e8-448c-a59c-f054c8843ee3": {
+    "name": "ArcSine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "cc15ba56-fae7-4f05-b599-cb7c43b60e11",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "22e61c07-c02f-4c53-b567-c821a164fd92": {
+    "name": "Cone [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "03e331ed-c4d1-4a23-afa2-f57b87d2043c",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "24e913c9-7530-436d-b81d-bc3aa27296a4": {
+    "name": "Project (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "23285717-156c-468f-a691-b242488c06a6",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "2653b135-4df1-4a6b-820c-55e2ad3bc1e0": {
     "name": "Relative Items",
     "seen_in": [
@@ -125,6 +343,22 @@
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "285ddd8a-5398-4a3e-b3c2-361025711a51": {
+    "name": "List Item (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "28f35e12-cd50-4bce-b036-695c2a3d04da": {
+    "name": "Gate And (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "040f195d-0b4e-4fe0-901f-fedb2fd3db15",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "28f40e48-e739-4211-91bd-f4aefa5965f8": {
@@ -140,6 +374,14 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "2b2628ea-3f43-4ce9-8435-9a045d54b5c6": {
+    "name": "Sort List (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "6f93d366-919f-4dda-a35e-ba03dd62799b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "2b2a4145-3dff-41d4-a8de-1ea9d29eef33": {
     "name": "Interpolate",
     "seen_in": [
@@ -150,6 +392,46 @@
     "name": "Quick Graph",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "2bcd153c-c964-4199-b8e4-4a19dfd34967": {
+    "name": "Symbol Display (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "62d5ead4-53c4-4d0b-b5ce-6bd6e0850ab8",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "2c56ab33-c7cc-4129-886c-d5856b714010": {
+    "name": "Subtraction (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "2cb4bf85-a282-464c-b42c-8e735d2a0a74": {
+    "name": "Create Set (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "98c3c63a-e78a-43ea-a111-514fcf312c95",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "2d6cb24f-da89-4fab-be0f-e5d439e0217a": {
+    "name": "Power (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "78fed580-851b-46fe-af2f-6519a9d378e0",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "2e205f24-9279-47b2-b414-d06dcd0b21a7": {
+    "name": "Area (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "86b28a7e-94d9-4791-8306-e13e10d5f8d5",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "2e3ab970-8545-46bb-836c-1c11e5610bce": {
@@ -165,6 +447,14 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "2f643ab6-b9a4-4923-b3da-f9d52b0cba14": {
+    "name": "Multiplication (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "2fcc2743-8339-4cdf-a046-a1f17439191d": {
     "name": "Remap Numbers",
     "seen_in": [
@@ -175,6 +465,30 @@
     "name": "Larger Than",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "32c57b97-b653-47dd-b78f-121e89fdd01c": {
+    "name": "Arc 3Pt [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9fa1b081-b1c7-4a12-a163-0aa8da9ff6c4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "3431f5c6-7578-4d26-a2b6-dfc064a9c65e": {
+    "name": "Mirror Surface (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "6ce1aa3c-626b-4db7-8b5b-bf74c78f8c5e",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "34493ef6-3dfb-47c0-b149-691d02a93588": {
+    "name": "Rectangle 3Pt (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9bc98a1d-2ecc-407e-948a-09a09ed3e69d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "3581f42a-9592-4549-bd6b-1c0fc39d067b": {
@@ -191,10 +505,26 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "39461433-ac44-4298-94a9-988f983e347c": {
+    "name": "CoTangent (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "1f602c33-f38e-4f47-898b-359f0a4de3c2",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "3a710c1e-1809-4e19-8c15-82adce31cd62": {
     "name": "Tree Branch",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "3ae3a462-38fb-4d49-9f86-7558dfed7c3e": {
+    "name": "Shear (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5a27203a-e05f-4eea-b80f-a5f29a00fdf2",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "3cadddef-1e2b-4c09-9390-0e8f78f7609f": {
@@ -208,6 +538,22 @@
     "name": "Deconstruct Plane",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "3e5582a1-901a-4f7c-b58d-f5d7e3166124": {
+    "name": "Stream Filter (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "eeafc956-268e-461d-8e73-ee05c6f72c01",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "3e6383e9-af39-427b-801a-19ca916160fa": {
+    "name": "Multiplication (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "3e8ca6be-fda8-4aaf-b5c0-3c54c8bb7312": {
@@ -224,6 +570,22 @@
       "Chapter1_AlgorithmsAndData.ghx"
     ]
   },
+  "4041be93-6746-4cdb-aa95-929bff544fb0": {
+    "name": "Orient Direction (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "1602b2cc-007c-4b79-8926-0067c6184e44",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "40efea60-1902-4c28-8020-27abbb7a1449": {
+    "name": "Square (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "717a1e25-a075-4530-bc80-d43ecc2500d9",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "41aa4112-9c9b-42f4-847e-503b9d90e4c7": {
     "name": "Flip Matrix",
     "seen_in": [
@@ -234,6 +596,14 @@
     "name": "Modulus",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "4356ef8f-0ca1-4632-9c39-9e6dcd2b9496": {
+    "name": "Pick'n'Choose (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "03b801eb-87cd-476a-a591-257fe5d5bf0f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "476c0cf8-bc3c-4f1c-a61a-6e91e1f8b91e": {
@@ -249,6 +619,30 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "481e1f0d-a945-4662-809d-f49d1a8f40bd": {
+    "name": "Modulus (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "431bc610-8ae1-4090-b217-1a9d9c519fe2",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "4b3d38d3-0620-42e5-9ae8-0d4d9ad914cd": {
+    "name": "Text Tag (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3b220754-4114-4170-b6c3-b286b86ed524",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "4b5f79e1-c2b3-4b9c-b97d-470145a3ca74": {
+    "name": "Volume Moments (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2e685fd9-7b8f-461b-b330-44857b099937",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "4c4e56eb-2f04-43f9-95a3-cc46a14f495a": {
     "name": "Line",
     "seen_in": [
@@ -257,16 +651,48 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "4c53ba00-f4bd-4ede-8d26-55106278268d": {
+    "name": "Grab (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3d13a415-6ac5-4b59-9677-3975e4696a85",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "4c619bc9-39fd-4717-82a6-1e07ea237bbe": {
     "name": "Line SDL",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "4c90aad1-0748-4800-99db-a27d690bb1e1": {
+    "name": "Grab (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3d13a415-6ac5-4b59-9677-3975e4696a85",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "4d2a06bd-4b0f-4c65-9ee0-4220e4c01703": {
     "name": "Scale",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "4e8aad42-9111-470c-9acd-7ae365d8bba4": {
+    "name": "ArcTangent (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b4647919-d041-419e-99f5-fa0dc0ddb8b6",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "4f0dfac8-6c61-40ef-ad41-aad84533f382": {
+    "name": "Scale (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "4d2a06bd-4b0f-4c65-9ee0-4220e4c01703",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "4f8984c4-7c7a-4d69-b0a2-183cbb330d20": {
@@ -283,6 +709,14 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "50870118-be51-4872-ab3c-410d79f2356e": {
+    "name": "Interpolate (t) (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "75eb156d-d023-42f9-a85e-2f2456b8bcce",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "50faccbd-9c92-4175-a5fa-d65e36013db6": {
     "name": "Weave",
     "seen_in": [
@@ -296,11 +730,43 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "532b722d-9368-42ee-b99d-64a4732ee99a": {
+    "name": "Minimum (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "57308b30-772d-4919-ac67-e86c18f3a996",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "537b0419-bbc2-4ff4-bf08-afe526367b2c": {
     "name": "Custom Preview",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "55959599-0b44-4333-8427-a73564ea7ffb": {
+    "name": "Rotate Axis (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3ac8e589-37f5-477d-aa61-6699702c5728",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "559ec10e-2671-4bba-b5a7-11816e8fb17b": {
+    "name": "RigidBody (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "e245de5b-6d3b-48d3-8092-3bf0202ebf8f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "56e9e40d-6d2f-4daf-9316-034f30cf24a0": {
+    "name": "TangentIncircles (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3962cf86-9b9e-41d7-94f9-42bd0326291d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "575660b1-8c79-4b8d-9222-7ab4a6ddb359": {
@@ -321,6 +787,30 @@
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "580a1a0c-314d-4033-a54c-c129400b4b58": {
+    "name": "Load (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2019c995-53af-4eb2-976d-95b1fdc823fa",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "58669268-a825-4688-8072-7d3508fcf91c": {
+    "name": "Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a0d62394-a118-422d-abb3-6af115c75b25",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "59143f40-32f3-47c1-b9ae-1a09eb9c926b": {
+    "name": "Surface Frames [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "332378f4-acb2-43fe-8593-ed22bfeb2721",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "59daf374-bc21-4a5e-8282-5504fb7ae9ae": {
@@ -345,6 +835,14 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "5a22dc1a-907c-4e2f-b8da-0e496c4e25bb": {
+    "name": "Square Root (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ad476cb7-b6d1-41c8-986b-0df243a64146",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "5b850221-b527-4bd6-8c62-e94168cd6efa": {
     "name": "Mass Addition",
     "seen_in": [
@@ -359,10 +857,58 @@
       "Chapter1_AlgorithmsAndData.ghx"
     ]
   },
+  "5f212b16-82a0-4699-be4c-11529a9810ae": {
+    "name": "Power of E (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "c717f26f-e4a0-475c-8e1c-b8f77af1bc99",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "60327ca4-c548-40e6-a11f-3c6759582f13": {
+    "name": "Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a0d62394-a118-422d-abb3-6af115c75b25",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "62d5ead4-53c4-4d0b-b5ce-6bd6e0850ab8": {
     "name": "Symbol Display",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "63f79e72-36c0-4489-a0c2-9ded0b9ca41f": {
+    "name": "Mass Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5b850221-b527-4bd6-8c62-e94168cd6efa",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "6568e019-f59c-4984-84d6-96bd5bfbe9e7": {
+    "name": "Cull Index (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "501aecbb-c191-4d13-83d6-7ee32445ac50",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "66fbaae1-0fcf-4dbf-bcba-4395d8f6a3e6": {
+    "name": "Null Item (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "c74efd0e-7fe3-4c2d-8c9d-295c5672fb13",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "6aa8da2e-6f25-4585-8b37-aa44609beb46": {
+    "name": "Bounding Box (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0bb3d234-9097-45db-9998-621639c87d3b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "6b021f56-b194-4210-b9a1-6cef3b7d0848": {
@@ -370,6 +916,22 @@
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "6da4b70c-ce98-4d52-a2bb-2fadccf39da0": {
+    "name": "Perp Frames [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "983c7600-980c-44da-bc53-c804067f667f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "6e2ba21a-2252-42f4-8d3f-f5e0f49cc4ef": {
+    "name": "List item [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "6ec39468-dae7-4ffa-a766-f2ab22a2c62e": {
@@ -390,6 +952,14 @@
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "70ce4230-da08-4fce-b29d-63dc42a88585": {
+    "name": "Clean Tree (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "071c3940-a12d-4b77-bb23-42b5d3314a0d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "717a1e25-a075-4530-bc80-d43ecc2500d9": {
@@ -413,6 +983,14 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "74d95062-0bec-4a4e-9026-5141fca954a6": {
+    "name": "Mass Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5b850221-b527-4bd6-8c62-e94168cd6efa",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "75eec078-a905-47a1-b0d2-0934182b1e3d": {
     "name": "Plane Origin",
     "seen_in": [
@@ -423,6 +1001,54 @@
     "name": "Sine",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "769f5b35-1780-4823-b593-118ecc3560e0": {
+    "name": "IsoVist Ray (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "93d0dcbc-6207-4745-aaf7-fe57a880f959",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "76b38cca-507d-409e-a773-044b2577d0b4": {
+    "name": "RigidBody (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "e245de5b-6d3b-48d3-8092-3bf0202ebf8f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "773183d0-8c00-4fe4-a38c-f8d2408b7415": {
+    "name": "Radial (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "66eedc35-187d-4dab-b49b-408491b1255f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "7753fb03-c1f1-4dbe-8557-f01e23aa3b20": {
+    "name": "Scale NU (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "290f418a-65ee-406a-a9d0-35699815b512",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "77bfb6a1-0305-4645-b309-cd6dbf1205d7": {
+    "name": "Shear Angle (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "f19ee36c-f21f-4e25-be4c-4ca4b30eda0d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "7874f26c-6f76-4da8-b527-2d567184b2bd": {
+    "name": "Cosine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "d2d2a900-780c-4d58-9a35-1f9d8d35df6f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "79747717-1874-4c34-b790-faef53b50569": {
@@ -437,11 +1063,43 @@
       "Chapter1_AlgorithmsAndData.ghx"
     ]
   },
+  "7991bc5f-8a01-4768-bfb0-a39357ac6b84": {
+    "name": "Clean Tree (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "071c3940-a12d-4b77-bb23-42b5d3314a0d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "79f9fbb3-8f1d-4d9a-88a9-f7961b1012cd": {
     "name": "Unit X",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "7b312903-4782-438f-aa37-ba43f5083460": {
+    "name": "ArcTangent (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b4647919-d041-419e-99f5-fa0dc0ddb8b6",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "7bd7b551-ca79-4f01-b95a-7e9ab876f24d": {
+    "name": "Polygon Center (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "59e94548-cefd-4774-b3de-48142fc783fb",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "7ee33ede-4ce1-482c-ab1a-eb7f9151fbc5": {
+    "name": "Camera Obscura (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "407e35c6-7c40-4652-bd80-fde1eb7ec034",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "7f5c6c55-f846-4a08-9c9a-cfdc285cc6fe": {
@@ -458,6 +1116,14 @@
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "80da90e3-3ea9-4cfe-b7cc-2b6019f850e3": {
+    "name": "Factorial (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a0a38131-c5fc-4984-b05d-34cf57f0c018",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "81dfff08-0c83-4f1b-a358-14791d642d9e": {
@@ -487,11 +1153,99 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "8640c519-9bf6-4e9a-a108-75f9d89b2c58": {
+    "name": "ArcCosine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "49584390-d541-41f7-b5f6-1f9515ac0f73",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "86866576-6cc0-485a-9cd2-6f7d493f57f7": {
+    "name": "Merge (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3cadddef-1e2b-4c09-9390-0e8f78f7609f",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "87df35c8-6e1d-4e2a-821a-7c1066714409": {
+    "name": "Bounding Box (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0bb3d234-9097-45db-9998-621639c87d3b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "87e1d9ef-088b-4d30-9dda-8a7448a17329": {
     "name": "Graft Tree",
     "seen_in": [
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "87e7f480-14dc-4478-b1e6-2b8b035d9edc": {
+    "name": "Polygon Center (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "59e94548-cefd-4774-b3de-48142fc783fb",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "8a470a35-d673-4779-a65e-ba95765e59e4": {
+    "name": "Explode Tree (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "74cad441-2264-45fe-a57d-85034751208a",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "8a55f680-cf53-4634-a486-b828de92b71d": {
+    "name": "Set Intersection (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "82f19c48-9e73-43a4-ae6c-3a8368099b08",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "8a5aae11-8775-4ee5-b4fc-db3a1bd89c2f": {
+    "name": "Construct Point (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3581f42a-9592-4549-bd6b-1c0fc39d067b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "8b62751f-6fb4-4d03-a238-11ad6db7483e": {
+    "name": "Natural logarithm (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b6cac37c-21b9-46c6-bd0d-17ff67796578",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "8f9f19c0-207a-419d-90f6-2fcadaa845f9": {
+    "name": "Solver (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "313490f5-8e38-4dde-9e9a-05e4d739b35d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "8ff0c4b8-0798-49c0-8f2e-e726edfe1b48": {
+    "name": "Object Linetype (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "41995f16-087e-425a-97c4-ec4fa0f78e1c",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "9025f4ca-159f-4c54-958b-0aad379dae77": {
+    "name": "Project (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "23285717-156c-468f-a691-b242488c06a6",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "9103c240-a6a9-4223-9b42-dbd19bf38e2b": {
@@ -508,6 +1262,38 @@
       "Chapter1_AlgorithmsAndData.ghx"
     ]
   },
+  "91cba8ac-25ed-4ce5-9c14-59e806e573eb": {
+    "name": "Model Font (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "522ffa00-cf42-4e34-90b6-eb375d901c74",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "921775f7-bf22-4cfc-a4db-c415a56069c4": {
+    "name": "Mass Multiplication (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "e44c1bd7-72cc-4697-80c9-02787baf7bb4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "9396be03-8159-43bf-b3e7-2c86c8d04fc0": {
+    "name": "Curve | Line (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0e3173b6-91c6-4845-a748-e45d4fdbc262",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "93b1066f-060e-440d-a638-aae8cbe7acb7": {
+    "name": "Divide curve [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2162e72e-72fc-4bf8-9459-d4d82fa8aa14",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "93c24899-f456-4785-84f2-314958b9347b": {
     "name": "Transform Matrix",
     "seen_in": [
@@ -520,6 +1306,38 @@
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "955d887b-c83b-4c61-bf35-df5d4c4abd9b": {
+    "name": "Rotate 3D (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3dfb9a77-6e05-4016-9f20-94f78607d672",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "9624aeeb-f2a1-49da-b1c7-8789db217177": {
+    "name": "Remap Numbers (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2fcc2743-8339-4cdf-a046-a1f17439191d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "96c8c5f2-5f8e-4bb3-b19f-eb61d9cefa46": {
+    "name": "Power (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "78fed580-851b-46fe-af2f-6519a9d378e0",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "99197a17-d5c7-419b-acde-eca2737f3c58": {
+    "name": "Cosecant (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "d222500b-dfd5-45e0-933e-eabefd07cbfa",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "99bee19d-588c-41a0-b9b9-1d00fb03ea1a": {
@@ -540,6 +1358,14 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "9aef6eb4-98c3-4b0e-b875-1a7cb1bb1038": {
+    "name": "Box 2Pt [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2a43ef96-8f87-4892-8b94-237a47e8d3cf",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "9c53bac0-ba66-40bd-8154-ce9829b9db1a": {
     "name": "Colour Swatch",
     "seen_in": [
@@ -552,10 +1378,26 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "9d375779-649d-49f1-baaf-04560a51cd3d": {
+    "name": "Bounding Box [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0bb3d234-9097-45db-9998-621639c87d3b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "9df5e896-552d-4c8c-b9ca-4fc147ffa022": {
     "name": "Expression",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "9ebccbb4-f3e3-4ee1-af31-2f301f2516f0": {
+    "name": "Modulus (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "431bc610-8ae1-4090-b217-1a9d9c519fe2",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "a0a38131-c5fc-4984-b05d-34cf57f0c018": {
@@ -572,10 +1414,42 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "a13fcd5d-81af-4337-a32e-28dd7e23ae4c": {
+    "name": "Flatten Tree (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "f80cfe18-9510-4b89-8301-8e58faf423bb",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "a35811bc-1034-4491-acb8-608a8cfa27b1": {
+    "name": "Orient (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "378d0690-9da0-4dd1-ab16-1d15246e7c22",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "a4cd2751-414d-42ec-8916-476ebf62d7fe": {
     "name": "Radians",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "a54d250e-e285-4f38-9fb3-8dd9c886c659": {
+    "name": "Solver (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "313490f5-8e38-4dde-9e9a-05e4d739b35d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "a70bdac1-1ed2-40d3-b687-3437bc150af0": {
+    "name": "Mirror (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "f12daa2f-4fd5-48c1-8ac3-5dea476912ca",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850": {
@@ -584,6 +1458,62 @@
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "a8bc9c24-1bce-4b92-b7ba-abced2457c22": {
+    "name": "Power of 2 (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "7a1e5fd7-b7da-4244-a261-f1da66614992",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "a8da9901-f5fb-49ec-9cd1-dfa7b788263e": {
+    "name": "Loft Options (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "45f19d16-1c9f-4b0f-a9a6-45a77f3d206c",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "a8de2000-073d-412d-a0b2-3a4894ba71f8": {
+    "name": "Truncate (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "bd96f893-d57b-4f04-90d0-dca0d72ff2f9",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "a9a8ebd2-fff5-4c44-a8f5-739736d129ba": {
+    "name": "C# Script (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b6ba1144-02d6-4a2d-b53c-ec62e290eeb7",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "aa1dc107-70de-473e-9636-836030160fc3": {
+    "name": "Evaluate Surface (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "353b206e-bde5-4f02-a913-b3b8a977d4b9",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ab34845d-4ab9-4ff4-8870-eedd0c5594cb": {
+    "name": "Set Union (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "8eed5d78-7810-4ba1-968e-8a1f1db98e39",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ab454a50-debf-46d1-9bd1-82648416a802": {
+    "name": "Voronoi Groups (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9d4854fe-70db-4863-967b-4120d0b6d2e4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "abf9c670-5462-4cd8-acb3-f1ab0256dbf3": {
@@ -596,6 +1526,14 @@
     "name": "Geometry",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "ad483f40-dc72-40dc-844d-c9e462c7d19f": {
+    "name": "Boolean Toggle (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2e78987b-9dfb-42a2-8b76-3923ac8bd91a",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "ae840986-cade-4e5a-96b0-570f007d4fc0": {
@@ -611,12 +1549,44 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "afff17ed-5975-460b-9883-525ae0677088": {
+    "name": "Center (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3c5edcba-b7a5-4710-b076-4b19a7080a2b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "b40f28a2-ba30-4ac2-afe5-a6ece7f985fc": {
+    "name": "Move (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "b476d3d0-4daf-489c-b91a-49f5dd72a256": {
+    "name": "Anchor (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3c30b1a1-4473-4ad4-a700-ea9770726c03",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "b6236720-8d88-4289-93c3-ac4c99f9b97b": {
     "name": "Relay",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "b661519d-43fd-4e5a-b244-d54d9fae2bde": {
+    "name": "Rotate (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b7798b74-037e-4f0c-8ac7-dc1043d093e0",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "b6aedcac-bf43-42d4-899e-d763612f834d": {
@@ -632,10 +1602,90 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "b7e4e0ef-a01d-48c4-93be-2a12d4417e22": {
+    "name": "Random (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2ab17f9a-d852-4405-80e1-938c5e57e78d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "b7f1178f-4222-47fd-9766-5d06e869362b": {
+    "name": "Mass Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5b850221-b527-4bd6-8c62-e94168cd6efa",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "b8963bb1-aa57-476e-a20e-ed6cf635a49c": {
+    "name": "Multiplication (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ce46b74e-00c9-43c4-805a-193b69ea4a11",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "babecca6-9813-4146-b150-cd72f743e47c": {
+    "name": "Subtraction (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "bb64b2fb-f87a-432f-86f8-393f4ee21310": {
+    "name": "Mass Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5b850221-b527-4bd6-8c62-e94168cd6efa",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "bc4a27fc-cbb9-4802-bd4a-17ab33ad1826": {
+    "name": "Logarithm (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "27d6f724-a701-4585-992f-3897488abf08",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "bc6c097c-6cc2-479c-b5aa-af99fbb72b88": {
+    "name": "Expression (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9df5e896-552d-4c8c-b9ca-4fc147ffa022",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "bc984576-7aa6-491f-a91d-e444c33675a7": {
     "name": "Graph Mapper",
     "seen_in": [
       "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "bdd2a14a-1302-4152-a484-7198716d1a11": {
+    "name": "Text Case (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b1991128-8bf1-4dea-8497-4b7188a64e9d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "bef50d22-e6b3-45fd-b7be-1c501502186b": {
+    "name": "Rotate Axis [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3ac8e589-37f5-477d-aa61-6699702c5728",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "c08ac8f7-cf90-4cdb-9862-2ba66b8408ef": {
+    "name": "IsoVist (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "cab92254-1c79-4e5a-9972-0a4412b35c88",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "c1ec65a3-bda4-4fad-87d0-edf86ed9d81c": {
@@ -650,18 +1700,58 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "c2c73357-bfd2-45af-89ff-40ca02a3442f": {
+    "name": "Surface | Line (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a834e823-ae01-44d8-9066-c138eeb6f391",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "c2d6c6db-37d4-4c95-928f-7afc27842a1e": {
+    "name": "PlasticAnchor (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "76469b0a-11f0-4b8e-ad65-31a555d4cddd",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "c2e16ca3-9508-4fa4-aeb3-0b1f0ebb72e3": {
+    "name": "Derivatives (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ab14760f-87a6-462e-b481-4a2c26a9a0d7",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "c40dc145-9e36-4a69-ac1a-6d825c654993": {
     "name": "Repeat Data",
     "seen_in": [
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
-  "c552a431-af5b-46a9-a8a4-0fcbc27ef596": {
-    "name": "Group",
+  "c41696fc-e8e8-42c9-89b2-a5a6aac030b0": {
+    "name": "Support (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0b3b7956-f88b-4ca3-99f6-b6508a8dac3f",
     "seen_in": [
-      "Chapter1_AlgorithmsAndData.ghx",
-      "Chapter2_IntroductionToDataStructures.ghx",
-      "Chapter3_AdvancedDataStructures.ghx"
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "c53932eb-7c8c-4825-ae98-e36bba97232d": {
+    "name": "Sine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "7663efbb-d9b8-4c6a-a0da-c3750a7bbe77",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "c552a431-af5b-46a9-a8a4-0fcbc27ef596": {
+    "name": "Group (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b3083e4c-d7bc-4009-b6bd-6cc7e4c7d270",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "c75b62fa-0a33-4da7-a5bd-03fd0068fd93": {
@@ -671,16 +1761,56 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "c8203c3c-6bcd-4f8c-a906-befd92ebf0cb": {
+    "name": "Format (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "758d91a0-4aec-47f8-9671-16739a8a2c5d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "c9785b8e-2f30-4f90-8ee3-cca710f82402": {
     "name": "Entwine",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "c98c1666-5f29-4bb8-aafd-bb5a708e8a95": {
+    "name": "Area Moments (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "1eb7b856-ec7d-40b6-a76c-f216a11df37c",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "cacb2c64-61b5-46db-825d-c61d5d09cc08": {
+    "name": "Sort List (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "6f93d366-919f-4dda-a35e-ba03dd62799b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "cae37d1c-8146-4e0b-9cf1-14cb3e337b94": {
+    "name": "Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a0d62394-a118-422d-abb3-6af115c75b25",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "cb2c7d3c-41b4-4c6d-a6bd-9235bd2851bb": {
     "name": "Gate Not",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx"
+    ]
+  },
+  "cb4ec4a1-f48e-4685-b58c-72ed27b53681": {
+    "name": "Division (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "cb95db89-6165-43b6-9c41-5702bc5bf137": {
@@ -696,12 +1826,60 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "cd9efa8f-0084-4d52-ab13-ad88ff22dc46": {
+    "name": "SubD Vertices (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "fc8ad805-2cbf-4447-b41b-50c0be591fcd",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "cdd5d441-3bad-4f19-a370-6cf180b6f0fa": {
+    "name": "Brep Closest Point (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "4beead95-8aa2-4613-8bb9-24758a0f5c4c",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "ce46b74e-00c9-43c4-805a-193b69ea4a11": {
     "name": "Multiplication",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "cf3a0865-4882-46bd-91a1-d512acf95be4": {
+    "name": "Pull Point (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "902289da-28dc-454b-98d4-b8f8aa234516",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "cfc280bb-332a-4828-bb4e-aca6d88859aa": {
+    "name": "ArcCosine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "49584390-d541-41f7-b5f6-1f9515ac0f73",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "d0787f37-d976-48c9-a4b0-29d6c4059cf3": {
+    "name": "Logarithm (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "27d6f724-a701-4585-992f-3897488abf08",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "d0abb9f4-6c6b-47d3-993b-58507ed13071": {
+    "name": "Match Text (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3756c55f-95c3-442c-a027-6b3ab0455a94",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "d1028c72-ff86-4057-9eb0-36c687a4d98c": {
@@ -716,6 +1894,14 @@
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "d18db32b-7099-4eea-85c4-8ba675ee8ec3": {
+    "name": "Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a0d62394-a118-422d-abb3-6af115c75b25",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "d3d195ea-2d59-4ffa-90b1-8b7ff3369f69": {
@@ -739,6 +1925,14 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "d6313940-216b-487f-b511-6c8a5b87eae7": {
+    "name": "Stream Gate (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "71fcc052-6add-4d70-8d97-cfb37ea9d169",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "d69a3494-785b-4beb-969b-d2373f65abfd": {
     "name": "Image Sampler",
     "seen_in": [
@@ -747,11 +1941,27 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "d7df7658-e02d-4a48-a345-2195a68db4ef": {
+    "name": "Control Points (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "424eb433-2b3a-4859-beaf-804d8af0afd7",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "d8332545-21b2-4716-96e3-8559a9876e17": {
     "name": "Dispatch",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "d879e74c-6fe3-4cbf-b3fa-60a7c48b73e7": {
+    "name": "Secant (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "60103def-1bb7-4700-b294-3a89100525c4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "d8b1e7ac-cd31-4748-b262-e07e53068afc": {
@@ -766,6 +1976,14 @@
       "Grasshopper 1.0 / Rhino 8 Active ComponentServer"
     ]
   },
+  "da4be42b-ba75-4249-a685-69ce78b6ee44": {
+    "name": "Sinc (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a2d9503d-a83c-4d71-81e0-02af8d09cd0c",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "dabc854d-f50e-408a-b001-d043c7de151d": {
     "name": "Sphere",
     "seen_in": [
@@ -778,6 +1996,22 @@
     "name": "Duplicate Data",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "dd8d834f-40f1-4a84-8e4b-9fa8efe7be41": {
+    "name": "Mesh Plane (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "8adbf481-7589-4a40-b490-006531ea001d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ddaea1a9-d6bd-4a18-ac11-8a4993954a03": {
+    "name": "Curve | Line [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0e3173b6-91c6-4845-a748-e45d4fdbc262",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "deaf8653-5528-4286-807c-3de8b8dad781": {
@@ -795,10 +2029,34 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "e6e344aa-f45b-43d5-a2d9-9cf8e8e608dc": {
+    "name": "Duplicate data [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "dd8134c0-109b-4012-92be-51d843edfff7",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "e7c80ff6-0299-4303-be36-3080977c14a1": {
     "name": "Combine Data",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "e8e00fbb-9710-4cfa-a60f-2aae50b79d06": {
+    "name": "Interpolate (t) (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "75eb156d-d023-42f9-a85e-2f2456b8bcce",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "e9b807a3-dd48-4c2c-bada-e4f8e0edbbdb": {
+    "name": "Maximum (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "0d1e2027-f153-460d-84c0-f9af431b08cb",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "e9eb1dcf-92f6-4d4d-84ae-96222d60f56b": {
@@ -809,10 +2067,106 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "ea145d1d-7727-4d52-8db6-c9b7100ab7f9": {
+    "name": "Grab (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "3d13a415-6ac5-4b59-9677-3975e4696a85",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "eb3c8610-85b9-4593-a366-52550e8305b7": {
+    "name": "Gate Or (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5cad70f9-5a53-4c5c-a782-54a479b4abe3",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ebf4d987-09b9-4825-a735-cac3d4770c19": {
+    "name": "Text Tag 3D (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "5a41528b-12b9-40dc-a3f2-842034d267c4",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ec875825-61e4-4c1c-a343-0e0cee0b321b": {
+    "name": "Division (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ecee923b-1b93-4cf2-acd6-680835503437": {
+    "name": "Sine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "7663efbb-d9b8-4c6a-a0da-c3750a7bbe77",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ed766861-662d-4462-90f6-29f87f8529cf": {
+    "name": "Power of 10 (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2ebb82ef-1f90-4ac9-9a71-1fe0f4ef7044",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ee9261ab-75a4-478f-b483-a50b755b07fd": {
+    "name": "Voronoi (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a4011be0-1c91-45bd-8280-17dd3a9f46f1",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "f02a20f6-bb49-4e3d-b155-8ed5d3c6b000": {
     "name": "Jitter",
     "seen_in": [
       "Chapter2_IntroductionToDataStructures.ghx"
+    ]
+  },
+  "f055c5d7-5d97-4964-90c7-8e9eee9a8a39": {
+    "name": "Import 3DM [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "317f1cb2-820d-4a8f-b5c8-5de3594ddfba",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "f17c37ae-b44a-481a-bd65-b4398be55ec8": {
+    "name": "Arc SED [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9d2583dd-6cf5-497c-8c40-c9a290598396",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "f18091e9-3264-4dd4-9ba6-32c77fca0ac0": {
+    "name": "ArcSine (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "cc15ba56-fae7-4f05-b599-cb7c43b60e11",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "f1b75016-5818-4ece-be56-065253a2357d": {
+    "name": "MultiPipe (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "4bfe1bf6-fbc9-4ad2-bf28-a7402e1392ee",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "f2030fa9-db3f-437e-9b50-5607db6daf87": {
+    "name": "Closed [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "323f3245-af49-4489-8677-7a2c73664077",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "f44b92b0-3b5b-493a-86f4-fd7408c3daf3": {
@@ -822,11 +2176,51 @@
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
   },
+  "f4a20a34-97e6-4ff5-9b26-7f7ed7a1e333": {
+    "name": "Subtraction (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9c007a04-d0d9-48e4-9da3-9ba142bc4d46",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "f562505b-4c49-49d1-932d-c8804b3fcec6": {
+    "name": "Quad Remesh Settings (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "27be41c6-50f8-4021-800d-ae8f9883640a",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "f5e3456b-dcfc-4faa-ac4e-7804cb75ee6d": {
+    "name": "C# Script (Legacy) (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "b6ba1144-02d6-4a2d-b53c-ec62e290eeb7",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "f5ea9d41-f062-487e-8dbf-7666ca53fbcd": {
+    "name": "Interpolate (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2b2a4145-3dff-41d4-a8de-1ea9d29eef33",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "f80cfe18-9510-4b89-8301-8e58faf423bb": {
     "name": "Flatten Tree",
     "seen_in": [
       "Chapter2_IntroductionToDataStructures.ghx",
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "f8452dc8-aea6-4654-a72f-c0fd62626d36": {
+    "name": "Mirror Curve (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "9c9f8219-ae88-4d29-ba1b-3433ed713639",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "f9b89a46-bc5d-4f7a-9a6f-134f93ac3af9": {
@@ -835,10 +2229,34 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "fa314286-867b-41fa-a7f6-3f474197bb81": {
+    "name": "Remap Numbers (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "2fcc2743-8339-4cdf-a046-a1f17439191d",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "fa36c19d-b108-440c-b33d-a0a4642b45cc": {
+    "name": "Domain (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "90744326-eb53-4a0e-b7ef-4b45f5473d6e",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "fac0d5be-e3ff-4bbb-9742-ec9a54900d41": {
     "name": "Relative Item",
     "seen_in": [
       "Chapter3_AdvancedDataStructures.ghx"
+    ]
+  },
+  "fb012ef9-4734-4049-84a0-b92b85bb09da": {
+    "name": "Addition (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "a0d62394-a118-422d-abb3-6af115c75b25",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
     ]
   },
   "fbac3e32-f100-4292-8692-77240a42fd1a": {
@@ -849,11 +2267,1419 @@
       "Chapter3_AdvancedDataStructures.ghx"
     ]
   },
+  "fbcf0d42-c9a5-4ca5-8d5b-567fb54abc43": {
+    "name": "Split [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "915f8f93-f5d1-4a7b-aecb-c327bab88ffb",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
   "fc6979e4-7e91-4508-8e05-37c680779751": {
     "name": "Evaluate Curve",
     "seen_in": [
       "Chapter1_AlgorithmsAndData.ghx",
       "Chapter2_IntroductionToDataStructures.ghx"
     ]
+  },
+  "fd9fe288-a188-4e9b-a464-1148876d18ed": {
+    "name": "Arc [OBSOLETE] (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "bb59bffc-f54c-4682-9778-f6c3fe74fce3",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "fdedcd0a-ad40-4307-959d-d2891e2f533e": {
+    "name": "Rectangular (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "1a25aae0-0b56-497a-85b2-cc5bf7e4b96b",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "fdf09135-fae5-4e5f-b427-b1f384ca3009": {
+    "name": "Evaluate Curve (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "fc6979e4-7e91-4508-8e05-37c680779751",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "ff880808-6daf-4f6c-88c1-058120ad6ba9": {
+    "name": "Brep | Line (Obsolete)",
+    "obsolete": true,
+    "superseded_by": "ed0742f9-6647-4d95-9dfd-9ad17080ae9c",
+    "seen_in": [
+      "Grasshopper Legacy Definitions"
+    ]
+  },
+  "1c549132-a88e-58a9-961a-501d20c47e60": {
+    "name": "Gradient",
+    "nickname": "",
+    "category": "Params",
+    "obsolete": false
+  },
+  "a55186fb-e608-5b8e-b910-95884883cab9": {
+    "name": "MD Slider",
+    "nickname": "",
+    "category": "Params",
+    "obsolete": false
+  },
+  "d35f6e63-0379-5700-a0cd-76aecbac07ec": {
+    "name": "File Path",
+    "nickname": "",
+    "category": "Params",
+    "obsolete": false
+  },
+  "5d8d3881-3e12-5b13-adfd-08622fdad24e": {
+    "name": "Subtraction (A-B)",
+    "nickname": "A-B",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "3c131f29-816b-5135-b192-e3e688c96e5b": {
+    "name": "Smaller",
+    "nickname": "",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "5d533dd9-a488-5819-9c4b-18f2d0384ebb": {
+    "name": "And",
+    "nickname": "",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "60812e4d-da10-57b1-87ec-0c661c75c7b6": {
+    "name": "Not",
+    "nickname": "",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "e8183528-711f-52e7-9194-4df6a1635dcd": {
+    "name": "Xnor",
+    "nickname": "",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "26352ce1-14e5-59b3-81f7-1eded9d1eee8": {
+    "name": "Equals",
+    "nickname": "",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "597add02-2c56-5ec3-8251-5fb407f704e9": {
+    "name": "Minimum",
+    "nickname": "Min",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "abbd4789-8691-56ea-88d3-cb492894ac71": {
+    "name": "Maximum",
+    "nickname": "Max",
+    "category": "Math",
+    "obsolete": false
+  },
+  "8ff30c48-d15d-51b5-b35a-173f60cefbde": {
+    "name": "Absolute",
+    "nickname": "",
+    "category": "Math",
+    "obsolete": false
+  },
+  "d7a1fd1e-b987-5abc-9061-f752f7da249a": {
+    "name": "Negative",
+    "nickname": "",
+    "category": "Math",
+    "obsolete": false
+  },
+  "11ee1bcc-dbc5-5c0f-aaa3-960dfe6b4358": {
+    "name": "Negate (vector) \u2014 MERGED into Reverse (vector)",
+    "nickname": "",
+    "category": "Params",
+    "obsolete": false
+  },
+  "6b4e55b9-2ddf-5e16-942f-032672ac8a45": {
+    "name": "Angle",
+    "nickname": "",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "b1d4417d-b00c-5c9d-a0e2-90a03ba783af": {
+    "name": "Evaluate F(X) [DISAMBIGUATION 1 of 3 \u2014 see Evaluate Curve, Evaluate Length under Curve tab; all three render as an identical plain \"Eval\" box]",
+    "nickname": "Evaluate / Eval",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "ce6b63e7-7845-5928-a1da-e6496aea5c44": {
+    "name": "Construct Domain",
+    "nickname": "Dom",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "5b36e449-f051-56f1-b8fa-6fff6c578852": {
+    "name": "Divide Domain\u00b2",
+    "nickname": "Divide",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "54f2fcba-e6f1-5fa4-9585-f9647b3061d4": {
+    "name": "Deconstruct Domain\u00b2",
+    "nickname": "DeDom2",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "59c41f3a-cb2e-5b25-add1-d04c56280d53": {
+    "name": "Construct Domain\u00b2",
+    "nickname": "Dom\u00b2",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "f63fa518-a2e3-5aad-ae25-58c3d7f83968": {
+    "name": "Cull Index",
+    "nickname": "Cull i",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "cea7f76d-e742-59e3-8eb1-30e72fc3301b": {
+    "name": "Subset",
+    "nickname": "SubSet",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "67129b50-d5e8-515f-894d-7ce7d9b6e0bb": {
+    "name": "Long (\"Repeat Last\")",
+    "nickname": "Long",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "91727076-dd6c-5065-b7fb-1de4d419e51d": {
+    "name": "Repeat / Repeat Data",
+    "nickname": "Repeat",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "b8e89ef9-807f-5fdc-9c37-e4569a7a7a5c": {
+    "name": "Unflatten Tree",
+    "nickname": "Unflatten",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "d63304ae-c240-5255-97d1-64a222fd4cdb": {
+    "name": "Branch",
+    "nickname": "",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "d9c2276d-1e11-5200-8469-301cbeaf1bc9": {
+    "name": "Cull Duplicates",
+    "nickname": "CullPt",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "c844928a-0acf-59bf-89b7-e8dd9eb41e06": {
+    "name": "Vector XYZ",
+    "nickname": "",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "69a6e32c-51b6-53e9-8c70-744de2fdf928": {
+    "name": "Vector 2Pt",
+    "nickname": "Vec2Pt",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "63149794-b0d5-53a6-90f5-e13a90d7c8d1": {
+    "name": "Unit Vector",
+    "nickname": "Unit",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "8204e027-2b1d-5a71-8ec5-11a868ae6745": {
+    "name": "Vector Length",
+    "nickname": "VLen",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "5f4e4711-d6d3-5175-8776-68845c80a89a": {
+    "name": "Distance",
+    "nickname": "Dist",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "5650d832-9c6d-5a3a-a644-cdceb28dc5c6": {
+    "name": "Deconstruct (point) / Point Decompose",
+    "nickname": "pDecon",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "4716a53e-f34e-5795-8f35-498d5b556179": {
+    "name": "DePlane",
+    "nickname": "",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "d3770ee4-7f6e-5dd4-83a4-17c98bf3c3d8": {
+    "name": "Plane Normal",
+    "nickname": "Pl",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "0fd73e79-7739-5207-8bd8-876aad6d298a": {
+    "name": "Construct Plane",
+    "nickname": "Pl",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "5d5485bc-3059-5498-9c46-500902ef2fc6": {
+    "name": "Square Grid",
+    "nickname": "SqGrid",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "d044f643-7637-599c-bf14-5c4beb10e8d7": {
+    "name": "Reverse (vector)",
+    "nickname": "Rev",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "4183b8ca-95f3-5df5-9480-6fec2b8a1d92": {
+    "name": "Arc 3Pt",
+    "nickname": "Arc",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "62e19838-56a1-504f-90f1-a347350970a9": {
+    "name": "Point on Curve",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "a17bd1ea-0b43-5207-968b-66d301f6b294": {
+    "name": "Divide Length",
+    "nickname": "DivLength",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "7e0f577e-8a4d-5e4c-a8b7-a562170de88b": {
+    "name": "Divide Distance",
+    "nickname": "DivDist",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "3748786b-8a93-5377-bb38-bbd391539dfb": {
+    "name": "Contour",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "6d332a03-1ccb-57d5-870b-51a6192a010d": {
+    "name": "Shatter",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "088423c5-f95a-5023-98f9-aa1e8c4e1afc": {
+    "name": "Curvature",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "4b406827-4654-5488-b637-e58105a0c848": {
+    "name": "Curvature Graph",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "4a7b72d7-7a17-5985-a7fe-33bdc5e7f895": {
+    "name": "Flip Curve [shares nickname \"Flip\" with the unrelated Flip Matrix (Sets > Tree) \u2014 see that entry's disambiguation note]",
+    "nickname": "Flip",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "0e9e34bd-4b08-53ae-b34d-95adaefb8c00": {
+    "name": "Curve Closest Point",
+    "nickname": "Crv CP",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "295cfb7a-b5b4-5457-a3fa-536f471cfcc0": {
+    "name": "Deconstruct Arc",
+    "nickname": "DArc",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "42a28fc5-40a8-540b-ab70-5a754d22af8a": {
+    "name": "Nurbs Curve",
+    "nickname": "Nurbs",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "e41c19b3-ca2b-5901-8959-74ae1563ade8": {
+    "name": "Isocurve",
+    "nickname": "Iso",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "40c17387-b778-5913-b397-6db79db3accf": {
+    "name": "Curve on Surface",
+    "nickname": "CrvSrf",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "0424ac40-4f1a-5441-9332-9e8d221fcb0c": {
+    "name": "Offset (curve)",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "04414706-dc4e-56e9-bfa3-406bcff522fc": {
+    "name": "Offset on Srf",
+    "nickname": "OffsetS",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "ebcd61dd-adda-52c5-9f6a-994483a9986d": {
+    "name": "Explode Curve [3-WAY NAME CONFLICT: \"Explode\" is shared by this component (Curve > Util), by a Mesh > Util component that explodes a mesh into faces, and by a Mesh > Analysis \"Mesh Explode\" \u2014 disambiguate by tab and by whether the input is a curve or a mesh]",
+    "nickname": "Explode",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "1fc87e4b-8bd9-5462-a444-a5ca3c629e49": {
+    "name": "Discontinuity",
+    "nickname": "Disc",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "258af728-f759-51c7-961e-8e83547f4b64": {
+    "name": "Join Curves",
+    "nickname": "Join",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "2e888ac3-63d9-590f-83ab-ea618c5af23c": {
+    "name": "Project",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "eab009af-01c9-5b20-98c9-83c5ae7beb0c": {
+    "name": "Extrude",
+    "nickname": "Extr",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "73a63cba-b1bb-5980-8662-f24891f1da6e": {
+    "name": "Loft Options",
+    "nickname": "",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "59fa27d2-a01d-556b-9bb4-98cb860d7035": {
+    "name": "Surface from Points",
+    "nickname": "SrfGrid",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "c6fc271c-c2a7-5680-98d4-7e6c50b4e214": {
+    "name": "Edge Surface",
+    "nickname": "EdgeSrf",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "1a8d5f23-3b25-56b1-b7b5-d616f22f544f": {
+    "name": "Network Surface",
+    "nickname": "NetSurf",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "35ec4be3-e755-52d0-ba60-e5a50c9646fd": {
+    "name": "Sweep1",
+    "nickname": "",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "df4e3a2c-8be6-56f6-841c-5d82a56b6475": {
+    "name": "Sweep2",
+    "nickname": "",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "b5d8c4a4-e69b-5f56-8063-3ee3e6520d29": {
+    "name": "Revolution",
+    "nickname": "",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "96f8ed6b-9933-5994-b26c-63f7bbc7c5a4": {
+    "name": "Rail Revolution",
+    "nickname": "RailRev",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "30782367-6236-59b7-b02f-90ecbb96de6e": {
+    "name": "Evaluate Surface",
+    "nickname": "EvalSrf",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "e1ea342b-8ace-5af3-93f1-a19001303d6c": {
+    "name": "Surface CP",
+    "nickname": "Srf CP",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "39619e60-8f3e-53bd-b984-c6bd01fe1c19": {
+    "name": "Isotrim",
+    "nickname": "SubSrf",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "054e6f88-634c-5777-9da1-375908a63e56": {
+    "name": "Deconstruct Brep",
+    "nickname": "DeBrep",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "45358253-0a77-5342-8d4b-6bd3e0f809cb": {
+    "name": "Center Box",
+    "nickname": "Box",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "c4872015-a8eb-5504-9797-af873493ab27": {
+    "name": "Bounding Box",
+    "nickname": "BBox",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "dfdec590-f5ae-57b0-9cbd-01d6e92403e4": {
+    "name": "Geodesic",
+    "nickname": "",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "dee4d5f9-e777-5984-bfe3-1639c7735b50": {
+    "name": "Surface Split",
+    "nickname": "SrfSplit",
+    "category": "Intersect",
+    "obsolete": false
+  },
+  "2b641f9d-ce39-5e6c-8b14-d3efc92b0986": {
+    "name": "Area",
+    "nickname": "",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "edf4bdeb-1bc9-5f3e-b8c5-31961e96767d": {
+    "name": "Volume",
+    "nickname": "",
+    "category": "Surface/Mesh",
+    "obsolete": false
+  },
+  "425f42c2-d6c7-59ca-a429-f37667072c5d": {
+    "name": "Principal Curvature [NAME CONFLICT: nicknamed \"Curvature\" on canvas \u2014 same nickname as Surface Curvature below, disambiguate by outputs]",
+    "nickname": "Curvature",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "8d5b46de-2499-5af1-b826-6561af8c6151": {
+    "name": "Surface Curvature [NAME CONFLICT: nicknamed \"Curvature\" \u2014 see Principal Curvature above]",
+    "nickname": "Curvature",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "54bd8d65-e233-5062-9455-697d860742ec": {
+    "name": "Osculating Circles",
+    "nickname": "Osc",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "5d3e74ab-368d-572d-a6a7-c3cf681c5968": {
+    "name": "Mesh Triangle",
+    "nickname": "Triangle",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "50616ef6-9fd9-5c8a-a195-dd02e4eac194": {
+    "name": "Construct Mesh",
+    "nickname": "ConMesh",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "03c3dd86-6aa7-5394-b557-39fe1ecb7f10": {
+    "name": "Mesh Quad",
+    "nickname": "Quad",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "4bbb282f-86b4-5348-b018-fff1357214d6": {
+    "name": "Delaunay Mesh",
+    "nickname": "Del",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "16e4f9f7-debf-5cf4-a474-7b37a3a9d74a": {
+    "name": "Mesh Surface / Mesh UV",
+    "nickname": "Mesh UV",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "a8bd5708-0f4c-522b-bf9c-bb71e2b39843": {
+    "name": "Face Boundaries",
+    "nickname": "",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "2afb1792-4396-5817-8616-8d1413d2f674": {
+    "name": "Planar",
+    "nickname": "",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "eacc33db-39f4-5f81-904e-f50ca0b0656f": {
+    "name": "Mesh Join",
+    "nickname": "MJoin",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "e7d65237-a208-5273-92ed-2607af15a367": {
+    "name": "Mesh Flip",
+    "nickname": "Flip",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "8e5a628b-136a-5062-bf18-df89ecdfcfdb": {
+    "name": "Voronoi",
+    "nickname": "",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "9c244a8e-12bd-5041-8845-30e7470ae8e0": {
+    "name": "Explode (mesh) [3-WAY NAME CONFLICT \u2014 see Explode Curve (Curve tab) and Mesh Explode below]",
+    "nickname": "",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "32c372be-4c4a-560f-85c4-f232cdd71b12": {
+    "name": "Mesh Explode [3-WAY NAME CONFLICT: nicknamed \"Explode,\" distinct from the Mesh > Util \"Explode\" above and from Curve > Util \"Explode Curve\" \u2014 three different \"Explode\"-family components; disambiguate by tab and input type]",
+    "nickname": "Explode",
+    "category": "Analysis (MeshEdit plugin) \u2014 CORRECTED: no native/core Grasshopper \"Mesh Explode\" component was found in any current documentation; the best-attested match is the MeshEdit plugin's \"Mesh Explode\" (by Ursula Frick & Thomas Grabner, the \"uto\" authors \u2014 see Mesh Edit plugin section). Recommend re-filing this entry under Third-party plugins",
+    "obsolete": false
+  },
+  "457c7c63-2ab7-5392-b344-2d4d36667331": {
+    "name": "Deconstruct Mesh",
+    "nickname": "DeMesh",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "4aa24fdb-649d-55eb-98a9-ff0d100db2ac": {
+    "name": "Face Normals",
+    "nickname": "FaceN",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "5a1e77da-4a4d-558f-82b2-cd76b0f0a616": {
+    "name": "Mesh Colours",
+    "nickname": "MCol",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "1e9085e7-057a-5c15-aad3-d25457f52754": {
+    "name": "Intersect (Brep|Plane)",
+    "nickname": "Sec",
+    "category": "Intersect",
+    "obsolete": false
+  },
+  "fa6807e9-e441-51fa-91a7-d2dc3bba348c": {
+    "name": "Rotate Axis",
+    "nickname": "RotAx",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "27cf7467-114b-51a7-a6bc-909f862f5295": {
+    "name": "Orient",
+    "nickname": "",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "4d4716f6-165f-53f6-93d4-2ec8ef8df0b8": {
+    "name": "Box Morph",
+    "nickname": "Morph",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "b5352374-f21f-5767-a92e-edccc709ae26": {
+    "name": "Twisted Box",
+    "nickname": "TBox",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "05caf67b-7ba0-5821-96dd-cff362e99ea3": {
+    "name": "Surface Box",
+    "nickname": "SBox",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "bbbbfd7e-7061-5370-9313-a1e7257bea0f": {
+    "name": "Vector Display",
+    "nickname": "VDis",
+    "category": "Display",
+    "obsolete": false
+  },
+  "0ced8462-5323-5add-8d10-cd01f8145aba": {
+    "name": "ARGB",
+    "nickname": "",
+    "category": "Display",
+    "obsolete": false
+  },
+  "da3b4d60-49cc-52e4-9755-cdfbc67b127a": {
+    "name": "Text Tag 3D",
+    "nickname": "Tag",
+    "category": "Display",
+    "obsolete": false
+  },
+  "8065f0e2-0ef9-59df-8013-b12843772ea5": {
+    "name": "Colour (RGB)",
+    "nickname": "RGB",
+    "category": "Params",
+    "obsolete": false
+  },
+  "1e9a9079-1b61-578d-a78e-0dd71a781ffa": {
+    "name": "Oscillator \u2014 CORRECTED, MERGED into Osculating Circles",
+    "nickname": "",
+    "category": "Params",
+    "obsolete": false
+  },
+  "8ee2c5cf-79ec-5648-b6da-3f47ac52e209": {
+    "name": "Draw Arc",
+    "nickname": "DArc",
+    "category": "\"probable Curve",
+    "obsolete": false
+  },
+  "89574bd4-4d81-5b95-8bcf-884786409337": {
+    "name": "Delete Consecutive (DCon) \u2014 CORRECTED identity",
+    "nickname": "",
+    "category": "Sets (sub-panel not independently confirmed beyond \"Sets\"; likely Sets",
+    "obsolete": false
+  },
+  "b933f0e9-f992-5efc-8855-b3ca58db4e4a": {
+    "name": "LunchBox (by Nathan Miller, CASE)",
+    "nickname": "Diamond",
+    "category": "LunchBox",
+    "obsolete": false
+  },
+  "8c6b7ded-943b-53e8-beeb-63b195ffda91": {
+    "name": "Weaverbird (by Giulio Piacentino)",
+    "nickname": "wbThicken",
+    "category": "Weaverbird",
+    "obsolete": false
+  },
+  "bb1bda34-9c63-5f1c-a5d2-651fdcae506e": {
+    "name": "Kangaroo (physics engine, by Daniel Piker et al.)",
+    "nickname": "dupLn",
+    "category": "Kangaroo",
+    "obsolete": false
+  },
+  "a4a33a8c-6229-552b-9157-8f38635974a4": {
+    "name": "Karamba (structural analysis, by Clemens Presinger)",
+    "nickname": "",
+    "category": "Karamba plugin",
+    "obsolete": false
+  },
+  "8a138547-eb46-5e72-85ed-c90eca983d40": {
+    "name": "Millipede (topology optimization)",
+    "nickname": "",
+    "category": "Topostruct3D (Millipede plugin; printed in the book as \"3DisoMesh\")",
+    "obsolete": false
+  },
+  "94d3d2d9-57bc-57ac-b690-49766522c2b5": {
+    "name": "Goat (exact/local optimization, by Simon Fl\u00f6ry)",
+    "nickname": "",
+    "category": "Special",
+    "obsolete": false
+  },
+  "3de563ff-0412-5bf9-bcb5-28649833cc59": {
+    "name": "GECO (bridge to Autodesk Ecotect Analysis, by Ursula Frick & Thomas Grabner)",
+    "nickname": "EcoSolCal",
+    "category": "Extra",
+    "obsolete": false
+  },
+  "9cfb66da-31a8-5ad3-ab69-2ba031ab8d86": {
+    "name": "HoopSnake (recursion, by Yannis Chatzikonstantinou)",
+    "nickname": "HS",
+    "category": "Extra tab (Logic/Code Flow) (plugin; food4rhino / yconst.com / GitHub)",
+    "obsolete": false
+  },
+  "3d821a00-96f1-5d98-b5f6-f18bda0010da": {
+    "name": "Tree8 (structural toolset add-on, by Jissi Choi)",
+    "nickname": "AllocN",
+    "category": "Mesh/Tree8 plug-in (part of STRAUTO structural toolset for SAP2000/MIDAS)",
+    "obsolete": false
+  },
+  "8b605b36-d45a-5056-8998-4250d31642f3": {
+    "name": "Mesh Edit (by Ursula Frick & Thomas Grabner, \"uto\")",
+    "nickname": "Tri",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "8ac6bfc6-74bb-5d15-92d3-3788bd2a5331": {
+    "name": "\"Generation\" add-on (by Antonio Turiello)",
+    "nickname": "Rnd",
+    "category": "separate, standalone plugin by Antonio Turiello (CORRECTED \u2014 same author as \"Generation,\" but a distinct, independently-listed plugin, not a component bundled inside it; food4rhino/app/loop)",
+    "obsolete": false
+  },
+  "d0cff35d-8e4f-512f-a6a4-40ae63055515": {
+    "name": "Urban-data plugins",
+    "nickname": "",
+    "category": "third-party plugin",
+    "obsolete": false
+  },
+  "21607441-507e-59e8-bd6e-8fc855d6d4e9": {
+    "name": "Galapagos (Genome / Fitness)",
+    "nickname": "",
+    "category": "Params",
+    "obsolete": false
+  },
+  "a784fcb0-a174-5343-a2af-4c2b343d6df3": {
+    "name": "Gene Pool",
+    "nickname": "",
+    "category": "Params",
+    "obsolete": false
+  },
+  "758d91a0-4aec-47f8-9671-16739a8a2c5d": {
+    "name": "Format",
+    "nickname": "Format",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "0bb3d234-9097-45db-9998-621639c87d3b": {
+    "name": "Bounding Box",
+    "nickname": "BBox",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "eeafc956-268e-461d-8e73-ee05c6f72c01": {
+    "name": "Stream Filter",
+    "nickname": "Filter",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "a2d9503d-a83c-4d71-81e0-02af8d09cd0c": {
+    "name": "Sinc",
+    "nickname": "Sinc",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "e245de5b-6d3b-48d3-8092-3bf0202ebf8f": {
+    "name": "RigidBody",
+    "nickname": "RigidBody",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "9c007a04-d0d9-48e4-9da3-9ba142bc4d46": {
+    "name": "Subtraction",
+    "nickname": "Sub",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "b3083e4c-d7bc-4009-b6bd-6cc7e4c7d270": {
+    "name": "Group",
+    "nickname": "Group",
+    "category": "Params",
+    "obsolete": false
+  },
+  "78fed580-851b-46fe-af2f-6519a9d378e0": {
+    "name": "Power",
+    "nickname": "Pow",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "3962cf86-9b9e-41d7-94f9-42bd0326291d": {
+    "name": "TangentIncircles",
+    "nickname": "TangentIncircles",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "b6ba1144-02d6-4a2d-b53c-ec62e290eeb7": {
+    "name": "C# Script",
+    "nickname": "C#",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "e44c1bd7-72cc-4697-80c9-02787baf7bb4": {
+    "name": "Mass Multiplication",
+    "nickname": "MM",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "49584390-d541-41f7-b5f6-1f9515ac0f73": {
+    "name": "ArcCosine",
+    "nickname": "ACos",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "c74efd0e-7fe3-4c2d-8c9d-295c5672fb13": {
+    "name": "Null Item",
+    "nickname": "Null",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "60103def-1bb7-4700-b294-3a89100525c4": {
+    "name": "Secant",
+    "nickname": "Sec",
+    "category": "Complex",
+    "obsolete": false
+  },
+  "41995f16-087e-425a-97c4-ec4fa0f78e1c": {
+    "name": "Object Linetype",
+    "nickname": "Linetype",
+    "category": "Rhino",
+    "obsolete": false
+  },
+  "27d6f724-a701-4585-992f-3897488abf08": {
+    "name": "Logarithm",
+    "nickname": "Ln",
+    "category": "Complex",
+    "obsolete": false
+  },
+  "3ac8e589-37f5-477d-aa61-6699702c5728": {
+    "name": "Rotate Axis",
+    "nickname": "RotAx",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "7c0523e8-79c9-45a2-8777-cf0d46bc5432": {
+    "name": "Volume",
+    "nickname": "Volume",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "3dfb9a77-6e05-4016-9f20-94f78607d672": {
+    "name": "Rotate 3D",
+    "nickname": "Rot3D",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "5a27203a-e05f-4eea-b80f-a5f29a00fdf2": {
+    "name": "Shear",
+    "nickname": "Shear",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "2ebb82ef-1f90-4ac9-9a71-1fe0f4ef7044": {
+    "name": "Power of 10",
+    "nickname": "10",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "378d0690-9da0-4dd1-ab16-1d15246e7c22": {
+    "name": "Orient",
+    "nickname": "Orient",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "f19ee36c-f21f-4e25-be4c-4ca4b30eda0d": {
+    "name": "Shear Angle",
+    "nickname": "Shear",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "cc15ba56-fae7-4f05-b599-cb7c43b60e11": {
+    "name": "ArcSine",
+    "nickname": "ASin",
+    "category": "Complex",
+    "obsolete": false
+  },
+  "90744326-eb53-4a0e-b7ef-4b45f5473d6e": {
+    "name": "Domain",
+    "nickname": "Domain",
+    "category": "Params",
+    "obsolete": false
+  },
+  "0b4ac802-fc4a-4201-9c66-0078b837c1eb": {
+    "name": "Face Boundaries",
+    "nickname": "FaceB",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "bd96f893-d57b-4f04-90d0-dca0d72ff2f9": {
+    "name": "Truncate",
+    "nickname": "Trunc",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "6ce1aa3c-626b-4db7-8b5b-bf74c78f8c5e": {
+    "name": "Mirror Surface",
+    "nickname": "Mirror",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "a4011be0-1c91-45bd-8280-17dd3a9f46f1": {
+    "name": "Voronoi",
+    "nickname": "Voronoi",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "23285717-156c-468f-a691-b242488c06a6": {
+    "name": "Project",
+    "nickname": "Project",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "5cad70f9-5a53-4c5c-a782-54a479b4abe3": {
+    "name": "Gate Or",
+    "nickname": "Or",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "407e35c6-7c40-4652-bd80-fde1eb7ec034": {
+    "name": "Camera Obscura",
+    "nickname": "CO",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "b6cac37c-21b9-46c6-bd0d-17ff67796578": {
+    "name": "Natural logarithm",
+    "nickname": "Ln",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "66eedc35-187d-4dab-b49b-408491b1255f": {
+    "name": "Radial",
+    "nickname": "RadGrid",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "59e94548-cefd-4774-b3de-48142fc783fb": {
+    "name": "Polygon Center",
+    "nickname": "PCen",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "27be41c6-50f8-4021-800d-ae8f9883640a": {
+    "name": "Quad Remesh Settings",
+    "nickname": "QRSettings",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "3d13a415-6ac5-4b59-9677-3975e4696a85": {
+    "name": "Grab",
+    "nickname": "Grab",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "03e331ed-c4d1-4a23-afa2-f57b87d2043c": {
+    "name": "Cone",
+    "nickname": "Cone",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "0e3173b6-91c6-4845-a748-e45d4fdbc262": {
+    "name": "Curve | Line",
+    "nickname": "CLX",
+    "category": "Intersect",
+    "obsolete": false
+  },
+  "ab14760f-87a6-462e-b481-4a2c26a9a0d7": {
+    "name": "Derivatives",
+    "nickname": "CDiv",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "45f19d16-1c9f-4b0f-a9a6-45a77f3d206c": {
+    "name": "Loft Options",
+    "nickname": "Loft",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "1602b2cc-007c-4b79-8926-0067c6184e44": {
+    "name": "Orient Direction",
+    "nickname": "Orient",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "0b3b7956-f88b-4ca3-99f6-b6508a8dac3f": {
+    "name": "Support",
+    "nickname": "Support",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "5a41528b-12b9-40dc-a3f2-842034d267c4": {
+    "name": "Text Tag 3D",
+    "nickname": "Tag",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "3b220754-4114-4170-b6c3-b286b86ed524": {
+    "name": "Text Tag",
+    "nickname": "Tag",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "75eb156d-d023-42f9-a85e-2f2456b8bcce": {
+    "name": "Interpolate (t)",
+    "nickname": "IntCrv(t)",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "1eb7b856-ec7d-40b6-a76c-f216a11df37c": {
+    "name": "Area Moments",
+    "nickname": "AMoments",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "cec16c67-7b8b-41f7-a5a5-f675177e524b": {
+    "name": "Sort Text",
+    "nickname": "TSort",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "b4647919-d041-419e-99f5-fa0dc0ddb8b6": {
+    "name": "ArcTangent",
+    "nickname": "ATan",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "b1991128-8bf1-4dea-8497-4b7188a64e9d": {
+    "name": "Text Case",
+    "nickname": "Case",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "317f1cb2-820d-4a8f-b5c8-5de3594ddfba": {
+    "name": "Import 3DM",
+    "nickname": "3DM",
+    "category": "Params",
+    "obsolete": false
+  },
+  "57308b30-772d-4919-ac67-e86c18f3a996": {
+    "name": "Minimum",
+    "nickname": "Min",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "2a43ef96-8f87-4892-8b94-237a47e8d3cf": {
+    "name": "Box 2Pt",
+    "nickname": "Box",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "983c7600-980c-44da-bc53-c804067f667f": {
+    "name": "Perp Frames",
+    "nickname": "Frm",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "ccfd6ba8-ecb1-44df-a47e-08126a653c51": {
+    "name": "Curve Domain",
+    "nickname": "Dom",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "f12daa2f-4fd5-48c1-8ac3-5dea476912ca": {
+    "name": "Mirror",
+    "nickname": "Mirror",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "8adbf481-7589-4a40-b490-006531ea001d": {
+    "name": "Mesh Plane",
+    "nickname": "MPlane",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "d222500b-dfd5-45e0-933e-eabefd07cbfa": {
+    "name": "CoSecant",
+    "nickname": "Cosec",
+    "category": "Complex",
+    "obsolete": false
+  },
+  "76ab889c-8593-4892-861d-a80b5311a981": {
+    "name": "SoapFilm",
+    "nickname": "SG",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "2019c995-53af-4eb2-976d-95b1fdc823fa": {
+    "name": "Load",
+    "nickname": "Load",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "5d81faae-befc-4c12-b558-beaf2ebee8f1": {
+    "name": "CyclicQuad",
+    "nickname": "CyclicQuad",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "3c5edcba-b7a5-4710-b076-4b19a7080a2b": {
+    "name": "Center",
+    "nickname": "Cen",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "76469b0a-11f0-4b8e-ad65-31a555d4cddd": {
+    "name": "PlasticAnchor",
+    "nickname": "PlasticAnchor",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "9d2583dd-6cf5-497c-8c40-c9a290598396": {
+    "name": "Arc SED",
+    "nickname": "Arc",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "86b28a7e-94d9-4791-8306-e13e10d5f8d5": {
+    "name": "Area",
+    "nickname": "Area",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "353b206e-bde5-4f02-a913-b3b8a977d4b9": {
+    "name": "Evaluate Surface",
+    "nickname": "EvalSrf",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "313490f5-8e38-4dde-9e9a-05e4d739b35d": {
+    "name": "Solver",
+    "nickname": "Solver",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "290f418a-65ee-406a-a9d0-35699815b512": {
+    "name": "Scale NU",
+    "nickname": "Scale NU",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "7a1e5fd7-b7da-4244-a261-f1da66614992": {
+    "name": "Power of 2",
+    "nickname": "2",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "82f19c48-9e73-43a4-ae6c-3a8368099b08": {
+    "name": "Set Intersection",
+    "nickname": "Intersection",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "3c30b1a1-4473-4ad4-a700-ea9770726c03": {
+    "name": "Anchor",
+    "nickname": "Anchor",
+    "category": "Kangaroo2",
+    "obsolete": false
+  },
+  "fc8ad805-2cbf-4447-b41b-50c0be591fcd": {
+    "name": "SubD Vertices",
+    "nickname": "SubDVerts",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "c717f26f-e4a0-475c-8e1c-b8f77af1bc99": {
+    "name": "Power of E",
+    "nickname": "E",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "332378f4-acb2-43fe-8593-ed22bfeb2721": {
+    "name": "Surface Frames",
+    "nickname": "Frames",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "4bfe1bf6-fbc9-4ad2-bf28-a7402e1392ee": {
+    "name": "MultiPipe",
+    "nickname": "MP",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "be52336f-a2e1-43b1-b5f5-178ba489508a": {
+    "name": "Circle Fit",
+    "nickname": "CFit",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "9c9f8219-ae88-4d29-ba1b-3433ed713639": {
+    "name": "Mirror Curve",
+    "nickname": "Mirror",
+    "category": "Transform",
+    "obsolete": false
+  },
+  "bb59bffc-f54c-4682-9778-f6c3fe74fce3": {
+    "name": "Arc",
+    "nickname": "Arc",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "9bc98a1d-2ecc-407e-948a-09a09ed3e69d": {
+    "name": "Rectangle 3Pt",
+    "nickname": "Rec 3Pt",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "8eed5d78-7810-4ba1-968e-8a1f1db98e39": {
+    "name": "Set Union",
+    "nickname": "SUnion",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "9d4854fe-70db-4863-967b-4120d0b6d2e4": {
+    "name": "Voronoi Groups",
+    "nickname": "VorGroup",
+    "category": "Mesh",
+    "obsolete": false
+  },
+  "d2d2a900-780c-4d58-9a35-1f9d8d35df6f": {
+    "name": "Cosine",
+    "nickname": "Cos",
+    "category": "Complex",
+    "obsolete": false
+  },
+  "915f8f93-f5d1-4a7b-aecb-c327bab88ffb": {
+    "name": "Split",
+    "nickname": "Split",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "a834e823-ae01-44d8-9066-c138eeb6f391": {
+    "name": "Surface | Line",
+    "nickname": "SCX",
+    "category": "Intersect",
+    "obsolete": false
+  },
+  "ad476cb7-b6d1-41c8-986b-0df243a64146": {
+    "name": "Square Root",
+    "nickname": "Sqrt",
+    "category": "Complex",
+    "obsolete": false
+  },
+  "9fa1b081-b1c7-4a12-a163-0aa8da9ff6c4": {
+    "name": "Arc 3Pt",
+    "nickname": "Arc",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "74cad441-2264-45fe-a57d-85034751208a": {
+    "name": "Explode Tree",
+    "nickname": "BANG!",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "0d1e2027-f153-460d-84c0-f9af431b08cb": {
+    "name": "Maximum",
+    "nickname": "Max",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "4beead95-8aa2-4613-8bb9-24758a0f5c4c": {
+    "name": "Brep Closest Point",
+    "nickname": "Brep CP",
+    "category": "Surface",
+    "obsolete": false
+  },
+  "f5f95b51-7431-4e80-a32f-d33e5dee53a5": {
+    "name": "Angle",
+    "nickname": "Angle",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "93d0dcbc-6207-4745-aaf7-fe57a880f959": {
+    "name": "IsoVist Ray",
+    "nickname": "IVRay",
+    "category": "Intersect",
+    "obsolete": false
+  },
+  "ed0742f9-6647-4d95-9dfd-9ad17080ae9c": {
+    "name": "Brep | Line",
+    "nickname": "BLX",
+    "category": "Intersect",
+    "obsolete": false
+  },
+  "522ffa00-cf42-4e34-90b6-eb375d901c74": {
+    "name": "Model Font",
+    "nickname": "Font",
+    "category": "Params",
+    "obsolete": false
+  },
+  "3756c55f-95c3-442c-a027-6b3ab0455a94": {
+    "name": "Match Text",
+    "nickname": "Match Text",
+    "category": "Params",
+    "obsolete": false
+  },
+  "323f3245-af49-4489-8677-7a2c73664077": {
+    "name": "Closed",
+    "nickname": "Cls",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "71fcc052-6add-4d70-8d97-cfb37ea9d169": {
+    "name": "Stream Gate",
+    "nickname": "Gate",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "98c3c63a-e78a-43ea-a111-514fcf312c95": {
+    "name": "Create Set",
+    "nickname": "CSet",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "501aecbb-c191-4d13-83d6-7ee32445ac50": {
+    "name": "Cull Index",
+    "nickname": "Cull i",
+    "category": "Sets",
+    "obsolete": false
+  },
+  "079bd9bd-54a0-41d4-98af-db999015f63d": {
+    "name": "VB Script",
+    "nickname": "VB",
+    "category": "Maths",
+    "obsolete": false
+  },
+  "1f602c33-f38e-4f47-898b-359f0a4de3c2": {
+    "name": "CoTangent",
+    "nickname": "Cotan",
+    "category": "Complex",
+    "obsolete": false
+  },
+  "0f31784f-7177-4104-8500-1f4f4a306df4": {
+    "name": "Tangent",
+    "nickname": "Tan",
+    "category": "Scalar",
+    "obsolete": false
+  },
+  "424eb433-2b3a-4859-beaf-804d8af0afd7": {
+    "name": "Control Points",
+    "nickname": "CP",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "902289da-28dc-454b-98d4-b8f8aa234516": {
+    "name": "Pull Point",
+    "nickname": "Pull",
+    "category": "Vector",
+    "obsolete": false
+  },
+  "d1d57181-d594-41e8-8efb-041e29f8a5ca": {
+    "name": "Iso Curve",
+    "nickname": "Iso",
+    "category": "Curve",
+    "obsolete": false
+  },
+  "cab92254-1c79-4e5a-9972-0a4412b35c88": {
+    "name": "IsoVist",
+    "nickname": "IVist",
+    "category": "Intersect",
+    "obsolete": false
+  },
+  "2e685fd9-7b8f-461b-b330-44857b099937": {
+    "name": "Volume Moments",
+    "nickname": "VMoments",
+    "category": "Surface",
+    "obsolete": false
   }
 }

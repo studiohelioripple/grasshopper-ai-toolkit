@@ -28,6 +28,9 @@ from .heteroptera import (
 from .native import (
     load_native_catalog,
     find_native_component,
+    resolve_native_for_generation,
+    is_obsolete_native_component,
+    get_active_replacement_guid,
     list_native_components,
 )
 from .legopod import (
@@ -76,6 +79,9 @@ __all__ = [
     "install_heteroptera",
     "load_native_catalog",
     "find_native_component",
+    "resolve_native_for_generation",
+    "is_obsolete_native_component",
+    "get_active_replacement_guid",
     "list_native_components",
     "load_legopod_catalog",
     "find_legopod_component",

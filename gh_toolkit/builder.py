@@ -7,7 +7,7 @@ from typing import Tuple, Optional, Dict, Any, List
 
 from .core import GHArchive, write_gh_binary, write_ghx
 from .heteroptera import find_heteroptera_component
-from .native import find_native_component
+from .native import find_native_component, resolve_native_for_generation
 from .legopod import find_legopod_component
 from .magpie import find_magpie_component
 
@@ -255,7 +255,7 @@ class GHBuilder:
         nickname: Optional[str] = None,
     ) -> str:
         """Instantiate any of the 212 verified native Grasshopper components by name or GUID."""
-        comp_info = find_native_component(name_or_guid)
+        comp_info = resolve_native_for_generation(name_or_guid) or find_native_component(name_or_guid)
         if not comp_info:
             raise KeyError(f"Native component '{name_or_guid}' not found in catalog.")
 
@@ -463,7 +463,7 @@ class GHBuilder:
         nickname: Optional[str] = None,
     ) -> str:
         """Instantiate any component (searching Native, Heteroptera, LegoPod, or Magpie)."""
-        comp_nat = find_native_component(name_or_guid)
+        comp_nat = resolve_native_for_generation(name_or_guid) or find_native_component(name_or_guid)
         if comp_nat:
             return self.add_native_component(name_or_guid, alias, pivot, nickname)
         comp_het = find_heteroptera_component(name_or_guid)

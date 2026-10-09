@@ -58,6 +58,49 @@ def find_native_component(name_or_guid: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+def resolve_native_for_generation(name_or_guid: str) -> Optional[Dict[str, Any]]:
+    """
+    Resolve a native Grasshopper component strictly for new definition generation.
+    Always returns active/modern components, automatically upgrading obsolete GUIDs or names.
+    """
+    comp = find_native_component(name_or_guid)
+    if not comp:
+        return None
+    if comp.get("obsolete"):
+        if comp.get("superseded_by"):
+            active = find_native_component(comp["superseded_by"])
+            if active:
+                return active
+            clean_name = comp.get("name", "").replace(" (Obsolete)", "").replace(" [OBSOLETE]", "")
+            return {
+                "name": clean_name,
+                "nickname": comp.get("nickname", ""),
+                "guid": comp["superseded_by"],
+                "tab": comp.get("tab", "Core"),
+                "category": comp.get("category", "General"),
+                "inputs": comp.get("inputs", []),
+                "outputs": comp.get("outputs", []),
+                "behavior": f"Active modern component for {clean_name}.",
+                "obsolete": False,
+            }
+        return None
+    return comp
+
+
+def is_obsolete_native_component(name_or_guid: str) -> bool:
+    """Check if a native component is obsolete."""
+    comp = find_native_component(name_or_guid)
+    return bool(comp and comp.get("obsolete", False))
+
+
+def get_active_replacement_guid(guid: str) -> Optional[str]:
+    """Get the active modern replacement GUID for an obsolete component GUID."""
+    comp = find_native_component(guid)
+    if comp and comp.get("obsolete"):
+        return comp.get("superseded_by")
+    return None
+
+
 def list_native_components(category: Optional[str] = None) -> List[Dict[str, Any]]:
     """List native components, optionally filtered by category."""
     catalog = load_native_catalog()

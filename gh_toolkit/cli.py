@@ -322,6 +322,12 @@ def main():
             print(f"Tab:          {comp.get('tab', 'Core')}")
             print(f"Category:     {comp.get('category', 'General')}")
             print(f"Behavior:     {comp.get('behavior', '')}")
+            if comp.get("obsolete"):
+                print(f"Status:       [OBSOLETE] (Preserved for legacy definitions)")
+                if comp.get("superseded_by"):
+                    print(f"Replaced By:  {comp['superseded_by']}")
+            else:
+                print(f"Status:       [ACTIVE] (Generation ready)")
             if comp.get("provenance"):
                 print(f"Provenance:   {comp['provenance']}")
             print("\nInputs:")
@@ -482,9 +488,20 @@ def main():
             for c, m in found_mag:
                 print(f"  - {m['name']} ({m.get('subcategory', 'General')})")
 
+        found_obsolete = [pair for pair in found_nat if pair[1].get("obsolete")]
+        if found_obsolete:
+            print(f"\nLegacy / Obsolete Components Detected ({len(found_obsolete)}):")
+            for c, m in found_obsolete:
+                rep = m.get("superseded_by", "N/A")
+                print(f"  [OBSOLETE] {m['name']} (GUID: {m['guid']}) -> Active Replacement: {rep}")
+
         print("\nOptimization & Architectural Advice:")
         advice_count = 0
         names = [c.name.lower() for c in graph.components]
+
+        if found_obsolete:
+            print(f"  [!] Obsolete components detected: Upgrade {len(found_obsolete)} legacy component(s) to modern Grasshopper 8 active GUIDs for future-proof definitions.")
+            advice_count += 1
 
         # Heteroptera advice
         if "distance" in names and not any("adjacen" in n or "topology" in n for n in names):
