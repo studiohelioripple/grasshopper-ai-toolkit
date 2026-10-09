@@ -61,3 +61,7 @@ Thumbs.db
 # Large / Raw binaries (keep examples clean)
 *.tmp
 *.bak
+
+# .NET Build artifacts
+gh_toolkit/bridge/**/bin/
+gh_toolkit/bridge/**/obj/

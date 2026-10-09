@@ -13,6 +13,7 @@ A zero-external-dependency library and CLI tool for:
 
 import os
 import sys
+import time
 import zlib
 import struct
 import uuid
@@ -1814,13 +1815,26 @@ def get_rhino_instances() -> List[Dict[str, Any]]:
         return []
 
 
+def find_rhino_bridge() -> Optional[str]:
+    """Locate the native rhino_bridge helper binary."""
+    # Look next to package or in ~/.gh_toolkit/bin or PATH
+    local_bin = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "gh_toolkit", "bin", "rhino_bridge")
+    if os.path.isfile(local_bin) and os.access(local_bin, os.X_OK):
+        return local_bin
+    which_path = shutil.which("rhino_bridge")
+    if which_path:
+        return which_path
+    return None
+
+
 def run_in_rhino(python_code: str, instance_id: Optional[str] = None, timeout: int = 15) -> Dict[str, Any]:
-    """Execute a Python snippet inside running Rhino 8 instance via rhinocode."""
+    """Execute a Python snippet inside running Rhino 8 instance via rhino_bridge or rhinocode."""
+    bridge_bin = find_rhino_bridge()
     rhinocode_bin = find_rhinocode()
-    if not rhinocode_bin:
+    if not bridge_bin and not rhinocode_bin:
         return {
             "success": False,
-            "error": "RhinoCode CLI not found. Expected at '/Applications/Rhino 8.app/Contents/Resources/bin/rhinocode'."
+            "error": "Neither rhino_bridge nor rhinocode CLI found. Ensure Rhino 8 is installed."
         }
 
     instances = get_rhino_instances()
@@ -1840,26 +1854,60 @@ import json
 import traceback
 
 __RESULT_PATH__ = {repr(result_path)}
+__TMP_PATH__ = {repr(result_path + ".tmp")}
+
+try:
+    __str_types = (str, unicode)
+except NameError:
+    __str_types = (str,)
+
+def __clean(val):
+    if val is None:
+        return None
+    if isinstance(val, (int, float, bool) + __str_types):
+        return val
+    if isinstance(val, dict):
+        return {{str(k): __clean(v) for k, v in val.items()}}
+    if isinstance(val, (list, tuple)):
+        return [__clean(x) for x in val]
+    return str(val)
 
 def __execute():
 {chr(10).join('    ' + line for line in python_code.strip().splitlines())}
 
 try:
     __res = __execute()
-    with open(__RESULT_PATH__, 'w', encoding='utf-8') as __f:
-        json.dump({{'success': True, 'result': __res}}, __f, indent=2)
+    with open(__TMP_PATH__, 'w') as __f:
+        json.dump({{'success': True, 'result': __clean(__res)}}, __f, indent=2)
+    if os.path.exists(__RESULT_PATH__):
+        try:
+            os.remove(__RESULT_PATH__)
+        except Exception:
+            pass
+    os.rename(__TMP_PATH__, __RESULT_PATH__)
 except Exception as __e:
-    with open(__RESULT_PATH__, 'w', encoding='utf-8') as __f:
+    with open(__TMP_PATH__, 'w') as __f:
         json.dump({{'success': False, 'error': str(__e), 'traceback': traceback.format_exc()}}, __f, indent=2)
+    if os.path.exists(__RESULT_PATH__):
+        try:
+            os.remove(__RESULT_PATH__)
+        except Exception:
+            pass
+    os.rename(__TMP_PATH__, __RESULT_PATH__)
 """
 
     with open(script_path, "w", encoding="utf-8") as f:
         f.write(wrapper)
 
-    cmd = [rhinocode_bin]
-    if target_pipe:
-        cmd.extend(["-r", target_pipe])
-    cmd.extend(["script", script_path])
+    if bridge_bin:
+        cmd = [bridge_bin, script_path]
+        if target_pipe:
+            cmd.append(target_pipe)
+    else:
+        cmd = [rhinocode_bin]
+        if target_pipe:
+            cmd.extend(["-r", target_pipe])
+        cmd.extend(["script", script_path])
 
     try:
         proc = subprocess.run(
@@ -1871,18 +1919,31 @@ except Exception as __e:
             timeout=timeout,
         )
 
-        if not os.path.exists(result_path):
+        # Wait for result payload (Rhino executes asynchronously on main loop, typically 50-150ms)
+        start_t = time.time()
+        data = None
+        while time.time() - start_t < timeout:
+            if os.path.exists(result_path):
+                try:
+                    with open(result_path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    break
+                except (ValueError, json.JSONDecodeError):
+                    # File may be mid-write or partially flushed
+                    time.sleep(0.05)
+                    continue
+            time.sleep(0.05)
+
+        if data is None:
             hint = "Ensure 'StartScriptServer' is running in Rhino 8."
             err_msg = proc.stderr.strip() or proc.stdout.strip()
             return {
                 "success": False,
-                "error": f"Rhino script produced no result payload. {err_msg} ({hint})",
+                "error": f"Rhino script produced no valid result payload. {err_msg} ({hint})",
                 "stderr": proc.stderr,
                 "stdout": proc.stdout,
             }
 
-        with open(result_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
         return data
 
     except subprocess.TimeoutExpired:
@@ -1890,16 +1951,12 @@ except Exception as __e:
     except Exception as e:
         return {"success": False, "error": str(e)}
     finally:
-        if os.path.exists(script_path):
-            try:
-                os.remove(script_path)
-            except Exception:
-                pass
-        if os.path.exists(result_path):
-            try:
-                os.remove(result_path)
-            except Exception:
-                pass
+        for path_to_clean in (script_path, result_path, result_path + ".tmp"):
+            if os.path.exists(path_to_clean):
+                try:
+                    os.remove(path_to_clean)
+                except Exception:
+                    pass
 
 
 def live_status() -> Dict[str, Any]:
@@ -2080,11 +2137,11 @@ if not proxy:
     proxy = comp_server.FindObjectByName(target_str, True, True)
 
 if not proxy:
-    return {{'success': False, 'error': f"Component '{{target_str}}' not found in ComponentServer."}}
+    return {{'success': False, 'error': "Component '{{}}' not found in ComponentServer.".format(target_str)}}
 
 instance = proxy.CreateInstance()
 if not instance:
-    return {{'success': False, 'error': f"Failed to instantiate component '{{target_str}}'."}}
+    return {{'success': False, 'error': "Failed to instantiate component '{{}}'.".format(target_str)}}
 
 instance.CreateAttributes()
 instance.Attributes.Pivot = PointF(float({x}), float({y}))
@@ -2137,7 +2194,7 @@ for obj in doc.Objects:
         to_remove.append(obj)
 
 if not to_remove:
-    return {{'success': False, 'error': f"No object matching '{{target}}' found on canvas"}}
+    return {{'success': False, 'error': "No object matching '{{}}' found on canvas".format(target)}}
 
 removed = []
 for obj in to_remove:
@@ -2184,9 +2241,9 @@ for obj in doc.Objects:
         dst_obj = obj
 
 if not src_obj:
-    return {{'success': False, 'error': f"Source object '{{src_target}}' not found"}}
+    return {{'success': False, 'error': "Source object '{{}}' not found".format(src_target)}}
 if not dst_obj:
-    return {{'success': False, 'error': f"Target object '{{dst_target}}' not found"}}
+    return {{'success': False, 'error': "Target object '{{}}' not found".format(dst_target)}}
 
 src_param = None
 if isinstance(src_obj, gh_kernel.IGH_Component):
@@ -2204,7 +2261,7 @@ elif isinstance(src_obj, gh_kernel.IGH_Param):
     src_param = src_obj
 
 if not src_param:
-    return {{'success': False, 'error': f"Could not resolve output pin '{{{repr(source_pin)}}}' on source object"}}
+    return {{'success': False, 'error': "Could not resolve output pin '{{}}' on source object".format({repr(source_pin)})}}
 
 dst_param = None
 if isinstance(dst_obj, gh_kernel.IGH_Component):
@@ -2222,7 +2279,7 @@ elif isinstance(dst_obj, gh_kernel.IGH_Param):
     dst_param = dst_obj
 
 if not dst_param:
-    return {{'success': False, 'error': f"Could not resolve input pin '{{{repr(target_pin)}}}' on target object"}}
+    return {{'success': False, 'error': "Could not resolve input pin '{{}}' on target object".format({repr(target_pin)})}}
 
 dst_param.AddSource(src_param)
 doc.NewSolution(False)
@@ -2265,7 +2322,7 @@ for obj in doc.Objects:
         break
 
 if not dst_obj:
-    return {{'success': False, 'error': f"Target object '{{dst_target}}' not found"}}
+    return {{'success': False, 'error': "Target object '{{}}' not found".format(dst_target)}}
 
 dst_param = None
 if isinstance(dst_obj, gh_kernel.IGH_Component):
@@ -2283,7 +2340,7 @@ elif isinstance(dst_obj, gh_kernel.IGH_Param):
     dst_param = dst_obj
 
 if not dst_param:
-    return {{'success': False, 'error': f"Could not resolve input pin '{{{repr(target_pin)}}}' on target object"}}
+    return {{'success': False, 'error': "Could not resolve input pin '{{}}' on target object".format({repr(target_pin)})}}
 
 src_target = {repr(str(source_id_or_name).lower() if source_id_or_name else None)}
 disconnected = 0
@@ -2343,7 +2400,7 @@ for obj in doc.Objects:
         break
 
 if not target_obj:
-    return {{'success': False, 'error': f"Object '{{target}}' not found on canvas"}}
+    return {{'success': False, 'error': "Object '{{}}' not found on canvas".format(target)}}
 
 val = {repr(value)}
 tname = type(target_obj).__name__
@@ -2365,7 +2422,7 @@ elif 'BooleanToggle' in tname or hasattr(target_obj, 'Value'):
     target_obj.ExpireSolution(False)
     updated_type = 'BooleanToggle'
 else:
-    return {{'success': False, 'error': f"Object type '{{tname}}' does not support live value mutation"}}
+    return {{'success': False, 'error': "Object type '{{}}' does not support live value mutation".format(tname)}}
 
 doc.NewSolution(False)
 if canvas:
@@ -2461,7 +2518,7 @@ doc_io = gh_kernel.GH_DocumentIO()
 opened = doc_io.Open(target)
 
 if not opened or not doc_io.Document:
-    return {{'success': False, 'error': f"Failed to open definition from {{target}}"}}
+    return {{'success': False, 'error': "Failed to open definition from {{}}".format(target)}}
 
 new_doc = doc_io.Document
 if doc_server:
