@@ -85,5 +85,35 @@ class TestGHBuilder(unittest.TestCase):
                 os.remove(out_path)
 
 
+    def test_csharp_script_synthesis(self):
+        builder = GHBuilder(name="CSharpTest")
+        builder.add_slider("s_val", "Val", 0.0, 100.0, 50.0, (100, 100))
+        builder.add_csharp_script(
+            alias="cs_comp",
+            code="A = (double)x * 2.0;",
+            inputs=["x"],
+            outputs=["A"],
+            pivot=(300, 100),
+        )
+        builder.add_panel("p_out", "Output", (500, 100))
+        builder.connect("s_val.out", "cs_comp.x")
+        builder.connect("cs_comp.A", "p_out.in")
+
+        out_path = os.path.join(os.path.dirname(__file__), "test_csharp_synthesis.gh")
+        try:
+            builder.save_gh(out_path)
+            self.assertTrue(os.path.exists(out_path))
+
+            arch = read_gh_binary(out_path)
+            graph = GHGraph.from_archive(arch)
+            self.assertEqual(len(graph.components), 3)
+            self.assertEqual(len(graph.wires), 2)
+            csharp_comp = [c for c in graph.components if "C#" in c.name or c.guid == "a9a8ebd2-fff5-4c44-a8f5-739736d129ba"]
+            self.assertEqual(len(csharp_comp), 1)
+        finally:
+            if os.path.exists(out_path):
+                os.remove(out_path)
+
+
 if __name__ == "__main__":
     unittest.main()

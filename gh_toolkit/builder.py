@@ -182,6 +182,62 @@ class GHBuilder:
 
         return inst_guid
 
+    def add_csharp_script(
+        self,
+        alias: str,
+        code: str,
+        inputs: List[str],
+        outputs: List[str],
+        pivot: Tuple[float, float],
+        additional_code: str = "",
+    ) -> str:
+        """Add a native C# Script Component (Component_CSNET_Script) to the canvas."""
+        comp_guid = "a9a8ebd2-fff5-4c44-a8f5-739736d129ba"
+        inst_guid = str(uuid.uuid4())
+
+        obj = self.objects_chunk.create_chunk("Object", self.object_count)
+        self.object_count += 1
+        obj.add_item("GUID", 9, comp_guid)
+        obj.add_item("Name", 10, "C# Script")
+
+        cont = obj.create_chunk("Container")
+        cont.add_item("Description", 10, "A C#.NET scriptable component")
+        cont.add_item("InstanceGuid", 9, inst_guid)
+        cont.add_item("Name", 10, "C# Script")
+        cont.add_item("NickName", 10, "C#")
+
+        ss_chunk = cont.create_chunk("ScriptSource")
+        ss_chunk.add_item("ScriptCode", 10, code)
+        if additional_code:
+            ss_chunk.add_item("AdditionalCode", 10, additional_code)
+
+        attr = cont.create_chunk("Attributes")
+        attr.add_item("Bounds", 35, [pivot[0], pivot[1], 80.0, 60.0])
+        attr.add_item("Pivot", 31, [pivot[0] + 40.0, pivot[1] + 30.0])
+
+        pdata = cont.create_chunk("ParameterData")
+        pdata.add_item("InputCount", 3, len(inputs))
+        pdata.add_item("OutputCount", 3, len(outputs))
+
+        for idx, in_name in enumerate(inputs):
+            p_in = pdata.create_chunk("InputParam", idx)
+            p_guid = str(uuid.uuid4())
+            p_in.add_item("InstanceGuid", 9, p_guid)
+            p_in.add_item("Name", 10, in_name)
+            p_in.add_item("NickName", 10, in_name)
+            p_in.add_item("Optional", 1, True)
+            self.param_lut[f"{alias}.{in_name}"] = p_guid
+
+        for idx, out_name in enumerate(outputs):
+            p_out = pdata.create_chunk("OutputParam", idx)
+            p_guid = str(uuid.uuid4())
+            p_out.add_item("InstanceGuid", 9, p_guid)
+            p_out.add_item("Name", 10, out_name)
+            p_out.add_item("NickName", 10, out_name)
+            self.param_lut[f"{alias}.{out_name}"] = p_guid
+
+        return inst_guid
+
     def add_heteroptera_component(
         self,
         name_or_guid: str,

@@ -53,7 +53,7 @@ public class ViewportController
 
         // Compute camera position (explicit or spherical orbit)
         Point3d finalCam;
-        if (camera != Point3d.Unset && camera.IsValid)
+        if (camera != Point3d.Unset && camera.IsValid && camera != Point3d.Origin)
         {
             finalCam = camera;
         }

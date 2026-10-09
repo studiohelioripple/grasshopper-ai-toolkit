@@ -22,10 +22,18 @@ def main():
     print("Synthesizing Viewport Controller Definition...")
     builder = GHBuilder(name="RhinoViewportController")
 
-    # Load Python script source
-    script_file = os.path.join(os.path.dirname(__file__), "viewport_controller.py")
+    # Load C# script source
+    script_file = os.path.join(os.path.dirname(__file__), "viewport_controller.cs")
     with open(script_file, "r", encoding="utf-8") as f:
-        viewport_code = f.read()
+        full_cs = f.read()
+
+    run_script_start = full_cs.find('{', full_cs.find('public void RunScript')) + 1
+    run_script_end = full_cs.rfind('}', 0, full_cs.find('private static List<Line> BuildFrustum'))
+    run_script_body = full_cs[run_script_start:run_script_end].strip()
+
+    additional_start = full_cs.find('private static List<Line> BuildFrustum')
+    additional_end = full_cs.rfind('}')
+    additional_code = full_cs[additional_start:additional_end].strip()
 
     # 1. Sliders & Inputs (Column 1)
     builder.add_slider("s_azim", "Azimuth", 0.0, 360.0, 45.0, (100, 100))
@@ -35,12 +43,13 @@ def main():
     builder.add_panel("p_view", "Perspective", (100, 420))
     builder.add_panel("p_mode", "Shaded", (100, 500))
 
-    # 2. Add GhPython Viewport Controller Component (Column 2)
-    builder.add_python_script(
-        alias="py_viewport",
-        code=viewport_code,
-        inputs=["run", "view_name", "target", "camera", "azim", "elev", "dist", "lens", "up", "display_mode", "projection", "bbox", "redraw"],
-        outputs=["cam_pt", "target_pt", "cam_dir", "cam_plane", "frustum", "status"],
+    # 2. Add Native C# Viewport Controller Component (Column 2)
+    builder.add_csharp_script(
+        alias="cs_viewport",
+        code=run_script_body,
+        additional_code=additional_code,
+        inputs=["run", "view_name", "target", "camera", "azim", "elev", "dist", "lens", "display_mode"],
+        outputs=["cam_pt", "target_pt", "cam_dir", "frustum", "status"],
         pivot=(380, 220),
     )
 
@@ -48,13 +57,13 @@ def main():
     builder.add_panel("p_status", "Status Output", (620, 260))
 
     # 4. Wire Connections
-    builder.connect("s_azim.out", "py_viewport.azim")
-    builder.connect("s_elev.out", "py_viewport.elev")
-    builder.connect("s_dist.out", "py_viewport.dist")
-    builder.connect("s_lens.out", "py_viewport.lens")
-    builder.connect("p_view.out", "py_viewport.view_name")
-    builder.connect("p_mode.out", "py_viewport.display_mode")
-    builder.connect("py_viewport.status", "p_status.in")
+    builder.connect("s_azim.out", "cs_viewport.azim")
+    builder.connect("s_elev.out", "cs_viewport.elev")
+    builder.connect("s_dist.out", "cs_viewport.dist")
+    builder.connect("s_lens.out", "cs_viewport.lens")
+    builder.connect("p_view.out", "cs_viewport.view_name")
+    builder.connect("p_mode.out", "cs_viewport.display_mode")
+    builder.connect("cs_viewport.status", "p_status.in")
 
     output_dir = os.path.join(os.path.dirname(__file__), "outputs")
     os.makedirs(output_dir, exist_ok=True)

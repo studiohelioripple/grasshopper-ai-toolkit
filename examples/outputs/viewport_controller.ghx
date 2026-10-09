@@ -19,7 +19,7 @@
       <chunks count="3">
         <chunk name="DocumentHeader">
           <items count="5">
-            <item name="DocumentID" type_name="gh_guid" type_code="9">fcac0fa9-7bf9-4f93-9d0c-6eb459c47d27</item>
+            <item name="DocumentID" type_name="gh_guid" type_code="9">c51ddbaa-d332-4a2a-b29e-6622095dcdc0</item>
             <item name="Preview" type_name="gh_string" type_code="10">Shaded</item>
             <item name="PreviewMeshType" type_name="gh_int32" type_code="3">1</item>
             <item name="PreviewNormal" type_name="gh_drawing_color" type_code="36">
@@ -70,7 +70,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">A slider for numeric values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4ff71b1b-3b52-4a76-9b83-271e2f4ee9b5</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">038f621b-916b-49ee-9a15-7a5eb1869823</item>
                     <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Azimuth</item>
                   </items>
@@ -100,7 +100,7 @@
                     </chunk>
                     <chunk name="param_output" index="0">
                       <items count="3">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d02c78ea-0ee5-4c13-a384-d34692a5ea5a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">544cf00f-7057-4bb2-b7f0-3eb576ab01a1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Output</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Azimuth</item>
                       </items>
@@ -119,7 +119,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">A slider for numeric values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">dd77f3a8-3288-4484-869d-18ff56756462</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">326ada5e-488c-4193-9c13-fc80c52869a1</item>
                     <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Elevation</item>
                   </items>
@@ -149,7 +149,7 @@
                     </chunk>
                     <chunk name="param_output" index="0">
                       <items count="3">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">88277c7a-3f8d-42f1-b796-ababf542f898</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5e9c2350-c786-4bc4-8148-d47cff40623c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Output</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Elevation</item>
                       </items>
@@ -168,7 +168,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">A slider for numeric values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">402fbb0f-0125-4983-903d-5fbc9ac369d4</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">f6c3e949-c573-4ff2-9c6a-53489a35617d</item>
                     <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Distance</item>
                   </items>
@@ -198,7 +198,7 @@
                     </chunk>
                     <chunk name="param_output" index="0">
                       <items count="3">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d19bb7db-0dfb-46ed-885e-14656b454e67</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">51dfdf32-0bbd-4df1-8a61-c74c80cc0d13</item>
                         <item name="Name" type_name="gh_string" type_code="10">Output</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Distance</item>
                       </items>
@@ -217,7 +217,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">A slider for numeric values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">b118fc1b-254c-4260-8b75-fac07570c747</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">178fbaa1-6993-45e9-8b74-f1358acdbc06</item>
                     <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Lens Focal Length</item>
                   </items>
@@ -247,7 +247,7 @@
                     </chunk>
                     <chunk name="param_output" index="0">
                       <items count="3">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d4e908b2-19b8-459c-940a-d4d19990bb65</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4c45dd2d-71db-430e-828d-bd0d699e4909</item>
                         <item name="Name" type_name="gh_string" type_code="10">Output</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Lens Focal Length</item>
                       </items>
@@ -265,7 +265,7 @@
                 <chunk name="Container">
                   <items count="5">
                     <item name="Description" type_name="gh_string" type_code="10">Panel for notes and text</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">68304d88-03cb-46f6-bbb8-c3d7eb4e9a2d</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4e36eb03-6b83-477b-b7a9-f1aa590995f1</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10" />
                     <item name="UserText" type_name="gh_string" type_code="10">Perspective</item>
@@ -287,13 +287,13 @@
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="2">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">bf3fffef-7519-4285-879e-0dd7bc39fd67</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">11d33048-ddba-4e9c-92d8-abbc8ce83113</item>
                         <item name="Name" type_name="gh_string" type_code="10">in</item>
                       </items>
                     </chunk>
                     <chunk name="param_output" index="0">
                       <items count="2">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3a8dca08-21ad-4769-a6f6-b30efcf0e20a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">05f40a4c-55e5-4c2d-a346-43e916e4b1fb</item>
                         <item name="Name" type_name="gh_string" type_code="10">out</item>
                       </items>
                     </chunk>
@@ -310,7 +310,7 @@
                 <chunk name="Container">
                   <items count="5">
                     <item name="Description" type_name="gh_string" type_code="10">Panel for notes and text</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">6394c19a-5c0c-402e-b3a4-4e01ba79ec16</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">85a70ae4-dded-400a-9200-8076aec33d83</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10" />
                     <item name="UserText" type_name="gh_string" type_code="10">Shaded</item>
@@ -332,13 +332,13 @@
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="2">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">bb11bcdc-3e10-426e-8e4c-7798ca129354</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4415d50e-6801-4066-ab7d-f63162ce7674</item>
                         <item name="Name" type_name="gh_string" type_code="10">in</item>
                       </items>
                     </chunk>
                     <chunk name="param_output" index="0">
                       <items count="2">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8b1472e0-b601-4cf1-99dd-c30aa0ce1492</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ff2426a9-d2d1-4e27-a8e4-7511f15d7ed1</item>
                         <item name="Name" type_name="gh_string" type_code="10">out</item>
                       </items>
                     </chunk>
@@ -348,269 +348,169 @@
             </chunk>
             <chunk name="Object" index="6">
               <items count="2">
-                <item name="GUID" type_name="gh_guid" type_code="9">410755b1-224a-4c1e-a407-bf32fb45ea7e</item>
-                <item name="Name" type_name="gh_string" type_code="10">GhPython Script</item>
+                <item name="GUID" type_name="gh_guid" type_code="9">a9a8ebd2-fff5-4c44-a8f5-739736d129ba</item>
+                <item name="Name" type_name="gh_string" type_code="10">C# Script</item>
               </items>
               <chunks count="1">
                 <chunk name="Container">
-                  <items count="5">
-                    <item name="Description" type_name="gh_string" type_code="10">GhPython script component</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">e1609caf-f690-40be-9c32-7eed8d6d9387</item>
-                    <item name="Name" type_name="gh_string" type_code="10">GhPython Script</item>
-                    <item name="NickName" type_name="gh_string" type_code="10">Python</item>
-                    <item name="ScriptSource" type_name="gh_string" type_code="10">"""
-Rhino Viewport Controller for Grasshopper (GhPython)
-=====================================================
-Directly controls Rhino 3D viewports from Grasshopper in real-time.
-
-Inputs (add to GhPython Script Component):
-  run          (bool)     : Active toggle. Set True to update viewport, False to pause/unlock.
-  view_name    (str)      : Target viewport name (e.g. 'Perspective', 'Top', 'Front'). Empty for ActiveView.
-  target       (Point3d)  : Look-at target point. Default is (0, 0, 0).
-  camera       (Point3d)  : Explicit camera position. If None, calculated from orbit (azim, elev, dist).
-  azim         (float)    : Orbit Azimuth angle in degrees (0..360). Default 45.0.
-  elev         (float)    : Orbit Elevation angle in degrees (-89..89). Default 30.0.
-  dist         (float)    : Distance from target in model units. Default 100.0.
-  lens         (float)    : 35mm camera focal length in mm. Default 50.0.
-  up           (Vector3d) : Camera UP vector. Default UnitZ (0, 0, 1).
-  display_mode (str)      : Display mode name ('Shaded', 'Rendered', 'Wireframe', 'Ghosted', 'Arctic', 'Raytraced').
-  projection   (str)      : 'Perspective' or 'Parallel'. Default 'Perspective'.
-  bbox         (geom/bbox): Optional geometry or BoundingBox to Zoom-Fit into view.
-  redraw       (bool)     : If True, triggers immediate Rhino view redraw. Default True.
-
-Outputs:
-  cam_pt       (Point3d)  : Current / applied camera location.
-  target_pt    (Point3d)  : Current / applied target point.
-  cam_dir      (Vector3d) : Normalized camera view direction vector.
-  cam_plane    (Plane)    : Camera view plane (origin at camera, Z pointing at target).
-  frustum      (list)     : 3D visual wireframe lines of camera cone/frustum in GH preview.
-  status       (str)      : Diagnostic status summary.
-
-Hot-reload via gh-toolkit CLI:
-  gh-toolkit live inject ViewportControl examples/viewport_controller.py
-  gh-toolkit live watch  ViewportControl examples/viewport_controller.py
-"""
-
-import math
-
-# Safe imports for standalone execution and Rhino/GhPython execution
-try:
-    import Rhino
-    import Rhino.Geometry as rg
-    import scriptcontext as sc
-    RHINO_AVAILABLE = True
-except ImportError:
-    RHINO_AVAILABLE = False
-    Rhino = None
-    rg = None
-    sc = None
-
-
-def get_rhino_doc():
-    """Retrieve active Rhino document reliably from Grasshopper."""
-    if not RHINO_AVAILABLE:
-        return None
-    # In GhPython, sc.doc is the Grasshopper definition.
-    # The active Rhino document is always Rhino.RhinoDoc.ActiveDoc.
-    return Rhino.RhinoDoc.ActiveDoc
-
-
-def calculate_orbit_camera(target_point, azimuth_deg, elevation_deg, distance):
-    """Calculate camera position in spherical coordinates around target point."""
-    azim_rad = math.radians(float(azimuth_deg))
-    elev_rad = math.radians(max(-89.9, min(89.9, float(elevation_deg))))
-    d = max(0.001, float(distance))
-
-    dx = d * math.cos(elev_rad) * math.sin(azim_rad)
-    dy = d * math.cos(elev_rad) * math.cos(azim_rad)
-    dz = d * math.sin(elev_rad)
-
-    if rg:
-        return rg.Point3d(target_point.X + dx, target_point.Y + dy, target_point.Z + dz)
-    return (target_point[0] + dx, target_point[1] + dy, target_point[2] + dz)
-
-
-def build_camera_frustum(cam_p, tgt_p, focal_length_mm, distance):
-    """
-    Generate 3D wireframe lines representing the camera's field of view (frustum).
-    Standard 35mm film / full-frame sensor: 36mm x 24mm.
-    """
-    if not rg:
-        return []
-
-    lines = []
-    fl = max(5.0, float(focal_length_mm))
-    d = max(1.0, float(distance))
-
-    # Field of view angles
-    hfov = 2.0 * math.atan(18.0 / fl)  # half sensor width = 18mm
-    vfov = 2.0 * math.atan(12.0 / fl)  # half sensor height = 12mm
-
-    half_w = d * math.tan(hfov / 2.0)
-    half_h = d * math.tan(vfov / 2.0)
-
-    # Direction and frame orientation
-    forward = tgt_p - cam_p
-    if not forward.Unitize():
-        forward = rg.Vector3d(0, 1, 0)
-
-    world_up = rg.Vector3d.ZAxis
-    right = rg.Vector3d.CrossProduct(forward, world_up)
-    if not right.Unitize():
-        world_up = rg.Vector3d.YAxis
-        right = rg.Vector3d.CrossProduct(forward, world_up)
-        right.Unitize()
-
-    cam_up = rg.Vector3d.CrossProduct(right, forward)
-    cam_up.Unitize()
-
-    # Center of target plane
-    plane_center = cam_p + forward * d
-
-    # 4 corner points on target plane
-    p_tl = plane_center - right * half_w + cam_up * half_h
-    p_tr = plane_center + right * half_w + cam_up * half_h
-    p_br = plane_center + right * half_w - cam_up * half_h
-    p_bl = plane_center - right * half_w - cam_up * half_h
-
-    # Frustum boundary lines (rectangle at target distance)
-    lines.append(rg.Line(p_tl, p_tr))
-    lines.append(rg.Line(p_tr, p_br))
-    lines.append(rg.Line(p_br, p_bl))
-    lines.append(rg.Line(p_bl, p_tl))
-
-    # Ray lines from camera eye to 4 corners
-    lines.append(rg.Line(cam_p, p_tl))
-    lines.append(rg.Line(cam_p, p_tr))
-    lines.append(rg.Line(cam_p, p_br))
-    lines.append(rg.Line(cam_p, p_bl))
-
-    # Sightline centerline
-    lines.append(rg.Line(cam_p, plane_center))
-
-    return lines
-
-
-# ==============================================================================
-# Main Execution in Grasshopper
-# ==============================================================================
-
-# Parse and normalize inputs safely
-_is_active     = bool(run) if 'run' in globals() and run is not None else True
-_view_name     = str(view_name).strip() if 'view_name' in globals() and view_name else ""
-_target        = target if 'target' in globals() and target is not None else (rg.Point3d.Origin if rg else (0, 0, 0))
-_camera_input  = camera if 'camera' in globals() and camera is not None else None
-_azim          = float(azim) if 'azim' in globals() and azim is not None else 45.0
-_elev          = float(elev) if 'elev' in globals() and elev is not None else 30.0
-_dist          = float(dist) if 'dist' in globals() and dist is not None else 100.0
-_lens          = float(lens) if 'lens' in globals() and lens is not None else 50.0
-_up            = up if 'up' in globals() and up is not None else (rg.Vector3d.ZAxis if rg else (0, 0, 1))
-_display_mode  = str(display_mode).strip() if 'display_mode' in globals() and display_mode else ""
-_projection    = str(projection).strip().lower() if 'projection' in globals() and projection else "perspective"
-_bbox          = bbox if 'bbox' in globals() and bbox is not None else None
-_redraw        = bool(redraw) if 'redraw' in globals() and redraw is not None else True
-
-# Determine camera position (explicit point or orbit calculation)
-if _camera_input is not None:
-    _final_cam = _camera_input
-    if rg and hasattr(_final_cam, "DistanceTo"):
-        _final_dist = _final_cam.DistanceTo(_target)
-    else:
-        _final_dist = _dist
-else:
-    _final_cam = calculate_orbit_camera(_target, _azim, _elev, _dist)
-    _final_dist = _dist
-
-# Direction vector &amp; camera plane
-if rg:
-    _direction = _target - _final_cam
-    _dir_unit = rg.Vector3d(_direction)
-    _dir_unit.Unitize()
-    _cam_plane = rg.Plane(_final_cam, _dir_unit)
-    _frustum = build_camera_frustum(_final_cam, _target, _lens, _final_dist)
-else:
-    _direction = None
-    _dir_unit = None
-    _cam_plane = None
-    _frustum = []
-
-# Expose Outputs to Grasshopper canvas
-cam_pt    = _final_cam
-target_pt = _target
-cam_dir   = _dir_unit
-cam_plane = _cam_plane
-frustum   = _frustum
-status    = "Ready"
-
-# Apply Viewport Changes if active and running inside Rhino
-doc = get_rhino_doc()
-
-if not _is_active:
-    status = "Paused (run=False). Viewport unlocked for interactive navigation."
-elif not doc:
-    status = "Waiting: Rhino document not connected."
-else:
-    try:
-        # Find specified view or fallback to active view
-        target_view = None
-        if _view_name:
-            target_view = doc.Views.Find(_view_name, False)
-        if not target_view:
-            target_view = doc.Views.ActiveView
-
-        if not target_view:
-            status = f"Error: Viewport '{_view_name}' not found and no active view exists."
-        else:
-            vp = target_view.ActiveViewport
-
-            # 1. Update Camera Projection Mode (Perspective vs Parallel)
-            if _projection in ("parallel", "ortho", "isometric"):
-                if not vp.IsParallelProjection:
-                    vp.ChangeToParallelProjection(True)
-            elif _projection in ("perspective", "persp"):
-                if not vp.IsPerspectiveProjection:
-                    vp.ChangeToPerspectiveProjection(True)
-
-            # 2. Update Camera Position &amp; Target
-            # Setting camera target first, then location, maintains correct direction
-            vp.SetCameraTarget(_target, False)
-            vp.SetCameraLocation(_final_cam, False)
-            vp.CameraUp = _up
-
-            # 3. Update Focal Length / Lens
-            if vp.IsPerspectiveProjection:
-                vp.Camera35mmLensLength = _lens
-
-            # 4. Optional Display Mode (e.g. Shaded, Rendered, Arctic)
-            if _display_mode:
-                mode_desc = Rhino.Display.DisplayModeDescription.FindByName(_display_mode)
-                if mode_desc:
-                    vp.DisplayMode = mode_desc
-
-            # 5. Optional Zoom to Bounding Box / Extents
-            if _bbox is not None:
-                if hasattr(_bbox, "GetBoundingBox"):
-                    b = _bbox.GetBoundingBox(True)
-                    vp.ZoomBoundingBox(b)
-                elif isinstance(_bbox, rg.BoundingBox):
-                    vp.ZoomBoundingBox(_bbox)
-
-            # 6. Redraw Viewport
-            if _redraw:
-                target_view.Redraw()
-
-            status = (
-                f"Active View: '{target_view.MainViewport.Name}' | "
-                f"Camera: ({_final_cam.X:.1f}, {_final_cam.Y:.1f}, {_final_cam.Z:.1f}) | "
-                f"Target: ({_target.X:.1f}, {_target.Y:.1f}, {_target.Z:.1f}) | "
-                f"Lens: {_lens:.0f}mm | Dist: {_final_dist:.1f}"
-            )
-
-    except Exception as e:
-        status = f"Viewport update exception: {str(e)}"
-</item>
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">A C#.NET scriptable component</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">613bd63d-32c5-4f6a-9e70-d4fef3042bf9</item>
+                    <item name="Name" type_name="gh_string" type_code="10">C# Script</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">C#</item>
                   </items>
-                  <chunks count="2">
+                  <chunks count="3">
+                    <chunk name="ScriptSource">
+                      <items count="2">
+                        <item name="ScriptCode" type_name="gh_string" type_code="10">// Safe defaults
+        if (target == Point3d.Unset) target = Point3d.Origin;
+        if (dist &lt;= 0) dist = 100.0;
+        if (lens &lt;= 0) lens = 50.0;
+
+        // Compute camera position (explicit or spherical orbit)
+        Point3d finalCam;
+        if (camera != Point3d.Unset &amp;&amp; camera.IsValid &amp;&amp; camera != Point3d.Origin)
+        {
+            finalCam = camera;
+        }
+        else
+        {
+            double azimRad = azim * (Math.PI / 180.0);
+            double clampedElev = Math.Max(-89.9, Math.Min(89.9, elev));
+            double elevRad = clampedElev * (Math.PI / 180.0);
+
+            double dx = dist * Math.Cos(elevRad) * Math.Sin(azimRad);
+            double dy = dist * Math.Cos(elevRad) * Math.Cos(azimRad);
+            double dz = dist * Math.Sin(elevRad);
+            finalCam = new Point3d(target.X + dx, target.Y + dy, target.Z + dz);
+        }
+
+        Vector3d forward = target - finalCam;
+        Vector3d forwardUnit = new Vector3d(forward);
+        forwardUnit.Unitize();
+
+        // Build frustum wireframe visualization
+        List&lt;Line&gt; frustumLines = BuildFrustum(finalCam, target, lens, finalCam.DistanceTo(target));
+
+        // Assign output parameters
+        cam_pt = finalCam;
+        target_pt = target;
+        cam_dir = forwardUnit;
+        frustum = frustumLines;
+
+        if (!run)
+        {
+            status = "Paused (run=false). Interactive navigation unlocked.";
+            return;
+        }
+
+        RhinoDoc doc = RhinoDoc.ActiveDoc;
+        if (doc == null)
+        {
+            status = "Waiting: RhinoDoc not available.";
+            return;
+        }
+
+        try
+        {
+            Rhino.Display.RhinoView view = null;
+            if (!string.IsNullOrWhiteSpace(view_name))
+            {
+                view = doc.Views.Find(view_name.Trim(), false);
+            }
+            if (view == null)
+            {
+                view = doc.Views.ActiveView;
+            }
+
+            if (view == null)
+            {
+                status = "Error: No active Rhino viewport found.";
+                return;
+            }
+
+            Rhino.Display.RhinoViewport vp = view.ActiveViewport;
+
+            // Update Target, Location, and Up
+            vp.SetCameraTarget(target, false);
+            vp.SetCameraLocation(finalCam, false);
+            vp.CameraUp = Vector3d.ZAxis;
+
+            // Update lens focal length
+            if (vp.IsPerspectiveProjection)
+            {
+                vp.Camera35mmLensLength = lens;
+            }
+
+            // Display Mode
+            if (!string.IsNullOrWhiteSpace(display_mode))
+            {
+                var modeDesc = Rhino.Display.DisplayModeDescription.FindByName(display_mode.Trim());
+                if (modeDesc != null)
+                {
+                    vp.DisplayMode = modeDesc;
+                }
+            }
+
+            view.Redraw();
+
+            status = string.Format(
+                "Active View: '{0}' | Camera: ({1:F1}, {2:F1}, {3:F1}) | Target: ({4:F1}, {5:F1}, {6:F1}) | Lens: {7:F0}mm",
+                view.MainViewport.Name, finalCam.X, finalCam.Y, finalCam.Z, target.X, target.Y, target.Z, lens
+            );
+        }
+        catch (Exception ex)
+        {
+            status = "Exception: " + ex.Message;
+        }</item>
+                        <item name="AdditionalCode" type_name="gh_string" type_code="10">private static List&lt;Line&gt; BuildFrustum(Point3d camP, Point3d tgtP, double lensMm, double distance)
+    {
+        var lines = new List&lt;Line&gt;();
+        double fl = Math.Max(5.0, lensMm);
+        double d = Math.Max(1.0, distance);
+
+        double hfov = 2.0 * Math.Atan(18.0 / fl);
+        double vfov = 2.0 * Math.Atan(12.0 / fl);
+
+        double halfW = d * Math.Tan(hfov / 2.0);
+        double halfH = d * Math.Tan(vfov / 2.0);
+
+        Vector3d forward = tgtP - camP;
+        if (!forward.Unitize()) forward = new Vector3d(0, 1, 0);
+
+        Vector3d worldUp = Vector3d.ZAxis;
+        Vector3d right = Vector3d.CrossProduct(forward, worldUp);
+        if (!right.Unitize())
+        {
+            worldUp = Vector3d.YAxis;
+            right = Vector3d.CrossProduct(forward, worldUp);
+            right.Unitize();
+        }
+
+        Vector3d camUp = Vector3d.CrossProduct(right, forward);
+        camUp.Unitize();
+
+        Point3d center = camP + forward * d;
+        Point3d tl = center - right * halfW + camUp * halfH;
+        Point3d tr = center + right * halfW + camUp * halfH;
+        Point3d br = center + right * halfW - camUp * halfH;
+        Point3d bl = center - right * halfW - camUp * halfH;
+
+        lines.Add(new Line(tl, tr));
+        lines.Add(new Line(tr, br));
+        lines.Add(new Line(br, bl));
+        lines.Add(new Line(bl, tl));
+
+        lines.Add(new Line(camP, tl));
+        lines.Add(new Line(camP, tr));
+        lines.Add(new Line(camP, br));
+        lines.Add(new Line(camP, bl));
+        lines.Add(new Line(camP, center));
+
+        return lines;
+    }</item>
+                      </items>
+                    </chunk>
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
@@ -627,13 +527,13 @@ else:
                     </chunk>
                     <chunk name="ParameterData">
                       <items count="2">
-                        <item name="InputCount" type_name="gh_int32" type_code="3">13</item>
-                        <item name="OutputCount" type_name="gh_int32" type_code="3">6</item>
+                        <item name="InputCount" type_name="gh_int32" type_code="3">9</item>
+                        <item name="OutputCount" type_name="gh_int32" type_code="3">5</item>
                       </items>
-                      <chunks count="19">
+                      <chunks count="14">
                         <chunk name="InputParam" index="0">
                           <items count="4">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">9a45f8b1-63a5-4239-9d45-296184e3e7ea</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">8a7af6f0-eb7a-4e24-abb2-492a01c8b441</item>
                             <item name="Name" type_name="gh_string" type_code="10">run</item>
                             <item name="NickName" type_name="gh_string" type_code="10">run</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -641,17 +541,17 @@ else:
                         </chunk>
                         <chunk name="InputParam" index="1">
                           <items count="6">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">92574bf3-84ea-4d5f-b7cd-e61e1eaa086d</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">9043aa57-5087-4c88-a76f-b7e75fc2aeed</item>
                             <item name="Name" type_name="gh_string" type_code="10">view_name</item>
                             <item name="NickName" type_name="gh_string" type_code="10">view_name</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" type_name="gh_guid" type_code="9">3a8dca08-21ad-4769-a6f6-b30efcf0e20a</item>
+                            <item name="Source" type_name="gh_guid" type_code="9">05f40a4c-55e5-4c2d-a346-43e916e4b1fb</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                           </items>
                         </chunk>
                         <chunk name="InputParam" index="2">
                           <items count="4">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">13ddcd81-5370-4d22-b5a8-a14a877be4c4</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">ad00478a-2995-4f4b-b4e9-f15648958c7b</item>
                             <item name="Name" type_name="gh_string" type_code="10">target</item>
                             <item name="NickName" type_name="gh_string" type_code="10">target</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -659,7 +559,7 @@ else:
                         </chunk>
                         <chunk name="InputParam" index="3">
                           <items count="4">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">25079214-e820-40af-bf5c-e9abe6e86857</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">972c6e42-6c59-44f5-9cae-337dcf718b31</item>
                             <item name="Name" type_name="gh_string" type_code="10">camera</item>
                             <item name="NickName" type_name="gh_string" type_code="10">camera</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -667,124 +567,85 @@ else:
                         </chunk>
                         <chunk name="InputParam" index="4">
                           <items count="6">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">fa6a86f6-5032-41b3-b54d-d3e1e2539530</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">fc8cd4ea-b7e8-4e0d-be87-073ee046e584</item>
                             <item name="Name" type_name="gh_string" type_code="10">azim</item>
                             <item name="NickName" type_name="gh_string" type_code="10">azim</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" type_name="gh_guid" type_code="9">d02c78ea-0ee5-4c13-a384-d34692a5ea5a</item>
+                            <item name="Source" type_name="gh_guid" type_code="9">544cf00f-7057-4bb2-b7f0-3eb576ab01a1</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                           </items>
                         </chunk>
                         <chunk name="InputParam" index="5">
                           <items count="6">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">f39bdc7b-5e14-40a6-b8b3-e36ff1bea614</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">e4aaa8ae-7f37-46e1-a829-b261dea3721d</item>
                             <item name="Name" type_name="gh_string" type_code="10">elev</item>
                             <item name="NickName" type_name="gh_string" type_code="10">elev</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" type_name="gh_guid" type_code="9">88277c7a-3f8d-42f1-b796-ababf542f898</item>
+                            <item name="Source" type_name="gh_guid" type_code="9">5e9c2350-c786-4bc4-8148-d47cff40623c</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                           </items>
                         </chunk>
                         <chunk name="InputParam" index="6">
                           <items count="6">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">35d0f67e-8ee0-4ba7-befd-742b00591c4b</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">09d0ebfc-94e3-4b4b-adec-c1b243fdf8aa</item>
                             <item name="Name" type_name="gh_string" type_code="10">dist</item>
                             <item name="NickName" type_name="gh_string" type_code="10">dist</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" type_name="gh_guid" type_code="9">d19bb7db-0dfb-46ed-885e-14656b454e67</item>
+                            <item name="Source" type_name="gh_guid" type_code="9">51dfdf32-0bbd-4df1-8a61-c74c80cc0d13</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                           </items>
                         </chunk>
                         <chunk name="InputParam" index="7">
                           <items count="6">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">33d95bfd-127e-4009-b0ed-dc69b3fa0df7</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">69114a5e-e5e4-4bcd-bb62-4f3dcbf30546</item>
                             <item name="Name" type_name="gh_string" type_code="10">lens</item>
                             <item name="NickName" type_name="gh_string" type_code="10">lens</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" type_name="gh_guid" type_code="9">d4e908b2-19b8-459c-940a-d4d19990bb65</item>
+                            <item name="Source" type_name="gh_guid" type_code="9">4c45dd2d-71db-430e-828d-bd0d699e4909</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                           </items>
                         </chunk>
                         <chunk name="InputParam" index="8">
-                          <items count="4">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">d09db4b2-5240-43de-85d0-dde6586deb8e</item>
-                            <item name="Name" type_name="gh_string" type_code="10">up</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">up</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                          </items>
-                        </chunk>
-                        <chunk name="InputParam" index="9">
                           <items count="6">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">5468156a-e73c-4e5c-be26-e36a64c49435</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">b0ec4746-6aba-44ba-8d3a-6d96b3cab52c</item>
                             <item name="Name" type_name="gh_string" type_code="10">display_mode</item>
                             <item name="NickName" type_name="gh_string" type_code="10">display_mode</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" type_name="gh_guid" type_code="9">8b1472e0-b601-4cf1-99dd-c30aa0ce1492</item>
+                            <item name="Source" type_name="gh_guid" type_code="9">ff2426a9-d2d1-4e27-a8e4-7511f15d7ed1</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
-                          </items>
-                        </chunk>
-                        <chunk name="InputParam" index="10">
-                          <items count="4">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">6b7e9c41-0f11-45e5-9c19-900dabc3ba24</item>
-                            <item name="Name" type_name="gh_string" type_code="10">projection</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">projection</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                          </items>
-                        </chunk>
-                        <chunk name="InputParam" index="11">
-                          <items count="4">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">f5dc4a1e-ba5d-4aa6-b777-aec96bba1752</item>
-                            <item name="Name" type_name="gh_string" type_code="10">bbox</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">bbox</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                          </items>
-                        </chunk>
-                        <chunk name="InputParam" index="12">
-                          <items count="4">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">3ef5159a-3115-4207-9ff3-aee17ef92095</item>
-                            <item name="Name" type_name="gh_string" type_code="10">redraw</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">redraw</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
                           </items>
                         </chunk>
                         <chunk name="OutputParam" index="0">
                           <items count="3">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">8d91315e-8de2-47a7-ae7d-b6d5b1d48300</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">6c800a04-5882-46ee-9fa7-34f7d3b7f821</item>
                             <item name="Name" type_name="gh_string" type_code="10">cam_pt</item>
                             <item name="NickName" type_name="gh_string" type_code="10">cam_pt</item>
                           </items>
                         </chunk>
                         <chunk name="OutputParam" index="1">
                           <items count="3">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">7bb86a2a-ea80-4863-8eb9-018bf2eb416d</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">c4aeb4ba-8145-4102-9198-5c59f3322881</item>
                             <item name="Name" type_name="gh_string" type_code="10">target_pt</item>
                             <item name="NickName" type_name="gh_string" type_code="10">target_pt</item>
                           </items>
                         </chunk>
                         <chunk name="OutputParam" index="2">
                           <items count="3">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">a06b77ce-6df0-4a66-abc4-7979ef2661c7</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">2e2bc591-46f1-463d-a9c2-3813bf36409b</item>
                             <item name="Name" type_name="gh_string" type_code="10">cam_dir</item>
                             <item name="NickName" type_name="gh_string" type_code="10">cam_dir</item>
                           </items>
                         </chunk>
                         <chunk name="OutputParam" index="3">
                           <items count="3">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">7b13d71d-45a5-4c23-9584-d9dbbb61a6ed</item>
-                            <item name="Name" type_name="gh_string" type_code="10">cam_plane</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">cam_plane</item>
-                          </items>
-                        </chunk>
-                        <chunk name="OutputParam" index="4">
-                          <items count="3">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">d3114a30-411c-4570-813f-3c37a0b86dbe</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">fdbdcf59-44d8-4904-90f5-901f89783876</item>
                             <item name="Name" type_name="gh_string" type_code="10">frustum</item>
                             <item name="NickName" type_name="gh_string" type_code="10">frustum</item>
                           </items>
                         </chunk>
-                        <chunk name="OutputParam" index="5">
+                        <chunk name="OutputParam" index="4">
                           <items count="3">
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">0c715d88-8af3-497a-85b9-324265306173</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">2f120d0e-c379-4c3c-8e8d-d6084a96d425</item>
                             <item name="Name" type_name="gh_string" type_code="10">status</item>
                             <item name="NickName" type_name="gh_string" type_code="10">status</item>
                           </items>
@@ -804,7 +665,7 @@ else:
                 <chunk name="Container">
                   <items count="5">
                     <item name="Description" type_name="gh_string" type_code="10">Panel for notes and text</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">958cb3ea-6159-4708-aa51-a8bb5382d0fd</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">531a0676-0636-4bfd-92c2-c256492f92e2</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10" />
                     <item name="UserText" type_name="gh_string" type_code="10">Status Output</item>
@@ -826,15 +687,15 @@ else:
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="4">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e8ad219d-efca-4190-9004-ea30bd116a32</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">490ce1c1-c186-4b7e-9a6b-4d04e3b6fc99</item>
                         <item name="Name" type_name="gh_string" type_code="10">in</item>
-                        <item name="Source" type_name="gh_guid" type_code="9">0c715d88-8af3-497a-85b9-324265306173</item>
+                        <item name="Source" type_name="gh_guid" type_code="9">2f120d0e-c379-4c3c-8e8d-d6084a96d425</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                     </chunk>
                     <chunk name="param_output" index="0">
                       <items count="2">
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">403b285f-a276-4519-9fb9-5d23bcab6020</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">07cd4852-6ec4-4453-81ca-467bead199f8</item>
                         <item name="Name" type_name="gh_string" type_code="10">out</item>
                       </items>
                     </chunk>
