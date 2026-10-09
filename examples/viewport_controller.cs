@@ -97,7 +97,7 @@ public class ViewportController
 
         try
         {
-            RhinoView view = null;
+            Rhino.Display.RhinoView view = null;
             if (!string.IsNullOrWhiteSpace(view_name))
             {
                 view = doc.Views.Find(view_name.Trim(), false);
@@ -113,7 +113,7 @@ public class ViewportController
                 return;
             }
 
-            RhinoViewport vp = view.ActiveViewport;
+            Rhino.Display.RhinoViewport vp = view.ActiveViewport;
 
             // Update Target, Location, and Up
             vp.SetCameraTarget(target, false);
@@ -129,7 +129,7 @@ public class ViewportController
             // Display Mode
             if (!string.IsNullOrWhiteSpace(display_mode))
             {
-                var modeDesc = DisplayModeDescription.FindByName(display_mode.Trim());
+                var modeDesc = Rhino.Display.DisplayModeDescription.FindByName(display_mode.Trim());
                 if (modeDesc != null)
                 {
                     vp.DisplayMode = modeDesc;
