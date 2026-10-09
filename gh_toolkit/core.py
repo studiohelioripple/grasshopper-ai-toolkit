@@ -304,7 +304,6 @@ def read_item_value(buf: BinaryBuffer, type_code: int) -> Any:
             "origin": (buf.read_double(), buf.read_double(), buf.read_double()),
             "xaxis": (buf.read_double(), buf.read_double(), buf.read_double()),
             "yaxis": (buf.read_double(), buf.read_double(), buf.read_double()),
-            "zaxis": (buf.read_double(), buf.read_double(), buf.read_double()),
         }
     elif type_code == 80:
         return (buf.read_int32(), buf.read_int32(), buf.read_int32())
@@ -371,11 +370,9 @@ def serialize_item_value(type_code: int, value: Any) -> bytes:
         o = value["origin"]
         x = value["xaxis"]
         y = value["yaxis"]
-        z = value["zaxis"]
-        return struct.pack("<dddddddddddd", float(o[0]), float(o[1]), float(o[2]),
+        return struct.pack("<ddddddddd", float(o[0]), float(o[1]), float(o[2]),
                            float(x[0]), float(x[1]), float(x[2]),
-                           float(y[0]), float(y[1]), float(y[2]),
-                           float(z[0]), float(z[1]), float(z[2]))
+                           float(y[0]), float(y[1]), float(y[2]))
     elif type_code == 80:
         return struct.pack("<iii", int(value[0]), int(value[1]), int(value[2]))
     else:
