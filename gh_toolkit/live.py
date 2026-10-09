@@ -481,7 +481,7 @@ for obj in doc.Objects:
     cguid = str(obj.ComponentGuid).lower()
     name = str(obj.Name).lower()
     nick = str(obj.NickName).lower()
-    if target in (iguid, cguid, name, nick):
+    if target in (iguid, cguid, name, nick) or iguid.startswith(target):
         to_remove.append(obj)
 
 if not to_remove:
@@ -534,9 +534,9 @@ for obj in doc.Objects:
     iguid = str(obj.InstanceGuid).lower()
     name = str(obj.Name).lower()
     nick = str(obj.NickName).lower()
-    if not src_obj and src_target in (iguid, name, nick):
+    if not src_obj and (src_target in (iguid, name, nick) or iguid.startswith(src_target)):
         src_obj = obj
-    if not dst_obj and dst_target in (iguid, name, nick):
+    if not dst_obj and (dst_target in (iguid, name, nick) or iguid.startswith(dst_target)):
         dst_obj = obj
 
 if not src_obj:
@@ -620,7 +620,7 @@ for obj in doc.Objects:
     iguid = str(obj.InstanceGuid).lower()
     name = str(obj.Name).lower()
     nick = str(obj.NickName).lower()
-    if dst_target in (iguid, name, nick):
+    if dst_target in (iguid, name, nick) or iguid.startswith(dst_target):
         dst_obj = obj
         break
 
@@ -652,7 +652,10 @@ if src_target:
     to_remove = []
     for s in dst_param.Sources:
         parent_obj = s.Attributes.GetTopLevel.DocObject
-        if src_target in (str(s.InstanceGuid).lower(), str(parent_obj.Name).lower(), str(parent_obj.NickName).lower()):
+        p_guid = str(s.InstanceGuid).lower()
+        p_name = str(parent_obj.Name).lower()
+        p_nick = str(parent_obj.NickName).lower()
+        if src_target in (p_guid, p_name, p_nick) or p_guid.startswith(src_target):
             to_remove.append(s)
     for s in to_remove:
         dst_param.RemoveSource(s)
@@ -698,7 +701,7 @@ for obj in doc.Objects:
     iguid = str(obj.InstanceGuid).lower()
     name = str(obj.Name).lower()
     nick = str(obj.NickName).lower()
-    if target in (iguid, name, nick):
+    if target in (iguid, name, nick) or iguid.startswith(target):
         target_obj = obj
         break
 
